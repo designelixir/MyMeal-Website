@@ -31,9 +31,11 @@
             <squarespace:block-field id="howItWorks1" columns="1" />
         </div>
         <div class="howItWorksBlock-item">
+            <squarespace:block-field id="howItWorksImg2" class="howItWorksBlock-img" columns="1" />
             <squarespace:block-field id="howItWorks2" columns="1" />
         </div>
         <div class="howItWorksBlock-item">
+            <squarespace:block-field id="howItWorksImg3" class="howItWorksBlock-img" columns="1" />
             <squarespace:block-field id="howItWorks3" columns="1" />
         </div>
       </div>
