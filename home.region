@@ -25,8 +25,9 @@
         <img id="heroImg" src="https://images.squarespace-cdn.com/content/v1/6450698409f0fa360c02e549/3d5d4bd4-18a6-446d-9c45-0a746ad08ae6/menu-preview.png?format=750w"/>
       </div>
 
-      <div id="howItWorksBlock" class="flex-center-center">
+      <div id="howItWorksBlock" class="flex-start-center">
         <div class="howItWorksBlock-item">
+            <squarespace:block-field id="howItWorksImg1" class="howItWorksBlock-img" columns="1" />
             <squarespace:block-field id="howItWorks1" columns="1" />
         </div>
         <div class="howItWorksBlock-item">
