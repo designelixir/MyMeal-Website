@@ -20,6 +20,17 @@
        {squarespace.main-content}
       </main>
 
+      <div id="heroBlock" class="flex-center-center">
+        <div>
+            <squarespace:block-field id="heroText" columns="12" />
+            {@|apply download.block}  
+        </div>
+        <div>
+        <squarespace:block-field id="heroImg" columns="12" />
+        </div>
+
+      </div>
+
       <!--Footer with open block field -->
       <footer class="site-footer">
         <squarespace:block-field id="footerBlocks" columns="12" />
