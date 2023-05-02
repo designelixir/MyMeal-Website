@@ -15,8 +15,6 @@
         <squarespace:navigation navigationId="siteNav" template="site-navigation" />        
       </header>
 
-      <squarespace:block-field id="heroBlock" columns="12" class="flex-center-center"/>
-
       <!-- cms content injection point -->
       <main class="content-container" role="main" data-content-field="main-content">
        {squarespace.main-content}

@@ -1,5 +1,5 @@
-<nav class="site-navigation flex-center-spacebetween">
-  <a href="/"><img class="site-logo" src={website.logoImageUrl}></a>
+<nav class="site-navigation flex-center-spacebetween box-shadow">
+  <a href="/" class="hover"><img class="site-logo" src={website.logoImageUrl}></a>
   <ul class="site-navigation-list flex-center-center">
     {.repeated section items}
 
