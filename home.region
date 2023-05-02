@@ -27,7 +27,7 @@
 
       <div id="howItWorksBlock">
         <squarespace:block-field id="howItWorksTitle" columns="1" />
-        <div class="flex-start-center">
+        <div class="flex-start-center" id="howItWorksBlock-wrapper">
             <div class="howItWorksBlock-item flex-center-center flex-column">
                 <squarespace:block-field id="howItWorksImg1" class="howItWorksBlock-img" columns="1" />
                 <squarespace:block-field id="howItWorks1" columns="1" />
@@ -41,6 +41,10 @@
                 <squarespace:block-field id="howItWorks3" columns="1" />
             </div>
         </div>
+      </div>
+
+      <div id="createPositiveExperienceBlock">
+        {@|apply restaurantsSnippet.block}
       </div>
 
 

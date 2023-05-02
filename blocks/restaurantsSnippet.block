@@ -1,0 +1,57 @@
+
+
+<section id="restaurantsSnippet" class="flex-center-center">
+  
+<div class="restaurant-snippet-container">
+  <h1><span style="font-weight: 400;">Create a positive experience.</span> Every time. </h1>
+  <div class="flex-center-start restaurant-snippet-info" style="max-width: 1500px">
+    <div class="flex-end-end phone-container">
+      <img src="https://images.squarespace-cdn.com/content/6450698409f0fa360c02e549/fc84cddb-4695-42bb-9f38-b7d5d8a5dff2/mockup-mapview.png?content-type=image%2Fpng" style="height: 80%; width: auto;"/>
+    </div>
+    <div style="padding: 50px" >
+        <p style="text-transform: uppercase; opacity: 0.65; font-size: 18px;">MyMeal for Restaurants</p>
+        <h2 style="padding-bottom: 15px;">Why offer an allergen menu at your restaurant?</h2>
+        <p>Our filterable allergy menus put you and your staff back in control so you can feel confident serving any customer that comes your way.</p>
+        <br />
+      <div>
+        <div class="inline-icon-text flex-center-start">
+          <img class="icon" src="https://images.squarespace-cdn.com/content/6450698409f0fa360c02e549/0088e021-3489-4a6a-b3a0-15f532198458/brand1.png?content-type=image%2Fpng" alt="heart icon"/>
+          <p><strong>Customer Loyalty</strong><br />
+            <span class="blue-text">92% of guests with food allergies</span>
+            will return frequently after having a positive experience eating
+            out.
+          </p>
+        </div>
+        <div class="inline-icon-text flex-center-start">
+          <img class="icon" src="https://images.squarespace-cdn.com/content/6450698409f0fa360c02e549/bd9c6604-817d-426d-bac5-02c7eb06a54b/growth.png?content-type=image%2Fpng" alt="growth icon"/>
+          <p>
+            <strong>Boost in Revenue</strong> <br />
+            Accommodating allergic guests can
+            <span class="blue-text">boost your restaurant's profit margin by 24%</span>
+          </p>
+        </div>
+        <div class="inline-icon-text flex-center-start">
+          <img class="icon" src="https://images.squarespace-cdn.com/content/6450698409f0fa360c02e549/cd87c42f-13a7-4904-8f64-b958fb64f5f7/shield.png?content-type=image%2Fpng" alt="growth icon"/>
+          <p>
+            <strong>Avoid a Lawsuit</strong> <br />
+            Nearly 50% of food allergy related fatalities
+            <span class="blue-text">occur in eating establishments.</span>
+          </p>
+        </div>
+
+        <div
+          style="display: flex; align-items: center; justify-content: center;"
+        >
+          <button class="blue-outline-button">
+            <a class="blue-text"
+              href="https://findmymeal.io/mymeal-for-restaurants"
+              style=" font-weight: 400; font-size: 24px;"
+              >Explore MyMeal for Restaurants</a
+            >
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
