@@ -1,0 +1,9 @@
+<div class="press-item-container" onclick="window.open({sourceUrl}, _blank)">
+    <div class="press-item-img">
+    
+    </div>
+    <p class="press-title hover">
+     {title}
+    </p>
+    <p><time datetime="{addedOn|date %F}">{addedOn|date %B %d, %Y}</time></p>
+</div>
