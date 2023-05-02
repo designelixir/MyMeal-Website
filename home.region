@@ -21,7 +21,7 @@
             <br>
             {@|apply download.block}  
         </div>
-        <div style="border: 1px solid red;">
+        <div style="border: 1px solid red; width: 200px; height: 50px">
             <squarespace:block-field id="heroImg" columns="12" />
         </div>
 
