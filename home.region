@@ -46,12 +46,20 @@
       <div id="createPositiveExperienceBlock">
         {@|apply restaurantsSnippet.block}
       </div>
-
+    
+    <div class="feature-container">
+        <h2>Featured In</h2>
+        <div class="feature-wrapper box-shadow">
+            <squarespace:block-field id="featurePressArticles" columns="12" />
+            <hr>
+            <squarespace:block-field id="featurePressPodcasts" columns="12" />
+        </div>
+    </div>
 
       <!-- cms content injection point -->
       <main class="content-container" role="main" data-content-field="main-content">
+      {squarespace.main-content}
        
-       {squarespace.main-content}
       </main>
 
       
