@@ -1,22 +1,22 @@
 
 {.section item}
 
-  <!--WRAPPER-->
-  <article id="post-{id}" class="{@|item-classes}" data-item-id="{id}">
+<div class="blog-page-header" style="background-image:url({assetUrl})">
+  <div class="blog-page-title">
+  <h1>{title}</h1>
+  <p class="meta">
+      <a href="{fullUrl}" class="permalink" ><time datetime="{addedOn|date %F}">{addedOn|date %B %d, %Y}</time></a> by <a href="{collection.fullUrl}?author={author.id}">{author.displayName}</a>
+    </p>
+  </div>
+</div>
+<div class="blog-content-wrapper">
+<a class="styled-button hover" href="/blog">&larr; Back to Blog</a>
 
-    <!--POST TILE-->
-    <h1 class="title" data-content-field="title">
-      {.passthrough?}
-        <a href="{sourceUrl}" target="_blank">{title}</a>
-      {.or}
-        {title}
-      {.end}
-    </h1>
+  <!--WRAPPER-->
+  <article id="post-{id}" class="{@|item-classes} blog-page" data-item-id="{id}">
 
     <!--AUTHOR AND DATE-->
-    <p class="meta">
-      <a href="{fullUrl}" class="permalink"><time datetime="{addedOn|date %F}">{addedOn|date %B %d, %Y}</time></a> by <a href="{collection.fullUrl}?author={author.id}">{author.displayName}</a>
-    </p>
+    
 
     <!--MAIN CONTENT-->
     {body}
@@ -59,21 +59,26 @@
 
 <!--PAGINATION-->
 {.section pagination}
-  <nav class="blog-item-pagination">
+  <nav class="blog-item-pagination flex-center-spacebetween">
+
+    
 
     <!--NEWER PAGE-->
     {.section prevItem}
-      <a href="{fullUrl}">Newer</a>
+      <a href="{fullUrl}" class="styled-button">&larr; Newer </a>
     {.or}
-      <a class="disabled">Newer</a>
+      <a class="disabled" class="styled-button">&larr; Newer</a>
     {.end}
+
+
 
     <!--OLDER PAGE-->
     {.section nextItem}
-      <a href="{fullUrl}">Older</a>
+      <a href="{fullUrl}" class="styled-button">Older &rarr; </a>
     {.or}
-      <a class="disabled">Older</a>
+      <a class="disabled" class="styled-button">Older &rarr;</a>
     {.end}
 
   </nav>
 {.end}
+</div>

@@ -14,6 +14,7 @@ html {width: 100vw; overflow-x: hidden;}
 h1 {margin: 0!important; font-size: 48px; line-height: 54px;}
 h2 {margin: 0!important; font-size: 32px; line-height: 38px;}
 h3 {margin: 0!important; font-size: 24px; line-height: 30px;}
+h6 {margin: 0!important;}
 :root {
   --blue: #2d9cdb;
 }
@@ -30,9 +31,11 @@ h3 {margin: 0!important; font-size: 24px; line-height: 30px;}
     transform: scale(1.01);
   }
 
+  header {z-index: 3;}
+
 button {cursor: pointer;}
 .box-shadow {box-shadow: 0px 1px 6px rgba(0,0,0,0.25);}
-.styled-button {background-color: var(--blue); padding: 10px; color: white; border: none; border-radius: 8px; font-size: 18px; font-weight: 500;}
+.styled-button {background-color: var(--blue); text-decoration: none; padding: 10px; color: white; border: none; border-radius: 8px; font-size: 18px; font-weight: 500;}
 
 .styled-button-inverted {background-color: white; padding: 10px; color: var(--blue); border: none; border-radius: 8px; font-size: 18px; font-weight: 500; margin: 10px;border: 2px solid var(--blue);}
 .styled-button-inverted:hover {border: 2px solid black; color: black;}
@@ -112,8 +115,24 @@ button {cursor: pointer;}
 
 // Blog
 .blog-container {margin: 50px;}
-#blogBlock {border: 1px solid blue; width: 100%; min-height: 20px;}
+.blog-image {width: 100%; height: 250px; background-size: cover; background-position: center center; background-repeat: no-repeat;}
+.blog-list-item {margin: 25px 25px 25px 0px;  min-width: 250px; width: 100%; max-width: 350px}
+.blog-title {font-weight: 600; font-size: 18px; line-height: 24px; }
+.blog-title a {color: black; text-decoration: none;}
+.blog-info-container {padding: 10px 25px; background-color: #EFF2F5;}
+.blog-meta a {color: var(--blue); font-size: 12px; text-decoration: none; font-weight: 400;}
 
+.blog-page-header {z-index: -1; width: 100%; height: 30vh; background-size: cover; background-position: center center; background-repeat: no-repeat;}
+.blog-page-title {padding: 50px;}
+.blog-page-title h1{padding: 25px; background: var(--blue);  max-width: 350px; color: white; }
+.blog-content-wrapper {padding: 50px;}
+.blog-page {margin: 50px 0px}
+.blog-page-header .meta, a{text-decoration: none; font-size: 14px; color: black; }
+.blog-page-header .meta a:hover {font-weight: 500;}
+
+@media screen and (max-width: 800px) {
+  .blog-list-item {min-width: unset; max-width: unset;}
+}
 // Squarespace Blocks
 .sqs-block {padding: 0!important;}
 .sqs-layout > .sqs-row {margin: 0!important;}
