@@ -1,0 +1,55 @@
+<style>
+@keyframes scroll {
+  0% {transform: translateX(0);}
+  100% {transform: translateX(-1750px);}
+}
+
+.slider {height: 200px; margin: auto; overflow: hidden; position: relative; width: auto;}
+.slide-track { animation: scroll 40s linear infinite; display: flex; width: 3000px;}
+.slide {height: 200px; width: 250px; cursor: pointer;}
+
+</style>
+
+<section id="forRestaurantsSection6">
+        <div style="text-align: center; margin-top: 50px;">
+            <img src="assets/restaurant-icon.png" style="width: 100px; padding-bottom: 15px;"/>
+        </div>
+        <h2 class="blue-text" style="text-align: center; padding: 0px 50px;">
+            <span style="font-weight: 300;">Join dozens of restaurants who have tapped into the</span> market of over 32 million people with food allergens. 
+        </h2>
+        <div class="flex-center-center" >
+            <a href="https://www.foodallergy.org/resources/facts-and-statistics" style="text-align: center; color: rgba(0,0,0,0.5); font-size: 10px;" target="_blank">Food Allergy Research & Education. (n.d.).</a>
+        </div>
+
+        <div class="slider">
+            <div class="slide-track">
+                <div class="slide flex-center-center" onclick="window.open('https://www.illegalpetes.com/')">
+                    <img src="assets/restaurants/illegal-petes-logo-circle.png" alt="Illegal Petes Logo" style="height: 120px; "/>
+                </div>
+                <div class="slide flex-center-center" onclick="window.open('https://dagabicucina.com/')">
+                    <img src="assets/restaurants/dagabi-black.png" alt="Dagabi Cucina Logo" style="height: 100px;"/>
+                </div>
+                <div class="slide flex-center-center" onclick="window.open('https://hornetrestaurant.com/')">
+                    <img src="assets/restaurants/hornet.png" style="height: 110px;" alt="Hornet Denver Logo"/>
+                </div>
+                <div class="slide flex-center-center" onclick="window.open('https://www.bluebonnetrestaurant.com/')">
+                    <img src="assets/restaurants/blue-bonnet-logo.png" style="height: 120px;" alt="Blue Bonnet Logo"/>
+                </div>
+                <div class="slide flex-center-center" onclick="window.open('https://www.parkergarage.com/')">
+                    <img src="assets/restaurants/parker-garage-logo.png" style="height: 60px;" alt="Parker Garage Logo"/>
+                </div>
+                <div class="slide flex-center-center" onclick="window.open('https://wholesol.com/')">
+                    <img src="assets/restaurants/wholesol.png" style="height: 100px;" alt="Whole Sol Logo" />
+                </div>
+                <div class="slide flex-center-center" onclick="window.open('https://www.teocallicocina.com/')">
+                    <img src="assets/restaurants/teocalli.avif" style="height: 80px;" alt="Teocalli Cocina Logo"/>
+                </div>
+                <div class="slide flex-center-center" onclick="window.open('https://acovarestaurant.com/')">
+                    <img src="assets/restaurants/acova.jpeg" style="height: 120px;" alt="Acova Logo"/>
+                </div>
+                <div class="slide" onclick="window.open('https://www.foragedrestaurant.com/')">
+                    <img src="assets/restaurants/Foraged_Logo_Kitchen_Rawbar.png" style="height: 120px;" alt="Foraged Denver Logo"/>
+                </div>
+            </div>
+        </div>
+    </section>

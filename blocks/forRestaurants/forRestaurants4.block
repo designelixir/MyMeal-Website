@@ -1,0 +1,22 @@
+<style>
+
+#forRestaurantsSection4 {padding: 75px 15px; text-align: center;}
+#reels-gif-container {overflow: clip; background-image: url(' https://findmymeal.io/wp-content/uploads/2023/03/map-view-social-media.gif'); min-height: 400px;
+background-position: center center; background-repeat: no-repeat; background-size: contain;}
+
+
+</style>
+
+<section id="forRestaurantsSection4">
+    <h1 style="padding: 25px;" class="blue-text">
+        <span style="font-weight: 400; color: black;">Oh yeah, did we mention</span> free marketing?
+    </h1>
+    <div id="reels-gif-container" class="flex-center-center"></div>
+    <h4>
+        MyMeal has an active community of over 10,000+ members on social media and a user base that grows 9% every week. The one thing our followers have in
+        common? <span class="blue-text bold">They want to eat out and feel safe.</span> <br />
+        <br />
+        As a partner, we will promote you on the MyMeal app and to our social media pages, <span class="blue-text bold">for free. </span>
+    </h4>
+    <button onclick="togglePopup()" style=" width: 300px;" class="styled-button">Download the MyMeal App</button>
+</section>

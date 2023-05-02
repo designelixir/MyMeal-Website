@@ -1,0 +1,87 @@
+<style>
+.perk-container-header {background: var(--blue); padding: 50px; margin: 25px 25px 0px 25px; border-radius: 8px 8px 0 0;}
+.perk-wrapper {background: #f5f5f5; border-radius: 0 0 8px 8px; margin: 0 25px;}
+.perk-container {margin-bottom: 15px; max-width: 1600px; margin: 0px 25px; padding: 25px 0;  border-bottom: 1px solid rgba(255,255,255,1);}
+.perk-text {width: 40%;}
+.perk-text h2 {font-weight: 400;}
+.perk-container p {color: rgba(0,0,0,0.65);}
+.perk-image {width: 50%; max-width: 500px; margin: 25px;}
+.perk-image img {width: 100%; }
+#last-perk-container {padding: 25px;}
+
+@media screen and (max-width: 800px) {
+  .perk-container {flex-wrap: wrap;}
+  .perk-image {margin: 0; width: 100%;}
+  .perk-text, .perk-text-wide {width: 100%; text-align: center; margin-bottom: 25px; order: 1!important; padding: 10px;} 
+  .perk-image, .perk-image-small {width: 100%; order: 2!important; padding: 10px; }
+}
+
+</style>
+
+<section id="forRestaurantsSection3">
+
+        <div class="perk-container-header flex-center-center flex-column" >
+            <h1 style="color: white; text-align: center; font-weight: 600; ">
+                <span style="font-weight: 400; ">Create a positive experience.</span> Every time. 
+            </h1>
+        </div>
+        <div class="flex-center-center flex-column perk-wrapper box-shadow">
+    
+            <div class="perk-container flex-center-center" style="margin-top: 25px;">
+                <div class="perk-text">
+                    <h2>An <span class="blue-text">easy addition</span> to your menu</h2>
+                    <p>We provide a QR code that links to your allergy menu. It can be accessed on a printed menu, a sticker on your table, table tents - the possibilities are endless.</p>
+                </div>
+                <div class="perk-image">
+                    <img src="https://findmymeal.io/wp-content/uploads/2023/03/one-one.png" alt="example of mymeal menu aside another restaurants" >
+                </div>      
+            </div>
+
+            <div class="perk-container flex-center-center">
+                <div class="perk-image">
+                    <img src="https://findmymeal.io/wp-content/uploads/2023/03/two-two-two.png" alt="example of filterable allergy menus" >
+                </div>
+                <div class="perk-text">
+                    <h2>Allergens made <span class="blue-text">simple</span></h2>
+                    <p>When a customer comes in with multiple allergens, it is stressful for your staff to offer recommendations. With MyMeal, your customer can filter your menu by any allergen your kitchen can accommodate.</p><br>
+                    <a href="https://mymealmenus.com/order/restaurants/12/locations/9" target="_blank" class="styled-button hover">View a Demo Menu Page</a>
+                </div>
+            </div>
+
+            <div class="perk-container flex-center-center">
+                <div class="perk-text">
+                    <h2>We protect you from <span class="blue-text">lawsuits</span></h2>
+                    <p>We get it. Catering to people with allergies can seem scary. That’s why we have a disclaimer that notifies the customer of your ever changing ingredient list and shared kitchen.</p>
+                </div>
+                <div class="perk-image">
+                    <img src="https://findmymeal.io/wp-content/uploads/2023/03/three-three.png" alt="example of mymeal menu aside another restaurants">
+                </div>
+            </div>
+
+            <div class="perk-container flex-center-center">
+                <div class="perk-image" >
+                    <img src="https://findmymeal.io/wp-content/uploads/2023/03/callouts2.png" alt="example of mymeal menu aside another restaurants">
+                </div>
+                <div class="perk-text" >
+                    <h2>Saves your staff <span class="blue-text">time and mistakes</span> </h2>
+                    <p>Ditch the back and forth conversation between your chef and server. We hash out modification and cross contact information for each dish with your chef. </p>
+                </div>
+            </div>
+        </div>
+
+
+        <div id="last-perk-container">
+            <div style="text-align: center;">
+                <img src="assets/sparkles.png" style="width: 100px;"/>
+            </div>
+            <h1 class="blue-text" style="text-align: center;">
+                <span style="font-weight: 300;">We provide a transparent, stress-free experience for both parties</span>- creating loyal customers and saving your restaurant time.
+            </h1>
+            <p style="color: rgba(0,0,0,0.65); text-align: center">Documenting the allergens in each of your dishes is a time sink. That's why our certified nutrition specialists do it for you. We fix mistakes within 75% of the restaurants we work with, ensuring your staff and guests have positive interactions start to finish.</p>
+            <div class="flex-center-center">
+                <a class="blue-outline-button" href="#restaurant-scheduler-container">Request a Demo</a>
+            </div>
+        </div>
+
+
+    </section>

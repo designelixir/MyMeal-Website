@@ -1,0 +1,46 @@
+<style>
+:root {
+  --blue: #2d9cdb;
+}
+
+#restaurant-scheduler-container {background-color: var(--blue); border-radius: 25px; box-shadow: 1px 2px 3px rgba(0, 0, 0, 0.25); margin: 50px 0px; padding: 25px;}
+#demo-graphic {height: 450px; width: calc(100% - 400px);}
+#demo-graphic h1 {text-transform: uppercase; font-size: 48px; line-height: 48px; padding: 25px 50px; color: white;}
+#demo-graphic p { padding: 0px 50px; color: white; margin-top: -15px;}
+#demo-graphic img { padding: 0px 0px 0px 25px; max-width: 600px; }
+#JotFormIFrame-230681736347057 {width: 400px;}
+  @media screen and (max-width: 950px) {
+    #restaurant-scheduler-container {display: block;}
+    #demo-graphic {min-width: unset; text-align: center; border-radius: none; overflow-x: clip; padding: 5px 0px; width: unset;}
+    #demo-graphic img {margin-top: -50px;}
+    #demo-graphic h1 {font-size: 36px;}
+    #demo-graphic p {margin: 0px 50px;}
+    #form-container {margin: 0 !important; padding-top: 50px; width: 100%;}
+    #JotFormIFrame-230681736347057 {width: 100%;}
+  }
+</style>
+
+<div class="flex-center-center" style="max-width: 100vw; overflow-x: clip; padding: 50px 0 100px 0;">
+  <div id="restaurant-scheduler-container" class="flex-center-center">
+    <div id="demo-graphic">
+      <h1>Request a demo</h1>
+      <p>Fill out the form to get in touch with one of our certified nutrition specialists.</p>
+      <img src="https://findmymeal.io/wp-content/uploads/2023/03/laptop.png" />
+    </div>
+    <div id="form-container">
+      <iframe
+        id="JotFormIFrame-230681736347057"
+        title="MyMeal Restaurant Consultation Request"
+        onload="window.parent.scrollTo(0,0)"
+        allowtransparency="true"
+        allowfullscreen="true"
+        allow="geolocation; microphone; camera"
+        src="https://form.jotform.com/230681736347057"
+        frameborder="0"
+        style="height: 465px; margin: 0;"
+        scrolling="no"
+      >
+      </iframe>
+    </div>
+  </div>
+</div>

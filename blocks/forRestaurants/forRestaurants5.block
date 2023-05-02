@@ -1,0 +1,75 @@
+<style>
+#forRestaurantsSection5 {background-color:  var(--blue); padding: 25px; background-size: 110%; background-repeat: no-repeat; background-position: center 95%;
+  background-image: url("https://findmymeal.io/wp-content/uploads/2023/03/background-transparent.png"); }
+#rounded-block-container {max-width: 1500px;}
+.rounded-block {flex: 1 1 0px; align-self: stretch; background-color: #182e46; border: 2px solid white; margin: 10px; border-radius: 27px; background-size: contain; min-width: 500px; background-repeat: no-repeat; background-position: 0 center; }
+#rounded-block-first {background-position-x: -40px; background-image: url("https://findmymeal.io/wp-content/uploads/2023/03/laptop-mockup.gif");}
+#rounded-block-second {background-size: contain; background-image: url("https://images.unsplash.com/photo-1588675646184-f5b0b0b0b2de?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTJ8fG1lbnV8ZW58MHx8MHx8&auto=format&fit=crop&w=800&q=90");}
+.rounded-block-text {height: 100%; min-height: 330px; margin-left: 200px; padding: 35px; background-color: white; border-top-right-radius: 25px; border-bottom-right-radius: 25px;}
+#show-me-link {font-size: 28px; text-decoration: none; color: white; font-weight: 600; padding: 15px 20%;  border: 2px solid white; border-radius: 8px;}
+
+@media screen and (max-width: 1235px) {
+  #restaurant-owners-container {padding: 15px;}
+  .rounded-block-text {width: 100% !important; margin-left: 35%; min-height: unset;}
+  .rounded-block {max-width: 800px;}
+  #rounded-block-second {background-size: 40%;}
+}
+
+
+  @media screen and (max-width: 700px) {
+    .rounded-block-text {
+      margin-top: 300px;
+      border-bottom-left-radius: 25px;
+      border-top-right-radius: 0px;
+      margin-left: 0;
+      
+    }
+    .rounded-block {
+      background-position: center 50px;
+      background-position-x: 0px !important;
+      width: 100%;
+      min-width: 100%;
+      align-self: unset;
+    }
+    #rounded-block-first {
+      background-size: contain;
+    }
+    #rounded-block-second {
+      background-size: cover;
+      background-position: center center;
+    }
+  }
+
+</style>
+ 
+ <section id="forRestaurantsSection5" class="flex-center-center flex-column">
+    <h2 style="color: white; text-align: center; padding: 25px 15px;">Flexible, easy-to-use technology built by listening to restaurant owners.</h2>
+    <div id="rounded-block-container" class="flex-start-center flex-wrap">
+        <div class="rounded-block flex-start-end box-shadow" id="rounded-block-first">
+            <div class="rounded-block-text">
+                <h3>Break Up with Allergen Charts</h3>
+                <p>I'm guessing you label GF and VG on the menu. Or maybe you have an allergen chart. These resources are.. </p>
+                <ul style="margin-left: 15px;">
+                    <li>hard to use</li>
+                    <li>labeled incorrectly</li>
+                    <li>don't tell the customer the whole story</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="rounded-block flex-start-end box-shadow" id="rounded-block-second">
+            <div class="rounded-block-text">
+                <h3 class="rounded-block-title">What About Menu Changes?</h3>
+                <p>Almost all the restaurants we work with change their menu seasonally. This is why we..</p>
+                
+                <ul>
+                    <li>reach out every quarter for menu updates</li>
+                    <li>offer a portal to edit menu items at any time</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="flex-center-center hover" style="width: 100%; margin-top: 15px;">
+        <a id="show-me-link" href="#restaurant-scheduler-container">Show me how &rarr;</a>
+    </div>
+</section>

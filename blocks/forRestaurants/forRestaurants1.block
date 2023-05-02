@@ -1,0 +1,24 @@
+<style>
+#forRestaurantsSection1 {background: var(--blue); overflow-x: clip;}
+.big-phone-container {height: 550px; overflow-x: clip; background-image: url("https://images.squarespace-cdn.com/content/6450698409f0fa360c02e549/d1805240-4efa-4e5f-ae9a-fea749357369/mockup-onboarding.png?content-type=image%2Fpng");
+  background-size: 300px 400px; background-origin: top right; background-repeat: no-repeat; width: 400px;}
+#restaurant-landing-header-title {padding: 25px;}
+
+@media screen and (max-width: 800px) {
+  .big-phone-container {order: 2!important; height: 400px; background-size: 200px 300px; width: 200px; background-position: 10% top; 
+  justify-content: center; }
+}
+</style>
+
+<section id="forRestaurantsSection1" >
+    <div class="flex-center-center">
+        <div class="flex-end-end big-phone-container">
+            <img src="https://images.squarespace-cdn.com/content/6450698409f0fa360c02e549/fc84cddb-4695-42bb-9f38-b7d5d8a5dff2/mockup-mapview.png?content-type=image%2Fpng" style="height: 80%; width: auto;" alt="prototype of mymeal app"/>
+        </div>
+    <div id="restaurant-landing-header-title" style="width: calc(100% - 120px); ">
+        <p style="text-transform: uppercase; color: white; opacity: 0.65; font-size: 14px;">MyMeal for Restaurants</p>
+        <h1 style="color: white; padding-bottom: 15px;">We make food allergies your superpower.</h1>
+        <p style="color: white; font-size: 16px; line-height: 22px;">We don't want you to miss out on the opportunity to gain a loyal customer for life. Especially when there's over 32 million of them looking for you.</p>
+    </div>
+    </div>
+</section>
