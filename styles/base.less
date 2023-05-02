@@ -10,10 +10,12 @@ html {width: 100vw; overflow-x: hidden;}
 .flex-end-end {display: flex; align-items: flex-end; justify-content: flex-end;}
 .flex-wrap {flex-wrap: wrap;}
 .flex-start-start {display: flex; align-items: flex-start; justify-content: flex-start;}
+.flex-start-end {display: flex; align-items: flex-start; justify-content: flex-end;}
 
 h1 {margin: 0!important; font-size: 48px; line-height: 54px;}
 h2 {margin: 0!important; font-size: 32px; line-height: 38px;}
 h3 {margin: 0!important; font-size: 24px; line-height: 30px;}
+h4 {font-weight: 400; font-size: 18px; line-height: 24px;}
 h6 {margin: 0!important;}
 :root {
   --blue: #2d9cdb;
@@ -23,7 +25,7 @@ h6 {margin: 0!important;}
   h1 {font-size: 32px; line-height: 38px;}
 }
 
-
+.bold {font-weight: 600;}
 .blue-text {color: var(--blue)}
 .icon {width: 75px; height: auto;}
 .hover:hover {
@@ -40,10 +42,8 @@ button {cursor: pointer;}
 .styled-button-inverted {background-color: white; padding: 10px; color: var(--blue); border: none; border-radius: 8px; font-size: 18px; font-weight: 500; margin: 10px;border: 2px solid var(--blue);}
 .styled-button-inverted:hover {border: 2px solid black; color: black;}
 
-.blue-outline-button {padding: 5px 20px; background: none; border: 4px solid var(--blue); border-radius: 8px; margin: 25px 0px;}
-.blue-outline-button a {text-decoration: none;}
-.blue-outline-button:hover {background: var(--blue);}
-.blue-outline-button:hover a {color: white !important; font-weight: 600 !important;}
+.blue-outline-button {padding: 5px 20px; background: none; border: 4px solid var(--blue); border-radius: 8px; margin: 25px 0px; color: var(--blue); font-size: 18px!important; text-decoration: none;}
+.blue-outline-button:hover {background: var(--blue); color: white; }
 
 // Main Navigation
 .site-navigation {padding: 15px; background: #f5f5f5}
@@ -106,7 +106,7 @@ button {cursor: pointer;}
 .press-list-container {background-color: var(--blue); padding: 25px; }
 @media screen and (max-width: 1200px) {
   .restaurant-snippet-info {display: block!important;}
-  .phone-container {display: none;}
+  .restaurant-snippet-container .phone-container {display: none;}
   .feature-container {padding: 10px;}
   .feature-wrapper {margin: 15px;}
   .press-list-container .article-container {justify-content: center!important;}
@@ -133,6 +133,103 @@ button {cursor: pointer;}
 @media screen and (max-width: 800px) {
   .blog-list-item {min-width: unset; max-width: unset;}
 }
+
+
+//For Restaurants 
+#forRestaurantsSection1 {background: var(--blue); overflow-x: clip;}
+.big-phone-container {height: 550px; overflow-x: clip; background-image: url("https://images.squarespace-cdn.com/content/6450698409f0fa360c02e549/d1805240-4efa-4e5f-ae9a-fea749357369/mockup-onboarding.png?content-type=image%2Fpng");
+  background-size: 300px 400px; background-origin: top right; background-repeat: no-repeat; width: 400px;}
+#restaurant-landing-header-title {padding: 25px;}
+
+#forRestaurantsSection2 {padding: 50px; }
+#forRestaurantsSection2 h2 {text-align: center; text-transform: uppercase; font-weight: 600; margin: 25px 0;  }
+.icon-text {min-width: 200px; text-align: center; margin: 25px; padding: 15px; border-radius: 5px;}
+
+.perk-container-header {background: var(--blue); padding: 50px; margin: 25px 25px 0px 25px; border-radius: 8px 8px 0 0;}
+.perk-wrapper {background: #f5f5f5; border-radius: 0 0 8px 8px; margin: 0 25px;}
+.perk-container {margin-bottom: 15px; max-width: 1600px; margin: 0px 25px; padding: 25px 0;  border-bottom: 1px solid rgba(255,255,255,1);}
+.perk-text {width: 40%;}
+.perk-text h2 {font-weight: 400;}
+.perk-container p {color: rgba(0,0,0,0.65);}
+.perk-image {width: 50%; max-width: 500px; margin: 25px;}
+.perk-image img {width: 100%; }
+#last-perk-container {padding: 25px;}
+
+#forRestaurantsSection4 {padding: 75px 0px; text-align: center;}
+#reels-gif-container {overflow: clip; background-image: url(' https://findmymeal.io/wp-content/uploads/2023/03/map-view-social-media.gif'); min-height: 400px;
+background-position: center center; background-repeat: no-repeat; background-size: contain;}
+
+
+#forRestaurantsSection5 {background-color:  var(--blue); padding: 25px; background-size: 110%; background-repeat: no-repeat; background-position: center 95%;
+  background-image: url("https://findmymeal.io/wp-content/uploads/2023/03/background-transparent.png"); }
+#rounded-block-container {max-width: 1500px;}
+.rounded-block {flex: 1 1 0px; align-self: stretch; background-color: #182e46; border: 2px solid white; margin: 10px; border-radius: 27px; background-size: contain; min-width: 500px; background-repeat: no-repeat; background-position: 0 center; }
+#rounded-block-first {background-position-x: -40px; background-image: url("https://findmymeal.io/wp-content/uploads/2023/03/laptop-mockup.gif");}
+#rounded-block-second {background-size: contain; background-image: url("https://images.unsplash.com/photo-1588675646184-f5b0b0b0b2de?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTJ8fG1lbnV8ZW58MHx8MHx8&auto=format&fit=crop&w=800&q=90");}
+.rounded-block-text {height: 100%; min-height: 330px; margin-left: 200px; padding: 35px; background-color: white; border-top-right-radius: 25px; border-bottom-right-radius: 25px;}
+#show-me-link {font-size: 28px; text-decoration: none; color: white; font-weight: 600; padding: 15px 20%;  border: 2px solid white; border-radius: 8px;}
+
+@keyframes scroll {
+  0% {transform: translateX(0);}
+  100% {transform: translateX(-1750px);}
+}
+
+.slider {height: 200px; margin: auto; overflow: hidden; position: relative; width: auto;}
+.slide-track { animation: scroll 40s linear infinite; display: flex; width: 3000px;}
+.slide {height: 200px; width: 250px; cursor: pointer;}
+
+@media screen and (max-width: 1235px) {
+  #restaurant-owners-container {
+    padding: 15px;
+  }
+  .rounded-block-text {
+    width: 100% !important;
+    margin-left: 35%;
+    min-height: unset;
+  }
+  .rounded-block {
+    max-width: 800px;
+  }
+  #rounded-block-second {background-size: 40%;}
+  
+}
+
+  @media screen and (max-width: 700px) {
+    .rounded-block-text {
+      margin-top: 300px;
+      border-bottom-left-radius: 25px;
+      border-top-right-radius: 0px;
+      margin-left: 0;
+      
+    }
+    .rounded-block {
+      background-position: center 50px;
+      background-position-x: 0px !important;
+      width: 100%;
+      min-width: 100%;
+      align-self: unset;
+    }
+    #rounded-block-first {
+      background-size: contain;
+    }
+    #rounded-block-second {
+      background-size: cover;
+      background-position: center center;
+    }
+  }
+
+
+@media screen and (max-width: 800px) {
+  .big-phone-container {order: 2!important; height: 400px; background-size: 200px 300px; width: 200px; background-position: 10% top; 
+  justify-content: center; }
+  .perk-container {flex-wrap: wrap;}
+  .perk-image {margin: 0; width: 100%;}
+  .icon-text-wrapper {flex-wrap: wrap;}
+  #forRestaurantsSection2 {padding: 50px 25px;}
+  .perk-text, .perk-text-wide {width: 100%; text-align: center; margin-bottom: 25px; order: 1!important; padding: 10px;} 
+  .perk-image, .perk-image-small {width: 100%; order: 2!important; padding: 10px; }
+}
+
 // Squarespace Blocks
 .sqs-block {padding: 0!important;}
 .sqs-layout > .sqs-row {margin: 0!important;}

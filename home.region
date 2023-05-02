@@ -69,7 +69,6 @@
             {.end}
         {.end}
         </div>
-        <script>console.log({@|json-pretty})</script>
         </squarespace:query>
 
         <div style="width: 80%; opacity: 0.5; margin: 25px 10%; ">

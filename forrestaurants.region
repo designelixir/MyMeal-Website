@@ -1,75 +1,250 @@
-<style>
-  #restaurant-landing-header-container {
- 		margin-top: 120px;
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-  }
-  
-  #restaurant-landing-header-title {
-    padding: 50px;
-  }
+<!doctype html>
+<html>
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    {squarespace-headers}
+  </head>
+  <body id="{squarespace.page-id}" class="{squarespace.page-classes}">
 
-  #phone-container {
-    height: 550px;
-    overflow-x: clip;
-    background-image: url("https://findmymeal.io/wp-content/uploads/2023/03/mockup-onboarding.png");
-    background-size: 300px 400px;
-    background-origin: top right;
-    background-repeat: no-repeat;
-    display: flex;
-    align-items: flex-end;
-    justify-content: flex-end;
-    min-width: 400px;
-  }
+    <div class="site-container">
 
-  .big-titles {
-    font-size: 48px;
-  }
-  @media screen and (max-width: 950px) {
+      <header class="site-header">
+        <squarespace:navigation navigationId="siteNav" template="site-navigation" />        
+      </header>
 
-    #restaurant-landing-header-title {
-      min-width: 250px;
-      order: -1 !important;
-      padding: 25px 0px 25px 25px;
-    }
-    #phone-container {
-      order: 2!important;
-      height: 400px;
-      background-size: 200px 300px;
-      width: 200px;
-      
-      margin-left: -20px;
-      background-position: 10% top;
-      justify-content: center;
-    }
-    .big-titles {font-size: 30px; font-weight: 600; }
-  }
-</style>
-<div style="background: #4f9bd6;  margin-right: 10px; left: 0; overflow-x: clip;">
-  <div id="restaurant-landing-header-container">
-    <div id="phone-container">
-      <img
-        src="https://findmymeal.io/wp-content/uploads/2023/03/mockup-mapview.png"
-        style="height: 80%; width: auto;"
-      />
+    <section id="forRestaurantsSection1" >
+        <div class="flex-center-center">
+        <div class="flex-end-end big-phone-container">
+        <img
+            src="https://images.squarespace-cdn.com/content/6450698409f0fa360c02e549/fc84cddb-4695-42bb-9f38-b7d5d8a5dff2/mockup-mapview.png?content-type=image%2Fpng"
+            style="height: 80%; width: auto;"
+        />
+        </div>
+        <div id="restaurant-landing-header-title" style="width: calc(100% - 120px); ">
+        <p style="text-transform: uppercase; color: white; opacity: 0.65; font-size: 14px;">MyMeal for Restaurants</p>
+        <h1 style="color: white; padding-bottom: 15px;" class="big-titles">We make food allergies your superpower.</h1>
+        
+        <p style="color: white; font-size: 16px; line-height: 22px;">
+            We don't want you to miss out on the opportunity to gain a loyal
+            customer for life. Especially when there's over 32 million of them looking
+            for you.
+        </p>
+        </div>
     </div>
-    <div
-      id="restaurant-landing-header-title"
-      style="width: calc(100% - 100px); "
-    >
-      <p style="text-transform: uppercase; color: white; opacity: 0.65; font-size: 14px;">
-        MyMeal for Restaurants
-      </p>
-      <h1 style="color: white; padding-bottom: 15px;" class="big-titles">
-        We make food allergies your superpower.
-      </h1>
+    </section>
+
+    <section id="forRestaurantsSection2">
+        <h2>Why offer an allergen menu?</h2>
+        <p style="text-align: center;">Our filterable allergy menus put you and your staff back in control so you can feel confident serving any customer that comes your way.</p>
+        <div class="flex-center-center icon-text-wrapper">
+                <div class="icon-text flex-center-center flex-column">
+                    <img class="icon" src="https://images.squarespace-cdn.com/content/6450698409f0fa360c02e549/0088e021-3489-4a6a-b3a0-15f532198458/brand1.png?content-type=image%2Fpng" alt="heart icon"/>
+                    <p><strong>Customer Loyalty</strong><br />
+                        <span class="blue-text">92% of guests with food allergies</span>
+                        will return frequently after having a positive experience eating
+                        out.
+                    </p>
+                </div>
+                <div class="icon-text flex-center-center flex-column" style="background: #f5f5f5;">
+                    <img class="icon" src="https://images.squarespace-cdn.com/content/6450698409f0fa360c02e549/bd9c6604-817d-426d-bac5-02c7eb06a54b/growth.png?content-type=image%2Fpng" alt="growth icon"/>
+                    <p>
+                        <strong>Boost in Revenue</strong> <br />
+                        Accommodating allergic guests can
+                        <span class="blue-text">boost your restaurant's profit margin by 24%</span>
+                    </p>
+                </div>
+                <div class="icon-text flex-center-center flex-column">
+                    <img class="icon" src="https://images.squarespace-cdn.com/content/6450698409f0fa360c02e549/cd87c42f-13a7-4904-8f64-b958fb64f5f7/shield.png?content-type=image%2Fpng" alt="growth icon"/>
+                    <p>
+                        <strong>Avoid a Lawsuit</strong> <br />
+                        Nearly 50% of food allergy related fatalities
+                        <span class="blue-text">occur in eating establishments.</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="forRestaurantsSection3">
+
+        <div class="perk-container-header flex-center-center flex-column" >
+            <h1 style="color: white; text-align: center; font-weight: 600; ">
+                <span style="font-weight: 400; ">Create a positive experience.</span> Every time. 
+            </h1>
+        </div>
+        <div class="flex-center-center flex-column perk-wrapper box-shadow">
+    
+            <div class="perk-container flex-center-center" style="margin-top: 25px;">
+                <div class="perk-text">
+                    <h2>An <span class="blue-text">easy addition</span> to your menu</h2>
+                    <p>We provide a QR code that links to your allergy menu. It can be accessed on a printed menu, a sticker on your table, table tents - the possibilities are endless.</p>
+                </div>
+                <div class="perk-image">
+                    <img src="https://findmymeal.io/wp-content/uploads/2023/03/one-one.png" alt="example of mymeal menu aside another restaurants" >
+                </div>      
+            </div>
+
+            <div class="perk-container flex-center-center">
+                <div class="perk-image">
+                    <img src="https://findmymeal.io/wp-content/uploads/2023/03/two-two-two.png" alt="example of filterable allergy menus" >
+                </div>
+                <div class="perk-text">
+                    <h2>Allergens made <span class="blue-text">simple</span></h2>
+                    <p>When a customer comes in with multiple allergens, it is stressful for your staff to offer recommendations. With MyMeal, your customer can filter your menu by any allergen your kitchen can accommodate.</p><br>
+                    <a href="https://mymealmenus.com/order/restaurants/12/locations/9" target="_blank" class="styled-button hover">View a Demo Menu Page</a>
+                </div>
+            </div>
+
+            <div class="perk-container flex-center-center">
+                <div class="perk-text">
+                    <h2>We protect you from <span class="blue-text">lawsuits</span></h2>
+                    <p>We get it. Catering to people with allergies can seem scary. That’s why we have a disclaimer that notifies the customer of your ever changing ingredient list and shared kitchen.</p>
+                </div>
+                <div class="perk-image">
+                    <img src="https://findmymeal.io/wp-content/uploads/2023/03/three-three.png" alt="example of mymeal menu aside another restaurants">
+                </div>
+            </div>
+
+            <div class="perk-container flex-center-center">
+                <div class="perk-image" >
+                    <img src="https://findmymeal.io/wp-content/uploads/2023/03/callouts2.png" alt="example of mymeal menu aside another restaurants">
+                </div>
+                <div class="perk-text" >
+                    <h2>Saves your staff <span class="blue-text">time and mistakes</span> </h2>
+                    <p>Ditch the back and forth conversation between your chef and server. We hash out modification and cross contact information for each dish with your chef. </p>
+                </div>
+            </div>
+        </div>
+
+
+        <div id="last-perk-container">
+            <div style="text-align: center;">
+                <img src="assets/sparkles.png" style="width: 100px;"/>
+            </div>
+            <h1 class="blue-text" style="text-align: center;">
+                <span style="font-weight: 300;">We provide a transparent, stress-free experience for both parties</span>- creating loyal customers and saving your restaurant time.
+            </h1>
+            <p style="color: rgba(0,0,0,0.65); text-align: center">Documenting the allergens in each of your dishes is a time sink. That's why our certified nutrition specialists do it for you. We fix mistakes within 75% of the restaurants we work with, ensuring your staff and guests have positive interactions start to finish.</p>
+            <div class="flex-center-center">
+                <a class="blue-outline-button" href="#restaurant-scheduler-container">Request a Demo</a>
+            </div>
+        </div>
+
+
+    </section>
+
+    <section id="forRestaurantsSection4">
+        <h1 style="padding: 25px;" class="blue-text">
+            <span style="font-weight: 400; color: black;">Oh yeah, did we mention</span> free marketing?
+        </h1>
+        <div id="reels-gif-container" class="flex-center-center"></div>
+        <h4>
+            MyMeal has an active community of over 10,000+ members on social media and a user base that grows 9% every week.<br> The one thing our followers have in
+            common? <span class="blue-text bold">They want to eat out and feel safe.</span> <br />
+            <br />
+            As a partner, we will promote you on the MyMeal app and to our social media pages, <span class="blue-text bold">for free. </span>
+        </h4>
+        <button onclick="togglePopup()" style=" width: 300px;" class="styled-button">Download the MyMeal App</button>
+    </section>
+
+    <section id="forRestaurantsSection5" class="flex-center-center flex-column">
+            <h2 style="color: white; text-align: center; padding: 25px 15px;">Flexible, easy-to-use technology built by listening to restaurant owners.</h2>
+            <div id="rounded-block-container" class="flex-start-center flex-wrap">
+                <div class="rounded-block flex-start-end box-shadow" id="rounded-block-first">
+                    <div class="rounded-block-text">
+                        <h3>Break Up with Allergen Charts</h3>
+                        <p>I'm guessing you label GF and VG on the menu. Or maybe you have an allergen chart. These resources are.. </p>
+                        <ul style="margin-left: 15px;">
+                            <li>hard to use</li>
+                            <li>labeled incorrectly</li>
+                            <li>don't tell the customer the whole story</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="rounded-block flex-start-end box-shadow" id="rounded-block-second">
+                    <div class="rounded-block-text">
+                        <h3 class="rounded-block-title">What About Menu Changes?</h3>
+                        <p>Almost all the restaurants we work with change their menu seasonally. This is why we..</p>
+                        
+                        <ul>
+                            <li>reach out every quarter for menu updates</li>
+                            <li>offer a portal to edit menu items at any time</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="flex-center-center hover" style="width: 100%; margin-top: 15px;">
+                <a id="show-me-link" href="#restaurant-scheduler-container" target="_blank" rel="noopener">Show me how &rarr;</a>
+            </div>
+    </section>
+
+    <section id="forRestaurantsSection6">
+        <div style="text-align: center; margin-top: 50px;">
+            <img src="assets/restaurant-icon.png" style="width: 100px; padding-bottom: 15px;"/>
+        </div>
+        <h2 class="blue-text" style="text-align: center; padding: 0px 50px;">
+            <span style="font-weight: 300;">Join dozens of restaurants who have tapped into the</span> market of over 32 million people with food allergens. 
+        </h2>
+        <div class="flex-center-center" >
+            <a href="https://www.foodallergy.org/resources/facts-and-statistics" style="text-align: center; color: rgba(0,0,0,0.5); font-size: 10px;" target="_blank">Food Allergy Research & Education. (n.d.).</a>
+        </div>
+
+        <div class="slider">
+            <div class="slide-track">
+                <div class="slide flex-center-center" onclick="window.open('https://www.illegalpetes.com/')">
+                    <img src="assets/restaurants/illegal-petes-logo-circle.png" alt="Illegal Petes Logo" style="height: 120px; "/>
+                </div>
+                <div class="slide flex-center-center" onclick="window.open('https://dagabicucina.com/')">
+                    <img src="assets/restaurants/dagabi-black.png" alt="Dagabi Cucina Logo" style="height: 100px;"/>
+                </div>
+                <div class="slide flex-center-center" onclick="window.open('https://hornetrestaurant.com/')">
+                    <img src="assets/restaurants/hornet.png" style="height: 110px;" alt="Hornet Denver Logo"/>
+                </div>
+                <div class="slide flex-center-center" onclick="window.open('https://www.bluebonnetrestaurant.com/')">
+                    <img src="assets/restaurants/blue-bonnet-logo.png" style="height: 120px;" alt="Blue Bonnet Logo"/>
+                </div>
+                <div class="slide flex-center-center" onclick="window.open('https://www.parkergarage.com/')">
+                    <img src="assets/restaurants/parker-garage-logo.png" style="height: 60px;" alt="Parker Garage Logo"/>
+                </div>
+                <div class="slide flex-center-center" onclick="window.open('https://wholesol.com/')">
+                    <img src="assets/restaurants/wholesol.png" style="height: 100px;" alt="Whole Sol Logo" />
+                </div>
+                <div class="slide flex-center-center" onclick="window.open('https://www.teocallicocina.com/')">
+                    <img src="assets/restaurants/teocalli.avif" style="height: 80px;" alt="Teocalli Cocina Logo"/>
+                </div>
+                <div class="slide flex-center-center" onclick="window.open('https://acovarestaurant.com/')">
+                    <img src="assets/restaurants/acova.jpeg" style="height: 120px;" alt="Acova Logo"/>
+                </div>
+                <div class="slide" onclick="window.open('https://www.foragedrestaurant.com/')">
+                    <img src="assets/restaurants/Foraged_Logo_Kitchen_Rawbar.png" style="height: 120px;" alt="Foraged Denver Logo"/>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
       
-      <p style="color: white; font-size: 16px; line-height: 22px;">
-        We don't want you to miss out on the opportunity to gain a loyal
-        customer for life. Especially when there's over 32 million of them looking
-        for you.
-      </p>
+      <!-- cms content injection point -->
+      <main class="content-container" role="main" data-content-field="main-content" >
+       {squarespace.main-content}
+      </main>
+
+      <!--Footer with open block field -->
+      <footer class="site-footer">
+        <squarespace:block-field id="footerBlocks" columns="12" />
+      </footer>
+
     </div>
-  </div>
-</div>
+
+    <!-- combo and minify scripts when not logged in -->
+    <squarespace:script src="site.js" combo="{.if authenticatedAccount}false{.or}true{.end}" />
+
+    <!-- other scripts, and footer code injection -->
+    {squarespace-footers}
+
+  </body>
+</html>
+
+
