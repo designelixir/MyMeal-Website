@@ -1,15 +1,7 @@
+<section class="blog-container">
+<h1>Blog</h1>
 
-{.section categoryFilter}
-  <p class="filtered-by">Filtered by Category: {@|safe}</p>
-{.end}
 
-{.section tagFilter}
-  <p class="filtered-by">Filtered by Tag: {@|safe}</p>
-{.end}
-
-{.if authorFilter}
-  <p class="filtered-by">Filtered by Author: {author.displayName}</p>
-{.end}
 
 <!-- item loop -->
 {.repeated section items}
