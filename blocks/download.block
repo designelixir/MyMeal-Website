@@ -33,7 +33,7 @@
 
 <button
     onclick="togglePopup()"
-    style="min-width: 160px; margin-left: 10px"
+    style="min-width: 160px;"
     class="styled-button hover"
 >
     Download Now
@@ -48,8 +48,8 @@
             X
           </button>
         </div>
-        <h1 style="color: white;">Are you located in Denver, Colorado?</h1>
-        <p style="font-weight: 300; color: white;">
+        <h3 style="color: white;">Are you located in Denver, Colorado?</h3>
+        <p style="color: white;">
           MyMeal is currently only available for restaurants in the Denver Metro
           Area.
         </p>

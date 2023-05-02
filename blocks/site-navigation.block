@@ -20,7 +20,7 @@
       </li>
 
     {.end}
-  {@|apply download.block}  
+  &nbsp;{@|apply download.block}  
   </ul>
   
 </nav>

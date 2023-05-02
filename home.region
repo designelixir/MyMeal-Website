@@ -16,16 +16,28 @@
       </header>
     
     <div id="heroBlock" class="flex-center-center">
-        <div>
+        <div class="heroText-wrapper">
             <squarespace:block-field id="heroText" columns="12" />
-            <br>
-            {@|apply download.block}  
+            <div class="heroDownload-wrapper flex-center-start">
+                {@|apply download.block}  
+            </div>
         </div>
-        <div style="border: 1px solid red; width: 200px; height: 50px">
-            <squarespace:block-field id="heroImg" columns="12" />
-        </div>
-
+        <img id="heroImg" src="https://images.squarespace-cdn.com/content/v1/6450698409f0fa360c02e549/3d5d4bd4-18a6-446d-9c45-0a746ad08ae6/menu-preview.png?format=750w"/>
       </div>
+
+      <div id="howItWorksBlock" class="flex-center-center">
+        <div class="howItWorksBlock-item">
+            <squarespace:block-field id="howItWorks1" columns="1" />
+        </div>
+        <div class="howItWorksBlock-item">
+            <squarespace:block-field id="howItWorks2" columns="1" />
+        </div>
+        <div class="howItWorksBlock-item">
+            <squarespace:block-field id="howItWorks3" columns="1" />
+        </div>
+      </div>
+
+
       <!-- cms content injection point -->
       <main class="content-container" role="main" data-content-field="main-content">
        
