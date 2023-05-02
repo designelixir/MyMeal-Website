@@ -1,12 +1,13 @@
-<nav class="site-navigation">
-  <ul class="site-navigation-list">
+<nav class="site-navigation flex-center-spacebetween">
+  <a href="/"><img class="site-logo" src={website.logoImageUrl}></a>
+  <ul class="site-navigation-list flex-center-center">
     {.repeated section items}
 
       <li class="site-navigation-item {.section active} active-link{.end}">
 
         <!-- collection link -->
         {.section collection}
-          <a href="{fullUrl}">{navigationTitle}</a>
+          <a class="site-navigation-item-link" href="{fullUrl}">{navigationTitle}</a>
         {.end}
 
         <!-- external link -->
@@ -19,5 +20,7 @@
       </li>
 
     {.end}
+  {@|apply download.block}  
   </ul>
+  
 </nav>

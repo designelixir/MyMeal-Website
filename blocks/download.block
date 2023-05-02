@@ -1,0 +1,101 @@
+<style>
+  #big-container {
+    width: 100vw;
+    height: 100vh;
+    backdrop-filter: blur(2px);
+    position: fixed;
+    top: 0;
+    left: 0;
+  }
+  #big-container-content {
+    width: 90%;
+    height: 90%;
+    margin: 5%;
+  }
+  #pop-up {
+    background: #2d9cdb;
+    border-radius: 15px;
+    border: 2px solid white;
+    box-shadow: 0px 6px 6px rgba(0, 0, 0, 0.2);
+    color: white;
+    width: 50%;
+    min-width: 350px;
+  }
+  #pop-up-content {
+    text-align: center;
+    padding: 25px;
+    color: white;
+  }
+
+</style>
+
+
+<button
+    onclick="togglePopup()"
+    style="min-width: 160px; margin-left: 10px"
+    class="styled-button hover"
+>
+    Download Now
+</button>
+
+<div id="big-container" style="display: none;">
+  <div id="big-container-content" class="flex-center-center">
+    <div id="pop-up" class="flex-center-center">
+      <div id="pop-up-content">
+        <div id="pop-up-nav">
+          <button onclick="togglePopup()" class="styled-button-inverted">
+            X
+          </button>
+        </div>
+        <h1 style="color: white;">Are you located in Denver, Colorado?</h1>
+        <p style="font-weight: 300; color: white;">
+          MyMeal is currently only available for restaurants in the Denver Metro
+          Area.
+        </p>
+        <br />
+        <div id="button-container">
+          <div
+            class="hover"
+            onclick="window.open('https://play.google.com/store/apps/details?id=com.MyMeal.android', 'blank')"
+          >
+            <img
+              src="https://findmymeal.io/wp-content/uploads/2023/03/googleplay.png"
+              style="height: 50px; width: auto;"
+              alt="Google Play Store Download"
+            />
+          </div>
+          <div
+            class="hover"
+            style="text-align: center;"
+            onclick="window.open('https://apps.apple.com/us/app/mymeal-find-safe-restaurants/id6444025752', 'targetWindow')"
+          >
+            <img
+              src="https://findmymeal.io/wp-content/uploads/2023/03/appstore.png"
+              style="height: 50px; width: auto;"
+              alt="App Store Download"
+            />
+          </div>
+          <button
+            class="styled-button-inverted"
+            onclick="window.open('https://forms.gle/i5WxFC5Lj5Etshsu5', 'targetWindow')"
+          >
+            Request My City
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  function togglePopup() {
+    var toggleWindow = document.getElementById("big-container");
+    if (toggleWindow.style.display === "block") {
+      toggleWindow.style.display = "none";
+    } else {
+      toggleWindow.style.display = "block";
+    }
+  }
+  
+
+</script>
