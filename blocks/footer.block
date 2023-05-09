@@ -1,28 +1,26 @@
 
-    {.repeated section items}
-
-      <li class="site-navigation-item {.section active} active-link{.end}">
-
-        <!-- collection link -->
-        {.section collection}
-          <a class="site-navigation-item-link" href="{fullUrl}">{navigationTitle}</a>
-        {.end}
-
-        <!-- external link -->
-        {.section externalLink}
-          <a href="{url}"{.section newWindow} target="_blank"{.end}>
-            {title}
-          </a>
-        {.end}
-
-      </li>
-
-    {.end}
+    
 
     <div class="footer-copy">
-        <div class="footer-links">
-            
-        </div>
+        <ul class="footer-links flex-center-center flex-wrap">
+            {.repeated section items}
+            <li class="site-navigation-item {.section active} active-link{.end}">
+
+                <!-- collection link -->
+                {.section collection}
+                <a class="site-navigation-item-link" href="{fullUrl}">{navigationTitle}</a>
+                {.end}
+
+                <!-- external link -->
+                {.section externalLink}
+                <a class="site-navigation-item-link" href="{url}">{navigationTitle}</a>
+                {.end}
+
+            </li>
+
+            {.end}
+        </ul>
+        <squarespace:block-field id="footerSocial" columns="1" />
         <p>Copright &copy; MyMeal 2023 </p>
         <a style="color: rgba(255,255,255,0.75); font-size: 12px;" href="https://designelixir.studio" target="_blank">Made with &hearts; by Design Elixir </a>
     </div>
