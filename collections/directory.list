@@ -2,23 +2,62 @@
 <div class="flex-start-start flex-wrap blog-wrapper">
 <!-- item loop -->
 {.repeated section items}
-  
-  <article id="post-{id}" class="blog-list-item hover drop-shadow {@|item-classes}" data-item-id="{id}" onclick="window.open('{fullUrl}', '_blank')">
-    <!-- main image (thumbnail) -->
+  {.if customContent.verified}
+ <article id="post-{id}" class="blog-list-item hover box-shadow {@|item-classes}" data-item-id="{id}" >
     {.main-image?}
-      <div class="blog-image" style="background-image:url({assetUrl})"></div>
+      <div class="directory-image flex-start-end" style="background-image:url({assetUrl})">
+        <img class="verified-badge hover" src="../assets/verified-mymeal.png">
+      </div>
     {.end}
-    <!-- post title -->
-    <div class="blog-info-container">
-    <p class="blog-title" data-content-field="title">{title}</p>
-     <h6 class="blog-meta"> <a href="{collection.fullUrl}?author={author.id}">By {author.displayName}&nbsp; | &nbsp;</a>  <a href="{fullUrl}" class="permalink"><time datetime="{addedOn|date %F}">{addedOn|date %B %d, %Y}</time></a></h6>
-    <!-- excerpt or body -->
-   {excerpt}
-      
-   
-    
+    <div class="directory-logo-wrapper flex-center-start">
+        {.if customContent.brandlogo}
+            <div class="directory-logo box-shadow" style="background-image: url({customContent.brandlogo.assetUrl})"></div> 
+        {.end}
+        <p class="directory-city" onclick="window.open('https://www.google.com/maps/search/{location.addressTitle} {location.addressLine1} {location.addressLine2}', '_blank')">📍 {location.addressLine2}</p>
+    </div>
+    <div class="directory-info-container">
+        <div class="flex-center-spacebetween">
+            <p class="blog-title" data-content-field="title">{title}</p>
+        </div>
+        <p class="flex-center-start flex-wrap" style="margin: 7px 0px;">
+        {customContent.priceRank}  
+        {.if categories }&nbsp;•&nbsp;{.end}
+        {.repeated section categories}
+            <a class="category-label drop-shadow" href="{collection.fullUrl}?tag={@|url-encode}">{categories}</a>
+        {.end}
+        </p>
+    </div>
+    <div class="flex-center-center directory-buttons">
+        <button onclick="{sourceUrl}" class="large-button styled-button">View Restaurant</button>
+        
     </div>
   </article>
+  
+  {#  NOT verified card  }
+  {.or}
+   <article id="post-{id}" class="blog-list-item unverified-restaurant hover box-shadow {@|item-classes}" data-item-id="{id}">
+    <div class="directory-image" style="background-image:url('../assets/not-verified.png')"></div>
+    <div class="directory-logo-wrapper">
+        {.if customContent.brandlogo}<div class="directory-logo" style="background-image: url({customContent.brandlogo.assetUrl})"></div>{.end}
+    </div>
+    <div class="directory-info-container">
+        <div class="flex-center-spacebetween">
+            <p class="blog-title" data-content-field="title">{title}</p>
+        </div>
+        <p class="flex-center-start flex-wrap" style="margin: 7px 0px;">
+        {customContent.priceRank}  
+        {.if categories }&nbsp;•&nbsp;{.end}
+        {.repeated section categories}
+            <a class="category-label drop-shadow" href="{collection.fullUrl}?tag={@|url-encode}">{categories}</a>
+        {.end}
+        </p>
+    </div>
+    <div class="flex-center-center directory-buttons">
+        <button class="styled-button large-button" onclick="https://form.jotform.com/230596919059065?restaurantName={title}">Request this restaurant</button>
+    </div>
+  </article>
+   
+  {.end}
 
 {.or}
 

@@ -1,0 +1,11 @@
+<footer>
+    <squarespace:block-field id="footerBlock" columns="12" />
+
+    <div class="footer-copy">
+        <div class="footer-links">
+            <squarespace:navigation navigationId="footerNav" template="footer" />        
+        </div>
+        <p>Copright &copy; MyMeal 2023 </p>
+        <a style="color: rgba(255,255,255,0.75); font-size: 12px;" href="https://designelixir.studio" target="_blank">Made with &hearts; by Design Elixir </a>
+    </div>
+</footer>
