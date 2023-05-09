@@ -6,7 +6,7 @@
   --offblack: #424242;
 }
 
-html {width: 100vw; overflow-x: hidden;}
+html {width: 100vw; overflow-x: hidden; min-height: 100vh;}
 
 .flex-center-spacebetween {display: flex; align-items: center; justify-content: space-between;}
 .flex-center-center {display: flex; align-items: center; justify-content: center;}
@@ -54,6 +54,7 @@ button {cursor: pointer; padding: 5px 8px; text-decoration: none; margin-right: 
 
 .blue-outline-button:hover {background: var(--blue); color: white!important; }
 
+body:not(.button-style-default) .sqs-editable-button {background-color: var(--blue); text-decoration: none; padding: 10px; color: white; border: none; border-radius: 8px; text-transform:none; font-family: 'Poppins', sans-serif; font-size: 18px; font-weight: 500; letter-spacing: unset!important; font-weight: 400; margin: 0; border-radius: 8px!important;}
 .sqs-block-button .sqs-block-button-element--medium {background-color: var(--blue); text-decoration: none; padding: 10px; color: white; border: none; border-radius: 8px; text-transform:none; font-family: 'Poppins', sans-serif; font-size: 18px; font-weight: 500; letter-spacing: unset!important; font-weight: 400; margin: 0;}
 .sqs-block-button .sqs-block-button-element--large {padding: 5px 20px; background: none; border: 4px solid var(--blue); border-radius: 8px; margin: 0; color: var(--blue); font-size: 18px!important; text-decoration: none; text-transform:none; font-family: 'Poppins', sans-serif; letter-spacing: unset!important; font-weight: 400;}
 
@@ -169,6 +170,19 @@ button {cursor: pointer; padding: 5px 8px; text-decoration: none; margin-right: 
   position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: red; z-index: 300000000;
 }
 
+//Directory Item 
+.directory-breadcrumb-parent {color: var(--offblack); font-size: 32px; font-weight: 300;}
+.directory-breadcrumb-child {color: var(--blue); font-size: 32px; font-weight: 500;}
+.directory-image-lg {width: 100%; height: 200px; background-size: cover; background-position: center center; background-repeat: no-repeat; border-radius: 6px 6px 0px 0px}
+.directory-image-lg .verified-badge {height: 80px}
+.directory-logo-wrapper-lg {height: 100px; margin-top: -90px;  }
+.directory-logo-wrapper-lg .directory-logo {height: 100px; width: 100px; border-radius: 120px;}
+.directory-page-address{color: black; font-size: 14px; background: rgba(255, 255,255,0.85); padding: 0px 15px; margin-left: -10px; margin-right: 25px; border-radius: 3px;}
+.directory-page-info {padding: 15px;}
+
+// Map 
+#map {height: 40vh; width: 100%; border: 1px solid red;}
+
 //FullScreen Region 
 .full-screen-body { height: 100vh;
    background-size: cover; background-position: center center; 
@@ -187,3 +201,16 @@ footer {border: 1px solid blue;}
 // Squarespace Blocks
 .sqs-block {padding: 0!important;}
 .sqs-layout > .sqs-row {margin: 0!important;}
+.form-wrapper {display: flex; align-items: center; justify-content: center;}
+.react-form-contents {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 50px 5vw;
+  max-width: 500px;
+  padding: 50px;
+  background: white;
+  border-radius: 8px;
+  flex-direction: column;
+}
+.form-item {display: flex; align-items: center; justify-content: center;}

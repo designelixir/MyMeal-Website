@@ -1,0 +1,47 @@
+
+{.section item}
+<div class="directory-breadcrumbs flex-center-start flex-wrap">
+<a href="/restaurant-directory" class="hover directory-breadcrumb-parent">MyMeal Directory /&nbsp;</a>
+<h2 class="directory-breadcrumb-child">{title}</h2>
+</div>
+<br>
+<a href="/restaurant-directory" class="styled-button-inverted large-button">&larr; Back to Directory</a>
+<div style="height: 50px"></div>
+<section class="box-shadow" style="border-radius: 8px">
+    {.main-image?}
+      <div class="directory-image-lg flex-start-end" style="background-image:url({assetUrl})">
+        <img class="verified-badge hover" src="../assets/verified-mymeal.png">
+      </div>
+    {.end}
+    <div class="directory-logo-wrapper-lg flex-center-start">
+        {.if customContent.brandlogo}
+            <div class="directory-logo box-shadow" style="background-image: url({customContent.brandlogo.assetUrl})"></div> 
+        {.end}
+        <div class="directory-page-address">
+        
+        <p class=" hover" onclick="window.open('https://www.google.com/maps/search/{location.addressTitle} {location.addressLine1} {location.addressLine2}', '_blank')">📍 {location.addressLine1}, {location.addressLine2}</p>
+        </div>
+    </div>
+    <div class="directory-page-info">
+        <h3 style="color: black;">{title}</h3>
+        <p class="flex-center-start flex-wrap" style="margin: 7px 0px;">
+        {customContent.priceRank}  
+        {.if categories }&nbsp;•&nbsp;{.end}
+        {.repeated section categories}
+            <a class="category-label drop-shadow" href="{collection.fullUrl}?tag={@|url-encode}">{categories}</a>
+        {.end}
+        </p>
+        <div class="flex-center-center" style="padding: 25px 0px 0px;">
+        
+        <button class="large-button styled-button">View Filterable Allergy Menu</button>
+        </div>
+        <br>
+        <hr>
+        <h4>Kitchen Info</h4>
+        {body}
+    </div>
+    </section>
+    <h4>What our community is saying about <strong>{title}:</strong></h4>
+    {comments}
+
+{.end}

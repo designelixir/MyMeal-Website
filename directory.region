@@ -14,13 +14,7 @@
       <header class="site-header">
         <squarespace:navigation navigationId="siteNav" template="site-navigation" />        
       </header>
-      <section class="container-padding"> 
-      <h1>MyMeal Restaurant Menu Directory </h1>
-      <p>Click the restaurants below to view kitchen procedures, reviews, and access the MyMeal filterable allergen menu.</p><p>
-      Menus with a "Verified MyMeal Partner" <img src="../assets/verified-mymeal.png" style="height: 25px; margin-bottom: -10px;"/> badge have worked with us personally to provide the most accurate information possible to make your dining experience safe. Click the badge for more information on what qualifies a restaurant as a MyMeal partner.<p>
-      
-      
-      </section>
+     
       
       <!-- cms content injection point -->
       <main class="content-container" role="main" data-content-field="main-content">

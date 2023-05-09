@@ -1,4 +1,10 @@
-
+{@|apply map.block}
+ 
+ <section> 
+      <h1>MyMeal Restaurant Menu Directory </h1>
+      <p>Click the restaurants below to view kitchen procedures, reviews, and access the MyMeal filterable allergen menu.</p><p>
+      Menus with a "Verified MyMeal Partner" <img src="../assets/verified-mymeal.png" style="height: 25px; margin-bottom: -10px;"/> badge have worked with us personally to provide the most accurate information possible to make your dining experience safe. Click the badge for more information on what qualifies a restaurant as a MyMeal partner.<p>
+</section>
 <div class="flex-start-start flex-wrap blog-wrapper">
 <!-- item loop -->
 {.repeated section items}
@@ -13,7 +19,7 @@
         {.if customContent.brandlogo}
             <div class="directory-logo box-shadow" style="background-image: url({customContent.brandlogo.assetUrl})"></div> 
         {.end}
-        <p class="directory-city" onclick="window.open('https://www.google.com/maps/search/{location.addressTitle} {location.addressLine1} {location.addressLine2}', '_blank')">📍 {location.addressLine2}</p>
+        <p class="directory-city hover" onclick="window.open('https://www.google.com/maps/search/{location.addressTitle} {location.addressLine1} {location.addressLine2}', '_blank')">📍 {location.addressLine2}</p>
     </div>
     <div class="directory-info-container">
         <div class="flex-center-spacebetween">
@@ -28,7 +34,7 @@
         </p>
     </div>
     <div class="flex-center-center directory-buttons">
-        <button onclick="{sourceUrl}" class="large-button styled-button">View Restaurant</button>
+        <button onclick="window.open('{fullUrl}')" class="large-button styled-button">View Restaurant</button>
         
     </div>
   </article>
