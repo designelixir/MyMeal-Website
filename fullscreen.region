@@ -7,15 +7,20 @@
     <!-- include system scripts, page meta, and header code injection -->
     {squarespace-headers}
   </head>
-  <body id="{squarespace.page-id}" class="{squarespace.page-classes}">
+  <body id="{squarespace.page-id}" class="{squarespace.page-classes}" >
 
-    <div class="site-container">
-
+    <div class="site-container full-screen-body" style="background-image: url({collection.mainImage.assetUrl})" >
+    
       
       
       <!-- cms content injection point -->
-      <main class="content-container" role="main" data-content-field="main-content">
+      <main class="full-screen-content-container" role="main" data-content-field="main-content">
+        <div class="flex-center-center box-shadow simple-nav" style="padding: 25px;">
+            <a href="/" class="hover"><img class="site-logo" src={website.logoImageUrl}></a>
+        </div>
+        <section class="container-padding">
        {squarespace.main-content}
+       </section>
       </main>
 
       
