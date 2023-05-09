@@ -39,16 +39,10 @@
           </p>
         </div>
 
-        <div
-          style="display: flex; align-items: center; justify-content: center;"
-        >
-          <button class="blue-outline-button">
-            <a class="blue-text"
-              href="https://findmymeal.io/mymeal-for-restaurants"
-              style=" font-weight: 400; font-size: 24px;"
-              >Explore MyMeal for Restaurants</a
-            >
-          </button>
+        <div class="flex-center-center">
+            <button class="blue-outline-button large-button" onclick="window.open('/mymeal-for-restaurants', '_blank')">
+              Explore MyMeal for Restaurants
+            </button>
         </div>
       </div>
     </div>

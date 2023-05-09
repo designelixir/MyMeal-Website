@@ -44,7 +44,7 @@
                 <div class="perk-text">
                     <h2>Allergens made <span class="blue-text">simple</span></h2>
                     <p>When a customer comes in with multiple allergens, it is stressful for your staff to offer recommendations. With MyMeal, your customer can filter your menu by any allergen your kitchen can accommodate.</p><br>
-                    <a href="https://mymealmenus.com/order/restaurants/12/locations/9" target="_blank" class="styled-button hover">View a Demo Menu Page</a>
+                    <a href="https://mymealmenus.com/order/restaurants/12/locations/9" target="_blank" class="styled-button hover large-button">View a Demo Menu Page</a>
                 </div>
             </div>
 
@@ -79,7 +79,7 @@
             </h1>
             <p style="color: rgba(0,0,0,0.65); text-align: center">Documenting the allergens in each of your dishes is a time sink. That's why our certified nutrition specialists do it for you. We fix mistakes within 75% of the restaurants we work with, ensuring your staff and guests have positive interactions start to finish.</p>
             <div class="flex-center-center">
-                <a class="blue-outline-button" href="#restaurant-scheduler-container">Request a Demo</a>
+                <a class="blue-outline-button large-button" href="#restaurant-scheduler-container">Request a Demo</a>
             </div>
         </div>
 

@@ -18,5 +18,5 @@ background-position: center center; background-repeat: no-repeat; background-siz
         <br />
         As a partner, we will promote you on the MyMeal app and to our social media pages, <span class="blue-text bold">for free. </span>
     </h4>
-    <button onclick="togglePopup()" style=" width: 300px;" class="styled-button">Download the MyMeal App</button>
+    <button onclick="togglePopup()" style=" width: 300px;" class="styled-button large-button">Download the MyMeal App</button>
 </section>

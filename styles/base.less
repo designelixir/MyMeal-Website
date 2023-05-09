@@ -39,8 +39,9 @@ p {font-weight: 400; font-size: 15px; line-height: 24px; margin: 8px 0px;}
 .box-shadow {box-shadow: 0px 1px 6px rgba(0,0,0,0.25);}
 .container-padding {margin: 5vw;}
 button {cursor: pointer; padding: 5px 8px; text-decoration: none; margin-right: 10px; border-radius: 8px; font-size: 14px; font-weight: 400; }
+.button {cursor: pointer; padding: 5px 8px; text-decoration: none; margin-right: 10px; border-radius: 8px; font-size: 14px; font-weight: 400; }
 
-.large-button {padding: 8px 16px!important; font-size: 16px!important;}
+.large-button {padding: 8px 16px!important; font-size: 16px!important; border-radius: 8px;}
 
 .styled-button {background-color: var(--blue); color: white; border: 2px solid var(--blue)}
 .styled-button:hover {background-color: white; color: var(--blue); border: 2px solid var(--blue);}
@@ -49,10 +50,11 @@ button {cursor: pointer; padding: 5px 8px; text-decoration: none; margin-right: 
 .styled-button-inverted:hover {border: 2px solid black; color: black;}
 
 .blue-outline-button {background: white; border: 2px solid var(--blue); color: var(--blue);}
-.blue-outline-button:hover {background: var(--blue); color: white; }
 
-.sqs-block-button .sqs-block-button-element--medium {background-color: var(--blue); text-decoration: none; padding: 10px; color: white; border: none; border-radius: 8px; text-transform:none; font-family: 'Poppins', sans-serif; font-size: 18px; font-weight: 500;}
-.sqs-block-button .sqs-block-button-element--large {padding: 5px 20px; background: none; border: 4px solid var(--blue); border-radius: 8px; margin: 25px 0px; color: var(--blue); font-size: 18px!important; text-decoration: none; text-transform:none; font-family: 'Poppins', sans-serif;}
+.blue-outline-button:hover {background: var(--blue); color: white!important; }
+
+.sqs-block-button .sqs-block-button-element--medium {background-color: var(--blue); text-decoration: none; padding: 10px; color: white; border: none; border-radius: 8px; text-transform:none; font-family: 'Poppins', sans-serif; font-size: 18px; font-weight: 500; letter-spacing: unset!important; font-weight: 400;}
+.sqs-block-button .sqs-block-button-element--large {padding: 5px 20px; background: none; border: 4px solid var(--blue); border-radius: 8px; margin: 25px 0px; color: var(--blue); font-size: 18px!important; text-decoration: none; text-transform:none; font-family: 'Poppins', sans-serif; letter-spacing: unset!important; font-weight: 400;}
 
 
 // Main Navigation
@@ -61,11 +63,11 @@ button {cursor: pointer; padding: 5px 8px; text-decoration: none; margin-right: 
 .site-navigation-list {list-style-type: none;}
 .site-navigation-item {margin: 0px 10px;}
 .site-navigation-item-link {color: var(--blue);  text-decoration: none;}
-.active-link {font-weight: 500; background: white; padding: 2px 5px; border-radius: 5px;}
+.active-link {font-weight: 700;}
 .site-navigation-item:hover { font-weight: 600; }
 
 // Main CMS Injection
-.content-container {padding: 2.5vw;}
+.content-container {padding: 5vw;}
 
 // Homepage Hero Block
 #heroBlock {width: 100%; padding: 50px 10vw;}
@@ -167,10 +169,13 @@ button {cursor: pointer; padding: 5px 8px; text-decoration: none; margin-right: 
 }
 
 //Footer 
-footer {
-  border: 1px solid blue;
-}
+footer {border: 1px solid blue;}
 .footer-copy {background: var(--blue); padding: 5vw; color: white; text-align: center;}
+.footer-navigation-item {list-style-type: none; padding: 2px; margin: 0!important;}
+.footer-navigation-item-link {color: white!important;}
+.active-footer-link {color: white!important; text-decoration: underline;}
+
+
 // Squarespace Blocks
 .sqs-block {padding: 0!important;}
 .sqs-layout > .sqs-row {margin: 0!important;}

@@ -27,7 +27,9 @@
        {squarespace.main-content}
       </main>
 
-      {@|apply footer.block}
+      <footer class="site-footer">
+        <squarespace:navigation navigationId="footerNav" template="footer" />        
+      </footer>
 
       <div id="popup-window">
       <iframe id="popup-iframe" frameborder='0' webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>

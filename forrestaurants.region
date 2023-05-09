@@ -32,7 +32,7 @@
 
       <!--Footer with open block field -->
       <footer class="site-footer">
-        <squarespace:block-field id="footerBlocks" columns="12" />
+        <squarespace:navigation navigationId="footerNav" template="footer" />        
       </footer>
 
     </div>
