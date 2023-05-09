@@ -1,0 +1,49 @@
+
+<div class="flex-start-start flex-wrap blog-wrapper">
+<!-- item loop -->
+{.repeated section items}
+  
+  <article id="post-{id}" class="blog-list-item hover drop-shadow {@|item-classes}" data-item-id="{id}" onclick="window.open('{fullUrl}', '_blank')">
+    <!-- main image (thumbnail) -->
+    {.main-image?}
+      <div class="blog-image" style="background-image:url({assetUrl})"></div>
+    {.end}
+    <!-- post title -->
+    <div class="blog-info-container">
+    <p class="blog-title" data-content-field="title">{title}</p>
+     <h6 class="blog-meta"> <a href="{collection.fullUrl}?author={author.id}">By {author.displayName}&nbsp; | &nbsp;</a>  <a href="{fullUrl}" class="permalink"><time datetime="{addedOn|date %F}">{addedOn|date %B %d, %Y}</time></a></h6>
+    <!-- excerpt or body -->
+   {excerpt}
+      
+   
+    
+    </div>
+  </article>
+
+{.or}
+
+  <!-- no items means no blog posts -->
+  <p><em>No blog posts yet.</em></p>
+
+{.end}
+</div>
+<!-- pagination -->
+{.if pagination}
+  <nav class="blog-list-pagination">
+
+    <!-- newer page -->
+    {.if pagination.prevPage}
+      <a href="{pagination.prevPageUrl}">Newer</a>
+    {.or}
+      <a class="disabled">Newer</a>
+    {.end}
+
+    <!-- older page -->
+    {.if pagination.nextPage}
+      <a href="{pagination.nextPageUrl}">Older</a>
+    {.or}
+      <a class="disabled">Older</a>
+    {.end}
+
+  </nav>
+{.end}
