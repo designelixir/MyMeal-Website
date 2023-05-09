@@ -1,11 +1,29 @@
-<footer>
-    <squarespace:block-field id="footerBlock" columns="12" />
+
+    {.repeated section items}
+
+      <li class="site-navigation-item {.section active} active-link{.end}">
+
+        <!-- collection link -->
+        {.section collection}
+          <a class="site-navigation-item-link" href="{fullUrl}">{navigationTitle}</a>
+        {.end}
+
+        <!-- external link -->
+        {.section externalLink}
+          <a href="{url}"{.section newWindow} target="_blank"{.end}>
+            {title}
+          </a>
+        {.end}
+
+      </li>
+
+    {.end}
 
     <div class="footer-copy">
         <div class="footer-links">
-            <squarespace:navigation navigationId="footerNav" template="footer" />        
+            
         </div>
         <p>Copright &copy; MyMeal 2023 </p>
         <a style="color: rgba(255,255,255,0.75); font-size: 12px;" href="https://designelixir.studio" target="_blank">Made with &hearts; by Design Elixir </a>
     </div>
-</footer>
+
