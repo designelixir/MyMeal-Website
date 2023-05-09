@@ -1,7 +1,0 @@
-{.section collection}
-  {.repeated section collections}
-    <div class=”index”>
-      {mainContent}
-    </div>
-  {.end}
-{.end}
