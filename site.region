@@ -27,26 +27,9 @@
 
     </div>
 
-    <div id="pop-up-window" style="display: none;">
-      <div id="pop-up-window-content">
-
-      </div>
-    </div>
-    
-
     <!-- combo and minify scripts when not logged in -->
     <squarespace:script src="site.js" combo="{.if authenticatedAccount}false{.or}true{.end}" />
-    <script>
-function togglePopUp(embed){
-    var popupWindow = document.getElementById("pop-up-window");
-    var popupContents = document.getElementById("pop-up-window-content");
-    if(formContainer.style.display = "none"){
-      popupWindow.style.display = "block"
-      popupContents.innerHTML = embed
 
-    } 
-  }
-    </script>
     <!-- other scripts, and footer code injection -->
     {squarespace-footers}
 
