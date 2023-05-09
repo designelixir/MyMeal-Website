@@ -15,9 +15,7 @@
         <squarespace:navigation navigationId="siteNav" template="site-navigation" />        
       </header>
 
-      <section id="directory-map-container">
-        {@|apply map.block}
-      </section>
+      <squarespace:block-field id="mapBlock" columns="1" />
       
       <!-- cms content injection point -->
       <main class="content-container" role="main" data-content-field="main-content">
