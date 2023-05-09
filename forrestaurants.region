@@ -14,7 +14,9 @@
       </header>
 
     {@|apply forRestaurants/forRestaurants1.block}
+    
     {@|apply forRestaurants/forRestaurants2.block}
+    <squarespace:block-field id="forRestaurants2" columns="12" />
     {@|apply forRestaurants/forRestaurants3.block}
     {@|apply forRestaurants/forRestaurants4.block}
     {@|apply forRestaurants/forRestaurants5.block}
