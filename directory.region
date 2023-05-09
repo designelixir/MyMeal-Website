@@ -14,7 +14,7 @@
       <header class="site-header">
         <squarespace:navigation navigationId="siteNav" template="site-navigation" />        
       </header>
-     <squarespace:block id="mapBlock" columns="1">
+     
       
       <!-- cms content injection point -->
       <main class="content-container" role="main" data-content-field="main-content">
