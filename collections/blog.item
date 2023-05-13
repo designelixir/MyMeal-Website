@@ -1,4 +1,4 @@
-<h1>Blog</h1>
+<h1>Blog</h1><br>
 <a class="styled-button button hover" href="/blog">&larr; Back to Blog</a>
 
 {.section item}
