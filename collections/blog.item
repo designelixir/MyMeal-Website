@@ -34,20 +34,6 @@
       <a class="tag" href="{collection.fullUrl}?tag={@|url-encode}">{@}</a>{.alternates with},
     {.end}
 
-    <!--SHARE AND LIKE-->
-    {@|like-button}
-    {@|social-button}
-
-
-    <!--LOCATION-->
-    {.section location}
-      {.section addressTitle}
-        {addressTitle}
-        {addressLine1}
-        {addressLine2}
-        {addressCountry}
-      {.end}
-    {.end}
 
     <!--COMMENTS-->
     {@|comments}
