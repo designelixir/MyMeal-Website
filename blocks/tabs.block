@@ -42,7 +42,7 @@
       <div>
         <div class="inline-icon-text flex-center-start">
          <div class="icon"><squarespace:block-field id="forRestaurantsIcon1" columns="1" /></div>
-         <div class="block"><squarespace:block-field id="forRestaurantsText1" columns="1"/></div>        
+         <div class="block"><squarespace:block-field id="forRestaurantsText1" columns="12"/></div>        
         </div>
         <br>
         <div class="inline-icon-text flex-center-start">
