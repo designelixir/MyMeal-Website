@@ -17,9 +17,8 @@
   <article id="post-{id}" class="blog-list-item {@|item-classes}" data-item-id="{id}">
     <!-- main image (thumbnail) -->
     {.main-image?}
-      <a href="{fullUrl}" class="main-image content-fill">
-        <img {@|image-meta} />
-      </a>
+    <div class="blog-image" style="background-image:url({assetUrl})"></div>
+      
     {.end}
     <!-- post title -->
     <h1 class="title" data-content-field="title">
@@ -32,9 +31,8 @@
     <!-- excerpt or body -->
     {.if excerpt}
       {excerpt}
-      <a class="link" href="{fullUrl}">Read More</a>
     {.or}
-      {body}
+      <p>Click here to read more!</p>
     {.end}
   </article>
 
