@@ -1,0 +1,83 @@
+
+<section id="tabsBlock">
+<div class="tab-bar">
+  <button class="tab" onclick="openCity('Consumers')">For Consumers</button>
+  <button class="tab" onclick="openCity('Restaurants')">For Restaurants</button>
+</div>
+
+<div id="Consumers" class="tab-container box-shadow">
+  
+  
+        <squarespace:block-field id="howItWorksTitle" columns="1" />
+        <div class="flex-start-center" id="howItWorksBlock-wrapper">
+            <div class="howItWorksBlock-item flex-center-center flex-column">
+                <squarespace:block-field id="howItWorksImg1" class="howItWorksBlock-img" columns="1" />
+                <squarespace:block-field id="howItWorks1" columns="1" />
+            </div>
+            <div class="howItWorksBlock-item flex-center-center flex-column">
+                <squarespace:block-field id="howItWorksImg2" class="howItWorksBlock-img" columns="1" />
+                <squarespace:block-field id="howItWorks2" columns="1" />
+            </div>
+            <div class="howItWorksBlock-item flex-center-center flex-column">
+                <squarespace:block-field id="howItWorksImg3" class="howItWorksBlock-img" columns="1" />
+                <squarespace:block-field id="howItWorks3" columns="1" />
+            </div>
+        </div>
+      
+</div>
+
+<div id="Restaurants" class="tab-container gray-box-shadow" style="display:none">
+
+
+
+  
+<div class="restaurant-snippet-container">
+  
+  <div class="flex-center-start restaurant-snippet-info" style="max-width: 1500px">
+    
+    <div style="padding: 50px" >
+        <p style="text-transform: uppercase; opacity: 0.65; font-size: 18px;">MyMeal for Restaurants</p>
+        <squarespace:block-field id="forRestaurantsTitle" columns="1" />
+      <div>
+        <div class="inline-icon-text flex-center-start">
+         <div class="icon"><squarespace:block-field id="forRestaurantsIcon1" columns="1" /></div>
+         <squarespace:block-field id="forRestaurants1" columns="1" />        
+        </div>
+        <div class="inline-icon-text flex-center-start">
+          <div class="icon"><squarespace:block-field id="forRestaurantsIcon2" columns="1" /></div>
+         <squarespace:block-field id="forRestaurants1" columns="2" />     
+        </div>
+        <div class="inline-icon-text flex-center-start">
+          <div class="icon"><squarespace:block-field id="forRestaurantsIcon3" columns="1" /></div>
+         <squarespace:block-field id="forRestaurants3" columns="1" />     
+        </div>
+
+        <div class="flex-center-center">
+            <squarespace:block-field id="forRestaurantsButton" columns="1" /> 
+        </div>
+      </div>
+    </div>
+    <div class="flex-end-end phone-container">
+      <img src="https://images.squarespace-cdn.com/content/6450698409f0fa360c02e549/fc84cddb-4695-42bb-9f38-b7d5d8a5dff2/mockup-mapview.png?content-type=image%2Fpng" style="height: 80%; width: auto;"/>
+    </div>
+  </div>
+</div>
+
+</div>
+
+<section>
+
+
+<script>
+function openCity(tab) {
+  var i;
+  var x = document.getElementsByClassName("tab-container");
+  for (i = 0; i < x.length; i++) {
+    x[i].style.display = "none";  
+  }
+  document.getElementById(tab).style.display = "block";  
+}
+</script>
+
+</body>
+</html>

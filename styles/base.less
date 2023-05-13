@@ -1,6 +1,6 @@
 * {font-family: "Poppins", sans-serif; box-sizing: border-box;}
 :root {
-  --blue: #2d9cdb;
+  --blue: rgba(45, 156, 219, 1);
   --offgray: #EFF2F5;
   --offwhite: #f5f5f5;
   --offblack: #424242;
@@ -18,12 +18,14 @@ html {width: 100vw; overflow-x: hidden; min-height: 100vh;}
 .flex-start-start {display: flex; align-items: flex-start; justify-content: flex-start;}
 .flex-start-end {display: flex; align-items: flex-start; justify-content: flex-end;}
 
-h1 {margin: 0!important; font-size: 48px; line-height: 54px;}
+h1 {margin: 0!important; font-size: 48px; line-height: 54px; font-weight: 600;}
+h1 em {color: var(--blue); font-style: normal!important;}
 h2 {margin: 0!important; font-size: 28px; line-height: 36px; font-weight: 500;}
 h3 {margin: 0!important; font-size: 24px; line-height: 30px; font-weight: 400; color: var(--offblack);}
 h4 {font-weight: 400; font-size: 18px; line-height: 24px;}
 h6 {margin: 0!important;}
 p {font-weight: 400; font-size: 15px; line-height: 24px; margin: 8px 0px;}
+
 
 @media screen and (max-width: 900px) {
   h1 {font-size: 32px; line-height: 38px;}
@@ -38,11 +40,13 @@ p {font-weight: 400; font-size: 15px; line-height: 24px; margin: 8px 0px;}
   }
 
 .box-shadow {box-shadow: 0px 1px 6px rgba(0,0,0,0.25);}
+.gray-box-shadow {box-shadow: 0px 2px 5px gray;}
 .container-padding {margin: 5vw;}
 button {cursor: pointer; padding: 5px 8px; text-decoration: none; margin-right: 10px; border-radius: 8px; font-size: 14px; font-weight: 400; }
 .button {cursor: pointer; padding: 5px 8px; text-decoration: none; margin-right: 10px; border-radius: 8px; font-size: 14px; font-weight: 400; }
 
 .large-button {padding: 8px 16px!important; font-size: 16px!important; border-radius: 8px;}
+.xlarge-button {padding: 13px 32px!important; font-size: 20px!important; border-radius: 8px;}
 
 .styled-button {background-color: var(--blue); color: white; border: 2px solid var(--blue)}
 .styled-button:hover {background-color: white; color: var(--blue); border: 2px solid var(--blue);}
@@ -60,26 +64,46 @@ body:not(.button-style-default) .sqs-editable-button {background-color: var(--bl
 
 
 // Main Navigation
-.site-navigation {padding: 15px; background: var(--offwhite)}
+.site-header {height: 98px;}
+.site-navigation {padding: 15px; width: 100%; background: var(--offwhite); z-index: 20; position: absolute; top: 0; left: 0; margin-bottom: 100px; }
 .site-logo {max-width: 200px;}
 .site-navigation-list {list-style-type: none;}
-.site-navigation-item {margin: 0px 10px;}
+.site-navigation-item {margin: 0px 10px; white-space: nowrap;}
 .site-navigation-item-link {color: var(--blue);  text-decoration: none;}
 .active-link {font-weight: 700;}
 .site-navigation-item:hover { font-weight: 600; }
+@media screen and (max-width: 700px) {
+  .site-navigation {flex-wrap: wrap; flex-direction: column;}
+  .site-navigation-list { width: 100%; flex-wrap: wrap;}
+  .site-navigation-item {margin: 5px 10px;}
+  .site-header {height: 160px}
+}
 
 // Main CMS Injection
 .content-container {padding: 5vw;}
 
 // Homepage Hero Block
-#heroBlock {width: 100%; padding: 50px 10vw;}
-.heroText-wrapper {max-width: 650px; width: 100%;}
-.heroDownload-wrapper {margin: 25px 0px; display: flex; align-items: center; justify-content: flex-start;}
-#heroImg {width: 250px; margin: 25px;}
+.radial-gradient { background: linear-gradient(209deg, rgba(255,255,255,1) 40%, var(--blue) 40%);}
+#heroBlock {width: 100%; background-size: cover; background-repeat: no-repeat; background-position: 100% 30%; }
+.heroText-wrapper {max-width: 500px; width: 50%; background: rgba(255, 255,255,0.85); border-radius: 6px; padding: 10px; margin: 50px 5vw 0px;  }
+.heroDownload-wrapper {  padding: 50px 5vw; max-width: 550px; width: 78%;}
 @media screen and (max-width: 700px) {
-  #heroBlock {flex-direction: column;}
-  .heroDownload-wrapper  {justify-content: center!important;}
+  #heroBlock {background-position:60% 0%; }
+  
 }
+@media screen and (min-width: 700px) {
+  #heroBlock {background-position:60% 0%; background-size: 600px;}
+  
+}
+
+
+//Tabs block
+#tabsBlock {margin: 50px 2vw;}
+
+.tab { padding: 10px 25px; min-width: 100px; width: 30%; font-size: 18px; margin: 0; border-radius: 6px 6px 0px 0px; border: none;}
+.tab-container {border-radius: 0 6px 6px 6px;  background: var(--offwhite)}
+
+
 
 //Homepage How It Works Block
 #howItWorksBlock {width: 100%; padding: 50px 5vw; background-color: #f5f5f5 }
@@ -92,9 +116,9 @@ body:not(.button-style-default) .sqs-editable-button {background-color: var(--bl
 }
 
 //Restaurant Snippet Container 
-#restaurantsSnippet {background: #f5f5f5; padding: 50px;}
-.restaurant-snippet-container {margin: 10px; left: 0; overflow-x: clip; border-radius: 5px; box-shadow: 0px 2px 5px gray;}
-.restaurant-snippet-container h1 { color: white; text-align: center; font-weight: 600; background-color:var(--blue); padding: 25px; border-radius: 5px 5px 0px 0px}
+
+.restaurant-snippet-container { left: 0; overflow-x: clip; border-radius: 5px; }
+
 .phone-container {height: 550px; overflow-x: clip; background-size: 300px 400px; background-origin: top right; background-repeat: no-repeat; min-width: 400px;
   background-image: url("https://images.squarespace-cdn.com/content/6450698409f0fa360c02e549/d1805240-4efa-4e5f-ae9a-fea749357369/mockup-onboarding.png?content-type=image%2Fpng"); }
 

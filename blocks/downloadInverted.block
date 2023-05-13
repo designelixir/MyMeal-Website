@@ -33,10 +33,10 @@
 
 <button
     onclick="togglePopup()"
-    style="min-width: 100px;"
-    class="styled-button hover"
+    style="min-width: 160px;"
+    class="styled-button-inverted xlarge-button hover"
 >
-    Download
+    Download Now
 </button>
 
 <div id="big-container" style="display: none;">
