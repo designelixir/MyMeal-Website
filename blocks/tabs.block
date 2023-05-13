@@ -38,15 +38,18 @@
     <div style="padding: 50px" >
         <p style="text-transform: uppercase; opacity: 0.65; font-size: 18px;">MyMeal for Restaurants</p>
         <squarespace:block-field id="forRestaurantsTitle" columns="1" />
+        <br>
       <div>
         <div class="inline-icon-text flex-center-start">
-         <div class="icon"><squarespace:block-field id="forRestaurantsIcon1" columns="1" /></div>
+         <div class="icon"><squarespace:block-field id="forRestaurantsIcon1" columns="2" /></div>
          <div class="block"><squarespace:block-field id="forRestaurantsText1" columns="1"/></div>        
         </div>
+        <br>
         <div class="inline-icon-text flex-center-start">
           <div class="icon"><squarespace:block-field id="forRestaurantsIcon2" columns="1" /></div>
          <div class="block"><squarespace:block-field id="forRestaurantsText2" columns="1"/></div>  
         </div>
+        <br>
         <div class="inline-icon-text flex-center-start">
           <div class="icon"><squarespace:block-field id="forRestaurantsIcon3" columns="1" /></div>
             <div class="block"><squarespace:block-field id="forRestaurantsText3" columns="1"/></div>     
