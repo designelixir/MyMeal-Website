@@ -1,12 +1,12 @@
-<a class="styled-button hover" href="/blog">&larr; Back to Blog</a>
+<a class="styled-button button hover" href="/blog">&larr; Back to Blog</a><h1>&nbsp;Blog</h1>
 <br>
 {.section item}
 
 <article id="post-{id}" class="{@|item-classes} blog-page" data-item-id="{id}">
-<div class="blog-page-header" style="background-image:url({assetUrl}); background-position: {{mediaFocalPoint.x} * 100} {{mediaFocalPoint.y} * 100} ">
+<div class="blog-page-header" style="background-image:url({assetUrl}); background-position: center center ">
   <div class="blog-page-title">
   <h1>{title}</h1>
-  <p class="meta">
+  <p class="meta" style="color: white;">
     <a href="{fullUrl}" class="permalink" ><time datetime="{addedOn|date %F}">{addedOn|date %B %d, %Y}</time></a> by <a href="{collection.fullUrl}?author={author.id}">{author.displayName}</a>
   </p>
   {.repeated section categories}
@@ -57,9 +57,9 @@
 
     <!--OLDER PAGE-->
     {.section nextItem}
-      <a href="{fullUrl}" class="styled-button">Older &rarr; </a>
+      <a href="{fullUrl}" class="styled-button button">Older &rarr; </a>
     {.or}
-      <a class="disabled" class="styled-button">Older &rarr;</a>
+      <a class="disabled" class="styled-button button">Older &rarr;</a>
     {.end}
 
   </nav>
