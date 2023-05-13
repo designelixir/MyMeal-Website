@@ -1,5 +1,6 @@
-<div class="flex-center-start"><a class="styled-button button hover" href="/blog">&larr; Back to Blog</a><h1>&nbsp;Blog</h1></div>
-<br>
+<h1>Blog</h1>
+<a class="styled-button button hover" href="/blog">&larr; Back to Blog</a>
+
 {.section item}
 
 <article id="post-{id}" class="{@|item-classes} blog-page" data-item-id="{id}">
@@ -48,9 +49,9 @@
 
     <!--NEWER PAGE-->
     {.section prevItem}
-      <a href="{fullUrl}" class="styled-button">&larr; Newer </a>
+      <a href="{fullUrl}" class="styled-button button">&larr; Newer </a>
     {.or}
-      <a class="disabled" class="styled-button">&larr; Newer</a>
+      <a class="disabled" class="styled-button button">&larr; Newer</a>
     {.end}
 
 
