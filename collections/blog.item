@@ -1,4 +1,4 @@
-<a class="styled-button button hover" href="/blog">&larr; Back to Blog</a><h1>&nbsp;Blog</h1>
+<div class="flex-center-start"><a class="styled-button button hover" href="/blog">&larr; Back to Blog</a><h1>&nbsp;Blog</h1></div>
 <br>
 {.section item}
 
