@@ -36,28 +36,12 @@
       
     
     <div class="feature-container">
-        <h2>Featured In</h2>
+        <h2>✨ Press Features ✨</h2>
+    
         <div class="feature-wrapper">
         <squarespace:query collection="press" >
           {@|apply slider.block}
-        </squarespace:query>
-
-            
-
-            <squarespace:query collection="press" >
-        <div class="flex-start-center flex-wrap">
-        {.repeated section items}
-            {.if starred}
-                {.repeated section tags}
-                    
-                    {.or equal? "Article"}
-                    {.end}
-            {.end}
-        {.end}
-        </div>
-        
-        </squarespace:query>
-            
+        </squarespace:query>    
         </div>
     </div>
 
