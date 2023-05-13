@@ -17,12 +17,14 @@ html {width: 100vw; overflow-x: hidden; min-height: 100vh;}
 .flex-wrap {flex-wrap: wrap;}
 .flex-start-start {display: flex; align-items: flex-start; justify-content: flex-start;}
 .flex-start-end {display: flex; align-items: flex-start; justify-content: flex-end;}
+.flex-end-start {display: flex; align-items: flex-end; justify-content: flex-start;}
 
 h1 {margin: 0!important; font-size: 48px; line-height: 54px; font-weight: 600;}
 h1 em {color: var(--blue); font-style: normal!important;}
 h2 {margin: 0!important; font-size: 28px; line-height: 36px; font-weight: 500;}
 h3 {margin: 0!important; font-size: 24px; line-height: 30px; font-weight: 400; color: var(--offblack);}
 h4 {font-weight: 400; font-size: 18px; line-height: 24px;}
+h5 {margin: 0!important; font-weight: 300;}
 h6 {margin: 0!important;}
 p {font-weight: 400; font-size: 15px; line-height: 24px; margin: 8px 0px;}
 em {color: var(--blue); font-style: normal!important;}
@@ -84,28 +86,29 @@ body:not(.button-style-default) .sqs-editable-button {background-color: var(--bl
 .content-container {padding: 5vw;}
 
 // Homepage Hero Block
-.radial-gradient { background: linear-gradient(209deg, rgba(255,255,255,1) 40%, var(--blue) 40%);}
-#heroBlock {width: 100%; background-size: cover; background-repeat: no-repeat; background-position: 100% 30%; }
-.heroText-wrapper {max-width: 500px; width: 50%; background: rgba(255, 255,255,0.85); border-radius: 6px; padding: 10px; margin: 50px 5vw 0px;  }
-.heroDownload-wrapper {  padding: 50px 5vw; max-width: 550px; width: 78%;}
-@media screen and (max-width: 700px) {
-  #heroBlock {background-position:60% 0%; }
-  
-}
-@media screen and (min-width: 700px) {
-  #heroBlock {background-position:60% 0%; background-size: 600px;}
-  
-}
+.radial-gradient { background: linear-gradient(-209deg, rgba(255,255,255,1) 40%, var(--blue) 40%);}
+#heroBlock {height: 600px;  background-size: 700px; z-index: 0;  width: 100vw; background-origin: 20% 20%; background-repeat: no-repeat; background-position: 40vw 0%;}
+
+.heroText-wrapper {max-width: 500px; width: 75%; margin: 5vw 5vw 0px;  }
+.heroDownload-wrapper {  padding: 50px 5vw; z-index: 3;}
 
 
 //Tabs block
-#tabsBlock {margin: 50px 2vw;}
+#tabsBlock { z-index: 3; width: 100%;}
+.tab-bar {z-index: 8;}
+.tab-content {padding: 50px;}
+.tab { background: var(--offwhite); box-shadow: -1px 0px 4px rgba(0,0,0,0.25); margin: 0 10px 0 0; padding: 10px 5vw 15px 5vw;  font-size: 18px; border-radius: 6px 6px 0px 0px; border: none;}
+.tab-container {border-radius: 0 6px 6px 6px;  background: white;  }
+.active-tab {background: white; }
+.active-tab h5 {font-weight: 500!important;}
+.inline-icon-text {padding: 0px 0px 10px}
+.inline-icon-text .icon {margin-right: 10px; padding: 10px;}
+@media screen and (max-width: 700px) {
+  .tab-content {padding: 25px;}
+  
+}
 
-.tab { padding: 10px 25px; min-width: 100px; width: 30%; font-size: 18px; margin: 0; border-radius: 6px 6px 0px 0px; border: none;}
-.tab-container {border-radius: 0 6px 6px 6px;  background: var(--offwhite)}
-
-.phone-container {width: 35%;}
-
+// forRestaurants6.block (slider)
 
 //Homepage How It Works Block
 #howItWorksBlock {width: 100%; padding: 50px 5vw; background-color: #f5f5f5 }
@@ -122,14 +125,17 @@ body:not(.button-style-default) .sqs-editable-button {background-color: var(--bl
 
 
 
-.inline-icon-text .icon {margin-right: 15px; margin-top: 15px; padding: 10px;}
+
 
 //Press Features
-.feature-container {background-color: var(--blue); padding: 25px;}
-.feature-container h2 {color: white; text-align: center; padding: 25px 0px 15px;}
-.feature-wrapper {background-color: white; border-radius: 5px; padding: 25px; margin: 50px;}
 
-.press-item-container {margin: 10px 25px; max-width: 350px;}
+.feature-container h2 { text-align: center; padding: 25px 0px 15px;}
+#press-contents {overflow-x: scroll; scroll-behavior: smooth; scrollbar-width: none;}
+#press-contents::-webkit-scrollbar {
+  display: none;
+}
+
+.press-item-container {margin: 10px 25px; max-width: 350px; height: 300px;}
 .article-item-img {height: 75px; width: 300px; margin-bottom: 15px; background-size: contain; background-position: center center; background-repeat: no-repeat; }
 .press-title {font-style: italic; color: black; text-align: center; text-decoration: none;}
 .press-item-excerpt {font-style: italic; text-align: center; color: gray; font-size: 12px; margin: 0!important;}
@@ -139,8 +145,6 @@ body:not(.button-style-default) .sqs-editable-button {background-color: var(--bl
 .press-list-container {background-color: var(--blue); padding: 25px; }
 @media screen and (max-width: 1200px) {
   .restaurant-snippet-info {display: block!important;}
-  .feature-container {padding: 10px;}
-  .feature-wrapper {margin: 15px;}
   .press-list-container .article-container {justify-content: center!important;}
  
 }
@@ -168,7 +172,7 @@ body:not(.button-style-default) .sqs-editable-button {background-color: var(--bl
 
 
 // Directory 
-#directory-map-container {border: 1px solid red; height: 50vh;}
+#directory-map-container {height: 50vh;}
 .directory-image {width: 100%; height: 100px; background-size: cover; background-position: center center; background-repeat: no-repeat; border-radius: 6px 6px 0px 0px}
 .directory-logo-wrapper {margin-top: -65px; height: 80px;}
 .directory-logo {height: 75px; width: 75px; margin-left: 15px; border-radius: 37px; background-size: cover; background-position: center center; z-index: 2;}

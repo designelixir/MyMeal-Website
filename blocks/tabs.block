@@ -1,27 +1,33 @@
 
-<section id="tabsBlock">
-<div class="tab-bar">
-  <button class="tab" onclick="openCity('Consumers')">For Consumers</button>
-  <button class="tab" onclick="openCity('Restaurants')">For Restaurants</button>
+<section id="tabsBlock" class="flex-center-center">
+<div style="margin: 0px 3vw 50px;">
+<div>
+<div class="tab-bar flex-end-start">
+  <div class="tab active-tab" onclick="openTab('Consumers')" id="Consumers-tab"><h5>For Consumers</h5></div>
+  <div class="tab" onclick="openTab('Restaurants')" id="Restaurants-tab"><h5>For Restaurants</h5></div>
 </div>
+<div style="background: white; height: 25px; margin-top: -25px; margin-left: 1px; border-radius: 0 6px 0 0;  transform: translateY(15px); z-index: 8;">
+</div>
+</div>
+
 
 <div id="Consumers" class="tab-container gray-box-shadow">
   <div class="flex-center-start" style="max-width: 1500px;">
-    <div style="padding: 50px" >
-        <p style="text-transform: uppercase; opacity: 0.65; font-size: 18px;">MyMeal for Restaurants</p>
+    <div class="tab-content">
+        <p style="text-transform: uppercase; opacity: 0.65; font-size: 18px;">MyMeal for Consumers</p>
         <squarespace:block-field id="forConsumersTitle" columns="1" />
       
-        <div class="inline-icon-text flex-center-start">
+        <div class="inline-icon-text flex-start-start">
          <div class="icon"><squarespace:block-field id="forConsumersIcon1" columns="1" /></div>
          <div class="block"><squarespace:block-field id="forConsumersText1" columns="1"/></div>        
         </div>
         
-        <div class="inline-icon-text flex-center-start">
+        <div class="inline-icon-text flex-start-start">
           <div class="icon"><squarespace:block-field id="forConsumersIcon2" columns="1" /></div>
          <div class="block"><squarespace:block-field id="forConsumersText2" columns="1"/></div>  
         </div>
         
-        <div class="inline-icon-text flex-center-start">
+        <div class="inline-icon-text flex-start-start">
           <div class="icon"><squarespace:block-field id="forConsumersIcon3" columns="1" /></div>
             <div class="block"><squarespace:block-field id="forConsumersText3" columns="1"/></div>     
         </div>
@@ -35,22 +41,22 @@
 
 <div id="Restaurants" class="tab-container gray-box-shadow" style="display:none">
   <div class="flex-center-start" style="max-width: 1500px;">
-    <div class="phone-container"><squarespace:block-field id="forRestaurantsImage" columns="1"/></div>
-    <div style="padding: 50px" >
+    {#  <div class="phone-container"><squarespace:block-field id="forRestaurantsImage" columns="1"/></div>  }
+    <div class="tab-content">
         <p style="text-transform: uppercase; opacity: 0.65; font-size: 18px;">MyMeal for Restaurants</p>
         <squarespace:block-field id="forRestaurantsTitle" columns="1" />
       
-        <div class="inline-icon-text flex-center-start">
+        <div class="inline-icon-text flex-start-start">
          <div class="icon"><squarespace:block-field id="forRestaurantsIcon1" columns="1" /></div>
          <div class="block"><squarespace:block-field id="forRestaurantsText1" columns="1"/></div>        
         </div>
         
-        <div class="inline-icon-text flex-center-start">
+        <div class="inline-icon-text flex-start-start">
           <div class="icon"><squarespace:block-field id="forRestaurantsIcon2" columns="1" /></div>
          <div class="block"><squarespace:block-field id="forRestaurantsText2" columns="1"/></div>  
         </div>
         
-        <div class="inline-icon-text flex-center-start">
+        <div class="inline-icon-text flex-start-start">
           <div class="icon"><squarespace:block-field id="forRestaurantsIcon3" columns="1" /></div>
             <div class="block"><squarespace:block-field id="forRestaurantsText3" columns="1"/></div>     
         </div>
@@ -61,18 +67,26 @@
     </div>
   </div>
 </div>
-
+</div>
 <section>
 
 
 <script>
-function openCity(tab) {
+function openTab(tab) {
   var i;
+  var tabName = tab + '-tab';
+  console.log(tabName);
   var x = document.getElementsByClassName("tab-container");
+  var xtab = document.getElementsByClassName("tab");
+
+
   for (i = 0; i < x.length; i++) {
     x[i].style.display = "none";  
+    xtab[i].classList.remove("active-tab")
   }
   document.getElementById(tab).style.display = "block";  
+  document.getElementById(tabName).classList.add("active-tab")
+  
 }
 </script>
 

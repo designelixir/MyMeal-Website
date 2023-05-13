@@ -16,20 +16,20 @@
       </header>
 
       <div class="radial-gradient">
-        <div id="heroBlock-wrapper">
-          <div id="heroBlock" class="flex-start-center flex-column" style="background-image: url({collection.mainImage.assetUrl}); ">
+        <div class="flex-center-center">
+          <div id="heroBlock" class="flex-start-start flex-column" style="background-image: url({collection.mainImage.assetUrl}); ">
             <div class="heroText-wrapper">
               <squarespace:block-field id="heroText" columns="12"/>
             </div>
             <div class="heroDownload-wrapper">
               {@|apply downloadInverted.block}  
             </div>
-            {@|apply tabs.block}
           </div>
-          
         </div>
-        
-    </div>
+        {@|apply tabs.block}
+      </div>
+
+      
     
       
 
@@ -37,31 +37,11 @@
     
     <div class="feature-container">
         <h2>Featured In</h2>
-        <div class="feature-wrapper box-shadow">
+        <div class="feature-wrapper">
         <squarespace:query collection="press" >
-        <div class="flex-start-center flex-wrap">
-        {.repeated section items}
-            {.if starred}
-                {.repeated section tags}
-                    {.equal? "Article"}
-                        <div class="press-item-container flex-center-center flex-column hover " onclick="window.open('{sourceUrl}', '_blank')">
-                            <div class="article-item-img" style="background-image: url('{assetUrl}?format=original');"></div>
-                            <a href="{sourceUrl}" class="press-title" style="color: gray!important;" target="_blank">{title}</a>
-                        </div>
-                    
-                    {.end}
-                    {.or equal? "Podcast"}
-                    <p>Content specific to my category 2.</p>
-                    
-                {.end}
-            {.end}
-        {.end}
-        </div>
+          {@|apply slider.block}
         </squarespace:query>
 
-        <div style="width: 80%; opacity: 0.5; margin: 25px 10%; ">
-            <hr>
-        </div>
             
 
             <squarespace:query collection="press" >
@@ -69,14 +49,7 @@
         {.repeated section items}
             {.if starred}
                 {.repeated section tags}
-                    {.equal? "Podcast"}
-                        <div class="press-item-container flex-center-center flex-column hover" style="max-width: 200px!important" onclick="window.open('{sourceUrl}', '_blank')">
-                            <div class="podcast-item-img" style="background-image: url('{assetUrl}');"></div>
-                            <a href="{sourceUrl}" class="press-title"  style="font-weight: 600!important; font-style: normal!important; margin-top: 10px;" target="_blank">{title}</a>
-                            <span class="press-item-excerpt">{excerpt}</span>
-                        </div>
                     
-                    {.end}
                     {.or equal? "Article"}
                     {.end}
             {.end}
