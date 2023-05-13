@@ -41,15 +41,15 @@
       <div>
         <div class="inline-icon-text flex-center-start">
          <div class="icon"><squarespace:block-field id="forRestaurantsIcon1" columns="1" /></div>
-         <squarespace:block-field id="forRestaurants1" columns="1" style="min-width: 50px"/>        
+         <squarespace:block-field id="forRestaurantsText1" columns="1" style="min-width: 50px"/>        
         </div>
         <div class="inline-icon-text flex-center-start">
           <div class="icon"><squarespace:block-field id="forRestaurantsIcon2" columns="1" /></div>
-         <squarespace:block-field id="forRestaurants2" columns="2" style="min-width: 50px"/>     
+         <squarespace:block-field id="forRestaurantsText2" columns="2" style="min-width: 50px"/>     
         </div>
         <div class="inline-icon-text flex-center-start">
           <div class="icon"><squarespace:block-field id="forRestaurantsIcon3" columns="1" /></div>
-         <squarespace:block-field id="forRestaurants3" columns="1" style="min-width: 50px"/>     
+         <squarespace:block-field id="forRestaurantsText3" columns="1" style="min-width: 50px"/>     
         </div>
 
         <div class="flex-center-center">
