@@ -27,7 +27,7 @@
    
  <div class="blog-author-container box-shadow flex-start-start">
     
-    <div style="height: 100px; width: 100px; border-radius: 50px; border: 2px solid red; background-image: url({avatarUrl}); background-size: cover; background-position: center center;">
+    <div style="height: 100px; width: 100px; border-radius: 50px; border: 2px solid red; background-image: url({author.avatarUrl}); background-size: cover; background-position: center center;">
     </div>
     
     <div style="margin-left: 25px;">
