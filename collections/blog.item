@@ -1,19 +1,15 @@
 <a class="styled-button hover" href="/blog">&larr; Back to Blog</a>
+<br>
 {.section item}
 <div class="blog-page-header" style="background-image:url({assetUrl})">
   <div class="blog-page-title">
   <h1>{title}</h1>
-  <p class="meta" style="color: white; opacity: 0.85">
+  <p class="meta">
     <a href="{fullUrl}" class="permalink" ><time datetime="{addedOn|date %F}">{addedOn|date %B %d, %Y}</time></a> by <a href="{collection.fullUrl}?author={author.id}">{author.displayName}</a>
   </p>
-  
   </div>
 </div>
-<div class="blog-content-wrapper">
-
-
-  <!--WRAPPER-->
-  <article id="post-{id}" class="{@|item-classes} blog-page" data-item-id="{id}">
+<article id="post-{id}" class="{@|item-classes} blog-page" data-item-id="{id}">
 
     <!--AUTHOR AND DATE-->
     
@@ -22,13 +18,13 @@
     {body}
    
  <div class="blog-author-container box-shadow flex-start start">
-    {.avatarUrl?}
-    <div style="height: 100px; width: 100px; border-radius: 50px; background-image: url({avatarUrl}); background-size: contain; background-position: center center;">
+    
+    <div style="height: 100px; width: 100px; border-radius: 50px; border: 2px solid red; background-image: url({avatarUrl}); background-size: contain; background-position: center center;">
     </div>
-    {.end}
+    
     <div>
     <p>Meet the author, {author.displayName}</p>
-    <p>{bio}</p>
+    <p>{author.bio}</p>
     </div>
     </div>
     
@@ -39,6 +35,13 @@
     {postItemInjectCode}
 
     <!--CATEGORIES-->
+
+
+    <!---->
+   
+
+  </article>
+<div class="blog-content-wrapper">
     {.repeated section categories}
       <a class="category" href="{collection.fullUrl}?category={@|url-encode}">{@}</a>{.alternates with},
     {.end}
@@ -49,10 +52,8 @@
     {.end}
 
 
-    <!--COMMENTS-->
-    {@|comments}
-
-  </article>
+  <!--WRAPPER-->
+  
 
 {.end}
 

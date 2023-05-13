@@ -49,9 +49,6 @@
       {.end}
     {.end}
 
-    <!--COMMENTS-->
-    {@|comments}
-
   </article>
 
 {.end}

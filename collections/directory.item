@@ -42,6 +42,6 @@
     </div>
     </section>
     <h4>What our community is saying about <strong>{title}:</strong></h4>
-    {comments}
+    
 
 {.end}

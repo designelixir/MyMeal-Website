@@ -1,3 +1,7 @@
+<section class="blog-container">
+  
+      <h1>{pageTitle}</h1>
+      <squarespace:block-field id="blogBlock" columns="12" />
 
 {.section categoryFilter}
   <p class="filtered-by">Filtered by Category: {@|safe}</p>
@@ -10,30 +14,26 @@
 {.if authorFilter}
   <p class="filtered-by">Filtered by Author: {author.displayName}</p>
 {.end}
-
+  
+<div class="flex-start-start flex-wrap blog-wrapper">
 <!-- item loop -->
 {.repeated section items}
-
-  <article id="post-{id}" class="blog-list-item {@|item-classes}" data-item-id="{id}">
+  
+  <article id="post-{id}" class="blog-list-item hover drop-shadow {@|item-classes}" data-item-id="{id}" onclick="window.open('{fullUrl}', '_blank')">
     <!-- main image (thumbnail) -->
     {.main-image?}
-    <div class="blog-image" style="background-image:url({assetUrl})"></div>
-      
+      <div class="blog-image" style="background-image:url({assetUrl})"></div>
     {.end}
     <!-- post title -->
-    <h1 class="title" data-content-field="title">
-      {.passthrough?}
-        <a href="{sourceUrl}" target="_blank">{title}</a>
-      {.or}
-        <a href="{fullUrl}">{title}</a>
-      {.end}
-    </h1>
+    <div class="blog-info-container">
+    <p class="blog-title" data-content-field="title">{title}</p>
+     <h6 class="blog-meta"> <a href="{collection.fullUrl}?author={author.id}">By {author.displayName}&nbsp; | &nbsp;</a>  <a href="{fullUrl}" class="permalink"><time datetime="{addedOn|date %F}">{addedOn|date %B %d, %Y}</time></a></h6>
     <!-- excerpt or body -->
-    {.if excerpt}
-      {excerpt}
-    {.or}
-      <p>Click here to read more!</p>
-    {.end}
+   {excerpt}
+      
+   
+    
+    </div>
   </article>
 
 {.or}
@@ -42,7 +42,7 @@
   <p><em>No blog posts yet.</em></p>
 
 {.end}
-
+</div>
 <!-- pagination -->
 {.if pagination}
   <nav class="blog-list-pagination">
@@ -63,4 +63,3 @@
 
   </nav>
 {.end}
-
