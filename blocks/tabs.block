@@ -35,7 +35,7 @@
   
   <div class="flex-center-start restaurant-snippet-info" style="max-width: 1500px">
     <div class="phone-container">
-    <squarespace:block-field id="forRestaurantsImage" columns="1" class="block" style="width: 100px" /> 
+    <squarespace:block-field id="forRestaurantsImage" columns="1" class="block" style="width: 100px; border: 1px solid lime;" /> 
     </div>
     
     <div style="padding: 50px" >
