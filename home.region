@@ -12,28 +12,17 @@
       <header class="site-header box-shadow">
         <squarespace:navigation navigationId="siteNav" template="site-navigation" />        
       </header>
-
-      <!-- cms content injection point -->
-      <main class="content-container" role="main" data-content-field="main-content">
-      <div class="radial-gradient" style="margin-top: 10px">
-          <div id="heroBlock" class="flex-start-start flex-column" style="background-image: url({collection.mainImage.assetUrl}); ">
-            <div class="heroText-wrapper">
-              <squarespace:block-field id="heroText" columns="12"/>
-            </div>
-            <div class="heroDownload-wrapper">{@|apply downloadInverted.block}</div>
-          </div>
-        {@|apply tabs.block}
-      </div>
-
-    <div class="feature-container">
-      <h2>✨ Press Features ✨</h2>
+      {@|apply heroBlock.block}
       <div class="feature-wrapper">
         <squarespace:query collection="press" >{@|apply slider.block}</squarespace:query>    
       </div>
-    </div>
-    <div style="padding: 5vw">
+      <!-- cms content injection point -->
+      <main class="content-container" role="main" data-content-field="main-content">
+      
+    
+    
        {squarespace.main-content}
-       </div>
+    
       </main>
       
       <footer class="site-footer">
