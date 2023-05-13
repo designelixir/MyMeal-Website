@@ -31,7 +31,9 @@
         <squarespace:query collection="press" >{@|apply slider.block}</squarespace:query>    
       </div>
     </div>
+    <div style="padding: 5vw">
        {squarespace.main-content}
+       </div>
       </main>
       
       <footer class="site-footer">
