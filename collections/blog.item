@@ -1,23 +1,22 @@
 
 {.section item}
 
-<div class="blog-page-header" style="background-image:url({assetUrl})">
-  <div class="blog-page-title">
-  <h1>{title}</h1>
-  <p class="meta" style="color: white; opacity: 0.85">
-    <a href="{fullUrl}" class="permalink" ><time datetime="{addedOn|date %F}">{addedOn|date %B %d, %Y}</time></a> by <a href="{collection.fullUrl}?author={author.id}">{author.displayName}</a>
-  </p>
-  
-  </div>
-</div>
-<div class="blog-content-wrapper">
-<a class="styled-button hover" href="/blog">&larr; Back to Blog</a>
-
   <!--WRAPPER-->
-  <article id="post-{id}" class="{@|item-classes} blog-page" data-item-id="{id}">
+  <article id="post-{id}" class="{@|item-classes}" data-item-id="{id}">
+
+    <!--POST TILE-->
+    <h1 class="title" data-content-field="title">
+      {.passthrough?}
+        <a href="{sourceUrl}" target="_blank">{title}</a>
+      {.or}
+        {title}
+      {.end}
+    </h1>
 
     <!--AUTHOR AND DATE-->
-    
+    <p class="meta">
+      <a href="{fullUrl}" class="permalink"><time datetime="{addedOn|date %F}">{addedOn|date %B %d, %Y}</time></a> by <a href="{collection.fullUrl}?author={author.id}">{author.displayName}</a>
+    </p>
 
     <!--MAIN CONTENT-->
     {body}
@@ -35,6 +34,20 @@
       <a class="tag" href="{collection.fullUrl}?tag={@|url-encode}">{@}</a>{.alternates with},
     {.end}
 
+    <!--SHARE AND LIKE-->
+    {@|like-button}
+    {@|social-button}
+
+
+    <!--LOCATION-->
+    {.section location}
+      {.section addressTitle}
+        {addressTitle}
+        {addressLine1}
+        {addressLine2}
+        {addressCountry}
+      {.end}
+    {.end}
 
     <!--COMMENTS-->
     {@|comments}
@@ -46,26 +59,21 @@
 
 <!--PAGINATION-->
 {.section pagination}
-  <nav class="blog-item-pagination flex-center-spacebetween">
-
-    
+  <nav class="blog-item-pagination">
 
     <!--NEWER PAGE-->
     {.section prevItem}
-      <a href="{fullUrl}" class="styled-button">&larr; Newer </a>
+      <a href="{fullUrl}">Newer</a>
     {.or}
-      <a class="disabled" class="styled-button">&larr; Newer</a>
+      <a class="disabled">Newer</a>
     {.end}
-
-
 
     <!--OLDER PAGE-->
     {.section nextItem}
-      <a href="{fullUrl}" class="styled-button">Older &rarr; </a>
+      <a href="{fullUrl}">Older</a>
     {.or}
-      <a class="disabled" class="styled-button">Older &rarr;</a>
+      <a class="disabled">Older</a>
     {.end}
 
   </nav>
 {.end}
-</div>
