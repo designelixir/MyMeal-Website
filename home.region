@@ -20,7 +20,7 @@
       <main class="content-container" role="main" data-content-field="main-content">
       
     
-    <squarespace:block-field id="homepage" columns="12"/>
+    <squarespace:block-field id="homepage" columns="12" />
        {squarespace.main-content}
 
     
