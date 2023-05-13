@@ -3,7 +3,7 @@
 {.section item}
 
 <article id="post-{id}" class="{@|item-classes} blog-page" data-item-id="{id}">
-<div class="blog-page-header" style="background-image:url({assetUrl})">
+<div class="blog-page-header" style="background-image:url({assetUrl}); background-position: {mediaFocalPoint.x} {mediaFocalPoint.y} ">
   <div class="blog-page-title">
   <h1>{title}</h1>
   <p class="meta">
@@ -19,25 +19,19 @@
     {.end}
   </div>
 </div>
-    <!--AUTHOR AND DATE-->
-    
-
     <!--MAIN CONTENT-->
     {body}
    
- <div class="blog-author-container box-shadow flex-start-start">
-    
-    <div style="height: 100px; width: 100px; border-radius: 50px; border: 2px solid red; background-image: url({author.avatarUrl}); background-size: cover; background-position: center center;">
-    </div>
-    
+  <div class="blog-author-container box-shadow flex-center-start">
+    <div class="blog-author-image" style="background-image: url({author.avatarUrl}); "></div>
     <div style="margin-left: 25px;">
-    <p style="font-size: 16px;">Meet the author, <span style="font-weight: 500; color: var(--blue)">{author.displayName}</span></p>
-    <p>{author.bio}</p>
+      <p style="font-size: 16px;">Meet the author, <span style="font-weight: 500; color: var(--blue)">{author.displayName}</span></p>
+      <p>{author.bio}</p>
     </div>
-    </div>
+  </div>
 
     <!--BLOG INJECTION-->
-    {postItemInjectCode}
+
 
   </article>
 
