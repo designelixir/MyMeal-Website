@@ -3,7 +3,9 @@
   <head>
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800&display=swap" rel="stylesheet"> 
     {squarespace-headers}
   </head>
   <body id="{squarespace.page-id}" class="{squarespace.page-classes}">
@@ -11,6 +13,9 @@
       <header class="site-header box-shadow">
         <squarespace:navigation navigationId="siteNav" template="site-navigation" />        
       </header>
+
+
+
       {@|apply heroBlock.block}
       <div class="feature-wrapper">
         <squarespace:query collection="press" >{@|apply slider.block}</squarespace:query>    

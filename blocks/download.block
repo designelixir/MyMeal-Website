@@ -60,7 +60,7 @@
             onclick="window.open('https://play.google.com/store/apps/details?id=com.MyMeal.android', 'blank')"
           >
             <img
-              src="https://findmymeal.io/wp-content/uploads/2023/03/googleplay.png"
+              src="../assets/googleplay.png"
               style="height: 50px; width: auto;"
               alt="Google Play Store Download"
             />
@@ -71,13 +71,13 @@
             onclick="window.open('https://apps.apple.com/us/app/mymeal-find-safe-restaurants/id6444025752', 'targetWindow')"
           >
             <img
-              src="https://findmymeal.io/wp-content/uploads/2023/03/appstore.png"
+              src="../assets/appstore.png"
               style="height: 50px; width: auto;"
               alt="App Store Download"
             />
           </div>
           <button
-            class="styled-button-inverted"
+            class="styled-button-inverted large-button"
             onclick="window.open('https://forms.gle/i5WxFC5Lj5Etshsu5', 'targetWindow')"
           >
             Request My City
