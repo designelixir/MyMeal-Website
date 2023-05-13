@@ -34,8 +34,9 @@
 <div class="restaurant-snippet-container">
   
   <div class="flex-center-start restaurant-snippet-info" style="max-width: 1500px">
-    
-    <squarespace:block-field id="forRestaurantsImage" columns="1" class="block" style="border: 1px solid lime" /> 
+    <div class="phone-container">
+    <squarespace:block-field id="forRestaurantsImage" columns="1" class="block" /> 
+    </div>
     
     <div style="padding: 50px" >
         <p style="text-transform: uppercase; opacity: 0.65; font-size: 18px;">MyMeal for Restaurants</p>
