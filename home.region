@@ -9,53 +9,41 @@
   </head>
   <body id="{squarespace.page-id}" class="{squarespace.page-classes}">
 
-    <div class="site-container">
+    
 
       <header class="site-header box-shadow">
         <squarespace:navigation navigationId="siteNav" template="site-navigation" />        
       </header>
 
       <div class="radial-gradient" style="margin-top: 10px">
-        <div class="flex-center-center">
+        
           <div id="heroBlock" class="flex-start-start flex-column" style="background-image: url({collection.mainImage.assetUrl}); ">
             <div class="heroText-wrapper">
               <squarespace:block-field id="heroText" columns="12"/>
             </div>
-            <div class="heroDownload-wrapper">
-              {@|apply downloadInverted.block}  
-            </div>
+            <div class="heroDownload-wrapper">{@|apply downloadInverted.block}</div>
           </div>
-        </div>
+        
         {@|apply tabs.block}
       </div>
 
-      
-    
-      
-
-      
-    
     <div class="feature-container">
-        <h2>✨ Press Features ✨</h2>
-    
-        <div class="feature-wrapper">
-        <squarespace:query collection="press" >
-          {@|apply slider.block}
-        </squarespace:query>    
-        </div>
+      <h2>✨ Press Features ✨</h2>
+      <div class="feature-wrapper">
+        <squarespace:query collection="press" >{@|apply slider.block}</squarespace:query>    
+      </div>
     </div>
 
       <!-- cms content injection point -->
-      <main class="content-container" role="main" data-content-field="main-content" style="border: 1px solid lime;">
-      {squarespace.main-content}
-       
+      <main class="content-container" role="main" data-content-field="main-content">
+       {squarespace.main-content}
       </main>
       
       <footer class="site-footer">
         <squarespace:navigation navigationId="footerNav" template="footer" />        
       </footer>
 
-    </div>
+    
 
     <!-- combo and minify scripts when not logged in -->
     <squarespace:script src="site.js" combo="{.if authenticatedAccount}false{.or}true{.end}" />

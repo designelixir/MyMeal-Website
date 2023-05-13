@@ -1,6 +1,6 @@
 
-<section id="tabsBlock" class="flex-center-center">
-<div style="margin: 0px 3vw 50px;">
+<section id="tabsBlock" style="padding: 0px 5vw 50px;">
+
 <div>
 <div class="tab-bar flex-end-start">
   <div class="tab active-tab" onclick="openTab('Consumers')" id="Consumers-tab"><h5>For Consumers</h5></div>
@@ -67,7 +67,7 @@
     </div>
   </div>
 </div>
-</div>
+
 <section>
 
 
@@ -90,5 +90,3 @@ function openTab(tab) {
 }
 </script>
 
-</body>
-</html>
