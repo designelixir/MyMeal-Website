@@ -1,58 +1,46 @@
 <a class="styled-button hover" href="/blog">&larr; Back to Blog</a>
 <br>
 {.section item}
+
+<article id="post-{id}" class="{@|item-classes} blog-page" data-item-id="{id}">
 <div class="blog-page-header" style="background-image:url({assetUrl})">
   <div class="blog-page-title">
   <h1>{title}</h1>
   <p class="meta">
     <a href="{fullUrl}" class="permalink" ><time datetime="{addedOn|date %F}">{addedOn|date %B %d, %Y}</time></a> by <a href="{collection.fullUrl}?author={author.id}">{author.displayName}</a>
   </p>
-  </div>
-</div>
-<article id="post-{id}" class="{@|item-classes} blog-page" data-item-id="{id}">
-
-    <!--AUTHOR AND DATE-->
-    
-
-    <!--MAIN CONTENT-->
-    {body}
-   
- <div class="blog-author-container box-shadow flex-start start">
-    
-    <div style="height: 100px; width: 100px; border-radius: 50px; border: 2px solid red; background-image: url({avatarUrl}); background-size: contain; background-position: center center;">
-    </div>
-    
-    <div>
-    <p>Meet the author, {author.displayName}</p>
-    <p>{author.bio}</p>
-    </div>
-    </div>
-    
-    
-    
-
-    <!--BLOG INJECTION-->
-    {postItemInjectCode}
-
-    <!--CATEGORIES-->
-
-
-    <!---->
-   
-
-  </article>
-<div class="blog-content-wrapper">
-    {.repeated section categories}
-      <a class="category" href="{collection.fullUrl}?category={@|url-encode}">{@}</a>{.alternates with},
+  {.repeated section categories}
+      <a class="category" href="{collection.fullUrl}?category={category.id}">{category}</a>{.alternates with},
     {.end}
 
     <!--TAGS-->
     {.repeated section tags}
       <a class="tag" href="{collection.fullUrl}?tag={@|url-encode}">{@}</a>{.alternates with},
     {.end}
+  </div>
+</div>
+    <!--AUTHOR AND DATE-->
+    
 
+    <!--MAIN CONTENT-->
+    {body}
+   
+ <div class="blog-author-container box-shadow flex-start-start">
+    
+    <div style="height: 100px; width: 100px; border-radius: 50px; border: 2px solid red; background-image: url({avatarUrl}); background-size: contain; background-position: center center;">
+    </div>
+    
+    <div>
+    <p style="font-size: 16px;">Meet the author, <span style="font-weight: 500; color: var(--blue)">{author.displayName}</span></p>
+    <p>{author.bio}</p>
+    </div>
+    </div>
 
-  <!--WRAPPER-->
+    <!--BLOG INJECTION-->
+    {postItemInjectCode}
+
+  </article>
+
   
 
 {.end}
@@ -82,4 +70,4 @@
 
   </nav>
 {.end}
-</div>
+
