@@ -1,9 +1,9 @@
 <style>
 #forRestaurantsSection5 {background-color:  var(--blue); padding: 25px; background-size: 110%; background-repeat: no-repeat; background-position: center 95%;
-  background-image: url("https://findmymeal.io/wp-content/uploads/2023/03/background-transparent.png"); }
+  background-image: url("https://images.squarespace-cdn.com/content/6450698409f0fa360c02e549/b4e24e8c-05d9-47fd-89bd-cd3b526717b2/background-transparent.png"); }
 #rounded-block-container {max-width: 1500px;}
 .rounded-block {flex: 1 1 0px; align-self: stretch; background-color: #182e46; border: 2px solid white; margin: 10px; border-radius: 27px; background-size: contain; min-width: 500px; background-repeat: no-repeat; background-position: 0 center; }
-#rounded-block-first {background-position-x: -40px; background-image: url("https://findmymeal.io/wp-content/uploads/2023/03/laptop-mockup.gif");}
+#rounded-block-first {background-position-x: -40px; background-image: url("../../assets/onboarding-gif.gif");}
 #rounded-block-second {background-size: contain; background-image: url("https://images.unsplash.com/photo-1588675646184-f5b0b0b0b2de?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTJ8fG1lbnV8ZW58MHx8MHx8&auto=format&fit=crop&w=800&q=90");}
 .rounded-block-text {height: 100%; min-height: 330px; margin-left: 200px; padding: 35px; background-color: white; border-top-right-radius: 25px; border-bottom-right-radius: 25px;}
 #show-me-link {font-size: 28px; text-decoration: none; color: white; font-weight: 600; padding: 15px 20%;  border: 2px solid white; border-radius: 8px;}

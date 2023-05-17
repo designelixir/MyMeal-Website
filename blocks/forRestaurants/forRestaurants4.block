@@ -1,7 +1,7 @@
 <style>
 
 #forRestaurantsSection4 {padding: 75px 15px; text-align: center;}
-#reels-gif-container {overflow: clip; background-image: url(' https://findmymeal.io/wp-content/uploads/2023/03/map-view-social-media.gif'); min-height: 400px;
+#reels-gif-container {overflow: clip; background-image: url('https://images.squarespace-cdn.com/content/6450698409f0fa360c02e549/c31d683a-c8e1-4e00-9164-7eb686af15c2/reels-popup-social-media.gif'); min-height: 400px;
 background-position: center center; background-repeat: no-repeat; background-size: contain;}
 
 
