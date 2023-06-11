@@ -33,6 +33,7 @@
       <div class="flex-center-start flex-wrap">
         <p>Filter by: &nbsp;</p>
         <div class="category hover" id="reset" style="display: none;"><p onclick="categorize('reset')">Show All</p></div>
+        <div class="category hover" onclick="categorize('mymeal-verified')" id="mymeal-verified" style="color: var(--blue); line-height: 0; padding: 5px 8px"> <img src="../assets/verified-mymeal.png" style="height: 25px; margin-bottom: -5px;"/> Verified </p></div>
         {.section collection}
             <squarespace:category collection="directory">
             
@@ -53,13 +54,50 @@
        {squarespace.main-content}
       </main>
 </div>
+
+<div id="verified-popup" style="display: none; padding: 25px;" class="flex-start-center"  >
+  
+  <div class="pop-up" style="background-color: white;">
+  
+  <div class="flex-start-spacebetween">
+    <div style="margin-right: 25px;">
+      <h1>MyMeal Verified Partners</h1>
+      <h3>MyMeal Certified Partners are restaurants that provide us detailed menu item ingredient lists and kitchen procedures to ensure you can have the safest dining experience possible. </h3>
+    </div>
+    
+    
+    <div onclick="verifiedPopUp(false)" style="width: 100%; height: 60px; cursor: pointer;"><p style="font-size: 48px; text-align: right; width: 100%;">X</p></div>
+    
+    
+    
+  </div>
+  <img src="assets/verified-mymeal.png" alt="verified badge" style="height: 100px; padding-top: 15px;">
+  <ol style="margin-top: 50px;">
+      <li style="margin-bottom: 25px;"><h3>Vetting restaurants for MyMeal</h3><p>We work with our dedicated community of people with food allergies to vet restaurants that could be a good match for MyMeal. 
+Interested in a restaurant that isn’t on MyMeal? We’re building our network in Denver, CO. Request a restaurant you want to see, and you may just see it on our app in the coming months!</p>
+<br>
+
+<a href="/request-a-restaurant" class='styled-button large-button' target="_blank">Request a Restaurant</a>
+
+  </li>
+  <li>
+    <h3>Getting the menu information</h3>
+    <p>Before we give our Certified Partner badge to a restaurant, we rigorously look through the ingredients and potential cross contact of everything from garnishes to cook lines. Together with the restaurant’s GM or chef, we put together instructions to provide your server while ordering that make life for you and the kitchen's life easier. </p>
+  </li>
+   <li>
+    <h3>Reliable, updated menus</h3>
+    <p>We work hand in hand with our Certified Partner every quarter to ensure that the information on our filterable allergy menus is as up to date and accurate as possible. 
+</p>
+  </li>
+    </ol>
+  
+  </div>
+</div>
       <footer class="site-footer">
         <squarespace:navigation navigationId="footerNav" template="footer" />        
       </footer>
 
-      <div id="popup-window">
-      <iframe id="popup-iframe" frameborder='0' webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
-      </div>
+      
 
     </div>
 
