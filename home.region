@@ -19,7 +19,7 @@
       {@|apply heroBlock.block}
    
       
-      <main class="content-container" role="main" data-content-field="main-content">
+      <main class="content-container" role="main" data-content-field="main-content" style="border: 1px solid red;">
        {squarespace.main-content}
       </main>
       <footer class="site-footer">
