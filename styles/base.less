@@ -34,7 +34,10 @@ blockquote {padding-left: 10px; border-left: 2px solid var(--blue)}
 ul {margin-left: 0!important;}
 @media screen and (max-width: 900px) {
   h1 {font-size: 32px; line-height: 38px;}
+  
 }
+
+.basic-padding {padding: 25px 50px;}
 
 .bold {font-weight: 600;}
 .blue-text {color: var(--blue)}
@@ -156,7 +159,7 @@ main {padding: 5vw;}
 // Blog
 
 .blog-image {width: 100%; height: 250px; background-size: cover; background-position: center center; background-repeat: no-repeat;}
-.blog-list-item {margin-right: 25px; margin-bottom: 25px;  min-width: 250px; width: 100%; max-width: 325px}
+.blog-list-item {margin-right: 25px; margin-bottom: 25px; width: 100%; min-width: 350px; max-width: 20vw;}
 .blog-title {font-weight: 600; font-size: 18px; line-height: 24px; margin: 0; }
 .blog-title a {color: black; text-decoration: none;}
 .blog-info-container {padding: 10px 25px; background-color: var(--offgray)}
@@ -179,14 +182,25 @@ main {padding: 5vw;}
 
 @media screen and (max-width: 800px) {
   .blog-list-item {min-width: unset; max-width: unset;}
+  
 }
 
 
 // Directory 
+.category {padding: 0px 10px; background-color: white;  margin: 5px; border-radius: 20px;}
+.category a { font-size: 14px;}
+.active-category {background-color: var(--blue)!important; color: white;}
+.category:hover {border: 1px solid black;}
+.directory-filter {background: rgba(0,0,0,0.05); border-radius: 35px; margin: 25px; padding: 10px 25px;}
+.directory {border: 0.5px solid black; border-top-right-radius: 8px; border-top-left-radius: 8px;}
+.directory-wrapper {padding: 0px 50px 25px;}
 #directory-map-container {height: 50vh;}
+.directory-list-item {margin-right: 25px; margin-bottom: 25px; width: 100%; min-width: 350px; max-width: 24vw;}
+.filtered-restaurant {display: none;}
+.verified-item {border: 2px solid var(--blue); border-radius: 8px;}
 .directory-image {width: 100%; height: 100px; background-size: cover; background-position: center center; background-repeat: no-repeat; border-radius: 6px 6px 0px 0px}
 .directory-logo-wrapper {margin-top: -65px; height: 80px;}
-.directory-logo {height: 75px; width: 75px; margin-left: 15px; border-radius: 37px; background-size: cover; background-position: center center; z-index: 2;}
+.directory-logo {height: 75px; width: 75px; margin-left: 15px; border-radius: 37px; background-size: contain; background-position: center center; z-index: 2;}
 .directory-city {color: black; font-size: 14px; background: white; padding:0 10px; margin-left: -2px; border-radius: 3px; opacity: 0.65}
 .directory-logo-wrapper:hover .directory-city {opacity: 1;}
 
@@ -196,11 +210,23 @@ main {padding: 5vw;}
 .directory-buttons { padding: 15px;}
 
 .verified-badge {height: 60px; margin-top: -15px;  z-index: 3;}
-.unverified-restaurant {opacity: 0.65}
+.unverified-restaurant {border: 2px solid rgba(0,0,0,0.25); border-radius: 8px;}
 .unverified-restaurant:hover {opacity: 1;}
 
 #verified-popup {
   position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: red; z-index: 300000000;
+}
+
+@media screen and (max-width: 800px) {
+  .directory-wrapper {padding: 0px 25px 25px;}
+  
+}
+#map {
+  height: 400px;
+  width: 100%;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+  border-bottom: 0.5px solid black;
 }
 
 //Directory Item 
@@ -213,8 +239,8 @@ main {padding: 5vw;}
 .directory-page-address{color: black; font-size: 14px; background: rgba(255, 255,255,0.85); padding: 0px 15px; margin-left: -10px; margin-right: 25px; border-radius: 3px;}
 .directory-page-info {padding: 15px;}
 
-// Map 
-#map {height: 40vh; width: 100%; border: 1px solid red;}
+
+
 
 //FullScreen Region 
 .full-screen-body { height: 100vh;

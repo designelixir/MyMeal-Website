@@ -1,18 +1,28 @@
+
+<script>
+  var allCoordinates = []
+</script>
  
- <section> 
-      <h1>MyMeal Restaurant Menu Directory </h1>
-      <p>Click the restaurants below to view kitchen procedures, reviews, and access the MyMeal filterable allergen menu.</p><p>
-      Menus with a "Verified MyMeal Partner" <img src="../assets/verified-mymeal.png" style="height: 25px; margin-bottom: -10px;"/> badge have worked with us personally to provide the most accurate information possible to make your dining experience safe. Click the badge for more information on what qualifies a restaurant as a MyMeal partner.<p>
-</section>
-<div class="flex-start-start flex-wrap blog-wrapper">
-<!-- item loop -->
+<div class="flex-start-start flex-wrap directory-wrapper">
+
 {.repeated section items}
+
+<script>
+  var lat = location.markerLat;
+  var long = location.markerLng;
+  var coordinate = {lat:{location.markerLat}, lng: {location.markerLng}}
+  allCoordinates.push(coordinate);
+</script>
+
+
+
   {.if customContent.verified}
- <article id="post-{id}" class="blog-list-item hover box-shadow {@|item-classes}" data-item-id="{id}" >
+ <article id="post-{id}" class="directory-list-item hover verified-item box-shadow {categories} {@|item-classes}" data-item-id="{id}" >
     {.main-image?}
       <div class="directory-image flex-start-end" style="background-image:url({assetUrl})">
         <img class="verified-badge hover" src="../assets/verified-mymeal.png">
       </div>
+      
     {.end}
     <div class="directory-logo-wrapper flex-center-start">
         {.if customContent.brandlogo}
@@ -33,14 +43,15 @@
         </p>
     </div>
     <div class="flex-center-center directory-buttons">
-        <button onclick="window.open('{fullUrl}')" class="large-button styled-button">View Restaurant</button>
-        
+        <button onclick="window.open('{sourceUrl}')" class="large-button styled-button">Allergen Menu</button>
+        <button onclick="window.open('{fullUrl}')" class="large-button styled-button-inverted">Details</button>
     </div>
+    
   </article>
   
   {#  NOT verified card  }
   {.or}
-   <article id="post-{id}" class="blog-list-item unverified-restaurant hover box-shadow {@|item-classes}" data-item-id="{id}">
+   <article id="post-{id}" class="directory-list-item unverified-restaurant hover box-shadow {categories} {@|item-classes}" data-item-id="{id}">
     <div class="directory-image" style="background-image:url('../assets/not-verified.png')"></div>
     <div class="directory-logo-wrapper">
         {.if customContent.brandlogo}<div class="directory-logo" style="background-image: url({customContent.brandlogo.assetUrl})"></div>{.end}
@@ -58,7 +69,8 @@
         </p>
     </div>
     <div class="flex-center-center directory-buttons">
-        <button class="styled-button large-button" onclick="https://form.jotform.com/230596919059065?restaurantName={title}">Request this restaurant</button>
+        <button class="styled-button large-button" onclick="https://form.jotform.com/230596919059065?restaurantName={title}">Request Restaurant</button>
+        <button onclick="window.open('{fullUrl}')" class="large-button styled-button-inverted">Details</button>
     </div>
   </article>
    
@@ -91,3 +103,4 @@
 
   </nav>
 {.end}
+

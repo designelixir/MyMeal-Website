@@ -15,12 +15,44 @@
         <squarespace:navigation navigationId="siteNav" template="site-navigation" />        
       </header>
      
-      
+       
+     
       <!-- cms content injection point -->
       <main class="content-container" role="main" data-content-field="main-content">
+      <section> 
+            <h1>MyMeal Restaurant Menu Directory </h1>
+            <p>Click the restaurants below to view kitchen procedures, reviews, and access the MyMeal filterable allergen menu.</p><p>
+            Menus with a "Verified MyMeal Partner" <img src="../assets/verified-mymeal.png" style="height: 25px; margin-bottom: -10px;"/> badge have worked with us personally to provide the most accurate information possible to make your dining experience safe. Click the badge for more information on what qualifies a restaurant as a MyMeal partner.<p>
+            <br>
+        
+      </section>
+      <div class="directory box-shadow">
+      
+      <div id="map"></div>
+      <div class="directory-filter">
+      <div class="flex-center-start flex-wrap">
+        <p>Filter by: &nbsp;</p>
+        <div class="category hover" id="reset" style="display: none;"><p onclick="categorize('reset')">Show All</p></div>
+        {.section collection}
+            <squarespace:category collection="directory">
+            
+                {.if categories}
+                <div class="category-wrapper flex-center-center flex-wrap">
+                    
+                    {.repeated section categories}
+                    <div class="category hover" id="{name}"><p onclick="categorize('{name}')">{name}</p></div>
+                    {.end}
+                
+                </div>
+                {.end}
+            </squarespace:category>
+        {.end}
+      </div>
+      </div>
+      <p id="filter-text" style="padding: 0px 50px 25px; font-style: italic;">Showing <span id="category-count"></span></p>
        {squarespace.main-content}
       </main>
-
+</div>
       <footer class="site-footer">
         <squarespace:navigation navigationId="footerNav" template="footer" />        
       </footer>
@@ -38,4 +70,272 @@
     {squarespace-footers}
 
   </body>
+   <script >
+
+var counter = document.getElementById('category-count')
+  var divs = document.querySelectorAll("article");
+if (divs.length === 1){
+      var restaurantPlural = " restaurant"
+    } else {
+      var restaurantPlural = " restaurants"
+    }
+    counter.textContent = divs.length + restaurantPlural;
+function reset(){
+  
+  console.log(divs)
+  for (var i = 0; i < divs.length; i++) {
+    divs[i].classList.remove('filtered-restaurant');
+    console.log('reset')
+  }
+  var categoryButtons = document.getElementsByClassName('category')
+  for (var i = 0; i < categoryButtons.length; i++) {
+    categoryButtons[i].classList.remove('active-category');
+
+  }
+  
+  if (divs.length === 1){
+      var restaurantPlural = " restaurant"
+    } else {
+      var restaurantPlural = " restaurants"
+    }
+    counter.textContent = divs.length + restaurantPlural;
+  
+}
+
+function categorize(name){
+  reset()
+  var resetButton = document.getElementById('reset');
+  var categoryButton = document.getElementById(name);
+  categoryButton.classList.add('active-category')
+  var divs = document.querySelectorAll("article");
+  if (name === 'reset'){
+    resetButton.style.display = "none";
+    if (divs.length === 1){
+      var restaurantPlural = " restaurant"
+    } else {
+      var restaurantPlural = " restaurants"
+    }
+    counter.textContent = divs.length + restaurantPlural;
+    
+  } else {
+    var activeCounter = 0;
+    resetButton.style.display = 'block';
+    for (var i = 0; i < divs.length; i++) {
+      if (!divs[i].classList.contains(name)) {
+        divs[i].classList.add('filtered-restaurant')
+      } else {
+        activeCounter++;
+      }
+    }
+    if (activeCounter === 1){
+      var restaurantPlural = " restaurant"
+    } else if (activeCounter - 1 === -1) {
+      console.log('triggered')
+      activeCounter = 0;
+      var restaurantPlural = " restaurants"
+      
+
+    }else {
+      var restaurantPlural = " restaurants"
+    }
+    counter.textContent = activeCounter + restaurantPlural;
+  }
+  
+}
+
+function initMap() {
+  
+  var map = new google.maps.Map(document.getElementById("map"), {
+    zoom: 10,
+    center: { lat: 39.7392, lng: -104.9903 },
+    styles: [
+  {
+    "elementType": "geometry",
+    "stylers": [
+      {
+        "color": "#f5f5f5"
+      }
+    ]
+  },
+  {
+    "elementType": "labels.icon",
+    "stylers": [
+      {
+        "visibility": "off"
+      }
+    ]
+  },
+  {
+    "elementType": "labels.text.fill",
+    "stylers": [
+      {
+        "color": "#616161"
+      }
+    ]
+  },
+  {
+    "elementType": "labels.text.stroke",
+    "stylers": [
+      {
+        "color": "#f5f5f5"
+      }
+    ]
+  },
+  {
+    "featureType": "administrative.land_parcel",
+    "elementType": "labels.text.fill",
+    "stylers": [
+      {
+        "color": "#bdbdbd"
+      }
+    ]
+  },
+  {
+    "featureType": "poi",
+    "elementType": "geometry",
+    "stylers": [
+      {
+        "color": "#eeeeee"
+      }
+    ]
+  },
+  {
+    "featureType": "poi",
+    "elementType": "labels.text.fill",
+    "stylers": [
+      {
+        "color": "#757575"
+      }
+    ]
+  },
+  {
+    "featureType": "poi.park",
+    "elementType": "geometry",
+    "stylers": [
+      {
+        "color": "#e5e5e5"
+      }
+    ]
+  },
+  {
+    "featureType": "poi.park",
+    "elementType": "labels.text.fill",
+    "stylers": [
+      {
+        "color": "#9e9e9e"
+      }
+    ]
+  },
+  {
+    "featureType": "road",
+    "elementType": "geometry",
+    "stylers": [
+      {
+        "color": "#ffffff"
+      }
+    ]
+  },
+  {
+    "featureType": "road.arterial",
+    "elementType": "labels.text.fill",
+    "stylers": [
+      {
+        "color": "#757575"
+      }
+    ]
+  },
+  {
+    "featureType": "road.highway",
+    "elementType": "geometry",
+    "stylers": [
+      {
+        "color": "#dadada"
+      }
+    ]
+  },
+  {
+    "featureType": "road.highway",
+    "elementType": "labels.text.fill",
+    "stylers": [
+      {
+        "color": "#616161"
+      }
+    ]
+  },
+  {
+    "featureType": "road.local",
+    "elementType": "labels.text.fill",
+    "stylers": [
+      {
+        "color": "#9e9e9e"
+      }
+    ]
+  },
+  {
+    "featureType": "transit.line",
+    "elementType": "geometry",
+    "stylers": [
+      {
+        "color": "#e5e5e5"
+      }
+    ]
+  },
+  {
+    "featureType": "transit.station",
+    "elementType": "geometry",
+    "stylers": [
+      {
+        "color": "#eeeeee"
+      }
+    ]
+  },
+  {
+    "featureType": "water",
+    "elementType": "geometry",
+    "stylers": [
+      {
+        "color": "#c9c9c9"
+      }
+    ]
+  },
+  {
+    "featureType": "water",
+    "elementType": "labels.text.fill",
+    "stylers": [
+      {
+        "color": "#9e9e9e"
+      }
+    ]
+  }
+]
+  });
+  
+  allCoordinates.forEach(function (location) {
+          var marker = new google.maps.Marker({
+            position: location,
+            map: map,
+            icon: 'assets/pin.svg'
+          });
+        });
+  
+      return map;
+  
+}
+
+function addPins(allCoordinates){
+  var locations = allCoordinates;
+  locations.forEach(function (location) {
+    
+    var marker = new google.maps.Marker({
+      position: location,
+      map: map,
+    });
+  });
+}
+    </script>
+    <script
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBKuNK8g9qwz4O5y1Sll9cff4z28H3sBt0&callback=initMap"
+      async
+      defer
+    ></script>
 </html>

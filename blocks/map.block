@@ -1,0 +1,42 @@
+
+    <style>
+      #map {
+        height: 400px;
+        width: 100%;
+      }
+    </style>
+<div>
+    <div id="map"></div>
+
+    <script>
+      // Array of GPS locations
+      
+
+      // Initialize and display the map
+      function initMap() {
+        
+        var map = new google.maps.Map(document.getElementById("map"), {
+          zoom: 10,
+          center: { lat: 39.7392, lng: -104.9903 },
+        });
+
+        return map;
+        
+      }
+      function addPins(allCoordinates){
+        var locations = allCoordinates;
+        locations.forEach(function (location) {
+          var marker = new google.maps.Marker({
+            position: location,
+            map: map,
+          });
+        });
+      }
+    </script>
+    <script
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBKuNK8g9qwz4O5y1Sll9cff4z28H3sBt0&callback=initMap"
+      async
+      defer
+    ></script>
+
+</div>
