@@ -17,10 +17,7 @@
 
 
       {@|apply heroBlock.block}
-      {#  <div class="feature-wrapper">
-        <squarespace:query collection="press" >{@|apply slider.block}</squarespace:query>    
-      </div>  }
-      <!-- cms content injection point -->
+   
       
       <main class="content-container" role="main" data-content-field="main-content">
        {squarespace.main-content}
