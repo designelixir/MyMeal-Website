@@ -1,128 +1,440 @@
-
 <script>
-  var allCoordinates = []
+	var allCoordinates = []
 </script>
- 
-<div class="flex-start-start flex-wrap directory-wrapper">
-
-{.repeated section items}
-
-<script>
-  var lat = location.markerLat;
-  var long = location.markerLng;
-  var coordinate = {lat:{location.markerLat}, lng: {location.markerLng}}
-  allCoordinates.push(coordinate);
-</script>
-
-
-
-  {.if customContent.verified}
- <article id="post-{id}" class="directory-list-item hover verified-item box-shadow mymeal-verified {categories} {@|item-classes}" data-item-id="{id}" >
-    {.main-image?}
-      <div class="directory-image flex-start-end" style="background-image:url({assetUrl})">
-        <img onclick="verifiedPopUp(true)" class="verified-badge hover" src="../assets/verified-mymeal.png">
-      </div>
-      
-    {.end}
-    <div class="directory-logo-wrapper flex-center-start">
-        {.if customContent.brandlogo}
-            <div class="directory-logo box-shadow" style="background-image: url({customContent.brandlogo.assetUrl})"></div> 
-        {.end}
-        <p class="directory-city hover" onclick="window.open('https://www.google.com/maps/search/{location.addressTitle} {location.addressLine1} {location.addressLine2}', '_blank')">📍 {location.addressLine2}</p>
-    </div>
-    <div class="directory-info-container">
-        <div class="flex-center-spacebetween">
-            <p class="blog-title" data-content-field="title">{title}</p>
-        </div>
-        <p class="flex-center-start flex-wrap" style="margin: 7px 0px;">
-        {customContent.priceRank}  
-        {.if categories }&nbsp;•&nbsp;
-        
-        {.repeated section categories}
-            <a class="category-label drop-shadow" href="{collection.fullUrl}?tag={@|url-encode}">{@|url-encode}</a>&nbsp;
-        {.end}
-        
-        {.end}
-        </p>
-    </div>
-    <div class="flex-center-center directory-buttons">
-        <button onclick="window.open('{sourceUrl}')" class="large-button styled-button">Allergen Menu</button>
-        <button onclick="window.open('{fullUrl}')" class="large-button styled-button-inverted">Details</button>
-    </div>
+<section>
+	<p>Click the restaurants below to view kitchen procedures, reviews, and access the MyMeal filterable allergen menu.</p>
+	<p>Menus with a "Verified MyMeal Partner" <img src="../assets/verified-mymeal.png" style="height: 25px; margin-bottom: -10px;" alt="mymeal verified badge"/> badge have worked with us personally to provide the most accurate information possible to make your dining experience safe. Click the badge for more information on what qualifies a restaurant as a MyMeal partner.<p>
+		<br>
+</section>
+<div class="directory box-shadow">
+<div id="directory-map-container">
+	<div id="map"></div>
+	<div class="directory-filter box-shadow">
+		<div class="flex-center-start flex-wrap">
+			<p class="white-text">Filter by: </p>
+			<div class="category-filter hover" id="reset" style="display: none;">
+				<p onclick="categorize('reset')">Show All</p>
+			</div>
+			<div class="category-filter hover flex-center-center" onclick="categorize('mymeal-verified')" id="mymeal-verified" >
+				<img src="../assets/verified-mymeal.png" style="height: 15px; margin-bottom: -2px;"/>
+				<p> Verified </p>
+			</div>
+			{.section collection}
+			<squarespace:category collection="directory">
+				{.if categories}
+				{.repeated section categories}
+				<div class="category-filter hover" id="{name}">
+					<p onclick="categorize('{name}')">{name}</p>
+				</div>
+				{.end}
+				{.end}
+			</squarespace:category>
+			{.end}
+		</div>
+		<div class="flex-center-start flex-wrap">
+			<p class="white-text">Dedicated Free from: &nbsp;</p>
+			<div class="category hover" id="reset" style="display: none;">
+				<p onclick="tagorize('reset')">Show All</p>
+			</div>
+			{.section tags}
+			<squarespace:tag collection="directory">
+				{.if tags}
+				{.repeated section tags}
+				<div class="category hover" id="{name}">
+					<p onclick="categorize('{tags}')">{tags}</p>
+				</div>
+				{.end}
+				{.end}
+			</squarespace:tag>
+			{.end}
+		</div>
     
-  </article>
-  
-  {#  NOT verified card  }
-  {.or}
-   <article id="post-{id}" class="directory-list-item unverified-restaurant hover box-shadow {categories} {@|item-classes}" data-item-id="{id}">
-    <div class="directory-image" style="background-image:url('../assets/not-verified.png')"></div>
-    <div class="directory-logo-wrapper">
-        {.if customContent.brandlogo}<div class="directory-logo" style="background-image: url({customContent.brandlogo.assetUrl})"></div>{.end}
-    </div>
-    <div class="directory-info-container">
-        <div class="flex-center-spacebetween">
-            <p class="blog-title" data-content-field="title">{title}</p>
-        </div>
-        <p class="flex-center-start flex-wrap" style="margin: 7px 0px;">
+	</div>
+  <p id="filter-text" style=" padding: 15px 25px 0px; font-style: italic;">Showing <span id="category-count"></span></p>
+</div>
+
+<div class="flex-start-start flex-wrap directory-wrapper">
+	{.repeated section items}
+	<script>
+		var lat = location.markerLat;
+		var long = location.markerLng;
+		var coordinate = {lat:{location.markerLat}, lng: {location.markerLng}}
+		allCoordinates.push(coordinate);
+	</script>
+	{.if customContent.verified}
+	<article id="post-{id}" class="directory-list-item hover verified-item box-shadow mymeal-verified {categories} {@|item-classes}" data-item-id="{id}" >
+		{#  header  }
+		<div class="directory-image flex-start-end" style="{.if assetUrl}background-image:url({assetUrl})!important{.end}" >
+			<div style="background: rgba(255,255,255,0.5); width: 100%; height: 100%; border-top-left-radius: 6px; border-top-right-radius: 6px;" class="flex-start-end">
+				<img onclick="verifiedPopUp(true)" class="verified-badge hover" src="../assets/verified-mymeal.png">
+			</div>
+		</div>
+		<div class="directory-logo-wrapper flex-center-start">
+			{.if customContent.brandlogo}
+			<div class="directory-logo box-shadow" style="background-image: url({customContent.brandlogo.assetUrl})"></div>
+			{.end}
+			{.if location}
+			<p class="directory-city hover box-shadow" onclick="window.open('https://www.google.com/maps/search/{location.addressTitle} {location.addressLine1} {location.addressLine2}', '_blank')">📍 {location.addressLine2}</p>
+			{.end}
+		</div>
+		{#  Info  }
+		<div class="directory-info-container" onclick="window.open('{fullUrl}', '_self')">
+      <p class="blog-title" data-content-field="title">{title}</p>
+      <div class="flex-center-start flex-wrap" style="margin: 7px 0px;">
         {customContent.priceRank}  
         {.if categories }&nbsp;•&nbsp;
-        
         {.repeated section categories}
-            <a class="category-label drop-shadow" href="{collection.fullUrl}?tag={@|url-encode}">{@|url-encode}</a>
+        <a class="category-label drop-shadow" href="{collection.fullUrl}?tag={@|url-encode}">{@|url-encode}</a>&nbsp;
         {.end}
-        
+        {.if tags }
+        {.repeated section tags}
+        <a class="tag-label drop-shadow" href="{collection.fullUrl}?tag={tags}">&#x2713; {tags} Free Kitchen</a>&nbsp;
         {.end}
-        
-        </p>
+        {.end}
+      </div>
     </div>
-    <div class="flex-center-center directory-buttons">
-        <button class="styled-button large-button" onclick="https://form.jotform.com/230596919059065?restaurantName={title}">Request Restaurant</button>
-        <button onclick="window.open('{fullUrl}')" class="large-button styled-button-inverted">Details</button>
-    </div>
-  </article>
-   
-  {.end}
-
-{.or}
-
-  <!-- no items means no blog posts -->
-  <p><em>No blog posts yet.</em></p>
-
-{.end}
+				
+		<div class="flex-center-center directory-buttons">
+			<button onclick="window.open('{sourceUrl}')" class="large-button styled-button">Allergen Menu</button>
+			<button onclick="window.open('{fullUrl}', '_self')" class="large-button styled-button-inverted">Details</button>
+		</div>
+		{.end}
+	</article>
+	{#  NOT verified card  }
+	{.or}
+  	<article id="post-{id}" class="directory-list-item hover unverified-restaurant box-shadow {categories} {@|item-classes}" data-item-id="{id}" >
+		{#  header  }
+		<div class="directory-image flex-start-end" style="background-image:url({assetUrl})" style="opacity: 0.5;">
+			<div style="background: rgba(255,255,255,0.5); width: 100%; height: 100%; border-top-left-radius: 6px; border-top-right-radius: 6px;" class="flex-start-end">
+				
+			</div>
+		</div>
+		<div class="directory-logo-wrapper flex-center-start">
+			{.if customContent.brandlogo}
+			<div class="directory-logo box-shadow" style="background-image: url({customContent.brandlogo.assetUrl})"></div>
+			{.end}
+			{.if location}
+			<p class="directory-city hover box-shadow" onclick="window.open('https://www.google.com/maps/search/{location.addressTitle} {location.addressLine1} {location.addressLine2}', '_blank')">📍 {location.addressLine2}</p>
+			{.end}
+		</div>
+		{#  Info  }
+		<div class="directory-info-container">
+			<div class="flex-start-spacebetween">
+				<div>
+					<p class="blog-title" data-content-field="title">{title}</p>
+					<div class="flex-center-start flex-wrap" style="margin: 7px 0px;">
+						{customContent.priceRank}  
+						{.if categories }&nbsp;•&nbsp;
+						{.repeated section categories}
+						<a class="category-label drop-shadow" href="{collection.fullUrl}?tag={@|url-encode}">{@|url-encode}</a>&nbsp;
+						{.end}
+						{.if tags }
+						{.repeated section tags}
+						<a class="tag-label drop-shadow" href="{collection.fullUrl}?tag={tags}">&#x2713; {tags} Free Kitchen</a>&nbsp;
+						{.end}
+						{.end}
+					</div>
+				</div>
+				<div style="margin-right: -15px;" class="flex-start-end flex-column">
+				</div>
+			</div>
+		</div>
+		<div class="flex-center-center directory-buttons">
+			
+			<button onclick="window.open('{fullUrl}')" class="large-button styled-button-inverted">Details</button>
+		</div>
+		{.end}
+	</article>
+	
+	{.end}
+	{.or}
+	<!-- no items means no blog posts -->
+	<p><em>No blog posts yet.</em></p>
+	{.end}
 </div>
 <!-- pagination -->
 {.if pagination}
-  <nav class="blog-list-pagination">
-
-    <!-- newer page -->
-    {.if pagination.prevPage}
-      <a href="{pagination.prevPageUrl}">Newer</a>
-    {.or}
-      <a class="disabled">Newer</a>
-    {.end}
-
-    <!-- older page -->
-    {.if pagination.nextPage}
-      <a href="{pagination.nextPageUrl}">Older</a>
-    {.or}
-      <a class="disabled">Older</a>
-    {.end}
-
-  </nav>
+<nav class="blog-list-pagination">
+	<!-- newer page -->
+	{.if pagination.prevPage}
+	<a href="{pagination.prevPageUrl}">Newer</a>
+	{.or}
+	<a class="disabled">Newer</a>
+	{.end}
+	<!-- older page -->
+	{.if pagination.nextPage}
+	<a href="{pagination.nextPageUrl}">Older</a>
+	{.or}
+	<a class="disabled">Older</a>
+	{.end}
+</nav>
 {.end}
-
-<script>
-
-function verifiedPopUp(show){
-  console.log('clicked')
-  var popupWindow = document.getElementById('verified-popup');
-  if (show){
-    console.log("if")
-    popupWindow.style.display = "flex"
-  } else {
-    popupWindow.style.display = "none"
-    console.log('else')
-  }
-}
-
+<script >
+	var counter = document.getElementById('category-count')
+	  var divs = document.querySelectorAll("article");
+	if (divs.length === 1){
+	      var restaurantPlural = " restaurant"
+	    } else {
+	      var restaurantPlural = " restaurants"
+	    }
+	    counter.textContent = divs.length + restaurantPlural;
+	function reset(){
+	  
+	  console.log(divs)
+	  for (var i = 0; i < divs.length; i++) {
+	    divs[i].classList.remove('filtered-restaurant');
+	    console.log('reset')
+	  }
+	  var categoryButtons = document.getElementsByClassName('category-filter')
+	  for (var i = 0; i < categoryButtons.length; i++) {
+	    categoryButtons[i].classList.remove('active-category');
+	
+	  }
+	  
+	  if (divs.length === 1){
+	      var restaurantPlural = " restaurant"
+	    } else {
+	      var restaurantPlural = " restaurants"
+	    }
+	    counter.textContent = divs.length + restaurantPlural;
+	  
+	}
+	
+	function categorize(name){
+	  reset()
+	  var resetButton = document.getElementById('reset');
+	  var categoryButton = document.getElementById(name);
+	  categoryButton.classList.add('active-category')
+	  var divs = document.querySelectorAll("article");
+	  if (name === 'reset'){
+	    resetButton.style.display = "none";
+	    if (divs.length === 1){
+	      var restaurantPlural = " restaurant"
+	    } else {
+	      var restaurantPlural = " restaurants"
+	    }
+	    counter.textContent = divs.length + restaurantPlural;
+	    
+	  } else {
+	    var activeCounter = 0;
+	    resetButton.style.display = 'block';
+	    for (var i = 0; i < divs.length; i++) {
+	      if (!divs[i].classList.contains(name)) {
+	        divs[i].classList.add('filtered-restaurant')
+	      } else {
+	        activeCounter++;
+	      }
+	    }
+	    if (activeCounter === 1){
+	      var restaurantPlural = " restaurant"
+	    } else if (activeCounter - 1 === -1) {
+	      console.log('triggered')
+	      activeCounter = 0;
+	      var restaurantPlural = " restaurants"
+	      
+	
+	    }else {
+	      var restaurantPlural = " restaurants"
+	    }
+	    counter.textContent = activeCounter + restaurantPlural;
+	  }
+	  
+	}
+	
+	function initMap() {
+	  
+	  var map = new google.maps.Map(document.getElementById("map"), {
+	    zoom: 10,
+	    center: { lat: 39.7392, lng: -104.9903 },
+	    styles: [
+	  {
+	    "elementType": "geometry",
+	    "stylers": [
+	      {
+	        "color": "#f5f5f5"
+	      }
+	    ]
+	  },
+	  {
+	    "elementType": "labels.icon",
+	    "stylers": [
+	      {
+	        "visibility": "off"
+	      }
+	    ]
+	  },
+	  {
+	    "elementType": "labels.text.fill",
+	    "stylers": [
+	      {
+	        "color": "#616161"
+	      }
+	    ]
+	  },
+	  {
+	    "elementType": "labels.text.stroke",
+	    "stylers": [
+	      {
+	        "color": "#f5f5f5"
+	      }
+	    ]
+	  },
+	  {
+	    "featureType": "administrative.land_parcel",
+	    "elementType": "labels.text.fill",
+	    "stylers": [
+	      {
+	        "color": "#bdbdbd"
+	      }
+	    ]
+	  },
+	  {
+	    "featureType": "poi",
+	    "elementType": "geometry",
+	    "stylers": [
+	      {
+	        "color": "#eeeeee"
+	      }
+	    ]
+	  },
+	  {
+	    "featureType": "poi",
+	    "elementType": "labels.text.fill",
+	    "stylers": [
+	      {
+	        "color": "#757575"
+	      }
+	    ]
+	  },
+	  {
+	    "featureType": "poi.park",
+	    "elementType": "geometry",
+	    "stylers": [
+	      {
+	        "color": "#e5e5e5"
+	      }
+	    ]
+	  },
+	  {
+	    "featureType": "poi.park",
+	    "elementType": "labels.text.fill",
+	    "stylers": [
+	      {
+	        "color": "#9e9e9e"
+	      }
+	    ]
+	  },
+	  {
+	    "featureType": "road",
+	    "elementType": "geometry",
+	    "stylers": [
+	      {
+	        "color": "#ffffff"
+	      }
+	    ]
+	  },
+	  {
+	    "featureType": "road.arterial",
+	    "elementType": "labels.text.fill",
+	    "stylers": [
+	      {
+	        "color": "#757575"
+	      }
+	    ]
+	  },
+	  {
+	    "featureType": "road.highway",
+	    "elementType": "geometry",
+	    "stylers": [
+	      {
+	        "color": "#dadada"
+	      }
+	    ]
+	  },
+	  {
+	    "featureType": "road.highway",
+	    "elementType": "labels.text.fill",
+	    "stylers": [
+	      {
+	        "color": "#616161"
+	      }
+	    ]
+	  },
+	  {
+	    "featureType": "road.local",
+	    "elementType": "labels.text.fill",
+	    "stylers": [
+	      {
+	        "color": "#9e9e9e"
+	      }
+	    ]
+	  },
+	  {
+	    "featureType": "transit.line",
+	    "elementType": "geometry",
+	    "stylers": [
+	      {
+	        "color": "#e5e5e5"
+	      }
+	    ]
+	  },
+	  {
+	    "featureType": "transit.station",
+	    "elementType": "geometry",
+	    "stylers": [
+	      {
+	        "color": "#eeeeee"
+	      }
+	    ]
+	  },
+	  {
+	    "featureType": "water",
+	    "elementType": "geometry",
+	    "stylers": [
+	      {
+	        "color": "#c9c9c9"
+	      }
+	    ]
+	  },
+	  {
+	    "featureType": "water",
+	    "elementType": "labels.text.fill",
+	    "stylers": [
+	      {
+	        "color": "#9e9e9e"
+	      }
+	    ]
+	  }
+	]
+	  });
+	  
+	  allCoordinates.forEach(function (location) {
+	          var marker = new google.maps.Marker({
+	            position: location,
+	            map: map,
+	            icon: 'assets/pin.svg'
+	          });
+	        });
+	  
+	      return map;
+	  
+	}
+	
+	function addPins(allCoordinates){
+	  var locations = allCoordinates;
+	  locations.forEach(function (location) {
+	    
+	    var marker = new google.maps.Marker({
+	      position: location,
+	      map: map,
+	    });
+	  });
+	}
+	    
 </script>
+<script
+	src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBKuNK8g9qwz4O5y1Sll9cff4z28H3sBt0&callback=initMap"
+	async
+	defer
+	></script>
+

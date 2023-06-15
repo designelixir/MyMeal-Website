@@ -1,47 +1,120 @@
 
 {.section item}
 <div class="directory-breadcrumbs flex-center-start flex-wrap">
-<a href="/restaurant-directory" class="hover directory-breadcrumb-parent">MyMeal Directory /&nbsp;</a>
+
 <h2 class="directory-breadcrumb-child">{title}</h2>
 </div>
 <br>
-<a href="/restaurant-directory" class="styled-button-inverted large-button">&larr; Back to Directory</a>
+<a href="/directory" class="styled-button-inverted large-button">&larr; Back to Directory</a>
 <div style="height: 50px"></div>
 <section class="box-shadow" style="border-radius: 8px">
-    {.main-image?}
-      <div class="directory-image-lg flex-start-end" style="background-image:url({assetUrl})">
-        <img class="verified-badge hover" src="../assets/verified-mymeal.png">
+    
+      <div class="directory-image-lg flex-start-spacebetween" {.if assetUrl}style="background-image:url({assetUrl})"{.or}style="background-image:url(../assets/basic-bg.png)"{.end}>
+        <div class="directory-header-wrapper">
+            <div class="flex-center-start directory-header-logo-info">
+                {.if customContent.brandlogo}
+                <div class="directory-header-logo-container">
+                <img src="{customContent.brandlogo.assetUrl}" class="directory-header-logo" alt="{title} logo">
+                </div>
+                {.end}
+                <div class="directory-header-info">
+                <div class="flex-center-start">
+                {.if customContent.verified}<img src="../assets/verified-mymeal.png" style="height: 35px; margin-right: 5px;" class="hover" onclick="verifiedPopUp(true)" alt="mymeal verified badge"/>{.end}
+                <h2 style="color: black;">{title}</h2></div>
+            {.if location}
+                
+                <p class=" hover" onclick="window.open('https://www.google.com/maps/search/{location.addressTitle} {location.addressLine1} {location.addressLine2}', '_blank')">📍 {location.addressLine1}, {location.addressLine2}</p>
+                
+            {.end}
+            <div class="flex-center-start flex-wrap" style="margin: 7px 0px;">
+                {customContent.priceRank}  
+                {.if categories }&nbsp;•&nbsp;
+                {.repeated section categories}
+                <a class="category-label drop-shadow" href="{collection.fullUrl}?tag={@|url-encode}">{@|url-encode}</a>&nbsp;
+                {.end}
+                {.end}
+                {.if tags }
+                {.repeated section tags}
+                <a class="tag-label drop-shadow" href="{collection.fullUrl}?tag={tags}">&#x2713; {tags} Free Kitchen</a>&nbsp;
+                {.end}
+                {.end}
+            </div>
+            
+            </div>
+            
+        
+        </div>
+            
+        </div>
+        
+        
       </div>
-    {.end}
-    <div class="directory-logo-wrapper-lg flex-center-start">
-        {.if customContent.brandlogo}
-            <div class="directory-logo box-shadow" style="background-image: url({customContent.brandlogo.assetUrl})"></div> 
-        {.end}
-        <div class="directory-page-address">
+    
         
-        <p class=" hover" onclick="window.open('https://www.google.com/maps/search/{location.addressTitle} {location.addressLine1} {location.addressLine2}', '_blank')">📍 {location.addressLine1}, {location.addressLine2}</p>
-        </div>
-    </div>
+    
     <div class="directory-page-info">
-        <h3 style="color: black;">{title}</h3>
-        <p class="flex-center-start flex-wrap" style="margin: 7px 0px;">
-        {customContent.priceRank}  
-        {.if categories }&nbsp;•&nbsp;{.end}
-        {.repeated section categories}
-            <a class="category-label drop-shadow" href="{collection.fullUrl}?tag={@|url-encode}">{categories}</a>
-        {.end}
-        </p>
-        <div class="flex-center-center" style="padding: 25px 0px 0px;">
-        
-        <button class="large-button styled-button">View Filterable Allergy Menu</button>
-        </div>
-        <br>
-        <hr>
-        <h4>Kitchen Info</h4>
-        {body}
+    <div class="restaurant-tab-container">
+
+    {.if customContent.verified}
+        <button onclick="switchTab(0)" class="tab-button active-tab-button" id="tab-button-1">Allergen Menu</button>
+    {.or}
+        <button onclick="switchTab(2)" class="tab-button active-tab-button" id="tab-button-3">Request This Restaurant</button>
+    {.end}
+    <button onclick="switchTab(1)" class="tab-button" id="tab-button-2">Details</button>
+  
+    {.if customContent.verified}
+  <div id="tab1" class="directory-tab visible-tab">
+    <div class="iframe-container" id="mymeal-menu-iframe">
+      <iframe src="{sourceUrl}" frameborder="0" allowfullscreen></iframe>
     </div>
-    </section>
-    <h4>What our community is saying about <strong>{title}:</strong></h4>
+    {.or}
+    <div id="tab3" class="directory-tab">
+    
+    <iframe
+      id="JotFormIFrame-230596919059065"
+      title="MyMeal Restaurant Request Form"
+      onload="window.parent.scrollTo(0,0)"
+      allowtransparency="true"
+      allowfullscreen="true"
+      allow="geolocation; microphone; camera"
+      src="https://form.jotform.com/230596919059065?restaurantName={title}"
+      frameborder="0"
+      style="min-width:100%;max-width:100%;height:539px;border:none;"
+      scrolling="no"
+    >
+    </iframe>
+  
+    </div>
+    {.end}
+  </div>
+  <div id="tab2" class="directory-tab">{body}</div>
+  
+
+  <script>
+    function switchTab(tabIndex) {
+      
+      var tabs = document.getElementsByClassName("directory-tab");
+      var buttons = document.getElementsByClassName("tab-button")
+      
+
+      
+      var selectedTab = document.getElementById("tab" + (tabIndex + 1));
+      var selectedTabButton = document.getElementById("tab-button-" + (tabIndex + 1))
+      if (selectedTab) {
+        for (var i = 0; i < tabs.length; i++) {
+        tabs[i].classList.remove("visible-tab")
+        buttons[i].classList.remove("active-tab-button")
+      }
+        selectedTab.classList.add("visible-tab")
+        selectedTabButton.classList.add("active-tab-button")
+      }
+    }
+  </script>
+
+
+
+        
+        
     
 
 {.end}

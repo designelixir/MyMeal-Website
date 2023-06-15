@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="b" data-name="Layer 2" xmlns="http://www.w3.org/2000/svg" width="173" height="54" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 173 54">
+  <defs>
+    <style>
+      .f {
+        fill: #ccc;
+      }
+
+      .g {
+        fill: #2d9cdb;
+        filter: url(#d);
+      }
+    </style>
+    <filter id="d" data-name="drop-shadow-1" filterUnits="userSpaceOnUse">
+      <feOffset dx="2" dy="2"/>
+      <feGaussianBlur result="e" stdDeviation="5"/>
+      <feFlood flood-color="#000" flood-opacity=".55"/>
+      <feComposite in2="e" operator="in"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+  </defs>
+  <g id="c" data-name="Layer 1">
+    <polygon class="f" points="155.266 13.337 134.152 3.221 134.145 13.322 155.266 13.337"/>
+    <polygon class="f" points="34.496 13.25 34.504 3.149 13.375 13.235 34.496 13.25"/>
+    <rect class="g" x="13.42" y="13.29" width="141.837" height="23.105"/>
+  </g>
+</svg>

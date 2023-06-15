@@ -37,13 +37,14 @@ blockquote {padding-left: 10px; border-left: 2px solid var(--blue)}
 ul {margin-left: 0!important;}
 @media screen and (max-width: 900px) {
   h1 {font-size: 32px; line-height: 38px;}
-  .mobile-flex-wrap {flex-wrap: wrap;}
+  
 }
 
 .basic-padding {padding: 25px 50px;}
 
 .bold {font-weight: 600;}
 .blue-text {color: var(--blue)}
+.white-text {color: white!important;}
 .icon {width: 75px; height: auto;}
 .hover:hover {
     cursor: pointer;
@@ -192,24 +193,29 @@ main {padding: 5vw;}
 // Directory 
 .category {padding: 0px 10px; background-color: white;  margin: 5px; border-radius: 20px;}
 .category a { font-size: 14px;}
-.active-category {background-color: var(--blue)!important; color: white!important;}
+.category-filter {background: var(--offgray); padding: 0 10px; border-radius: 15px; margin: 5px; color: black;}
+.category-filter p {font-size: 12px;  line-height: 12px;}
+.active-category {background-color: var(--offblack)!important; color: white!important; border: 1px solid white!important;}
 .category:hover {border: 1px solid black;}
-.directory-filter {background: rgba(0,0,0,0.05); border-radius: 35px; margin: 25px; padding: 10px 25px;}
+.directory-filter {background: var(--blue);  margin: -20px 0 0;  padding: 10px 25px; width: 100%;}
 .directory {border: 0.5px solid black; border-top-right-radius: 8px; border-top-left-radius: 8px;}
-.directory-wrapper {padding: 0px 50px 25px;}
-#directory-map-container {height: 50vh;}
-.directory-list-item {margin-right: 25px; margin-bottom: 25px; width: 100%; min-width: 350px; max-width: 24vw;}
+.directory-wrapper {padding: 0px 10px 25px;}
+
+
+.directory-list-item {margin-bottom: 25px; width: 325px; margin:15px; height: auto; }
 .filtered-restaurant {display: none;}
 .verified-item {border: 2px solid var(--blue); border-radius: 8px;}
-.directory-image {width: 100%; height: 100px; background-size: cover; background-position: center center; background-repeat: no-repeat; border-radius: 6px 6px 0px 0px}
+.directory-image {width: 100%; height: 100px; background-size: cover; background-position: center center; background-repeat: no-repeat; border-radius: 6px 6px 0px 0px; background-color: gray; background-image: url('../assets/basic-bg.png')}
 .directory-logo-wrapper {margin-top: -65px; height: 80px;}
 .directory-logo {height: 75px; width: 75px; margin-left: 15px; background-color: var(--graywhite); background-repeat: no-repeat; border-radius: 37px; background-size: 90%; background-position: center center; z-index: 2;}
-.directory-city {color: black; font-size: 14px; background: white; padding:0 10px; margin-left: -2px; border-radius: 3px; opacity: 0.65}
+.directory-city {color: black; font-size: 14px; background: white; padding:0 10px; margin-left: -2px; border-radius: 3px;}
 .directory-logo-wrapper:hover .directory-city {opacity: 1;}
 
-.directory-info-container {padding: 15px; background: white;}
-.category-label {font-size: 12px; color: black; background: var(--offgray); padding: 2.5px 10px; border-radius: 15px;}
+.directory-info-container {padding: 15px; background: white; border-radius: 6px;}
+.category-label {font-size: 11px; color: black; background: var(--offgray); padding: 2.5px 10px; border-radius: 15px; border: 1px solid black;}
 .category-label:hover {color: white; background-color: var(--blue); font-weight: 500;}
+.tag-label {font-size: 11px; color: white; background: var(--blue); padding: 2.5px 10px; border-radius: 15px;}
+
 .directory-buttons { padding: 15px;}
 
 .verified-badge {height: 60px; margin-top: -15px;  z-index: 3;}
@@ -221,11 +227,19 @@ main {padding: 5vw;}
 }
 .pop-up {max-width: 1000px; padding: 50px; border-radius: 8px; border: 2px solid var(--offblack);}
 
+// Dedicated Free Banner
+.dedicated-free-banner {min-width: 385px; max-width: 24vw; width: 100%; height: 40px; background-image: url(../assets/dedicated-free-banner_1.png); background-size: 100% 100%; background-repeat: no-repeat; background-position: center center; 
+ z-index: 2; margin-left: -35px;
+}
+
+
 @media screen and (max-width: 1000px) {
   .directory-wrapper {padding: 0px 25px 25px;}
+  .category-filter p {font-size: 14px; color: black; line-height: 12px;}
   
 }
 #map {
+  z-index: -1;
   height: 400px;
   width: 100%;
   border-top-left-radius: 8px;
@@ -236,15 +250,55 @@ main {padding: 5vw;}
 //Directory Item 
 .directory-breadcrumb-parent {color: var(--offblack); font-size: 32px; font-weight: 300;}
 .directory-breadcrumb-child {color: var(--blue); font-size: 32px; font-weight: 500;}
-.directory-image-lg {width: 100%; height: 200px; background-size: cover; background-position: center center; background-repeat: no-repeat; border-radius: 6px 6px 0px 0px}
+.directory-image-lg {width: 100%; background-size: cover; background-image: url('../assets/basic-bg.png'); background-position: center center; background-repeat: no-repeat; border-radius: 6px 6px 0px 0px; padding: 25px;}
 .directory-image-lg .verified-badge {height: 80px}
 .directory-logo-wrapper-lg {height: 100px; margin-top: -90px;  }
 .directory-logo-wrapper-lg .directory-logo {height: 100px; width: 100px; border-radius: 120px;}
 .directory-page-address{color: black; font-size: 14px; background: rgba(255, 255,255,0.85); padding: 0px 15px; margin-left: -10px; margin-right: 25px; border-radius: 3px;}
-.directory-page-info {padding: 15px;}
 
 
+.directory-header-wrapper {padding: 25px 0px; margin-top: 25px; width: 100%; }
 
+.directory-header-info{color: black; font-size: 14px; background: rgba(255, 255,255,0.85); padding: 15px 15px 15px 75px; width: 100%; margin-left: -50px; border-radius: 3px;}
+.direction-icon {height: 40px; margin: 10px;}
+.directory-header-logo-container {z-index: 2;}
+.directory-header-logo-container img {height: 150px; border-radius: 75px; border: 1px solid black; z-index: 2;}
+
+@media screen and (max-width: 800px) {
+  .directory-wrapper {padding: 0px 25px 25px;}
+  .directory-header-logo-info {flex-wrap: wrap;}
+  .category-filter p {font-size: 14px; color: black; line-height: 12px;}
+  .directory-header-info {padding: 15px; margin-left: unset;}
+  .directory-header-logo-container {width: 100%; margin-top: -100px; text-align: center; }
+  
+}
+
+// Tabs
+
+.restaurant-tab-container {margin-top: -37px;}
+.tab-button {font-size: 16px; margin: 0; border: none; background-color: var(--offwhite); color: black; padding: 5px 25px; border-radius: 8px 8px 0px 0px; }
+.active-tab-button {font-size: 16px; padding: 2px 0px; margin: 0!important; border: none; background-color: var(--blue); color: white; padding: 5px 25px; border-radius: 8px 8px 0px 0px; border: 1px solid black; border-bottom: 2px solid var(--offgray)!important; z-index: 2;}
+#tab2 {padding: 25px;}
+.directory-tab {border-top: 3px solid white;}
+.iframe-container {
+  position: relative;
+  width: 100%;
+  height: 0;
+  padding-bottom: 56.25%; /* Aspect ratio 16:9 (change as needed) */
+}
+
+.iframe-container iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+#mymeal-menu-iframe {height: 60vh;}
+
+.directory-tab {display: none;  border: 1px solid black; border-radius: none; margin-top: -1px; z-index: 2;}
+.visible-tab {display: block!important;}
 
 //FullScreen Region 
 .full-screen-body { height: 100vh;
@@ -260,7 +314,7 @@ footer {margin-top: 25px; background: var(--blue); background-image: url('../ass
 .footer-navigation-item-link {color: white!important;}
 .active-footer-link {color: white!important; text-decoration: underline;}
 
-#homepage {height: 50px; border: 1px solid red;}
+#homepage {height: 50px; }
 // Squarespace Blocks
 .sqs-block {padding: 0!important;}
 .sqs-layout > .sqs-row {margin: 0!important;}
