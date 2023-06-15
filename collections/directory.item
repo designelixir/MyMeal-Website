@@ -112,8 +112,10 @@
   </script>
 
 
-
-        
+</section>
+<br>
+<h3>What our community is saying about {title}:</h3>
+ {@|comments}       
         
     
 
