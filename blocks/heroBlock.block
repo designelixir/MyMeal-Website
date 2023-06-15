@@ -7,4 +7,4 @@
     <div class="heroDownload-wrapper">{@|apply downloadInverted.block}</div>
 </div>
         {@|apply tabs.block}
-      </div>
+</div>
