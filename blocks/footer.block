@@ -15,7 +15,7 @@
             {.end}
             
         </li>
-        &nbsp;•&nbsp;
+        {.alternates with}&nbsp;•&nbsp;
         {.end}
     </ul>
     <squarespace:block-field id="footerSocial" columns="1" />

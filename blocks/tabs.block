@@ -16,6 +16,7 @@
     <div class="tab-content">
         <p style="text-transform: uppercase; opacity: 0.65; font-size: 18px;">MyMeal for Consumers</p>
         <squarespace:block-field id="forConsumersTitle" columns="1" />
+        
       
         <div class="inline-icon-text flex-start-start">
          <div class="icon"><squarespace:block-field id="forConsumersIcon1" columns="1" /></div>
@@ -45,7 +46,7 @@
     <div class="tab-content">
         <p style="text-transform: uppercase; opacity: 0.65; font-size: 18px;">MyMeal for Restaurants</p>
         <squarespace:block-field id="forRestaurantsTitle" columns="1" />
-      
+      <br>
         <div class="inline-icon-text flex-start-start">
          <div class="icon"><squarespace:block-field id="forRestaurantsIcon1" columns="1" /></div>
          <div class="block"><squarespace:block-field id="forRestaurantsText1" columns="1"/></div>        
