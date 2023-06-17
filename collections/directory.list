@@ -89,9 +89,10 @@
         <a class="category-label drop-shadow" href="{collection.fullUrl}?tag={@|url-encode}">{@|url-encode}</a>&nbsp;
         {.end}
         {.if tags }
-        {.repeated section tags}
+        
+		<div id="dedicated-free-tag"></div>
         <a class="tag-label drop-shadow" href="{collection.fullUrl}?tag={tags}">&#x2713; {tags} Free Kitchen</a>&nbsp;
-        {.end}
+        
         {.end}
       </div>
     </div>
@@ -106,14 +107,14 @@
 	{.or}
   	<article id="post-{id}" class="directory-list-item hover unverified-restaurant box-shadow {categories} {@|item-classes}" data-item-id="{id}" >
 		{#  header  }
-		<div class="directory-image flex-start-end" style="background-image:url({assetUrl})" style="opacity: 0.5;">
+		<div class="directory-image flex-start-end" {.if customContent.bannerImgUrl}style="background-image:url({customContent.bannerImgUrl})"{.or}style="background-image:url(../assets/basic-bg.png)"{.end}>
 			<div style="background: rgba(255,255,255,0.5); width: 100%; height: 100%; border-top-left-radius: 6px; border-top-right-radius: 6px;" class="flex-start-end">
 				
 			</div>
 		</div>
 		<div class="directory-logo-wrapper flex-center-start">
-			{.if customContent.brandlogo}
-			<div class="directory-logo box-shadow" style="background-image: url({customContent.brandlogo.assetUrl})"></div>
+			{.if assetUrl}
+			<div class="directory-logo box-shadow" style="background-image: url({assetUrl})"></div>
 			{.end}
 			{.if location}
 			<p class="directory-city hover box-shadow" onclick="window.open('https://www.google.com/maps/search/{location.addressTitle} {location.addressLine1} {location.addressLine2}', '_blank')">📍 {location.addressLine2}</p>
@@ -131,9 +132,9 @@
 						<a class="category-label drop-shadow" href="{collection.fullUrl}?tag={@|url-encode}">{@|url-encode}</a>&nbsp;
 						{.end}
 						{.if tags }
-						{.repeated section tags}
-						<a class="tag-label drop-shadow" href="{collection.fullUrl}?tag={tags}">&#x2713; {tags} Free Kitchen</a>&nbsp;
-						{.end}
+						
+						<a class="tag-label drop-shadow" href="{collection.fullUrl}?tag={tags}">&#x2713;{tags} Free Kitchen</a>&nbsp;
+						
 						{.end}
 					</div>
 				</div>
