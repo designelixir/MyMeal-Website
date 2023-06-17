@@ -135,27 +135,54 @@ function addToSpecialtyItems() {
         {.if customContent.untouchedIngredients}
             <li class="yes-procedure"> Uses untouched ingredients </li>
             {.or}
+            {.if customContent.uponRequestUntouchedIngredients}
+            <li class="request-procedure"> Uses untouched ingredients (only upon request)</li>
+            {.or}
             <li class="no-procedure"> Uses untouched ingredients </li>
+            {.end}
         {.end}
         {.if customContent.cleanUtensils}
-            <li class="yes-procedure"> Uses clean equipment </li>
+            <li class="yes-procedure"> Uses clean utensils </li>
             {.or}
-            <li class="no-procedure"> Uses clean equipment </li>
+            {.if customContent.uponRequestCleanUtensils}
+            <li class="request-procedure"> Uses clean utensils (only upon request)</li>
+            {.or}
+            <li class="no-procedure"> Uses clean utensils </li>
+            {.end}
         {.end}
         {.if customContent.changeGloves}
             <li class="yes-procedure"> Changes gloves </li>
             {.or}
-            <li class="no-procedure"> Changes gloves </li>
-        {.end}
-        {.if customContent.allergenResource}
-            <li class="yes-procedure"> Has a staff allergen resource booklet </li>
+            {.if customContent.uponRequestChangeGloves}
+            <li class="request-procedure"> Changes gloves (only upon request)</li>
             {.or}
-            <li class="no-procedure"> Has a staff allergen resource booklet </li>
+            <li class="no-procedure"> Changes gloves </li>
+            {.end}
+        {.end}
+        {.if customContent.hasAllergyMenu}
+            <li class="yes-procedure"> Has an allergy menu </li>
+            {.or}
+            {.if customContent.uponRequestHasAllergyMenu}
+            <li class="request-procedure"> Has an allergy menu - (only on MyMeal App)</li>
+            {.or}
+            <li class="no-procedure"> Has an allergy menu </li>
+            {.end}
         {.end}
         {.if customContent.marksAllergen}
             <li class="yes-procedure"> Marks your order "allergy alert" </li>
             {.or}
+            {.if customContent.uponRequestHasAllergyMenu}
+            <li class="request-procedure"> Marks your order "allergy alert" - (only upon request)</li>
+            {.or}
             <li class="no-procedure"> Marks your order "allergy alert" </li>
+            {.end}
+        {.end}
+        {.if customContent.allergenResource}
+            <li class="yes-procedure"> Has a staff allergen resource booklet </li>
+            {.or}
+            
+            <li class="no-procedure"> Has a staff allergen resource booklet </li>
+            
         {.end}
        
       </ul>
