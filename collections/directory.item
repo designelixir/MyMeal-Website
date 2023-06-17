@@ -89,12 +89,7 @@ function addToSpecialtyItems() {
     <div class="restaurant-tab-container">
 
     
-        <button onclick="switchTab(0)" class="tab-button active-tab-button" id="tab-button-1">
-          {.if customContent.verified}Allergen Menu{.or}Details{.end}</button>
-    
-        <button onclick="switchTab(1)" class="tab-button" id="tab-button-2">Reviews</button>
-  
-    
+        
     
   <div id="tab1" class="directory-tab visible-tab ">
   <div class="directory-details light-padding">
