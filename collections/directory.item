@@ -9,7 +9,7 @@
 <div style="height: 50px"></div>
 <section class="box-shadow" style="border-radius: 8px">
     
-      <div class="directory-image-lg flex-start-spacebetween" {.if assetUrl}style="background-image:url({assetUrl})"{.or}style="background-image:url(../assets/basic-bg.png)"{.end}>
+      <div class="directory-image-lg flex-start-spacebetween" {.if assetUrl}style="background-image:url({assetUrl})"{.or}style="background-image:url(assets/basic-bg.png)"{.end}>
         <div class="directory-header-wrapper">
             <div class="flex-center-start directory-header-logo-info">
                 {.if customContent.brandlogo}
@@ -60,16 +60,28 @@
     {.or}
         <button onclick="switchTab(2)" class="tab-button active-tab-button" id="tab-button-3">Request This Restaurant</button>
     {.end}
-    <button onclick="switchTab(1)" class="tab-button" id="tab-button-2">Details</button>
+    <button onclick="switchTab(1)" class="tab-button" id="tab-button-2">Reviews</button>
   
     {.if customContent.verified}
   <div id="tab1" class="directory-tab visible-tab">
+    <div style="padding: 0px 15px;">
+    <h4 style="color: var(--blue)">Details</h4>
+    {body}
+    </div>
+    <h4 style="color: var(--blue); padding: 15px;">Allergen Menu</h4>
+    <div class='flex-start-start'>
     <div class="iframe-container" id="mymeal-menu-iframe">
+    
       <iframe src="{sourceUrl}" frameborder="0" allowfullscreen></iframe>
     </div>
+    </div>
     {.or}
-    <div id="tab3" class="directory-tab">
-    
+    <div id="tab3" class="directory-tab visible-tab">
+    <div style="padding: 0px 15px">
+    <h4 style="color: var(--blue)">Details</h4>
+    {body}
+    <h4 style="color: var(--blue)">Request This Restaurant</h4>
+    </div>
     <iframe
       id="JotFormIFrame-230596919059065"
       title="MyMeal Restaurant Request Form"
@@ -87,7 +99,10 @@
     </div>
     {.end}
   </div>
-  <div id="tab2" class="directory-tab">{body}</div>
+  <div id="tab2" class="directory-tab">
+    <h4 style="color: var(--blue)">What Our Community is Saying About {title}</h4>
+    {@|comments}       
+  </div>
   
 
   <script>
@@ -114,9 +129,6 @@
 
 </section>
 <br>
-<h3>What our community is saying about {title}:</h3>
- {@|comments}       
-        
-    
+
 
 {.end}
