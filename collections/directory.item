@@ -137,7 +137,7 @@ function addToSpecialtyItems() {
             {.or}
             <li class="no-procedure"> Uses untouched ingredients </li>
         {.end}
-        {.if customContent.cleanEquipment}
+        {.if customContent.cleanUtensils}
             <li class="yes-procedure"> Uses clean equipment </li>
             {.or}
             <li class="no-procedure"> Uses clean equipment </li>
