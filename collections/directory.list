@@ -64,18 +64,16 @@
 	{.if customContent.verified}
 	<article id="post-{id}" class="directory-list-item hover verified-item box-shadow mymeal-verified {categories} {@|item-classes}" data-item-id="{id}" >
 		{#  header  }
-		{.if assetUrl}
-		<div class="directory-image flex-start-end" style="background-image:url({assetUrl})!important" >
-		{.or}
-		<div class="directory-image flex-start-end" style="background-image:url('../assets/basic-bg.png')!important; background: 1px solid red;" >
-		{.end}
+		
+		<div class="directory-image flex-start-end" {.if customContent.bannerImgUrl}style="background-image:url({customContent.bannerImgUrl})"{.or}style="background-image:url(../assets/basic-bg.png)"{.end} >
+		
 			<div style="background: rgba(255,255,255,0.5); width: 100%; height: 100%; border-top-left-radius: 6px; border-top-right-radius: 6px;" class="flex-start-end">
 				<img onclick="verifiedPopUp(true)" class="verified-badge hover" src="../assets/verified-mymeal.png">
 			</div>
 		</div>
 		<div class="directory-logo-wrapper flex-center-start">
-			{.if customContent.brandlogo}
-			<div class="directory-logo box-shadow" style="background-image: url({customContent.brandlogo.assetUrl})"></div>
+			{.if assetUrl}
+			<div class="directory-logo box-shadow" style="background-image: url({assetUrl})"></div>
 			{.end}
 			{.if location}
 			<p class="directory-city hover box-shadow" onclick="window.open('https://www.google.com/maps/search/{location.addressTitle} {location.addressLine1} {location.addressLine2}', '_blank')">📍 {location.addressLine2}</p>
