@@ -41,7 +41,8 @@ ul {margin-left: 0!important;}
 }
 
 .basic-padding {padding: 25px 50px;}
-
+.light-padding {padding: 15px 25px;}
+.hr-line {height: 1px; width: 100%; border-bottom: 2px solid var(--offgray); margin: 10px 0px;}
 .bold {font-weight: 600;}
 .blue-text {color: var(--blue)}
 .white-text {color: white!important;}
@@ -91,6 +92,7 @@ main {padding: 5vw;}
   .site-navigation-item {margin: 5px 10px;}
   .site-header {height: 160px}
   .site-logo {margin-top: 25px;}
+  
 }
 
 // Main CMS Injection
@@ -237,6 +239,9 @@ main {padding: 5vw;}
   .directory-wrapper {padding: 0px 25px 25px;}
   .category-filter p {font-size: 14px; color: black; line-height: 12px;}
   
+}
+#directory-map-container {
+  z-index: -1;
 }
 #map {
   z-index: -1;
@@ -400,3 +405,7 @@ footer {margin-top: 25px; background: var(--blue); background-image: url('../ass
 
 // Procedures 
 .green-procedures {color: green;}
+.yes-procedure {color: green; list-style-image: url('../assets/check.png')}
+.no-procedure {color: red; list-style-image: url('../assets/x.png')}
+#preprocess-specialty-items {display: none;}
+#specialtyItems li{list-style-type: none; margin: 5px; background: var(--offgray); border-radius: 25px; padding: 5px 10px;}

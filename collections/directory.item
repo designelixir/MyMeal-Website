@@ -1,4 +1,39 @@
+<script>
+console.log(String({customContent.specialtyItems}))
+function addToSpecialtyItems() {
+  var span = document.getElementById('preprocess-specialty-items'); // Get the span element
+  var div = document.getElementById('specialtyItems'); // Get the div element
 
+  // Retrieve the text content from the span and split it by commas
+  var items = span.textContent.split(',');
+
+  // Iterate through the items and create a list item for each
+  for (var i = 0; i < items.length; i++) {
+    var listItem = document.createElement('li'); // Create a new list item
+    listItem.textContent = items[i].trim(); // Set the text content of the list item, trimming any extra whitespace
+    div.appendChild(listItem); // Add the list item to the div
+  }
+}
+
+    function switchTab(tabIndex) {
+      
+      var tabs = document.getElementsByClassName("directory-tab");
+      var buttons = document.getElementsByClassName("tab-button")
+      
+
+      
+      var selectedTab = document.getElementById("tab" + (tabIndex + 1));
+      var selectedTabButton = document.getElementById("tab-button-" + (tabIndex + 1))
+      if (selectedTab) {
+        for (var i = 0; i < tabs.length; i++) {
+        tabs[i].classList.remove("visible-tab")
+        buttons[i].classList.remove("active-tab-button")
+      }
+        selectedTab.classList.add("visible-tab")
+        selectedTabButton.classList.add("active-tab-button")
+      }
+    }
+  </script>
 {.section item}
 <div class="directory-breadcrumbs flex-center-start flex-wrap">
 
@@ -53,48 +88,92 @@
     <div class="directory-page-info">
     <div class="restaurant-tab-container">
 
-    {.if customContent.verified}
-        <button onclick="switchTab(0)" class="tab-button active-tab-button" id="tab-button-1">Allergen Menu</button>
-    {.or}
-        <button onclick="switchTab(2)" class="tab-button active-tab-button" id="tab-button-3">Details</button>
-    {.end}
-    <button onclick="switchTab(1)" class="tab-button" id="tab-button-2">Reviews</button>
+    
+        <button onclick="switchTab(0)" class="tab-button active-tab-button" id="tab-button-1">
+          {.if customContent.verified}Allergen Menu{.or}Details{.end}</button>
+    
+        <button onclick="switchTab(1)" class="tab-button" id="tab-button-2">Reviews</button>
   
-    {.if customContent.verified}
     
-  <div id="tab1" class="directory-tab visible-tab">
-  {.if body}
-    <div style="padding: 0px 15px;">
     
+  <div id="tab1" class="directory-tab visible-tab ">
+  <div class="directory-details light-padding">
+  {.if customContent.verified}{.or}<p>This restaurant is <strong>not verified with MyMeal.</strong> We've vetted this restaurant as a good candidate for a filterable allergen menu based on our community's feedback, and we've gathered basic information about their kitchen procedures. Request this restaurant with the form below, and we'll contact you if they work with us to make a filterable allergen menu!</p>{.end}
     <h4 style="color: var(--blue)">Details:</h4>
-    {body}
-    </div>
-    {.end}
-    {.if fullUrl}
-    <h4 style="color: var(--blue); padding: 15px;">Allergen Menu:</h4>
-    <div class='flex-start-start'>
-    <div class="iframe-container" id="mymeal-menu-iframe">
+    {.if customContent.specialtyItems}
     
-      <iframe src="{sourceUrl}" frameborder="0" allowfullscreen></iframe>
+    <span id="preprocess-specialty-items">{customContent.specialtyItems}</span>
+    <div id="specialtyItems" class="flex-center-start">
+    <p style="font-weight: 700;">Specialty Items: &nbsp;</p>
     </div>
-    </div>
+    <script>addToSpecialtyItems(`{customContent.specialtyItems}`)</script>
+    <div class="hr-line"></div>
     {.end}
-    {.or}
-    <div id="tab3" class="directory-tab visible-tab">
-    
-    <div style="padding: 15px">
-    <p>This restaurant is <strong>not verified with MyMeal.</strong> We've vetted this restaurant as a good candidate for a filterable allergen menu based on our community's feedback, and we've gathered basic information about their kitchen procedures. Request this restaurant with the form below, and we'll contact you if they work with us to make a filterable allergen menu!</p>
-    {.if body}
-    <h4 style="color: var(--blue)">Details:</h4>
-      <ul class="green-procedures">
-        {.if cookSeperate}<li class="yes-procedure"> Cooks on seperate equipment </li>{.or}
-        <li class="no-procedure"> Cooks on seperate equipment </li>{.end}
-      </ul>
+    {.if tags }
+    <div class="flex-center-start">
+        {.repeated section tags}
+        
+        <p style="font-weight: 700;">Dedicated Free From: &nbsp;</p>
+        <p ><span class="tag-label">{tags} </span></p>
+        {.end}
+        </div>
+        <div class="hr-line"></div>
+        
+        {.end}
 
-    {body}
-    {.end}
-    <h4 style="color: var(--blue)">Request This Restaurant</h4>
+      <p style="font-weight: 700;">Cross Contact Procedures:</p>
+      <ul class="green-procedures">
+        {.if customContent.cookSeperate}
+            <li class="yes-procedure"> Cooks on seperate equipment </li>
+            {.or}
+            {.if customContent.uponRequestCookSeperate}
+            <li class="request-procedure"> Cooks on seperate equipment (upon request)</li>
+            {.or}
+            <li class="no-procedure"> Cooks on seperate equipment </li>
+            {.end}
+        {.end}
+        {.if customContent.untouchedIngredients}
+            <li class="yes-procedure"> Uses untouched ingredients </li>
+            {.or}
+            <li class="no-procedure"> Uses untouched ingredients </li>
+        {.end}
+        {.if customContent.cleanEquipment}
+            <li class="yes-procedure"> Uses clean equipment </li>
+            {.or}
+            <li class="no-procedure"> Uses clean equipment </li>
+        {.end}
+        {.if customContent.changeGloves}
+            <li class="yes-procedure"> Changes gloves </li>
+            {.or}
+            <li class="no-procedure"> Changes gloves </li>
+        {.end}
+        {.if customContent.allergenResource}
+            <li class="yes-procedure"> Has a staff allergen resource booklet </li>
+            {.or}
+            <li class="no-procedure"> Has a staff allergen resource booklet </li>
+        {.end}
+        {.if customContent.marksAllergen}
+            <li class="yes-procedure"> Marks your order "allergy alert" </li>
+            {.or}
+            <li class="no-procedure"> Marks your order "allergy alert" </li>
+        {.end}
+       
+      </ul>
+      <div class="hr-line"></div>
+      
+      {body}
+      <div class="hr-line"></div>
+
     </div>
+      {.if customContent.verified}
+      
+      <h4 style="color: var(--blue); padding-left: 25px;">Allergen Menu:</h4>
+      <div class="iframe-container" id="mymeal-menu-iframe">
+        <iframe src="{sourceUrl}" frameborder="0" allowfullscreen></iframe>
+      </div>
+      
+      {.or}
+      <h4 style="color: var(--blue); padding-left: 25px;">Request This Restaurant:</h4>
     <iframe
       id="JotFormIFrame-230596919059065"
       title="MyMeal Restaurant Request Form"
@@ -111,7 +190,7 @@
   
     </div>
     {.end}
-  </div>
+  
   <div id="tab2" class="directory-tab">
     <h4 style="color: var(--blue)">What Our Community is Saying About {title}</h4>
     {.if customContent.appRating}
@@ -132,26 +211,7 @@
   </div>
   
 
-  <script>
-    function switchTab(tabIndex) {
-      
-      var tabs = document.getElementsByClassName("directory-tab");
-      var buttons = document.getElementsByClassName("tab-button")
-      
-
-      
-      var selectedTab = document.getElementById("tab" + (tabIndex + 1));
-      var selectedTabButton = document.getElementById("tab-button-" + (tabIndex + 1))
-      if (selectedTab) {
-        for (var i = 0; i < tabs.length; i++) {
-        tabs[i].classList.remove("visible-tab")
-        buttons[i].classList.remove("active-tab-button")
-      }
-        selectedTab.classList.add("visible-tab")
-        selectedTabButton.classList.add("active-tab-button")
-      }
-    }
-  </script>
+  
 
 
 </section>
@@ -161,6 +221,7 @@
 {.end}
 
 <script>
+console.log({customContent.specialtyItems})
 $(document).ready(function() {
 
       
