@@ -120,7 +120,7 @@
 			{.end}
 		</div>
 		{#  Info  }
-		<div class="directory-info-container">
+		<div class="directory-info-container" onclick="window.open('{fullUrl}', '_self')">
 			<div class="flex-start-spacebetween">
 				<div>
 					<p class="blog-title" data-content-field="title">{title}</p>

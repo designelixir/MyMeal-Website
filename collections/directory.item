@@ -14,7 +14,7 @@
             <div class="flex-center-start directory-header-logo-info">
                 {.if customContent.brandlogo}
                 <div class="directory-header-logo-container">
-                <img src="{customContent.brandlogo.assetUrl}" class="directory-header-logo" alt="{title} logo">
+                <img src="{customContent.brandlogo.assetUrl}"  class="directory-header-logo" alt="{title} logo">
                 </div>
                 {.end}
                 <div class="directory-header-info">
@@ -22,9 +22,7 @@
                 {.if customContent.verified}<img src="../assets/verified-mymeal.png" style="height: 35px; margin-right: 5px;" class="hover" onclick="verifiedPopUp(true)" alt="mymeal verified badge"/>{.end}
                 <h2 style="color: black;">{title}</h2></div>
             {.if location}
-                
                 <p class=" hover" onclick="window.open('https://www.google.com/maps/search/{location.addressTitle} {location.addressLine1} {location.addressLine2}', '_blank')">📍 {location.addressLine1}, {location.addressLine2}</p>
-                
             {.end}
             <div class="flex-center-start flex-wrap" style="margin: 7px 0px;">
                 {customContent.priceRank}  
@@ -58,28 +56,43 @@
     {.if customContent.verified}
         <button onclick="switchTab(0)" class="tab-button active-tab-button" id="tab-button-1">Allergen Menu</button>
     {.or}
-        <button onclick="switchTab(2)" class="tab-button active-tab-button" id="tab-button-3">Request This Restaurant</button>
+        <button onclick="switchTab(2)" class="tab-button active-tab-button" id="tab-button-3">Details</button>
     {.end}
     <button onclick="switchTab(1)" class="tab-button" id="tab-button-2">Reviews</button>
   
     {.if customContent.verified}
+    
   <div id="tab1" class="directory-tab visible-tab">
+  {.if body}
     <div style="padding: 0px 15px;">
-    <h4 style="color: var(--blue)">Details</h4>
+    
+    <h4 style="color: var(--blue)">Details:</h4>
     {body}
     </div>
-    <h4 style="color: var(--blue); padding: 15px;">Allergen Menu</h4>
+    {.end}
+    {.if fullUrl}
+    <h4 style="color: var(--blue); padding: 15px;">Allergen Menu:</h4>
     <div class='flex-start-start'>
     <div class="iframe-container" id="mymeal-menu-iframe">
     
       <iframe src="{sourceUrl}" frameborder="0" allowfullscreen></iframe>
     </div>
     </div>
+    {.end}
     {.or}
     <div id="tab3" class="directory-tab visible-tab">
-    <div style="padding: 0px 15px">
-    <h4 style="color: var(--blue)">Details</h4>
+    
+    <div style="padding: 15px">
+    <p>This restaurant is <strong>not verified with MyMeal.</strong> We've vetted this restaurant as a good candidate for a filterable allergen menu based on our community's feedback, and we've gathered basic information about their kitchen procedures. Request this restaurant with the form below, and we'll contact you if they work with us to make a filterable allergen menu!</p>
+    {.if body}
+    <h4 style="color: var(--blue)">Details:</h4>
+      <ul class="green-procedures">
+        {.if cookSeperate}<li class="yes-procedure"> Cooks on seperate equipment </li>{.or}
+        <li class="no-procedure"> Cooks on seperate equipment </li>{.end}
+      </ul>
+
     {body}
+    {.end}
     <h4 style="color: var(--blue)">Request This Restaurant</h4>
     </div>
     <iframe
@@ -101,15 +114,20 @@
   </div>
   <div id="tab2" class="directory-tab">
     <h4 style="color: var(--blue)">What Our Community is Saying About {title}</h4>
-    <p>MyMeal App Rating:</p>
-    <div class="star-ratings">
-    <div class="fill-ratings" style="width: 50%;">
-      <span>★★★★★</span>
+    {.if customContent.appRating}
+    <div class="flex-center-start">
+      <p>MyMeal App Rating:</p>
+      <div class="star-ratings" style="transform: scale(0.5)">
+      <div class="fill-ratings" style="width: 50%;">
+        <span>★★★★★</span>
+      </div>
+      <div class="empty-ratings">
+        <span>★★★★★</span>
+      </div>
+      
     </div>
-    <div class="empty-ratings">
-      <span>★★★★★</span>
     </div>
-  </div>
+    {.end}
     {@|comments}       
   </div>
   
@@ -144,12 +162,10 @@
 
 <script>
 $(document).ready(function() {
-      // Gets the span width of the filled-ratings span
-      // this will be the same for each rating
+
+      
       var starRating = Number({customContent.appRating});
       var star_rating_width = $('.fill-ratings span').width();
-      // Sets the container of the ratings to span width
-      // thus the percentages in mobile will never be wrong
-      $('.star-ratings').width(starRating/10);
+      $('.star-ratings').width(starRating / 10);
     });
 </script>
