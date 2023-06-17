@@ -101,6 +101,15 @@
   </div>
   <div id="tab2" class="directory-tab">
     <h4 style="color: var(--blue)">What Our Community is Saying About {title}</h4>
+    <p>MyMeal App Rating:</p>
+    <div class="star-ratings">
+    <div class="fill-ratings" style="width: 50%;">
+      <span>★★★★★</span>
+    </div>
+    <div class="empty-ratings">
+      <span>★★★★★</span>
+    </div>
+  </div>
     {@|comments}       
   </div>
   
@@ -132,3 +141,15 @@
 
 
 {.end}
+
+<script>
+$(document).ready(function() {
+      // Gets the span width of the filled-ratings span
+      // this will be the same for each rating
+      var starRating = Number({customContent.appRating});
+      var star_rating_width = $('.fill-ratings span').width();
+      // Sets the container of the ratings to span width
+      // thus the percentages in mobile will never be wrong
+      $('.star-ratings').width(starRating/10);
+    });
+</script>
