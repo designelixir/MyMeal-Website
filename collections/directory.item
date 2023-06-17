@@ -47,9 +47,9 @@ function addToSpecialtyItems() {
       <div class="directory-image-lg flex-start-spacebetween" {.if customContent.bannerImgUrl}style="background-image:url({customContent.bannerImgUrl})"{.or}style="background-image:url(../assets/basic-bg.png)"{.end}>
         <div class="directory-header-wrapper">
             <div class="flex-center-start directory-header-logo-info">
-                {.if customContent.brandlogo}
+                {.if assetUrl}
                 <div class="directory-header-logo-container">
-                <img src="{customContent.brandlogo.assetUrl}"  class="directory-header-logo" alt="{title} logo">
+                <img src="{assetUrl}"  class="directory-header-logo" alt="{title} logo">
                 </div>
                 {.end}
                 <div class="directory-header-info">
@@ -189,7 +189,7 @@ function addToSpecialtyItems() {
       <div class="hr-line"></div>
       
       {body}
-      <div class="hr-line"></div>
+      {.if body}<div class="hr-line"></div>{.end}
 
     </div>
       {.if customContent.verified}
