@@ -9,7 +9,7 @@
 <div style="height: 50px"></div>
 <section class="box-shadow" style="border-radius: 8px">
     
-      <div class="directory-image-lg flex-start-spacebetween" {.if assetUrl}style="background-image:url({assetUrl})"{.or}style="background-image:url(assets/basic-bg.png)"{.end}>
+      <div class="directory-image-lg flex-start-spacebetween" {.if customContent.bannerImgUrl}style="background-image:url({bannerImgUrl})"{.or}style="background-image:url(assets/basic-bg.png)"{.end}>
         <div class="directory-header-wrapper">
             <div class="flex-center-start directory-header-logo-info">
                 {.if customContent.brandlogo}
