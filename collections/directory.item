@@ -93,7 +93,7 @@ function addToSpecialtyItems() {
     
   <div id="tab1" class="directory-tab visible-tab ">
   <div class="directory-details light-padding">
-  {.if customContent.verified}{.or}<p>This restaurant is <strong>not verified with MyMeal.</strong> We've vetted this restaurant as a good candidate for a filterable allergen menu based on our community's feedback, and we've gathered basic information about their kitchen procedures. Request this restaurant with the form below, and we'll contact you if they work with us to make a filterable allergen menu!</p>{.end}
+  {.if customContent.verified}{.or}<p>This restaurant is <strong>not verified with MyMeal.</strong> We've vetted this restaurant as a good option based on our community's feedback or personal experience. We've gathered basic information about their kitchen procedures. Request a filterable allergy menu for this restaurant with the form below, and we'll contact you if they work with us to become verified.</p>{.end}
     <h4 style="color: var(--blue)">Details:</h4>
     {.if customContent.specialtyItems}
     
