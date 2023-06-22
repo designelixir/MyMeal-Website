@@ -16,20 +16,10 @@
 
 
 
-      
+      {@|apply heroBlock.block}
    
       
-      <div class="content-container" role="main" data-content-field="main-content" >
-      <div class="radial-gradient">
-          <div id="heroBlock" class="flex-start-start flex-column" style="background-image: url({collection.mainImage.assetUrl}); ">
-    <div class="heroText-wrapper">
-        <squarespace:block-field id="heroText" columns="12"/>
-    </div>
-    <div class="heroDownload-wrapper">{@|apply downloadInverted.block}</div>
-</div>
-        {@|apply tabs.block}
-</div>
-      <main>
+      <main class="content-container" role="main" data-content-field="main-content" >
           <squarespace:block-field id="pressSection" columns="12"/>
           <div class="flex-center-center">
             {@|apply emailSubscribe.block}
@@ -37,8 +27,7 @@
           
           <squarespace:block-field id="blogSection" columns="12"/>
           {squarespace.main-content}
-          </main>
-      </div>
+      </main>
       <footer class="site-footer">
         <squarespace:navigation navigationId="footerNav" template="footer" />        
       </footer>
