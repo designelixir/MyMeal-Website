@@ -8,18 +8,18 @@
 		{squarespace-headers}
 	</head>
 	<body id="{squarespace.page-id}" class="{squarespace.page-classes}">
-		<div class="site-container">
+		
 			<header class="site-header">
 				<squarespace:navigation navigationId="siteNav" template="site-navigation" />
 			</header>
-			<!-- cms content injection point -->
-			<main class="content-container" role="main" data-content-field="main-content">
-				<h1 onclick="window.open('/directory', '_self')" class="hover">MyMeal Restaurant Menu Directory </h1>
+			
 				
+			<main class="content-container" role="main" data-content-field="main-content">
+			<h1 onclick="window.open('/directory', '_self')" class="hover">{collection.title} </h1>	
 		{@|apply verifiedPopup.block}
     {squarespace.main-content}
 			</main>
-		</div>
+		
 		<footer class="site-footer">
 			<squarespace:navigation navigationId="footerNav" template="footer" />
 		</footer>

@@ -25,17 +25,7 @@
 
 }());
 
-function verifiedPopUp(show){
-  console.log('clicked')
-  var popupWindow = document.getElementById('verified-popup');
-  if (show){
-    console.log("if")
-    popupWindow.style.display = "flex"
-  } else {
-    popupWindow.style.display = "none"
-    console.log('else')
-  }
-}
+
 
 var ifr = document.getElementById("JotFormIFrame-230596919059065");
     if (ifr) {

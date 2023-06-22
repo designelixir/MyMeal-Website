@@ -115,7 +115,8 @@ function addToSpecialtyItems() {
         <div class="hr-line"></div>
         
         {.end}
-
+      {.if customContent.hideCrossContact}
+      {.or}
       <p style="font-weight: 700;">Cross Contact Procedures:</p>
       <ul class="green-procedures">
         {.if customContent.cookSeperate}
@@ -182,6 +183,7 @@ function addToSpecialtyItems() {
        
       </ul>
       <div class="hr-line"></div>
+      {.end}
       
       {body}
       {.if body}<div class="hr-line"></div>{.end}

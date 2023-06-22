@@ -1,12 +1,11 @@
 <script>
 	var allCoordinates = []
 </script>
-<section>
-	<p>Click the restaurants below to view kitchen procedures, reviews, and access the MyMeal filterable allergen menu.</p>
-	<p>Menus with a "Verified MyMeal Partner" <img src="../assets/verified-mymeal.png" style="height: 25px; margin-bottom: -10px;" alt="mymeal verified badge"/> badge have worked with us personally to provide the most accurate information possible to make your dining experience safe. Click the badge for more information on what qualifies a restaurant as a MyMeal partner.<p>
-		<br>
-</section>
+
+<p style="margin-bottom: 25px;">Menus with a "Verified MyMeal Partner" <img src="../assets/verified-mymeal.png" class="hover" onclick="verifiedPopUp(true)" style="height: 25px; margin-bottom: -10px;" alt="mymeal verified badge"/> badge have worked with us personally to provide the most accurate information possible to make your dining experience safe. Click the badge for more information on what qualifies a restaurant as a MyMeal partner.<p>
+
 <div class="directory box-shadow">
+
 <div id="directory-map-container">
 	<div id="map"></div>
 	<div class="directory-filter box-shadow">
@@ -32,7 +31,7 @@
 			{.end}
 		</div>
 		<div class="flex-center-start flex-wrap">
-			<p class="white-text">Dedicated Free from: &nbsp;</p>
+			<p class="white-text">Free from: &nbsp;</p>
 			<div class="category hover" id="reset" style="display: none;">
 				<p onclick="tagorize('reset')">Show All</p>
 			</div>

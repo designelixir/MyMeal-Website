@@ -66,11 +66,14 @@ button {cursor: pointer; padding: 5px 8px; text-decoration: none; margin-right: 
 .styled-button:hover {background-color: white; color: var(--blue); border: 2px solid var(--blue);}
 
 .styled-button-inverted {background-color: white; color: var(--blue); border: 2px solid var(--blue);}
-.styled-button-inverted:hover {border: 2px solid black; color: black;}
+.styled-button-inverted:hover {border: 2px solid var(--blue); background-color: var(--blue); color: white;}
 
 .blue-outline-button {background: white; border: 2px solid var(--blue); color: var(--blue);}
 
 .blue-outline-button:hover {background: var(--blue); color: white!important; }
+
+.x-button {background-color: var(--blue); color: white; font-size: 36px; padding: 10px; border-radius: 50px; border: 3px solid white;}
+.x-button:hover {background-color: white; border: 3px solid var(--blue); color: var(--blue)}
 
 body:not(.button-style-default) .sqs-editable-button {background-color: var(--blue); text-decoration: none; padding: 10px; color: white; border: none; border-radius: 8px; text-transform:none; font-family: 'Poppins', sans-serif; font-size: 18px; font-weight: 500; letter-spacing: unset!important; font-weight: 400; margin: 0; border-radius: 8px!important;}
 .sqs-block-button .sqs-block-button-element--medium {background-color: var(--blue); text-decoration: none; padding: 10px; color: white; border: none; border-radius: 8px; text-transform:none; font-family: 'Poppins', sans-serif; font-size: 18px; font-weight: 500; letter-spacing: unset!important; font-weight: 400; margin: 0;}
@@ -225,9 +228,10 @@ main {padding: 5vw;}
 .unverified-restaurant:hover {opacity: 1;}
 
 #verified-popup {
+  padding: 15px; overflow-y: scroll!important;
   position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(255,255,255,0.6); z-index: 300000000;
 }
-.pop-up {max-width: 1000px; padding: 50px; border-radius: 8px; border: 2px solid var(--offblack);}
+.pop-up { padding: 25px; border-radius: 8px; border: 2px solid var(--offblack); background-color: white;}
 
 // Dedicated Free Banner
 .dedicated-free-banner {min-width: 385px; max-width: 24vw; width: 100%; height: 40px; background-image: url(../assets/dedicated-free-banner_1.png); background-size: 100% 100%; background-repeat: no-repeat; background-position: center center; 

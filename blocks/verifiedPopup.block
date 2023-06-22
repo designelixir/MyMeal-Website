@@ -1,32 +1,54 @@
-<div id="verified-popup" style="display: none; padding: 25px;" class="flex-start-center">
-			<div class="pop-up" style="background-color: white;">
-				<div class="flex-start-spacebetween">
-					<div style="margin-right: 25px;">
-						<h1>MyMeal Verified Partners</h1>
-						<h3>MyMeal Certified Partners are restaurants that provide us detailed menu item ingredient lists and kitchen procedures to ensure you can have the safest dining experience possible. </h3>
-					</div>
-					<div onclick="verifiedPopUp(false)" style="width: 100%; height: 60px; cursor: pointer;">
-						<p style="font-size: 48px; text-align: right; width: 100%;">X</p>
-					</div>
+<div id="verified-popup" style="display: none;" class="flex-start-center">
+	<div class="flex-center-center" style="overflow-y: scroll!important;" >
+		<div class="pop-up">
+			<div class="flex-center-spacebetween">
+				<div class="flex-start-start flex-wrap">
+					<img src="../assets/verified-mymeal.png" alt="verified badge" style="height: 50px; padding-right: 15px;">
+					<h1>MyMeal Verified Partners</h1>
 				</div>
-				<img src="assets/verified-mymeal.png" alt="verified badge" style="height: 100px; padding-top: 15px;">
-				<ol style="margin-top: 50px;">
-					<li style="margin-bottom: 25px;">
-						<h3>Vetting restaurants for MyMeal</h3>
-						<p>We work with our dedicated community of people with food allergies to vet restaurants that could be a good match for MyMeal. 
-							Interested in a restaurant that isn’t on MyMeal? We’re building our network in Denver, CO. Request a restaurant you want to see, and you may just see it on our app in the coming months!
-						</p>
-						<br>
-						<a href="/request-a-restaurant" class='styled-button large-button' target="_blank">Request a Restaurant</a>
-					</li>
-					<li>
-						<h3>Getting the menu information</h3>
-						<p>Before we give our Certified Partner badge to a restaurant, we rigorously look through the ingredients and potential cross contact of everything from garnishes to cook lines. Together with the restaurant’s GM or chef, we put together instructions to provide your server while ordering that make life for you and the kitchen's life easier. </p>
-					</li>
-					<li>
-						<h3>Reliable, updated menus</h3>
-						<p>We work hand in hand with our Certified Partner every quarter to ensure that the information on our filterable allergy menus is as up to date and accurate as possible. </p>
-					</li>
-				</ol>
+				<p onclick="verifiedPopUp(false)" class="hover x-button">X</p>
+			</div>
+			<h4>MyMeal Verified Partners are restaurants that provide us detailed menu item ingredient lists and kitchen procedures to ensure you can have the safest dining experience possible. </h4>
+			<ul>
+				<li>
+					<p>First, we work with our dedicated community of people with food allergies to vet restaurants that could be a good match for a MyMeal filterable allergy menu.</p>
+				</li>
+				<li>
+					<p>Before we give our Certified Partner badge to a restaurant, we rigorously look through the ingredients and potential cross contact of everything from garnishes to cook lines. Together with the restaurant’s GM or chef, we put together instructions to provide your server while ordering that make life for you and the kitchen staff easier.</p>
+				</li>
+				<li>
+					<p>We work hand in hand with our Certified Partner every quarter to ensure that the information on our filterable allergy menus is as up to date and accurate as possible.</p>
+				</li>
+			</ul>
+			<br> 
+			<div class="flex-center-center flex-wrap">
+				<button class="styled-button" onclick="window.open('/verified-partners')" style="margin-bottom: 10px;">More Info on Verified Partners</button>
+				<button class="styled-button-inverted" onclick="window.open('/request-a-restaurant')" style="margin-bottom: 10px;">Request a Restaurant to be Verified</button>
 			</div>
 		</div>
+	</div>
+</div>
+</div>
+</div>
+<script>
+	function verifiedPopUp(show){
+	console.log('clicked')
+	var popupWindow = document.getElementById('verified-popup');
+	if (show){
+	 var scrollPosition = window.pageYOffset || document.documentElement.scrollTop;
+			document.body.style.overflow = 'hidden';
+			document.body.style.position = 'fixed';
+			document.body.style.top = '-' + scrollPosition + 'px';
+	  	popupWindow.style.display = "flex"
+	} else {
+	var scrollPosition = parseInt(document.body.style.top, 10);
+	
+	document.body.style.overflow = '';
+	document.body.style.position = '';
+	document.body.style.top = '';
+	
+	window.scrollTo(0, -scrollPosition);
+	  popupWindow.style.display = "none"
+	}
+	}
+</script>
