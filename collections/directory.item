@@ -1,5 +1,5 @@
 <script>
-console.log(String({customContent.specialtyItems}))
+
 function addToSpecialtyItems() {
   var span = document.getElementById('preprocess-specialty-items'); // Get the span element
   var div = document.getElementById('specialtyItems'); // Get the div element
@@ -53,9 +53,26 @@ function addToSpecialtyItems() {
                 </div>
                 {.end}
                 <div class="directory-header-info">
+                <div class="flex-start-spacebetween">
                 <div class="flex-center-start">
                 {.if customContent.verified}<img src="../assets/verified-mymeal.png" style="height: 35px; margin-right: 5px;" class="hover" onclick="verifiedPopUp(true)" alt="mymeal verified badge"/>{.end}
                 <h2 style="color: black;">{title}</h2></div>
+                <div class="flex-center-center">
+                    {.if customContent.restaurantPhone}
+                    <div class="icon-with-label" onclick="window.open('tel:`{customContent.restaurantPhone}`', '_blank')">
+                      <span>Call {customContent.restaurantPhone}</span>
+                      <img src="../assets/call.png" style="height: 40px; margin-right: 10px;">
+                      
+                    </div>
+                    {.end}
+                    <div class="icon-with-label" onclick="window.open('https://www.google.com/maps/search/{location.addressTitle} {location.addressLine1} {location.addressLine2}', '_blank')">
+                      <span>Click for directions</span>
+                      <img src="../assets/directions.png" style="height: 40px;">
+                      
+                    </div>
+                </div>
+                </div>
+
             {.if location}
                 <p class=" hover" onclick="window.open('https://www.google.com/maps/search/{location.addressTitle} {location.addressLine1} {location.addressLine2}', '_blank')">📍 {location.addressLine1}, {location.addressLine2}</p>
             {.end}
@@ -63,14 +80,10 @@ function addToSpecialtyItems() {
                 {customContent.priceRank}  
                 {.if categories }&nbsp;•&nbsp;
                 {.repeated section categories}
-                <a class="category-label drop-shadow" href="{collection.fullUrl}?tag={@|url-encode}">{@|url-encode}</a>&nbsp;
+                <a class="category-label drop-shadow" href="/directory" onclick="categorize('{name}')">{@|url-encode}</a>&nbsp;
                 {.end}
                 {.end}
-                {.if tags }
-                {.repeated section tags}
-                <a class="tag-label drop-shadow" href="{collection.fullUrl}?tag={tags}">&#x2713; {tags} Free Kitchen</a>&nbsp;
-                {.end}
-                {.end}
+                
             </div>
             
             </div>
@@ -93,28 +106,50 @@ function addToSpecialtyItems() {
     
   <div id="tab1" class="directory-tab visible-tab ">
   <div class="directory-details light-padding">
-  {.if customContent.verified}{.or}<p>This restaurant is <strong>not verified with MyMeal.</strong> We've vetted this restaurant as a good option based on our community's feedback or personal experience. We've gathered basic information about their kitchen procedures. Request a filterable allergy menu for this restaurant with the form below, and we'll contact you if they work with us to become verified.</p>{.end}
-    <h4 style="color: var(--blue)">Details:</h4>
+  {.if customContent.verified}{.or}<p>This restaurant is <strong>not verified with MyMeal.</strong> We've vetted this restaurant as a good option based on our community's feedback or personal experience. {.if customContent.hideCrossContact} {.or} We've gathered basic information about their kitchen procedures. {.end} Request a filterable allergy menu for this restaurant with the form below, and we'll contact you if they work with us to become verified.</p>{.end}
     {.if customContent.specialtyItems}
     
     <span id="preprocess-specialty-items">{customContent.specialtyItems}</span>
-    <div id="specialtyItems" class="flex-center-start">
+    <div id="specialtyItems" class="flex-center-start flex-wrap">
     <p style="font-weight: 700;">Specialty Items: &nbsp;</p>
     </div>
     <script>addToSpecialtyItems(`{customContent.specialtyItems}`)</script>
     <div class="hr-line"></div>
     {.end}
     {.if tags }
-    <div class="flex-center-start">
-        {.repeated section tags}
+    <div class="flex-center-start flex-wrap" id="tag-list">
+    <p style="font-weight: 700;">Dedicated Free From: &nbsp;</p>
+		
+    </div>
+		<script>
+    checkTags(`{tags}`)
+		function checkTags(tags){
+		
+  var tagsArray = tags.split(',');
+  var modifiedTags = tagsArray.map(function(tag) {
+    var tagLabel = document.createElement('div');
+  tagLabel.className = 'tag-label-individual';
+  tagLabel.innerHTML = "&#x2713;<span>&nbsp;" + tag.trim() + "</span>";
+  document.getElementById('tag-list').appendChild(tagLabel);
+  });
+  console.log(modifiedTags)
+  
+
+    }
+
+
+			
+		
+		</script>
+    <div class="hr-line"></div>
         
-        <p style="font-weight: 700;">Dedicated Free From: &nbsp;</p>
-        <p ><span class="tag-label">{tags} </span></p>
-        {.end}
-        </div>
-        <div class="hr-line"></div>
+		
+	
+						
+	
         
         {.end}
+
       {.if customContent.hideCrossContact}
       {.or}
       <p style="font-weight: 700;">Cross Contact Procedures:</p>
@@ -185,8 +220,11 @@ function addToSpecialtyItems() {
       <div class="hr-line"></div>
       {.end}
       
+      
+      {.if body}
+      <h4 style="color: var(--blue)">Details:</h4>
       {body}
-      {.if body}<div class="hr-line"></div>{.end}
+      <div class="hr-line"></div>{.end}
 
     </div>
       {.if customContent.verified}

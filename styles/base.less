@@ -220,12 +220,17 @@ main {padding: 5vw;}
 .category-label {font-size: 11px; color: black; background: var(--offgray); padding: 2.5px 10px; border-radius: 15px; border: 1px solid black;}
 .category-label:hover {color: white; background-color: var(--blue); font-weight: 500;}
 .tag-label {font-size: 11px; color: white; background: var(--blue); padding: 2.5px 10px; border-radius: 15px; margin: 5px 0px;}
+.tag-label-individual {font-size: 14px; color: white; background: var(--blue); padding: 2.5px 10px; border-radius: 15px; margin: 5px 5px;}
 
 .directory-buttons { padding: 15px;}
 
 .verified-badge {height: 60px; margin-top: -15px;  z-index: 3;}
 .unverified-item {border: 2px solid rgba(0,0,0,0.25); border-radius: 8px;}
 
+.icon-with-label {text-align: center; font-size: 10px; max-width: 50px;}
+.icon-with-label:hover { cursor: pointer;}
+.icon-with-label span {display: none; position: absolute; margin-top: -40px; margin-left: -15px; width: 75px; background: rgba(255, 255,255,0.85); border-radius: 5px; }
+.icon-with-label:hover span {display: block;}
 
 #verified-popup {
   padding: 15px; overflow-y: scroll!important;

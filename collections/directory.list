@@ -1,4 +1,9 @@
 <script>
+function delayCall(name){
+	document.addEventListener("DOMContentLoaded", function(name) {
+		categorize(name)
+});
+}
 	var allCoordinates = []
 	var allContent = []
 	
@@ -35,7 +40,7 @@
 		
     
 	</div>
-  <p id="filter-text" style=" padding: 15px 25px 0px; font-style: italic;">Showing <span id="category-count"></span></p>
+  <p id="filter-text" style=" padding: 15px 25px 0px; font-style: italic;"><span id="category-count"></span></p>
 </div>
 
 <div class="flex-start-start flex-wrap directory-wrapper">
@@ -98,7 +103,7 @@
         {customContent.priceRank}  
         {.if categories }&nbsp;•&nbsp;
         {.repeated section categories}
-        <a class="category-label drop-shadow" href="{collection.fullUrl}?tag={@|url-encode}">{@|url-encode}</a>&nbsp;
+        <a class="category-label drop-shadow" href="{collection.fullUrl}?category={@|url-encode}">{@|url-encode}</a>&nbsp;
         {.end}
         {.if tags }
 		<a class="tag-label drop-shadow" id="tagger"></a>&nbsp;	
@@ -141,11 +146,8 @@
 	</article>
 	<script>
 		var title = `{title}`
-		
   		var contentString = document.getElementById(title).innerHTML;
-		console.log("content string: " + contentString)
 		allContent.push(contentString)
-		console.log(allContent)
 		</script>
 	{.end}
 	{.or}
@@ -171,18 +173,35 @@
 </nav>
 {.end}
 <script >
+var divs = document.querySelectorAll("article");
+function updateFilterCounter(){
 	var counter = document.getElementById('category-count')
-	  var divs = document.querySelectorAll("article");
-	if (divs.length === 1){
-	      var restaurantPlural = " restaurant"
-	    } else {
-	      var restaurantPlural = " restaurants"
+	count = 0;
+		for (var i = 0; i < divs.length; i++) {
+			var div = divs[i];
+			var display = window.getComputedStyle(div).getPropertyValue('display');
+
+			if (display === 'block') {
+			count++;
+			}
+		}
+	if (count === 1){
+		counter.textContent = "Showing " + count + " restaurant"
+	      
+	    }else if (count === 0){
+			counter.textContent = "No results"
+		}
+		 else {
+	      counter.textContent = "Showing " + count + " restaurants"
 	    }
-	    counter.textContent = divs.length + restaurantPlural;
+}	
+	
+	    
 	
 var resetButton = document.getElementById('reset-categories');
 
 	function reset(){
+		
 	  resetButton.style.display = "none"
 	  
 	  for (var i = 0; i < divs.length; i++) {
@@ -195,12 +214,7 @@ var resetButton = document.getElementById('reset-categories');
 	
 	  }
 	  
-	  if (divs.length === 1){
-	      var restaurantPlural = " restaurant"
-	    } else {
-	      var restaurantPlural = " restaurants"
-	    }
-	    counter.textContent = divs.length + restaurantPlural;
+	  updateFilterCounter()
 	  
 	}
 
@@ -209,7 +223,7 @@ var resetButton = document.getElementById('reset-categories');
 
 var activeCategories = []
 	function categorize(name){
-		var divs = document.querySelectorAll("article");
+		
 		var categoryButton = document.getElementById(name);
 		
 		
@@ -254,23 +268,11 @@ var activeCategories = []
 				div.style.display = 'none'; 
 				}
 			}
-		count = 0;
-		for (var i = 0; i < divs.length; i++) {
-			var div = divs[i];
-			var display = window.getComputedStyle(div).getPropertyValue('display');
-
-			if (display === 'block') {
-			count++;
-			}
-		}
-	    if (count === 1){
-	      var restaurantPlural = " restaurant"
-	    } else {
-	      var restaurantPlural = " restaurants"
-	    }
-	    counter.textContent = count + restaurantPlural 
-	  }
 		
+	    updateFilterCounter()
+	  }
+
+	
 	  
 	  
 	function clickPin(location){
