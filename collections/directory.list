@@ -16,7 +16,7 @@
 			<div class="category-filter hover" id="reset-categories" style="display: none;">
 				<p onclick="reset()">Show All</p>
 			</div>
-			<div class="category-filter hover flex-center-center" onclick="categorize('mymeal-verified')" id="mymeal-verified" >
+			<div class="category-filter hover flex-center-center" onclick="categorize('verified-item')" id="verified-item" >
 				<img src="../assets/verified-mymeal.png" style="height: 15px; margin-bottom: -2px;"/>
 				<p> Verified </p>
 			</div>
