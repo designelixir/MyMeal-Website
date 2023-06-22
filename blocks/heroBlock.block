@@ -1,10 +1,1 @@
 
-<div class="radial-gradient">
-          <div id="heroBlock" class="flex-start-start flex-column" style="background-image: url({collection.mainImage.assetUrl}); ">
-    <div class="heroText-wrapper">
-        <squarespace:block-field id="heroText" columns="12"/>
-    </div>
-    <div class="heroDownload-wrapper">{@|apply downloadInverted.block}</div>
-</div>
-        {@|apply tabs.block}
-</div>
