@@ -202,13 +202,13 @@ main {padding: 5vw;}
 .category-filter p {font-size: 12px;  line-height: 12px;}
 .active-category {background-color: var(--offblack)!important; color: white!important; border: 1px solid white!important;}
 .category:hover {border: 1px solid black;}
-.directory-filter {background: var(--blue);  margin: -20px 0 0;  padding: 10px 25px; width: 100%;}
+.directory-filter {background: var(--blue);    padding: 10px 25px; width: 100%;}
 .directory {border: 0.5px solid black; border-top-right-radius: 8px; border-top-left-radius: 8px;}
 .directory-wrapper {padding: 0px 10px 25px;}
 
 
 .directory-list-item {margin-bottom: 25px; width: 325px; margin:15px; height: auto; }
-.filtered-restaurant {display: none;}
+.visible-restaurant {display: block;}
 .verified-item {border: 2px solid var(--blue); border-radius: 8px;}
 .directory-image {width: 100%; height: 100px; background-size: cover; background-position: center center; background-repeat: no-repeat; border-radius: 6px 6px 0px 0px; background-color: gray; background-image: url('../assets/basic-bg.png')}
 .directory-logo-wrapper {margin-top: -65px; height: 80px;}
@@ -224,14 +224,14 @@ main {padding: 5vw;}
 .directory-buttons { padding: 15px;}
 
 .verified-badge {height: 60px; margin-top: -15px;  z-index: 3;}
-.unverified-restaurant {border: 2px solid rgba(0,0,0,0.25); border-radius: 8px;}
-.unverified-restaurant:hover {opacity: 1;}
+.unverified-item {border: 2px solid rgba(0,0,0,0.25); border-radius: 8px;}
+
 
 #verified-popup {
   padding: 15px; overflow-y: scroll!important;
   position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(255,255,255,0.6); z-index: 300000000;
 }
-.pop-up { padding: 25px; border-radius: 8px; border: 2px solid var(--offblack); background-color: white;}
+.pop-up { padding: 25px; border-radius: 8px; max-width: 800px; border: 2px solid var(--offblack); background-color: white;}
 
 // Dedicated Free Banner
 .dedicated-free-banner {min-width: 385px; max-width: 24vw; width: 100%; height: 40px; background-image: url(../assets/dedicated-free-banner_1.png); background-size: 100% 100%; background-repeat: no-repeat; background-position: center center; 
@@ -245,10 +245,10 @@ main {padding: 5vw;}
   
 }
 #directory-map-container {
-  z-index: -1;
+  z-index: 0;
 }
 #map {
-  z-index: -1;
+  z-index: 0;
   height: 400px;
   width: 100%;
   border-top-left-radius: 8px;
