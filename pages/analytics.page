@@ -2,13 +2,13 @@
 <html>
 <head>
   <title>Mixpanel Report Generator</title>
-  <link rel="stylesheet" href="styles.css">
-  <script src="multiscriptv2.js"></script>
-  <script src="file1script.js"></script>
-  <script src="file2script.js"></script>
-  <script src="file3script.js"></script>
-  <script src="file4script.js"></script>
-  <script src="file5script.js"></script>
+  <link rel="stylesheet" href="analyticsStyles.css">
+  <script src="../scripts/analytics/multiscriptv2.js"></script>
+  <script src="../scripts/analytics/file1script.js"></script>
+  <script src="../scripts/analytics/file2script.js"></script>
+  <script src="../scripts/analytics/file3script.js"></script>
+  <script src="../scripts/analytics/file4script.js"></script>
+  <script src="../scripts/analytics/file5script.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/chart.js@4.3.0/dist/chart.umd.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels"></script>
@@ -21,21 +21,33 @@
   <!-- Page Visits -->
   <div class="file-div unfinished-shadow" id="page-visit-container">
     <div class="flex-start-start">
-      <div style="margin-right: 50px;">
-          <h3>1. Upload Page Visits Report</h3><br>
-          <input type="file" id="file1" accept=".csv"><br><br>
-          <button onclick="handleFile('file1', 'file1-results')">Import Page Visits CSV</button>
-      </div>
-      <div class="results">
+        <div class="flex-center-spacebetween">
+          <div style="max-width: 50%;">  
+            <h3 class="flex-center-start"><span class="checkmark">✅ &nbsp;</span>1. Upload Page Visits Report</h3>
+            <p>Download the report for your desired time range from this <a href="https://mixpanel.com/s/1k9HRK" target="_blank">Mixpanel report</a>. Events & Cohorts should be "Restaurant Page View - Count Total" and Breakdown should be "Restaurant" only.</p>
+            <div style="margin: 25px 0px;" class="flex-center-spacebetween">
+                <input type="file" id="file1" accept=".csv">
+                <button onclick="handleFile('file1', 'file1-results')" style="background-color: var(--blue); color: white">Import Page Visits CSV</button>
+            </div>
+          </div>
+          <button class="checkmark" >Expand</button>
+        </div>
+        <div class="results-container flex-start-spacebetween">
+          <div class="results">
           <h3>CSV Import Results</h3>
           <div id="file1-results" class="csv-results"></div>
-      </div>
-      <div>
+          <div>
         <h3>Page Visits Summary</h3>
         <div id="file1-pivot-results" class="csv-results"></div>
       </div>
+          </div>
+          
+        </div>
+      
     </div>
     <br>
+    
+      
     <hr>
   </div>
 
@@ -43,7 +55,9 @@
   <div class="file-div unfinished-shadow" id="user-retention-container" style="display: none;">
     <div class="flex-start-start">
       <div style="margin-right: 50px;">
-          <h3>2. Upload User Retention Report</h3><br>
+          <h3>2. Upload User Retention Report</h3>
+          <p>Download the report for <strong>User Retention (All Menus)</strong> from this <a href="https://mixpanel.com/s/2icFPT" target="_blank"> Mixpanel report</a></p>
+          <br>
           <input type="file" id="file2" accept=".csv"><br><br>
           <button onclick="handleFile('file2', 'file2-results')">Import User Retention CSV</button>
       </div>
@@ -149,6 +163,6 @@
 
   </div>
 
-  <script src="script.js"></script>
+  <script src="../scripts/analytics/analytics.js"></script>
 </body>
 </html>
