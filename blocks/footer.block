@@ -1,4 +1,4 @@
-
+<footer class="site-footer">
 <div class="footer-copy">
 <a class="hover" href="/" style="font-size: 48px; color: white; font-weight: 600;">MYMEAL</a>
     <ul class="footer-links flex-center-center flex-wrap">
@@ -22,4 +22,4 @@
     <p>Copright &copy; MyMeal 2023 </p>
     <a style="color: rgba(255,255,255,0.75); font-size: 12px;" href="https://designelixir.studio" target="_blank">Made with &hearts; by Design Elixir </a>
 </div>
-
+</footer>

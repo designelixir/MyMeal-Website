@@ -15,7 +15,7 @@
   <p class="filtered-by">Filtered by Author: {author.displayName}</p>
 {.end}
   
-<div class="flex-start-start flex-wrap blog-wrapper">
+<div class="flex-start-spacebetween flex-wrap blog-wrapper">
 <!-- item loop -->
 {.repeated section items}
   

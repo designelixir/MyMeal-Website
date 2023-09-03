@@ -28,9 +28,9 @@
           <squarespace:block-field id="blogSection" columns="12"/>
           {squarespace.main-content}
       </main>
-      <footer class="site-footer">
+      
         <squarespace:navigation navigationId="footerNav" template="footer" />        
-      </footer>
+      
 
     
 

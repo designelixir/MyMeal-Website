@@ -23,9 +23,32 @@
             </div>
         </div>
         {#  <div class="indicates-required" style="text-align: left!important;"><span class="asterisk">*</span> indicates required</div>  }
-<squarespace:block-field id="mailingListForm" columns="1"/>
+<div class="flex-center-start">
+    <div class="mc-field-group" style="margin-right: 10px;">
+        <label for="mce-FNAME">First Name </label>
+        <input type="text" value="" name="FNAME" class="" id="mce-FNAME">
+        <span id="mce-FNAME-HELPERTEXT" class="helper_text"></span>
+    </div>
+    <div class="mc-field-group">
+        <label for="mce-LNAME">Last Name </label>
+        <input type="text" value="" name="LNAME" class="" id="mce-LNAME">
+        <span id="mce-LNAME-HELPERTEXT" class="helper_text"></span>
+    </div>
+</div>
+<div class="mc-field-group">
+	<label for="mce-EMAIL">Email Address  <span class="asterisk">*</span>
+</label>
+	<input type="email" value="" name="EMAIL" class="required email" id="mce-EMAIL" required>
+	<span id="mce-EMAIL-HELPERTEXT" class="helper_text"></span>
+</div>
 <h6> We will never share your data without your consent. You can unsubscribe at any time. <h6><br>
-
+	<div id="mce-responses" class="clear">
+		<div class="response" id="mce-error-response" style="display:none"></div>
+		<div class="response" id="mce-success-response" style="display:none"></div>
+	</div>    <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
+    <div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text" name="b_0ef1508ee93ded66d7ea2959b_7920134d19" tabindex="-1" value=""></div>
+    <div class="clear"><input type="submit" value="Join MyMeal Mailing List" name="subscribe" style="border: 2px solid white!important; background-color: var(--darkblue); border-radius: 8px!important; color: white!important; font-size: 20px; height: 50px; font-style: normal; width: 100%;" class="button styled-button-inverted"></div>
+    </div>
 </form>
 </div>
 
