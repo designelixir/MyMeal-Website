@@ -16,8 +16,8 @@
 				
 			<main class="content-container" role="main" data-content-field="main-content">
 			<h1 onclick="window.open('/directory', '_self')" class="hover">{collection.title} </h1>	
-		{@|apply verifiedPopup.block}
-    {squarespace.main-content}
+			{@|apply verifiedPopup.block}
+			{squarespace.main-content}
 			</main>
 		
 		<footer class="site-footer">
