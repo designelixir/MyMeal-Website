@@ -237,10 +237,9 @@
           {.equal? customContent.customType "duplicateLocation"}
               <div class="multiple-location-wrapper">
                 <div id="{id}" class="{customContent.multipleLocation}">
-                  <h4 class="strong">{title}</h4>
-                  <p>{body}</p>
-                  <p><strong>Speciality Items:</strong> {customContent.specialtyItems}</p>
-                  <div>
+                  <div   style="padding: 0px 15px;"class="flex-center-spacebetween"><h4 class="strong">{title}</h4> <button class="large-button styled-button" onclick="window.open('{customContent.orderOnline}')">Order Online</button></div>
+                  
+                  <div style="padding: 0px 15px;">
                   {.if location}
                     <div class="flex-center-start hover" onclick="window.open('https://www.google.com/maps/search/{location.addressTitle} {location.addressLine1} {location.addressLine2}', '_blank')">
                       <img src="../assets/directions.png" style="height: 30px; margin-right: 10px;">
@@ -255,8 +254,12 @@
                     {.end}
                   </div>
                   <br>
-                  <button style="margin-bottom: 15px;" class="large-button styled-button" onclick="window.open('{customContent.orderOnline}')">Order Online</button>
+                 <p onclick="showDetails({id})">Click for location details</p>
                   
+                </div>
+                <div class="additional-details" id="{id}-additionalDetails">
+                <p><strong>Speciality Items:</strong> {customContent.specialtyItems}</p>
+                  {body}
                 </div>
               </div>
             {.end}
@@ -288,6 +291,10 @@
 <br>
 {.end}
 <script>
+
+function 
+
+
 	$(document).ready(function() {
 	      var starRating = Number({customContent.appRating});
 	      var star_rating_width = $('.fill-ratings span').width();
