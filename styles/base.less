@@ -216,7 +216,7 @@ main {padding: 5vw; }
 .directory-city {color: black; font-size: 14px; background: white; padding:0 10px; margin-left: -2px; border-radius: 3px;}
 .directory-logo-wrapper:hover .directory-city {opacity: 1;}
 
-.directory-info-container {padding: 15px; background: white; border-radius: 6px;}
+.directory-info-container {padding: 15px; background: white; border-bottom-left-radius: 6px; border-bottom-right-radius: 6px;}
 .category-label {font-size: 11px; color: black; background: var(--offgray); padding: 2.5px 10px; border-radius: 15px; border: 1px solid black;}
 .category-label:hover {color: white; background-color: var(--blue); font-weight: 500;}
 .tag-label {font-size: 11px; color: white; background: var(--blue); padding: 2.5px 10px; border-radius: 15px; margin: 5px 0px;}
@@ -319,15 +319,10 @@ main {padding: 5vw; }
   }
 }
 
-// Tabs
+Tabs
 
-// .restaurant-tab-container {margin-top: -37px;}
-// <button onclick="switchTab(0)" class="tab-button active-tab-button" id="tab-button-1">
-//           {.if customContent.verified}Allergen Menu{.or}Details{.end}</button>
-    
-//         <button onclick="switchTab(1)" class="tab-button" id="tab-button-2">Reviews</button>
-  
-    
+.restaurant-tab-container {margin-top: -37px;}
+.multiple-location-wrapper {background: var(--offwhite); border-radius: 6px; padding: 0px 10px; width: 23%; margin: 1%;}
 
 .tab-button {font-size: 16px; margin: 0; border: none; background-color: var(--offwhite); color: black; padding: 5px 25px; border-radius: 8px 8px 0px 0px; }
 .active-tab-button {font-size: 16px; padding: 2px 0px; margin: 0!important; border: none; background-color: var(--blue); color: white; padding: 5px 25px; border-radius: 8px 8px 0px 0px; border: 1px solid black; border-bottom: 2px solid var(--offgray)!important; z-index: 2;}
