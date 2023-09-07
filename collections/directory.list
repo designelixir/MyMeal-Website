@@ -44,7 +44,8 @@
 		</script>
 		{.equal? customContent.customType "duplicateLocation" }
 		{.or}
-		<article id="{title}" class='directory-list-item hover {.if customContent.verified} verified-item {.or} unverified-item {.end} box-shadow mymeal-verified {categories} {tags} {@|item-classes}' data-item-id="{id}" >
+		<article id="{title}" class='directory-list-item hover {.if customContent.verified} verified-item {.or} unverified-item {.end} box-shadow mymeal-verified {.if categories }
+					{.repeated section categories}{@|url-encode} &nbsp;{.end}{.end} {tags} {@|item-classes}' data-item-id="{id}" >
 			<div class="directory-image" {.if customContent.bannerImgUrl}style="background-image:url({customContent.bannerImgUrl})"{.or}style="background-image:url(../assets/basic-bg.png)"{.end} >
 				<div class="flex-start-end verified-badge-wrapper">
 					{.if customContent.verified}

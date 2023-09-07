@@ -39,20 +39,16 @@
 	
 		function reset(){
 	        var resetButton = document.getElementById('reset-categories');
-		  resetButton.style.display = "none"
-		  var divs = document.querySelectorAll("article");
-		  for (var i = 0; i < divs.length; i++) {
-		    divs[i].style.display = "block"
-		    
-		  }
-		  var categoryButtons = document.getElementsByClassName('category-filter')
-		  for (var i = 0; i < categoryButtons.length; i++) {
-		    categoryButtons[i].classList.remove('active-category');
-		
-		  }
-		  
-		  updateFilterCounter()
-		  
+		    resetButton.style.display = "none"
+		    var divs = document.querySelectorAll("article");
+		    for (var i = 0; i < divs.length; i++) {
+		        divs[i].style.display = "block"
+		    }
+		    var categoryButtons = document.getElementsByClassName('category-filter')
+		    for (var i = 0; i < categoryButtons.length; i++) {
+		        categoryButtons[i].classList.remove('active-category');
+		    }
+		    updateFilterCounter()
 		}
 	
 	
@@ -60,6 +56,7 @@
 	
 	var activeCategories = []
 		function categorize(name){
+            reset()
 			var categoryButton = document.getElementById(name);
 			if (activeCategories.includes(name)){
 				 var index = activeCategories.indexOf(name);
@@ -84,16 +81,11 @@
 	
 					for (var j = 0; j < activeCategories.length; j++) {
 					if (!div.classList.contains(activeCategories[j])) {
-						hasAllCategories = false;
+						div.style.display = 'none';
 						break;
-					}
-					}
-	
-					if (hasAllCategories) {
-					div.style.display = 'block'; 
-					
 					} else {
-					div.style.display = 'none'; 
+                        div.style.display = 'block';
+                    }
 					}
 				}
 			
