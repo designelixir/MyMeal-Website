@@ -251,8 +251,9 @@
 
 			>
 		</iframe>
+		{.end}
 	</div>
-	{.end}
+	
 	{.equal? customContent.customType "verifiedRestaurantMultiple"}
 		<div id="tab2" class="directory-tab">
 			{@|apply directoryMap.block}
@@ -284,7 +285,7 @@
 				</script>
 				{.equal? customContent.customType "duplicateLocation"}
 					<div class="multiple-location-wrapper box-shadow">
-						<div id="{id}" class="{customContent.multipleLocation}">
+						<div id="{id}" class="{tags}">
 						<div style="padding: 0px 15px;"class="flex-center-spacebetween"><h4 class="multiple-location-title">{title}</h4> <button class="large-button styled-button" style="min-width: 140px;" onclick="window.open('{customContent.orderOnline}')">Order Online</button></div>
 						
 						<div style="padding: 0px 15px;">
