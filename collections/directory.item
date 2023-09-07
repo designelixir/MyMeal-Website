@@ -257,7 +257,7 @@
 	{.equal? customContent.customType "verifiedRestaurantMultiple"}
 		<div id="tab2" class="directory-tab">
 			{@|apply directoryMap.block}
-			<squarespace:query collection="directory" limit="100" tag={title}>
+			<squarespace:query collection="directory" limit="100" tag={title|slugify}>
 				<div class="flex-start-start flex-wrap">
 				{.repeated section items}
 				<script>

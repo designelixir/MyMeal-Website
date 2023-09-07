@@ -38,7 +38,8 @@
 				var long = location.markerLng;
 				var coordinate = {lat:{location.markerLat}, lng: {location.markerLng}}
 				allCoordinates.push(coordinate);
-				allContent.push(["<h4>{title}</h4> <p> 📍 {location.addressLine1}, {location.addressLine2} </p><br> <div class='flex-center-center'><button class='large-button styled-button hover' onclick='window.open('{sourceUrl}')'>Restaurant Details</button><button class='large-button outline-styled-button hover' onclick='window.open('{sourceUrl}')'>Directions</button></div>"])
+				var goTo = `"https://findmymeal.io/directory/" + "{tags}"`
+				allContent.push(["<h4>{title}</h4> <p> 📍 {location.addressLine1}, {location.addressLine2} </p><br> <div class='flex-center-center'><button class='large-button styled-button hover' onclick='window.open("+ goTo +")'>Restaurant Details</button><button class='large-button outline-styled-button hover' onclick='window.open('{sourceUrl}')'>Directions</button></div>"])
 			{.end}
 		</script>
 		{.equal? customContent.customType "duplicateLocation" }
@@ -56,7 +57,7 @@
 							<div class="directory-logo box-shadow" style="background-image: url({assetUrl})"></div>
 						{.end}
 						{.equal? customContent.customType "verifiedRestaurantMultiple"}
-						<p class="directory-city box-shadow">Multiple Locations</p>
+						<p class="directory-city box-shadow"> &nbsp; Multiple Locations</p>
 						{.or}
 						<p class="directory-city hover box-shadow" onclick="window.open('https://www.google.com/maps/search/{location.addressTitle} {location.addressLine1} {location.addressLine2}', '_blank')" id="address-span"></p>
 						<script>
@@ -67,7 +68,7 @@
 							}
 							
 							var modifiedStr = splitStr.join(',');
-							document.getElementById(title + '-address-span').innerHTML = "📍 " + modifiedStr;
+							document.getElementById(title + '-address-span').innerHTML = "&nbsp;📍 " + modifiedStr;
 							}
 							if (`{title}`.includes('&')){
 							
