@@ -43,7 +43,7 @@
 		</script>
 		{.equal? customContent.customType "duplicateLocation" }
 		{.or}
-		<article id="{title}" class="directory-list-item hover {.if customContent.verified} verified-item {.or} unverified-item {.end} box-shadow mymeal-verified {categories} {tags} {@|item-classes}" data-item-id="{id}" >
+		<article id="{title}" class='directory-list-item hover {.if customContent.verified} verified-item {.or} unverified-item {.end} box-shadow mymeal-verified {categories} {tags} {@|item-classes}' data-item-id="{id}" >
 			<div class="directory-image" {.if customContent.bannerImgUrl}style="background-image:url({customContent.bannerImgUrl})"{.or}style="background-image:url(../assets/basic-bg.png)"{.end} >
 				<div class="flex-start-end verified-badge-wrapper">
 					{.if customContent.verified}
@@ -115,8 +115,8 @@
 					{.end}
 				</div>
 				<div class="flex-center-center directory-buttons">
-					<button onclick="window.open('{sourceUrl}')" class="large-button styled-button">Allergen Menu</button>
-					<button onclick="window.open('{fullUrl}', '_self')" class="large-button styled-button-inverted">Details</button>
+					<button onclick="window.open('{sourceUrl}')" class="medium-button styled-button">Allergen Menu</button>
+					<button onclick="window.open('{fullUrl}', '_self')" class="medium-button styled-button-inverted">Details</button>
 				</div>
 			</div>
 		</article>

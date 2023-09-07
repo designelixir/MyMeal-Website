@@ -12,9 +12,10 @@
 <div id="map"></div>
 
 <script>
-	var divs = document.querySelectorAll("article");
+	
 	function updateFilterCounter(){
 		var counter = document.getElementById('category-count')
+        var divs = document.querySelectorAll("article");
 		count = 0;
 			for (var i = 0; i < divs.length; i++) {
 				var div = divs[i];
@@ -28,18 +29,18 @@
 			counter.textContent = "Showing " + count + " restaurant"
 		      
 		    }else if (count === 0){
-				counter.textContent = "No results"
+				counter.textContent = "No results. Click 'Show All' to see available options."
 			}
 			 else {
 		      counter.textContent = "Showing " + count + " restaurants"
 		    }
 	}	
-	var resetButton = document.getElementById('reset-categories');
+
 	
 		function reset(){
-			
+	        var resetButton = document.getElementById('reset-categories');
 		  resetButton.style.display = "none"
-		  
+		  var divs = document.querySelectorAll("article");
 		  for (var i = 0; i < divs.length; i++) {
 		    divs[i].style.display = "block"
 		    console.log('reset')
@@ -60,6 +61,7 @@
 	var activeCategories = []
 		function categorize(name){
 			var categoryButton = document.getElementById(name);
+            console.log(name)
 			if (activeCategories.includes(name)){
 				console.log("already active")
 				 var index = activeCategories.indexOf(name);
@@ -81,8 +83,9 @@
 			} else {
 				document.getElementById('reset-categories').style.display = "block"
 			}
-	
+            var divs = document.querySelectorAll("article");
 			for (var i = 0; i < divs.length; i++) {
+                console.log("divs" + divs)
 					var div = divs[i];
 					var hasAllCategories = true;
 	
@@ -152,18 +155,13 @@
 						
 						// Open the InfoWindow when the marker is clicked
 						infoWindow.open(map, marker);
-						infoWindow.setContent(content)
 						// Zoom in to the marker
 						map.setZoom(15);
 						map.setCenter(marker.getPosition());
 						
 					});
 	
-					infoWindow.addListener('closeclick', function() {
-						// Zoom back to the center of the map when the info window is closed
-						map.setZoom(9);
-						map.setCenter({ lat: 39.7392, lng: -104.9903 });
-					});
+					
 		        });
 				
 		  

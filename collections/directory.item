@@ -63,26 +63,43 @@
 							<img src="../assets/call.png" style="height: 40px; margin-right: 10px;">
 						</div>
 						{.end}
-						{.if location}
+						{.equal? customContent.customType "verifiedRestaurantMultiple"}{.or}{.if location}
 						<div class="icon-with-label" onclick="window.open('https://www.google.com/maps/search/{location.addressTitle} {location.addressLine1} {location.addressLine2}', '_blank')">
 							<span>Click for directions</span>
-							<img src="../assets/directions.png" style="height: 40px;">
+							<img src="../assets/directions.png" style="height: 40px; margin-right:10px;">
 						</div>
+						{.end}
+						{.end}
+						{.equal? customContent.customType "verifiedRestaurantMultiple"}{.or}{.if customContent.orderOnline}
+						<div class="icon-with-label" onclick="window.open('{customContent.orderOnline}', '_blank')">
+							<span>Order Online</span>
+							<img src="../assets/toGo.png" style="height: 40px;">
+						</div>
+						{.end}
 						{.end}
 					</div>
 				</div>
-				{.if location}
-				<p class=" hover" onclick="window.open('https://www.google.com/maps/search/{location.addressTitle} {location.addressLine1} {location.addressLine2}', '_blank')">📍 {location.addressLine1}, {location.addressLine2}</p>
-				{.end}
-				<div class="flex-center-start flex-wrap" style="margin: 7px 0px;">
-					{customContent.priceRank} 
-					{.equal? customContent.customType "verifiedRestaurantMultiple"}
-					<p class="hover" onclick="switchTab(1)">&nbsp;•&nbsp; Multiple Locations </p>
-					{.end}
-					{.if categories }&nbsp;•&nbsp;
+				
+				<div style="margin: 7px 0px;">
+				<div class="flex-center-start">
+					<p>{customContent.priceRank} &nbsp;•&nbsp;</p>
+					{.if categories }
+					<div class="flex-center-start flex-wrap">
 					{.repeated section categories}
-					<a class="category-label drop-shadow" href="/directory" onclick="categorize('{name}')">{@|url-encode}</a>&nbsp;
+					<a class="category-label drop-shadow" href="/directory?category={@|url-encode}">{@|url-encode}</a>&nbsp;
 					{.end}
+					</div>
+					{.end}
+					{.equal? customContent.customType "verifiedRestaurantMultiple"}
+						<p class="hover" onclick="switchTab(1)">&nbsp;•&nbsp; Multiple Locations </p>
+					{.or}
+					{.end}
+				</div>
+					{.equal? customContent.customType "verifiedRestaurantMultiple"}
+						{.or}
+						{.if location}
+						<p class=" hover" onclick="window.open('https://www.google.com/maps/search/{location.addressTitle} {location.addressLine1} {location.addressLine2}', '_blank')">📍 {location.addressLine1}, {location.addressLine2}</p>
+						{.end}
 					{.end}
 				</div>
 			</div>
@@ -99,9 +116,7 @@
     
 	<div id="tab1" class="directory-tab visible-tab">
 		<div class="directory-details light-padding">
-			{.if customContent.verified}{.or}
-			<p>This restaurant is <strong>not verified with MyMeal.</strong> We've vetted this restaurant as a good option based on our community's feedback or personal experience. {.if customContent.hideCrossContact} {.or} We've gathered basic information about their kitchen procedures. {.end} Request a filterable allergy menu for this restaurant with the form below, and we'll contact you if they work with us to become verified.</p>
-			{.end}
+			
 			{.if customContent.specialtyItems}
 			<span id="preprocess-specialty-items">{customContent.specialtyItems}</span>
 			<div id="specialtyItems" class="flex-center-start flex-wrap">
@@ -126,10 +141,6 @@
 				document.getElementById('tag-list').appendChild(tagLabel);
 				});
 				}
-				
-				
-				
-				
 			</script>
 			<div class="hr-line"></div>
 			{.end}
@@ -211,18 +222,24 @@
 			<iframe src="{sourceUrl}" frameborder="0" allowfullscreen></iframe>
 		</div>
 		{.or}
-		<h4 style="color: var(--blue); padding-left: 25px;">Request This Restaurant:</h4>
+		<div style="padding: 0px 25px">
+			<h4 style="color: var(--blue);">Request This Restaurant:</h4>
+			<p>This restaurant is <strong>not verified with MyMeal.</strong> We've vetted this restaurant as a good option based on our community's feedback or personal experience. {.if customContent.hideCrossContact} {.or} We've gathered basic information about their kitchen procedures. {.end} Request a filterable allergy menu for this restaurant with the form below, and we'll contact you if they work with us to become verified.</p>
+		</div>
+			
 		<iframe
 			id="JotFormIFrame-230596919059065"
 			title="MyMeal Restaurant Request Form"
-			onload="window.parent.scrollTo(0,0)"
+			onload="window.parent.scrollTo(0,90)"
 			allowtransparency="true"
 			allowfullscreen="true"
 			allow="geolocation; microphone; camera"
 			src="https://form.jotform.com/230596919059065?restaurantName={title}"
 			frameborder="0"
-			style="min-width:100%;max-width:100%;height:539px;border:none;"
+			style="min-width:100%;max-width:100%;height:100%;border:none;"
 			scrolling="no"
+			
+
 			>
 		</iframe>
 	</div>
