@@ -226,10 +226,15 @@
 			{.end}
 		</div>
 		{.if customContent.verified}
+		{.if sourceUrl}
 		<h4 style="color: var(--blue); padding-left: 25px;">Allergen Menu:</h4>
 		<div class="iframe-container" id="mymeal-menu-iframe">
 			<iframe src="{sourceUrl}" frameborder="0" allowfullscreen></iframe>
 		</div>
+		{.or}
+		<h4 style="color: var(--blue); padding-left: 25px;">Allergen Menu:</h4>
+		<p style="padding: 0px 25px;">This restaurant has different MyMeal menus for its locations. Click the "Locations" tab to view each menu.</p>
+		{.end}
 		{.or}
 		<div style="padding: 0px 25px">
 			<h4 style="color: var(--blue);">Request This Restaurant:</h4>
@@ -311,6 +316,14 @@
 								if (targetDetails.style.display === "none"){
 									targetDetails.style.display = "block"
 									targetArrow.innerHTML = "Click for location details &#9660;"
+									$(".multi-location-iframe").show(function(){
+										// Find the iframes within our newly-visible element
+										$(this).find("iframe").prop("src", function(){
+											// Set their src attribute to the value of data-src
+											return $(this).data("src");
+										});
+									});
+									
 								} else {
 									targetDetails.style.display = "none"
 									targetArrow.innerHTML = "Click for location details &#9654;"
@@ -327,6 +340,12 @@
 							<div class="hr-line"></div>
 							<h4 style="color: var(--blue)">Details:</h4>
 							{body}
+							{.end}
+							{.if sourceUrl}
+							<div class="multi-location-iframe">
+								<h4 style="color: var(--blue); padding-left: 25px;">Allergen Menu:</h4>
+								<iframe data-src="{sourceUrl}" frameborder="0" style="width: 100%; min-height: 800px;" allowfullscreen></iframe>
+							</div>
 							{.end}
 						</div>
 					</div>
