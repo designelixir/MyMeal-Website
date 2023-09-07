@@ -1,4 +1,6 @@
 <script>
+var allCoordinates = []
+var allContent = []
 	function addToSpecialtyItems() {
 	  var span = document.getElementById('preprocess-specialty-items'); // Get the span element
 	  var div = document.getElementById('specialtyItems'); // Get the div element
@@ -92,13 +94,14 @@
 	<div class="directory-page-info">
 	<div class="restaurant-tab-container">
     <button onclick="switchTab(0)" class="tab-button active-tab-button" id="tab-button-1">Details</button>
-    <button onclick="switchTab(1)" class="tab-button" id="tab-button-2">Locations</button>
+    {.equal? customContent.customType "verifiedRestaurantMultiple"}<button onclick="switchTab(1)" class="tab-button" id="tab-button-2">Locations</button>{.end}
+	<button onclick="switchTab(2)" class="tab-button" id="tab-button-3">Reviews</button>
+	</div>
     
-      <button onclick="switchTab(2)" class="tab-button" id="tab-button-2">Reviews</button>
-  
     
 	<div id="tab1" class="directory-tab visible-tab">
 		<div class="directory-details light-padding">
+		
 			{.if customContent.verified}{.or}
 			<p>This restaurant is <strong>not verified with MyMeal.</strong> We've vetted this restaurant as a good option based on our community's feedback or personal experience. {.if customContent.hideCrossContact} {.or} We've gathered basic information about their kitchen procedures. {.end} Request a filterable allergy menu for this restaurant with the form below, and we'll contact you if they work with us to become verified.</p>
 			{.end}
@@ -227,17 +230,26 @@
 		</iframe>
 	</div>
 	{.end}
+	{.equal? customContent.customType "verifiedRestaurantMultiple"}
   <div id="tab2" class="directory-tab">
-    
-          <script> var parentTitle = "{item.title}"</script>
-    
-<squarespace:query collection="directory" limit="100" tag={title}>
+  <div id="directory-map-container">
+		<div id="map"></div>
+	</div>
+	<squarespace:query collection="directory" limit="100" tag={title}>
         <div class="flex-start-start flex-wrap">
         {.repeated section items}
+		<script>
+			{.if location}
+				var lat = location.markerLat;
+				var long = location.markerLng;
+				var coordinate = {lat:{location.markerLat}, lng: {location.markerLng}}
+				allCoordinates.push(coordinate);
+			{.end}
+		</script>
           {.equal? customContent.customType "duplicateLocation"}
               <div class="multiple-location-wrapper">
                 <div id="{id}" class="{customContent.multipleLocation}">
-                  <div   style="padding: 0px 15px;"class="flex-center-spacebetween"><h4 class="strong">{title}</h4> <button class="large-button styled-button" onclick="window.open('{customContent.orderOnline}')">Order Online</button></div>
+                  <div   style="padding: 0px 15px;"class="flex-center-spacebetween"><h4 class="strong">{title}</h4> <button class="large-button styled-button" style="min-width: 140px;" onclick="window.open('{customContent.orderOnline}')">Order Online</button></div>
                   
                   <div style="padding: 0px 15px;">
                   {.if location}
@@ -254,12 +266,18 @@
                     {.end}
                   </div>
                   <br>
-                 <p onclick="showDetails({id})">Click for location details</p>
-                  
+				 
+                 <div onclick="showDetails({id})"><p>Click for location details</p></div>
                 </div>
-                <div class="additional-details" id="{id}-additionalDetails">
+                <div class="additional-details" id="{id}-additionalDetails" style="padding: 15px;">
+				{.if customContent.specialtyItems}
                 <p><strong>Speciality Items:</strong> {customContent.specialtyItems}</p>
-                  {body}
+				{.end}
+                  {.if body}
+					<div class="hr-line"></div>
+					<h4 style="color: var(--blue)">Details:</h4>
+					{body}
+					{.end}
                 </div>
               </div>
             {.end}
@@ -268,10 +286,10 @@
         {.end}
         </div>
     </squarespace:query>
- 
   </div>
+  {.end}
 
-	<div id="tab3" class="directory-tab">
+	<div id="tab3" class="directory-tab" style="padding: 25px;">
 		<h4 style="color: var(--blue)">What Our Community is Saying About {title}</h4>
 		{.if customContent.appRating}
 		<div class="flex-center-start">
@@ -287,17 +305,82 @@
 		</div>
 		{.end}
 	</div>
+</div>
 </section>
 <br>
 {.end}
+
+
+
+
 <script>
+{.equal? customContent.customType "verifiedRestaurantMultiple"}
+function initMap() {
+		  
+	var map = new google.maps.Map(document.getElementById("map"), {
+	zoom: 9,
+	gestureHandling: 'cooperative',
+	center: { lat: 39.7392, lng: -104.9903 },
+	styles: mapStyles,
+	
+	});
+	
+	allCoordinates.forEach(function (location, index) {
+			var marker = new google.maps.Marker({
+			position: location,
+			map: map,
+			icon: 'assets/pin.svg'
+			
+			});
 
-function 
+			var infoWindow = new google.maps.InfoWindow({
+			content: allContent[index]
+		});
 
+			marker.addListener('click', function() {
+				
+				// Open the InfoWindow when the marker is clicked
+				infoWindow.open(map, marker);
+				infoWindow.setContent(content)
+				// Zoom in to the marker
+				map.setZoom(15);
+				map.setCenter(marker.getPosition());
+				
+			});
 
-	$(document).ready(function() {
-	      var starRating = Number({customContent.appRating});
-	      var star_rating_width = $('.fill-ratings span').width();
-	      $('.star-ratings').width(starRating / 10);
-	    });
+			infoWindow.addListener('closeclick', function() {
+				// Zoom back to the center of the map when the info window is closed
+				map.setZoom(9);
+				map.setCenter({ lat: 39.7392, lng: -104.9903 });
+			});
+		});
+		
+	
+		return map;
+	
+}
+function addPins(allCoordinates){
+	var locations = allCoordinates;
+	locations.forEach(function (location) {
+	
+	var marker = new google.maps.Marker({
+		position: location,
+		map: map,
+	});
+	});
+}
+{.end}
+
+$(document).ready(function() {
+	var starRating = Number({customContent.appRating});
+	var star_rating_width = $('.fill-ratings span').width();
+	$('.star-ratings').width(starRating / 10);
+});
 </script>
+{.equal? customContent.customType "verifiedRestaurantMultiple"}
+<script
+	src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBKuNK8g9qwz4O5y1Sll9cff4z28H3sBt0&callback=initMap"
+	async
+	defer
+	></script>
+{.end}
