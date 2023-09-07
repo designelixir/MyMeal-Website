@@ -1,17 +1,9 @@
-<script>
-	function delayCall(name){
-		document.addEventListener("DOMContentLoaded", function(name) {
-			categorize(name)
-	});
-	}
-		var allCoordinates = []
-		var allContent = []
-</script>
+
 <p style="margin-bottom: 25px;">Menus with a "Verified MyMeal Partner" <img src="../assets/verified-mymeal.png" class="hover" onclick="verifiedPopUp(true)" style="height: 25px; margin-bottom: -10px;" alt="mymeal verified badge"/> badge have worked with us personally to provide the most accurate information possible to make your dining experience safe. Click the badge for more information on what qualifies a restaurant as a MyMeal partner.
 <p>
 <div class="directory box-shadow">
 	<div id="directory-map-container">
-		<div id="map"></div>
+		{@|apply directoryMap.block}
 		<div class="directory-filter box-shadow">
 			<div class="flex-center-start flex-wrap">
 				<p class="white-text">Filter by: </p>
@@ -35,10 +27,10 @@
 				{.end}
 			</div>
 		</div>
-		<p id="filter-text" style=" padding: 15px 25px 0px; font-style: italic;"><span id="category-count"></span></p>
+		<p id="filter-text"><span id="category-count"></span></p>
 	</div>
 
-	<div class="flex-start-start flex-wrap directory-wrapper" style="border: 1px solid lime;">
+	<div class="flex-start-center flex-wrap directory-wrapper" >
 		{.repeated section items}
 		<script>
 			{.if location}
@@ -46,6 +38,7 @@
 				var long = location.markerLng;
 				var coordinate = {lat:{location.markerLat}, lng: {location.markerLng}}
 				allCoordinates.push(coordinate);
+				allContent.push(["<h4>{title}</h4> <p> 📍 {location.addressLine1}, {location.addressLine2} </p><br> <div class='flex-center-center'><button class='large-button styled-button hover' onclick='window.open('{sourceUrl}')'>Restaurant Details</button><button class='large-button outline-styled-button hover' onclick='window.open('{sourceUrl}')'>Directions</button></div>"])
 			{.end}
 		</script>
 		{.equal? customContent.customType "duplicateLocation" }
@@ -57,7 +50,7 @@
 					<img onclick="verifiedPopUp(true)" class="verified-badge hover" src="../assets/verified-mymeal.png">
 					{.end}
 				</div>
-				<div style="border: 2px solid red;">
+				<div>
 					<div class="directory-logo-wrapper flex-center-start">
 						{.if assetUrl}
 							<div class="directory-logo box-shadow" style="background-image: url({assetUrl})"></div>
@@ -65,7 +58,7 @@
 						{.equal? customContent.customType "verifiedRestaurantMultiple"}
 						<p class="directory-city box-shadow">Multiple Locations</p>
 						{.or}
-						<p class="directory-city hover box-shadow" onclick="window.open('https://www.google.com/maps/search/{location.addressTitle} {location.addressLine1} {location.addressLine2}', '_blank')">📍 <span id="address-span"></span></p>
+						<p class="directory-city hover box-shadow" onclick="window.open('https://www.google.com/maps/search/{location.addressTitle} {location.addressLine1} {location.addressLine2}', '_blank')" id="address-span"></p>
 						<script>
 						function removeAfterSecondComma(str, title) {
 							var splitStr = str.split(',');
@@ -74,9 +67,8 @@
 							}
 							
 							var modifiedStr = splitStr.join(',');
-							document.getElementById(title + '-address-span').textContent = modifiedStr;
+							document.getElementById(title + '-address-span').innerHTML = "📍 " + modifiedStr;
 							}
-						
 							if (`{title}`.includes('&')){
 							
 							var title = `{title}`.replace(/&amp;/g, "and")
@@ -129,176 +121,6 @@
 			</div>
 		</article>
 	{.end}
-	<script>
-		var title = `{title}`
-				var contentString = document.getElementById(title).innerHTML;
-		allContent.push(contentString)
-	</script>
 	
 	{.end}
 </div>
-<script>
-	var divs = document.querySelectorAll("article");
-	function updateFilterCounter(){
-		var counter = document.getElementById('category-count')
-		count = 0;
-			for (var i = 0; i < divs.length; i++) {
-				var div = divs[i];
-				var display = window.getComputedStyle(div).getPropertyValue('display');
-	
-				if (display === 'block') {
-				count++;
-				}
-			}
-		if (count === 1){
-			counter.textContent = "Showing " + count + " restaurant"
-		      
-		    }else if (count === 0){
-				counter.textContent = "No results"
-			}
-			 else {
-		      counter.textContent = "Showing " + count + " restaurants"
-		    }
-	}	
-	var resetButton = document.getElementById('reset-categories');
-	
-		function reset(){
-			
-		  resetButton.style.display = "none"
-		  
-		  for (var i = 0; i < divs.length; i++) {
-		    divs[i].style.display = "block"
-		    console.log('reset')
-		  }
-		  var categoryButtons = document.getElementsByClassName('category-filter')
-		  for (var i = 0; i < categoryButtons.length; i++) {
-		    categoryButtons[i].classList.remove('active-category');
-		
-		  }
-		  
-		  updateFilterCounter()
-		  
-		}
-	
-	
-	
-	
-	var activeCategories = []
-		function categorize(name){
-			
-			var categoryButton = document.getElementById(name);
-			
-			
-			if (activeCategories.includes(name)){
-				console.log("already active")
-				 var index = activeCategories.indexOf(name);
-	
-					if (index !== -1) {
-					activeCategories.splice(index, 1);
-					}
-					console.log(activeCategories)
-	
-				 categoryButton.classList.remove('active-category')
-			} else {
-				console.log("not active")
-				 activeCategories.push(name)
-				 console.log(activeCategories)
-				 categoryButton.classList.add('active-category')
-			}
-	
-			if (activeCategories.length === 0){
-				document.getElementById('reset-categories').style.display = "none"
-			} else {
-				document.getElementById('reset-categories').style.display = "block"
-			}
-	
-			for (var i = 0; i < divs.length; i++) {
-					var div = divs[i];
-					var hasAllCategories = true;
-	
-					for (var j = 0; j < activeCategories.length; j++) {
-					if (!div.classList.contains(activeCategories[j])) {
-						hasAllCategories = false;
-						break;
-					}
-					}
-	
-					if (hasAllCategories) {
-					div.style.display = 'block'; 
-					
-					} else {
-					div.style.display = 'none'; 
-					}
-				}
-			
-		    updateFilterCounter()
-		  }
-	
-		
-		  
-		  
-		function clickPin(location){
-			console.log("clicked a pin with location of ", location)
-		}
-		
-		function initMap() {
-		  
-		  var map = new google.maps.Map(document.getElementById("map"), {
-		    zoom: 9,
-			gestureHandling: 'cooperative',
-		    center: { lat: 39.7392, lng: -104.9903 },
-		    styles: mapStyles,
-			
-		  });
-		  
-		  allCoordinates.forEach(function (location, index) {
-		          var marker = new google.maps.Marker({
-		            position: location,
-		            map: map,
-		            icon: 'assets/pin.svg'
-					
-		          });
-	
-				  var infoWindow = new google.maps.InfoWindow({
-					content: allContent[index]
-				});
-	
-				  marker.addListener('click', function() {
-						
-						// Open the InfoWindow when the marker is clicked
-						infoWindow.open(map, marker);
-						infoWindow.setContent(content)
-						// Zoom in to the marker
-						map.setZoom(15);
-						map.setCenter(marker.getPosition());
-						
-					});
-	
-					infoWindow.addListener('closeclick', function() {
-						// Zoom back to the center of the map when the info window is closed
-						map.setZoom(9);
-						map.setCenter({ lat: 39.7392, lng: -104.9903 });
-					});
-		        });
-				
-		  
-		      return map;
-		  
-		}
-		function addPins(allCoordinates){
-		  var locations = allCoordinates;
-		  locations.forEach(function (location) {
-		    
-		    var marker = new google.maps.Marker({
-		      position: location,
-		      map: map,
-		    });
-		  });
-		}
-		    
-</script>
-<script
-	src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBKuNK8g9qwz4O5y1Sll9cff4z28H3sBt0&callback=initMap"
-	async
-	defer
-	></script>

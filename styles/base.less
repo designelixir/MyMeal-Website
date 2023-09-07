@@ -204,16 +204,15 @@ main {padding: 5vw; }
 .category:hover {border: 1px solid black;}
 .directory-filter {background: var(--blue);    padding: 10px 25px; width: 100%;}
 .directory {border: 0.5px solid black; border-top-right-radius: 8px; border-top-left-radius: 8px;}
-.directory-wrapper {padding: 0px 10px 25px;}
 
 
-.directory-list-item {margin-bottom: 25px; width: 325px; margin:15px; height: auto; }
+.directory-list-item { min-width: 325px; margin:0px 1% 25px; width: 30%; height: auto; }
 .visible-restaurant {display: block;}
-.verified-item {border: 2px solid var(--blue); border-radius: 8px;}
+.verified-item {border: 3px solid var(--blue); border-radius: 8px;}
 .directory-image {width: 100%; height: 100px; background-size: cover; background-position: center center; background-repeat: no-repeat; border-radius: 6px 6px 0px 0px; background-color: gray; background-image: url('../assets/basic-bg.png')}
 .directory-logo-wrapper {margin-top: -65px; height: 80px;}
-.directory-logo {height: 75px; width: 75px; margin-left: 15px; background-color: var(--graywhite); background-repeat: no-repeat; border-radius: 37px; background-size: cover; background-position: center center; z-index: 2;}
-.directory-city {color: black; font-size: 14px; background: white; padding:0 10px; margin-left: -2px; border-radius: 3px;}
+.directory-logo {max-height: 75px; height: 100%; width: 100%; max-width: 75px; margin-left: 5px; background-color: var(--graywhite); background-repeat: no-repeat; border-radius: 37px; background-size: cover; background-position: center center; z-index: 2;}
+.directory-city {color: black; font-size: 14px; background: white; padding:5px 10px; margin-left: -5px; margin-right: 5px; border-radius: 3px; line-height: 14px;}
 .directory-logo-wrapper:hover .directory-city {opacity: 1;}
 
 .directory-info-container {padding: 15px; background: white; border-bottom-left-radius: 6px; border-bottom-right-radius: 6px;}
@@ -222,7 +221,8 @@ main {padding: 5vw; }
 .tag-label {font-size: 11px; color: white; background: var(--blue); padding: 2.5px 10px; border-radius: 15px; margin: 5px 0px;}
 .tag-label-individual {font-size: 14px; color: white; background: var(--blue); padding: 2.5px 10px; border-radius: 15px; margin: 5px 5px;}
 
-.directory-buttons { padding: 15px;}
+.directory-buttons { padding: 15px 0px;}
+.directory-buttons button {margin: 5px; width: 100%;}
 .verified-badge-wrapper {background: rgba(255,255,255,0.5); width: 100%; height: 100%; border-top-left-radius: 6px; border-top-right-radius: 6px;}
 .verified-badge {height: 60px; margin-top: -15px;  z-index: 3;}
 .unverified-item {border: 2px solid rgba(0,0,0,0.25); border-radius: 8px;}
@@ -237,6 +237,7 @@ main {padding: 5vw; }
   position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(255,255,255,0.6); z-index: 300000000;
 }
 .pop-up { padding: 25px; border-radius: 8px; max-width: 800px; border: 2px solid var(--offblack); background-color: white;}
+#filter-text {padding: 15px 25px 0px; font-style: italic;}
 
 // Dedicated Free Banner
 .dedicated-free-banner {min-width: 385px; max-width: 24vw; width: 100%; height: 40px; background-image: url(../assets/dedicated-free-banner_1.png); background-size: 100% 100%; background-repeat: no-repeat; background-position: center center; 
@@ -244,10 +245,19 @@ main {padding: 5vw; }
 }
 
 
+@media screen and (max-width: 1400px) {
+.directory-list-item { width: 48%;}
+
+}
+
 @media screen and (max-width: 1000px) {
-  .directory-wrapper {padding: 0px 25px 25px;}
   .category-filter p {font-size: 14px; color: black; line-height: 12px;}
+  .directory-list-item {min-width: 48%;}
   
+}
+
+@media screen and (max-width: 900px) {
+  .directory-buttons {flex-wrap: wrap;}
 }
 #directory-map-container {
   z-index: 0;
@@ -280,7 +290,6 @@ main {padding: 5vw; }
 .directory-header-logo-container img {height: 150px; width: 150px; border-radius: 75px; border: 1px solid black; z-index: 2; background-color: white;}
 
 @media screen and (max-width: 800px) {
-  .directory-wrapper {padding: 0px 25px 25px;}
   .directory-header-logo-info {flex-wrap: wrap;}
   .category-filter p {font-size: 14px; color: black; line-height: 12px;}
   .directory-header-info {padding: 15px; margin-left: unset;}
@@ -322,8 +331,8 @@ main {padding: 5vw; }
 
 
 .restaurant-tab-container {margin-top: -37px;}
-.multiple-location-wrapper {background: var(--offwhite); border-radius: 6px; margin: 1%; width: 100%;}
-.additional-details { border: 2px solid red;}
+.multiple-location-wrapper {background: var(--offwhite); border-radius: 6px; margin: 10px 0 15px; width: 100%; border: 0.25px solid black;}
+.additional-details { border-top: 2px solid var(--blue); border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; background: white; box-shadow: inset 0px 2px 3px rgba(0,0,0,0.25);}
 
 .tab-button {font-size: 16px; margin: 0; border: none; background-color: var(--offwhite); color: black; padding: 5px 25px; border-radius: 8px 8px 0px 0px; }
 .active-tab-button {font-size: 16px; padding: 2px 0px; margin: 0!important; border: none; background-color: var(--blue); color: white; padding: 5px 25px; border-radius: 8px 8px 0px 0px; border: 1px solid black; border-bottom: 2px solid var(--offgray)!important; z-index: 2;}

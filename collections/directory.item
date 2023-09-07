@@ -1,6 +1,4 @@
 <script>
-var allCoordinates = []
-var allContent = []
 	function addToSpecialtyItems() {
 	  var span = document.getElementById('preprocess-specialty-items'); // Get the span element
 	  var div = document.getElementById('specialtyItems'); // Get the div element
@@ -79,7 +77,7 @@ var allContent = []
 				<div class="flex-center-start flex-wrap" style="margin: 7px 0px;">
 					{customContent.priceRank} 
 					{.equal? customContent.customType "verifiedRestaurantMultiple"}
-					<p>&nbsp;•&nbsp; Multiple Locations </p>
+					<p class="hover" onclick="switchTab(1)">&nbsp;•&nbsp; Multiple Locations </p>
 					{.end}
 					{.if categories }&nbsp;•&nbsp;
 					{.repeated section categories}
@@ -101,7 +99,6 @@ var allContent = []
     
 	<div id="tab1" class="directory-tab visible-tab">
 		<div class="directory-details light-padding">
-		
 			{.if customContent.verified}{.or}
 			<p>This restaurant is <strong>not verified with MyMeal.</strong> We've vetted this restaurant as a good option based on our community's feedback or personal experience. {.if customContent.hideCrossContact} {.or} We've gathered basic information about their kitchen procedures. {.end} Request a filterable allergy menu for this restaurant with the form below, and we'll contact you if they work with us to become verified.</p>
 			{.end}
@@ -232,9 +229,7 @@ var allContent = []
 	{.end}
 	{.equal? customContent.customType "verifiedRestaurantMultiple"}
   <div id="tab2" class="directory-tab">
-  <div id="directory-map-container">
-		<div id="map"></div>
-	</div>
+  {@|apply directoryMap.block}
 	<squarespace:query collection="directory" limit="100" tag={title}>
         <div class="flex-start-start flex-wrap">
         {.repeated section items}
@@ -244,12 +239,17 @@ var allContent = []
 				var long = location.markerLng;
 				var coordinate = {lat:{location.markerLat}, lng: {location.markerLng}}
 				allCoordinates.push(coordinate);
+				allContent.push(["<h4>{title}</h4> <p> 📍 {location.addressLine1}, {location.addressLine2} </p><br> <div class='flex-center-center'><button class='large-button styled-button hover' onclick='goToDetails(`{id}`)'>Restaurant Details</button><button class='large-button outline-styled-button hover' onclick='window.open('{sourceUrl}')'>Directions</button></div>"])
 			{.end}
+			function goToDetails(id){
+				showDetails(id);
+				document.getElementById(id + '-additionalDetails').scrollIntoView({ behavior: 'smooth' })
+			}
 		</script>
           {.equal? customContent.customType "duplicateLocation"}
-              <div class="multiple-location-wrapper">
+              <div class="multiple-location-wrapper box-shadow">
                 <div id="{id}" class="{customContent.multipleLocation}">
-                  <div   style="padding: 0px 15px;"class="flex-center-spacebetween"><h4 class="strong">{title}</h4> <button class="large-button styled-button" style="min-width: 140px;" onclick="window.open('{customContent.orderOnline}')">Order Online</button></div>
+                  <div style="padding: 0px 15px;"class="flex-center-spacebetween"><h4 class="strong">{title}</h4> <button class="large-button styled-button" style="min-width: 140px;" onclick="window.open('{customContent.orderOnline}')">Order Online</button></div>
                   
                   <div style="padding: 0px 15px;">
                   {.if location}
@@ -266,10 +266,23 @@ var allContent = []
                     {.end}
                   </div>
                   <br>
-				 
-                 <div onclick="showDetails({id})"><p>Click for location details</p></div>
+				 <script>
+					function showDetails(id){
+						console.log(id)
+						var targetDetails = document.getElementById(id + '-additionalDetails');
+						var targetArrow = document.getElementById(id + '-detailsArrow');
+						if (targetDetails.style.display === "none"){
+							targetDetails.style.display = "block"
+							targetArrow.innerHTML = "Click for location details &#9660;"
+						} else {
+							targetDetails.style.display = "none"
+							targetArrow.innerHTML = "Click for location details &#9654;"
+						}
+					}
+				 </script>
+                 <div onclick="showDetails('{id}')" class="hover"><p style="padding: 0px 15px; margin: 0 0 25px" id="{id}-detailsArrow">Click for location details &#9654;</p></div>
                 </div>
-                <div class="additional-details" id="{id}-additionalDetails" style="padding: 15px;">
+                <div class="additional-details fade-in" id="{id}-additionalDetails" style="padding: 15px; display: none;">
 				{.if customContent.specialtyItems}
                 <p><strong>Speciality Items:</strong> {customContent.specialtyItems}</p>
 				{.end}
@@ -314,73 +327,10 @@ var allContent = []
 
 
 <script>
-{.equal? customContent.customType "verifiedRestaurantMultiple"}
-function initMap() {
-		  
-	var map = new google.maps.Map(document.getElementById("map"), {
-	zoom: 9,
-	gestureHandling: 'cooperative',
-	center: { lat: 39.7392, lng: -104.9903 },
-	styles: mapStyles,
-	
-	});
-	
-	allCoordinates.forEach(function (location, index) {
-			var marker = new google.maps.Marker({
-			position: location,
-			map: map,
-			icon: 'assets/pin.svg'
-			
-			});
-
-			var infoWindow = new google.maps.InfoWindow({
-			content: allContent[index]
-		});
-
-			marker.addListener('click', function() {
-				
-				// Open the InfoWindow when the marker is clicked
-				infoWindow.open(map, marker);
-				infoWindow.setContent(content)
-				// Zoom in to the marker
-				map.setZoom(15);
-				map.setCenter(marker.getPosition());
-				
-			});
-
-			infoWindow.addListener('closeclick', function() {
-				// Zoom back to the center of the map when the info window is closed
-				map.setZoom(9);
-				map.setCenter({ lat: 39.7392, lng: -104.9903 });
-			});
-		});
-		
-	
-		return map;
-	
-}
-function addPins(allCoordinates){
-	var locations = allCoordinates;
-	locations.forEach(function (location) {
-	
-	var marker = new google.maps.Marker({
-		position: location,
-		map: map,
-	});
-	});
-}
-{.end}
-
+console.log(allCoordinates)
 $(document).ready(function() {
 	var starRating = Number({customContent.appRating});
 	var star_rating_width = $('.fill-ratings span').width();
 	$('.star-ratings').width(starRating / 10);
 });
 </script>
-{.equal? customContent.customType "verifiedRestaurantMultiple"}
-<script
-	src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBKuNK8g9qwz4O5y1Sll9cff4z28H3sBt0&callback=initMap"
-	async
-	defer
-	></script>
-{.end}

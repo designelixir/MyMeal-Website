@@ -1,0 +1,189 @@
+<script>
+	function delayCall(name){
+		document.addEventListener("DOMContentLoaded", function(name) {
+			categorize(name)
+	});
+	}
+		var allCoordinates = []
+		var allContent = []
+        
+</script>
+
+<div id="map"></div>
+
+<script>
+	var divs = document.querySelectorAll("article");
+	function updateFilterCounter(){
+		var counter = document.getElementById('category-count')
+		count = 0;
+			for (var i = 0; i < divs.length; i++) {
+				var div = divs[i];
+				var display = window.getComputedStyle(div).getPropertyValue('display');
+	
+				if (display === 'block') {
+				count++;
+				}
+			}
+		if (count === 1){
+			counter.textContent = "Showing " + count + " restaurant"
+		      
+		    }else if (count === 0){
+				counter.textContent = "No results"
+			}
+			 else {
+		      counter.textContent = "Showing " + count + " restaurants"
+		    }
+	}	
+	var resetButton = document.getElementById('reset-categories');
+	
+		function reset(){
+			
+		  resetButton.style.display = "none"
+		  
+		  for (var i = 0; i < divs.length; i++) {
+		    divs[i].style.display = "block"
+		    console.log('reset')
+		  }
+		  var categoryButtons = document.getElementsByClassName('category-filter')
+		  for (var i = 0; i < categoryButtons.length; i++) {
+		    categoryButtons[i].classList.remove('active-category');
+		
+		  }
+		  
+		  updateFilterCounter()
+		  
+		}
+	
+	
+	
+	
+	var activeCategories = []
+		function categorize(name){
+			var categoryButton = document.getElementById(name);
+			if (activeCategories.includes(name)){
+				console.log("already active")
+				 var index = activeCategories.indexOf(name);
+					if (index !== -1) {
+					activeCategories.splice(index, 1);
+					}
+					console.log(activeCategories)
+	
+				 categoryButton.classList.remove('active-category')
+			} else {
+				console.log("not active")
+				 activeCategories.push(name)
+				 console.log(activeCategories)
+				 categoryButton.classList.add('active-category')
+			}
+	
+			if (activeCategories.length === 0){
+				document.getElementById('reset-categories').style.display = "none"
+			} else {
+				document.getElementById('reset-categories').style.display = "block"
+			}
+	
+			for (var i = 0; i < divs.length; i++) {
+					var div = divs[i];
+					var hasAllCategories = true;
+	
+					for (var j = 0; j < activeCategories.length; j++) {
+					if (!div.classList.contains(activeCategories[j])) {
+						hasAllCategories = false;
+						break;
+					}
+					}
+	
+					if (hasAllCategories) {
+					div.style.display = 'block'; 
+					
+					} else {
+					div.style.display = 'none'; 
+					}
+				}
+			
+		    updateFilterCounter()
+		  }
+
+
+
+		function initMap() {
+		  
+		  var map = new google.maps.Map(document.getElementById("map"), {
+		    zoom: {.equal? customContent.customType "verifiedRestaurantMultiple"} 5 {.or} 9 {.end},
+			gestureHandling: 'cooperative',
+             
+  
+            scrollwheel: false,
+            disableDoubleClickZoom: true,
+		    center: { lat: 39.7392, lng: -104.9903 },
+		    styles: mapStyles,
+			
+		  });
+		  
+          // Assuming you have a LatLngBounds object called 'bounds' that you want to fit
+            const bounds = new google.maps.LatLngBounds(
+            new google.maps.LatLng(34.0522, -118.2437), // los angeles
+            new google.maps.LatLng(40.7128, -74.0060) // new york
+            );
+
+            // Fit the map to the bounds
+            map.fitBounds(bounds);
+
+            // Get the center of the map after fitting the bounds
+            const center = map.getCenter();
+
+            // Log the center coordinates
+            console.log('Center:', center.lat(), center.lng());
+
+
+		  allCoordinates.forEach(function (location, index) {
+		          var marker = new google.maps.Marker({
+		            position: location,
+		            map: map,
+		            icon: '../../assets/pin.svg'
+					
+		          });
+	
+				  var infoWindow = new google.maps.InfoWindow({
+					content: "<div class='map-popup-window'>" + allContent[index]+ "</div>" 
+				});
+	
+				  marker.addListener('click', function() {
+						
+						// Open the InfoWindow when the marker is clicked
+						infoWindow.open(map, marker);
+						infoWindow.setContent(content)
+						// Zoom in to the marker
+						map.setZoom(15);
+						map.setCenter(marker.getPosition());
+						
+					});
+	
+					infoWindow.addListener('closeclick', function() {
+						// Zoom back to the center of the map when the info window is closed
+						map.setZoom(9);
+						map.setCenter({ lat: 39.7392, lng: -104.9903 });
+					});
+		        });
+				
+		  
+		      return map;
+		  
+		}
+		function addPins(allCoordinates){
+		  var locations = allCoordinates;
+		  locations.forEach(function (location) {
+		    
+		    var marker = new google.maps.Marker({
+		      position: location,
+		      map: map,
+		    });
+		  });
+		}
+		    console.log(allContent)
+</script>
+<script
+src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBKuNK8g9qwz4O5y1Sll9cff4z28H3sBt0&callback=initMap"
+async
+defer
+></script>

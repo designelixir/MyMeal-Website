@@ -120,6 +120,16 @@ var mapStyles = [
     ]
   },
   {
+    "featureType": "administrative.province",
+    "elementType": 'geometry.stroke',
+    "stylers": [
+      {
+        "color": "#000000"
+        
+      }
+    ]
+  },
+  {
     "elementType": "labels.icon",
     "stylers": [
       {
@@ -270,3 +280,4 @@ var mapStyles = [
     ]
   }
 ]
+
