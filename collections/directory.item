@@ -13,25 +13,6 @@
 	    div.appendChild(listItem); // Add the list item to the div
 	  }
 	}
-	
-	    function switchTab(tabIndex) {
-	      
-	      var tabs = document.getElementsByClassName("directory-tab");
-	      var buttons = document.getElementsByClassName("tab-button")
-	      
-	
-	      
-	      var selectedTab = document.getElementById("tab" + (tabIndex + 1));
-	      var selectedTabButton = document.getElementById("tab-button-" + (tabIndex + 1))
-	      if (selectedTab) {
-	        for (var i = 0; i < tabs.length; i++) {
-	        tabs[i].classList.remove("visible-tab")
-	        buttons[i].classList.remove("active-tab-button")
-	      }
-	        selectedTab.classList.add("visible-tab")
-	        selectedTabButton.classList.add("active-tab-button")
-	      }
-	    }
 	  
 </script>
 {.section item}
@@ -107,11 +88,39 @@
 	</div>
 	</div>
 	<div class="directory-page-info">
+	{.equal? customContent.customType "verifiedRestaurantMultiple"}
+	<script>
+	function switchTab(tabIndex) {
+			
+		var tabs = document.getElementsByClassName("directory-tab");
+		var buttons = document.getElementsByClassName("tab-button")
+		
+	
+		
+		var selectedTab = document.getElementById("tab" + (tabIndex + 1));
+		var selectedTabButton = document.getElementById("tab-button-" + (tabIndex + 1))
+		if (selectedTab) {
+			for (var i = 0; i < tabs.length; i++) {
+			tabs[i].classList.remove("visible-tab")
+		}
+
+		for (var i = 0; i < buttons.length; i++) {
+		buttons[i].classList.remove("active-tab-button")
+		}
+
+		
+			selectedTab.classList.add("visible-tab")
+			selectedTabButton.classList.add("active-tab-button")
+		}
+		}
+	</script>
+
 	<div class="restaurant-tab-container">
-    <button onclick="switchTab(0)" class="tab-button active-tab-button" id="tab-button-1">Details</button>
-    {.equal? customContent.customType "verifiedRestaurantMultiple"}<button onclick="switchTab(1)" class="tab-button" id="tab-button-2">Locations</button>{.end}
-	<button onclick="switchTab(2)" class="tab-button" id="tab-button-3">Reviews</button>
+		<button onclick="switchTab(0)" class="tab-button active-tab-button" id="tab-button-1">Details</button>
+		<button onclick="switchTab(1)" class="tab-button" id="tab-button-2">Locations</button>
+		{#  <button onclick="switchTab(2)" class="tab-button" id="tab-button-3">Reviews</button>  }
 	</div>
+	{.end}
     
     
 	<div id="tab1" class="directory-tab visible-tab">
@@ -245,79 +254,89 @@
 	</div>
 	{.end}
 	{.equal? customContent.customType "verifiedRestaurantMultiple"}
-  <div id="tab2" class="directory-tab">
-  {@|apply directoryMap.block}
-	<squarespace:query collection="directory" limit="100" tag={title}>
-        <div class="flex-start-start flex-wrap">
-        {.repeated section items}
-		<script>
-			{.if location}
-				var lat = location.markerLat;
-				var long = location.markerLng;
-				var coordinate = {lat:{location.markerLat}, lng: {location.markerLng}}
-				allCoordinates.push(coordinate);
-				allContent.push(["<h4>{title}</h4> <p> 📍 {location.addressLine1}, {location.addressLine2} </p><br> <div class='flex-center-center'><button class='large-button styled-button hover' onclick='goToDetails(`{id}`)'>Restaurant Details</button><button class='large-button outline-styled-button hover' onclick='window.open('{sourceUrl}')'>Directions</button></div>"])
-			{.end}
-			function goToDetails(id){
-				showDetails(id);
-				document.getElementById(id + '-additionalDetails').scrollIntoView({ behavior: 'smooth' })
-			}
-		</script>
-          {.equal? customContent.customType "duplicateLocation"}
-              <div class="multiple-location-wrapper box-shadow">
-                <div id="{id}" class="{customContent.multipleLocation}">
-                  <div style="padding: 0px 15px;"class="flex-center-spacebetween"><h4 class="strong">{title}</h4> <button class="large-button styled-button" style="min-width: 140px;" onclick="window.open('{customContent.orderOnline}')">Order Online</button></div>
-                  
-                  <div style="padding: 0px 15px;">
-                  {.if location}
-                    <div class="flex-center-start hover" onclick="window.open('https://www.google.com/maps/search/{location.addressTitle} {location.addressLine1} {location.addressLine2}', '_blank')">
-                      <img src="../assets/directions.png" style="height: 30px; margin-right: 10px;">
-                      <p>&nbsp;{location.addressLine1}, {location.addressLine2}</p>
-                    </div>
-                    {.end}
-                    {.if customContent.restaurantPhone}
-                    <div class="flex-center-start hover" onclick="window.open('tel:`{customContent.restaurantPhone}`', '_blank')">
-                      <img src="../assets/call.png" style="height: 30px; margin-right: 10px;">
-                      <p>&nbsp;{customContent.restaurantPhone}</p>
-                    </div>
-                    {.end}
-                  </div>
-                  <br>
-				 <script>
-					function showDetails(id){
-						console.log(id)
-						var targetDetails = document.getElementById(id + '-additionalDetails');
-						var targetArrow = document.getElementById(id + '-detailsArrow');
-						if (targetDetails.style.display === "none"){
-							targetDetails.style.display = "block"
-							targetArrow.innerHTML = "Click for location details &#9660;"
-						} else {
-							targetDetails.style.display = "none"
-							targetArrow.innerHTML = "Click for location details &#9654;"
-						}
-					}
-				 </script>
-                 <div onclick="showDetails('{id}')" class="hover"><p style="padding: 0px 15px; margin: 0 0 25px" id="{id}-detailsArrow">Click for location details &#9654;</p></div>
-                </div>
-                <div class="additional-details fade-in" id="{id}-additionalDetails" style="padding: 15px; display: none;">
-				{.if customContent.specialtyItems}
-                <p><strong>Speciality Items:</strong> {customContent.specialtyItems}</p>
-				{.end}
-                  {.if body}
-					<div class="hr-line"></div>
-					<h4 style="color: var(--blue)">Details:</h4>
-					{body}
+		<div id="tab2" class="directory-tab">
+			{@|apply directoryMap.block}
+			<squarespace:query collection="directory" limit="100" tag={title}>
+				<div class="flex-start-start flex-wrap">
+				{.repeated section items}
+				<script>
+					{.if location}
+						var lat = location.markerLat;
+						var long = location.markerLng;
+						var coordinate = {lat:{location.markerLat}, lng: {location.markerLng}}
+						allCoordinates.push(coordinate);
+						allContent.push(["<h4 class='multiple-location-title'>{title}</h4> <p>📞 {customContent.restaurantPhone}</p><p> 📍 {location.addressLine1}, {location.addressLine2} </p><br> <div class='flex-center-center'><button class='medium-button styled-button hover' onclick='goToDetails(`{id}`)'>Restaurant Details</button><button class='medium-button outline-styled-button hover' onclick='window.open('{sourceUrl}')'>Directions</button></div>"])
 					{.end}
-                </div>
-              </div>
-            {.end}
+					function doStuff(id){
+							document.getElementById(id).style.border = "2px solid var(--blue)"
+							document.getElementById(id).style.borderRadius = "6px 6px 0px 0px"
+							showDetails(id);
+						}
+					function goToDetails(id){
+						document.getElementById(id).scrollIntoView({ behavior: 'smooth', block: "center" });
+						
+						setTimeout(() => {
+						doStuff(id)
+						
+						}, 500);
+						
+					}
+				</script>
+				{.equal? customContent.customType "duplicateLocation"}
+					<div class="multiple-location-wrapper box-shadow">
+						<div id="{id}" class="{customContent.multipleLocation}">
+						<div style="padding: 0px 15px;"class="flex-center-spacebetween"><h4 class="multiple-location-title">{title}</h4> <button class="large-button styled-button" style="min-width: 140px;" onclick="window.open('{customContent.orderOnline}')">Order Online</button></div>
+						
+						<div style="padding: 0px 15px;">
+						{.if location}
+							<div class="flex-center-start hover" onclick="window.open('https://www.google.com/maps/search/{location.addressTitle} {location.addressLine1} {location.addressLine2}', '_blank')">
+							<img src="../assets/directions.png" style="height: 30px; margin-right: 10px;">
+							<p>&nbsp;{location.addressLine1}, {location.addressLine2}</p>
+							</div>
+							{.end}
+							{.if customContent.restaurantPhone}
+							<div class="flex-center-start hover" onclick="window.open('tel:`{customContent.restaurantPhone}`', '_blank')">
+							<img src="../assets/call.png" style="height: 30px; margin-right: 10px;">
+							<p>&nbsp;{customContent.restaurantPhone}</p>
+							</div>
+							{.end}
+						</div>
+						<br>
+						<script>
+							function showDetails(id){
+								console.log(id)
+								var targetDetails = document.getElementById(id + '-additionalDetails');
+								var targetArrow = document.getElementById(id + '-detailsArrow');
+								if (targetDetails.style.display === "none"){
+									targetDetails.style.display = "block"
+									targetArrow.innerHTML = "Click for location details &#9660;"
+								} else {
+									targetDetails.style.display = "none"
+									targetArrow.innerHTML = "Click for location details &#9654;"
+								}
+							}
+						</script>
+						<div onclick="showDetails('{id}')" class="hover"><p style="padding: 0px 15px; margin: 0 0 25px" id="{id}-detailsArrow">Click for location details &#9654;</p></div>
+						</div>
+						<div class="additional-details fade-in" id="{id}-additionalDetails" style="padding: 15px; display: none;">
+						{.if customContent.specialtyItems}
+						<p><strong>Speciality Items:</strong> {customContent.specialtyItems}</p>
+						{.end}
+						{.if body}
+							<div class="hr-line"></div>
+							<h4 style="color: var(--blue)">Details:</h4>
+							{body}
+							{.end}
+						</div>
+					</div>
+					{.end}
 
-          
-        {.end}
-        </div>
-    </squarespace:query>
-  </div>
-  {.end}
+				
+				{.end}
+				</div>
+			</squarespace:query>
+		</div>
+	{.end}
 
 	<div id="tab3" class="directory-tab" style="padding: 25px;">
 		<h4 style="color: var(--blue)">What Our Community is Saying About {title}</h4>

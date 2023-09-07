@@ -43,7 +43,7 @@
 		  var divs = document.querySelectorAll("article");
 		  for (var i = 0; i < divs.length; i++) {
 		    divs[i].style.display = "block"
-		    console.log('reset')
+		    
 		  }
 		  var categoryButtons = document.getElementsByClassName('category-filter')
 		  for (var i = 0; i < categoryButtons.length; i++) {
@@ -61,20 +61,14 @@
 	var activeCategories = []
 		function categorize(name){
 			var categoryButton = document.getElementById(name);
-            console.log(name)
 			if (activeCategories.includes(name)){
-				console.log("already active")
 				 var index = activeCategories.indexOf(name);
 					if (index !== -1) {
 					activeCategories.splice(index, 1);
 					}
-					console.log(activeCategories)
-	
 				 categoryButton.classList.remove('active-category')
 			} else {
-				console.log("not active")
 				 activeCategories.push(name)
-				 console.log(activeCategories)
 				 categoryButton.classList.add('active-category')
 			}
 	
@@ -85,7 +79,6 @@
 			}
             var divs = document.querySelectorAll("article");
 			for (var i = 0; i < divs.length; i++) {
-                console.log("divs" + divs)
 					var div = divs[i];
 					var hasAllCategories = true;
 	
@@ -135,10 +128,6 @@
             // Get the center of the map after fitting the bounds
             const center = map.getCenter();
 
-            // Log the center coordinates
-            console.log('Center:', center.lat(), center.lng());
-
-
 		  allCoordinates.forEach(function (location, index) {
 		          var marker = new google.maps.Marker({
 		            position: location,
@@ -152,13 +141,9 @@
 				});
 	
 				  marker.addListener('click', function() {
-						
-						// Open the InfoWindow when the marker is clicked
 						infoWindow.open(map, marker);
-						// Zoom in to the marker
 						map.setZoom(15);
 						map.setCenter(marker.getPosition());
-						
 					});
 	
 					
@@ -178,7 +163,7 @@
 		    });
 		  });
 		}
-		    console.log(allContent)
+		    
 </script>
 <script
 src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBKuNK8g9qwz4O5y1Sll9cff4z28H3sBt0&callback=initMap"
