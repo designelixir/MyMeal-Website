@@ -122,7 +122,7 @@
 			<div class="directory-info-container" onclick="window.open('{fullUrl}', '_self')">
 				<p class="blog-title" data-content-field="title">{title}</p>
 				<div class="flex-center-start flex-wrap">
-					{.if customContent.priceRank}<p>{customContent.priceRank} &nbsp;•&nbsp;</p>{.end}
+					{.if customContent.priceRank}<p class="price-rank">{customContent.priceRank} &nbsp;•&nbsp;</p>{.end}
 					{.if categories} 
 						{.repeated section categories}
 						<a class="category-label drop-shadow" href="{collection.fullUrl}?category={@|url-encode}">{@}</a>&nbsp;
