@@ -52,9 +52,9 @@
 						{.end}
 						{.end}
 						{.equal? customContent.customType "verifiedRestaurantMultiple"}{.or}{.if customContent.orderOnline}
-						<div class="icon-with-label" onclick="window.open('{customContent.orderOnline}', '_blank')">
-							<span>Order Online</span>
+						<div class="order-icon-with-label flex-center-center" onclick="window.open('{customContent.orderOnline}', '_blank')">
 							<img src="../assets/toGo.png" style="height: 40px;">
+							<p class="white-text">Order Online</p>
 						</div>
 						{.end}
 						{.end}

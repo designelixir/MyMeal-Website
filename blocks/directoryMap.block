@@ -5,6 +5,7 @@
 	function delayCall(name){
 		document.addEventListener("DOMContentLoaded", function(name) {
 			categorize(name)
+			
 	});
 	}
 		var allCoordinates = []
@@ -13,11 +14,18 @@
 function showFilter(labelName, label){
 	console.log(labelName)
 	$('.category-filter').removeClass("active-category")
-	$('article').css("display", "block")
+	
+	if (label === "filter-by-allergens"){
+		$('article').css("display", "none")
+		$('.allergen-free-kitchen').css("display", "block")
+	} else {
+		$('article').css("display", "block")
+	}
 	$('.filter-type').css("display", "none")
 	$('#'+ labelName).css("display", "flex")
 	$('.category-filter-label').removeClass("active-category-label")
 	$('#' + label).addClass("active-category-label")
+	updateFilterCounter()
 }
 
 function updateFilterCounter(){
