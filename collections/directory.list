@@ -4,28 +4,63 @@
 <div class="directory box-shadow">
 	<div id="directory-map-container">
 		{@|apply directoryMap.block}
-		<div class="directory-filter box-shadow">
-			<div class="flex-center-start flex-wrap">
-				<p class="white-text">Filter by: </p>
-				<div class="category-filter hover" id="reset-categories" style="display: none;">
-					<p onclick="reset()">Show All</p>
-				</div>
-				<div class="category-filter hover flex-center-center" onclick="categorize('verified-item')" id="verified-item" >
-					<img src="../assets/verified-mymeal.png" style="height: 15px; margin-bottom: -2px;"/>
-					<p> Verified </p>
-				</div>
-				{.section collection}
-				<squarespace:category collection="directory">
-					{.if categories}
-					{.repeated section categories}
-					<div class="category-filter hover" id="{name}">
-						<p onclick="categorize('{name}')">{name}</p>
+		<div class="directory-filter box-shadow ">
+			<div class="flex-center-start" id="filter-slider">
+				<div class="flex-center-start" id="filter-slider-labels" style="background: white; border-radius: 25px;">
+					<div class="category-filter-label hover active-category-label" id="reset-categories" onclick="reset()">
+						<p>Show All</p>
 					</div>
-					{.end}
-					{.end}
-				</squarespace:category>
-				{.end}
+					<div class="category-filter-label hover flex-center-center" onclick="showVerified()" id="verified-item" >
+						<img src="../assets/verified-mymeal.png" style="height: 15px; margin-bottom: -2px;"/>
+						<p> MyMeal Verified </p>
+					</div>
+					<div class="category-filter-label hover" id="filter-by-categories" onclick="showFilter('filter-by-categories-labels', 'filter-by-categories')">
+						<p>Categories</p>
+					</div>
+					<div class="category-filter-label hover" id="filter-by-allergens" onclick="showFilter('filter-by-allergens-labels', 'filter-by-allergens')">
+						<p>Allergen</p>
+					</div>
+					<div class="category-filter-label hover" id="filter-by-location" onclick="showFilter('filter-by-allergens-labels', 'filter-by-allergens')">
+						<p onclick="reset()">Location</p>
+					</div>
+				</div>
+
+				
+				
 			</div>
+			<div id="filter-label-container">
+					{#  Categories  }
+					<div class="flex-center-start flex-wrap filter-type" id="filter-by-categories-labels" style="display: none;">
+						{.section collection}
+						<squarespace:category collection="directory">
+							{.if categories}
+							{.repeated section categories}
+							<div class="category-filter hover" id="label-{name|slugify}">
+								<p onclick="categorize('{name|slugify}','category-{name|slugify}'), filterMarkers('{name|slugify}')">{name}</p>
+							</div>
+							{.end}
+							{.end}
+						</squarespace:category>
+						{.end}
+					</div>
+					{#  Allergens  }
+					<div class="flex-center-start flex-wrap" id="filter-by-allergens-labels" style="display: none;">
+							<div class="category-filter hover" id="label-dairy"><p onclick="categorize('dairy', 'tag-dairy')">Dairy</p></div>
+							<div class="category-filter hover" id="label-gluten"><p onclick="categorize('gluten', 'tag-gluten')">Gluten</p></div>
+							<div class="category-filter hover" id="label-grain"><p onclick="categorize('grain', 'tag-grain')">Grain</p></div>
+							<div class="category-filter hover" id="label-fish"><p onclick="categorize('fish', 'tag-fish')">Fish</p></div>
+							<div class="category-filter hover" id="label-peanuts"><p onclick="categorize('peanuts', 'tag-peanuts')">Peanuts</p></div>
+							<div class="category-filter hover" id="label-refined-sugar"><p onclick="categorize('refined-sugar', 'tag-refined-sugar')">Refined Sugar</p></div>
+							<div class="category-filter hover" id="label-shellfish"><p onclick="categorize('shellfish', 'tag-shellfish')">Shellfish</p></div>
+							<div class="category-filter hover" id="label-sesame"><p onclick="categorize('sesame', 'tag-sesame')">Sesame</p></div>
+							<div class="category-filter hover" id="label-tree-nuts"><p onclick="categorize('tree-nuts', 'tag-tree-nuts')">Tree Nuts</p></div>
+							
+					</div>
+				</div>
+
+
+			
+			
 		</div>
 		<p id="filter-text"><span id="category-count"></span></p>
 	</div>
@@ -36,7 +71,8 @@
 			{.if location}
 				var lat = location.markerLat;
 				var long = location.markerLng;
-				var coordinate = {lat:{location.markerLat}, lng: {location.markerLng}}
+				
+				var coordinate = {lat:{location.markerLat}, lng: {location.markerLng}, category: 'pin {@|item-classes}'}
 				allCoordinates.push(coordinate);
 				var goTo = `"https://findmymeal.io/directory/" + "{tags}"`
 				allContent.push(["<h4>{title}</h4> <p> 📍 {location.addressLine1}, {location.addressLine2} </p><br> <div class='flex-center-center'><button class='large-button styled-button hover' onclick='window.open("+ goTo +")'>Restaurant Details</button><button class='large-button outline-styled-button hover' onclick='window.open('{sourceUrl}')'>Directions</button></div>"])
@@ -44,8 +80,7 @@
 		</script>
 		{.equal? customContent.customType "duplicateLocation" }
 		{.or}
-		<article id="{title}" class='directory-list-item hover {.if customContent.verified} verified-item {.or} unverified-item {.end} box-shadow mymeal-verified {.if categories }
-					{.repeated section categories}{@|url-encode} &nbsp;{.end}{.end} {tags} {@|item-classes}' data-item-id="{id}" >
+		<article id="{title}" class='directory-list-item hover {.if customContent.verified} verified-item {.or} unverified-item {.end} box-shadow mymeal-verified {@|item-classes}' data-item-id="{id}" >
 			<div class="directory-image" {.if customContent.bannerImgUrl}style="background-image:url({customContent.bannerImgUrl})"{.or}style="background-image:url(../assets/basic-bg.png)"{.end} >
 				<div class="flex-start-end verified-badge-wrapper">
 					{.if customContent.verified}
@@ -91,7 +126,7 @@
 					{.if customContent.priceRank}<p>{customContent.priceRank} &nbsp;•&nbsp;</p>{.end}
 					{.if categories} 
 						{.repeated section categories}
-						<a class="category-label drop-shadow" href="{collection.fullUrl}?category={@|url-encode}">{@|url-encode}</a>&nbsp;
+						<a class="category-label drop-shadow" href="{collection.fullUrl}?category={@|url-encode}">{@}</a>&nbsp;
 						{.end}
 					{.end}
 					{.if tags }
@@ -126,3 +161,4 @@
 	
 	{.end}
 </div>
+

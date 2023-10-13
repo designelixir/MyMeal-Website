@@ -199,9 +199,11 @@ main {padding: 5vw; }
 // Directory 
 .category {padding: 0px 10px; background-color: white;  margin: 5px; border-radius: 20px;}
 .category a { font-size: 14px;}
-.category-filter {background: var(--offgray); padding: 0 10px; border-radius: 15px; margin: 5px; color: black;}
+.category-filter-label {background: white; padding: 0 10px; border-radius: 25px; margin: 5px; color: black;}
+.category-filter {background: var(--offwhite); padding: 0 10px; border-radius: 15px; margin: 5px; color: black;}
 .category-filter p {font-size: 12px;  line-height: 12px;}
-.active-category {background-color: var(--offblack)!important; color: white!important; border: 1px solid white!important;}
+.active-category-label {background-color: var(--darkblue)!important; color: white!important; border: 1px solid var(--darkblue);}
+.active-category {background-color: var(--blue)!important; color: white!important; border: 1px solid white!important;}
 .category:hover {border: 1px solid black;}
 .directory-filter {background: var(--blue);    padding: 10px 25px; width: 100%;}
 .directory {border: 0.5px solid black; border-top-right-radius: 8px; border-top-left-radius: 8px;}
@@ -259,6 +261,8 @@ main {padding: 5vw; }
 
 @media screen and (max-width: 800px) {
   .directory-buttons {flex-wrap: wrap;}
+  #filter-slider {flex-wrap: wrap;}
+  #filter-slider-labels {flex-wrap: wrap;}
 }
 #directory-map-container {
   z-index: 0;
