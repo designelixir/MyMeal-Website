@@ -11,8 +11,8 @@
 						<p>Show All</p>
 					</div>
 					<div class="category-filter-label hover flex-center-center" onclick="showVerified()" id="verified-item" >
-						<img src="../assets/verified-mymeal.png" style="height: 15px; margin-bottom: -2px;"/>
-						<p> MyMeal Verified </p>
+						<img src="../assets/verified-mymeal.png" style="height: 25px; margin-bottom: -2px;"/>
+						<p>Verified</p>
 					</div>
 					<div class="category-filter-label hover" id="filter-by-categories" onclick="showFilter('filter-by-categories-labels', 'filter-by-categories')">
 						<p>Categories</p>
