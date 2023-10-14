@@ -32,7 +32,7 @@
 			</div>
 			{.end}
 			<div class="directory-header-info">
-				<div class="flex-start-spacebetween">
+				<div class="flex-start-spacebetween flex-wrap">
 					<div class="flex-center-start">
 						{.if customContent.verified}<img src="../assets/verified-mymeal.png" style="height: 35px; margin-right: 5px;" class="hover" onclick="verifiedPopUp(true)" alt="mymeal verified badge"/>{.end}
 						<h2 style="color: black;">{title}</h2>

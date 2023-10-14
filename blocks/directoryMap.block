@@ -1,151 +1,153 @@
-
-
 <script>
-
-	function delayCall(name){
-		document.addEventListener("DOMContentLoaded", function(name) {
-			categorize(name)
-			
-	});
-	}
-		var allCoordinates = []
-		var allContent = []
-
-function showFilter(labelName, label){
-	console.log(labelName)
-	$('.category-filter').removeClass("active-category")
 	
-	if (label === "filter-by-allergens"){
-		$('article').css("display", "none")
-		$('.allergen-free-kitchen').css("display", "block")
-	} else {
-		$('article').css("display", "block")
+	var allCoordinates = []
+	var allContent = []
+	
+	var selectedClasses = []
+	var filterNames = []
+	
+	function reset(){
+		$('article').addClass('visible')
+		$('.filter-label').removeClass('selected')
+		var selectedClasses = []
+		var filterNames = []
+		updateFilterCounter()
 	}
-	$('.filter-type').css("display", "none")
-	$('#'+ labelName).css("display", "flex")
-	$('.category-filter-label').removeClass("active-category-label")
-	$('#' + label).addClass("active-category-label")
+	$(document).ready(reset)
+	
+	function filter(label, targetFilter, filterName, showDiv){
+		var labelActive = $(label).hasClass("selected");
+		var showDivActive = $(showDiv).hasClass('visible')
+		{#  Activate Labels  }
+		if(labelActive){
+			$(label).removeClass("selected")
+			selectedClasses = selectedClasses.filter(item => item !== targetFilter);
+			if(showDivActive){$(showDiv).removeClass('visible')}
+			if (filterName != ""){filterNames = filterNames.filter(item => item !== filterName)}
+		}
+		else {
+			$(label).addClass("selected")
+			selectedClasses.push(targetFilter)
+			if(!showDivActive){$(showDiv).addClass('visible')}
+			if(filterName != ""){filterNames.push(filterName)}
+		}
+		{#  Filter Items  }
+		if (targetFilter != ""){
+			filterResults(selectedClasses)
+		}
+		updateFilterCounter()
+	}
+	
+	function closeList(label, targetLabels){
+	var selectedChildren = $(targetLabels);
+	if (!$(label).hasClass('selected')){
+		for(i=0; i< selectedChildren.length; i++){
+			if (selectedChildren[i].classList.contains('selected')){
+				if (typeof selectedChildren[i].onclick === 'function') {
+					selectedChildren[i].onclick(); 
+				}
+			} 
+		}
+	}
+	}
+	
+	function filterResults(selectedClasses) {
+	$('article').each(function() {
+	       var hasAllClasses = true;
+	       for (var i = 0; i < selectedClasses.length; i++) {
+	           if (!$(this).hasClass(selectedClasses[i])) {
+	               hasAllClasses = false;
+	               break;
+	           }
+	       }
+	       if (hasAllClasses) {
+	           $(this).addClass('visible');
+	       } else {
+			$(this).removeClass('visible')
+		}
+	   });
 	updateFilterCounter()
-}
+	}
 
-function updateFilterCounter(){
-	var counter = document.getElementById('category-count')
-	var divs = document.querySelectorAll("article");
-	count = 0;
+	function updateFilterCounter(){
+		var counter = document.getElementById('category-count')
+		var divs = document.querySelectorAll("article");
+		count = 0;
 		for (var i = 0; i < divs.length; i++) {
 			var div = divs[i];
 			var display = window.getComputedStyle(div).getPropertyValue('display');
-
 			if (display === 'block') {
 			count++;
 			}
 		}
-	if (count === 1){
-		counter.textContent = "Showing " + count + " restaurant"
-			
-		}else if (count === 0){
-			counter.textContent = "No results. Click 'Show All' to see available options."
+		if (count === $('article').length){
+			counter.textContent = "Showing " + count + " restaurants"; 
+			$('#no-results-reset').css("display", "none")
+			$('#reset-label').addClass('selected')
+		} 
+		else if (count === 1){
+			$('#reset-label').removeClass('selected')
+			$('#no-results-reset').css("display", "none")
+			counter.textContent = "Showing " + count + " restaurant"
 		}
-			else {
+		else if (count === 0){
+			counter.textContent = "No results."
+			$('#reset-label').removeClass('selected')
+			$('#no-results-reset').css("display", "flex")
+			document.getElementById("no-results-filters").innerHTML = filterNames.toString()
+		}
+		else {
+			$('#reset-label').removeClass('selected')
+			$('#no-results-reset').css("display", "none")
 			counter.textContent = "Showing " + count + " restaurants"
-		}
-}	
-function reset(){
-	$('.filter-type').css("display", "none")
-	$('.category-filter-label').removeClass("active-category-label")
-	$('#reset-categories').addClass("active-category-label")
-	$('article').css("display", "block")
-	updateFilterCounter()
-}
-function showVerified(){
-	$('.filter-type').css("display", "none")
-	$('.category-filter-label').removeClass("active-category-label")
-	$('#verified-item').addClass("active-category-label")
-	$('article').css("display", "none")
-	$('.verified-item').css("display", "block")
-	updateFilterCounter()
-}
-function categorize(categoryName, target){
-	console.log(categoryName, target)
-	$('.category-filter').removeClass("active-category")
+		}		
+	}	
 	
-	$('#label-' + categoryName).addClass("active-category")
-	$('article').css("display", "none")
-	$('.'+ target).css("display", "block")
-	filterMarkers(target)
-	updateFilterCounter()
-}
+	
+	
 </script>
-
 <div id="map"></div>
-
 <script>
-		function initMap() {
-		  var map = new google.maps.Map(document.getElementById("map"), {
-		    zoom: {.equal? customContent.customType "verifiedRestaurantMultiple"} 5 {.or} 9 {.end},
-			gestureHandling: 'cooperative',
-            scrollwheel: false,
-            disableDoubleClickZoom: true,
-		    center: { lat: 39.7392, lng: -104.9903 },
-		    styles: mapStyles,
+	function initMap() {
+	  var map = new google.maps.Map(document.getElementById("map"), {
+	    zoom: {.equal? customContent.customType "verifiedRestaurantMultiple"} 5 {.or} 9 {.end},
+		gestureHandling: 'cooperative',
+	          scrollwheel: false,
+	          disableDoubleClickZoom: true,
+	    center: { lat: 39.7392, lng: -104.9903 },
+	    styles: mapStyles,
+		
+	  });
+	          const bounds = new google.maps.LatLngBounds(
+	          new google.maps.LatLng(34.0522, -118.2437), // los angeles
+	          new google.maps.LatLng(40.7128, -74.0060) // new york
+	          );
+	          map.fitBounds(bounds);
+	          const center = map.getCenter();
+	
+	  allCoordinates.forEach(function (location, index, category) {
+	          var marker = new google.maps.Marker({
+	            position: location,
+	            map: map,
+				category: category,
+	            icon: '../../assets/pin.svg',
+	          });
+				
+			  	var infoWindow = new google.maps.InfoWindow({
+				content: "<div class='map-popup-window'>" + allContent[index]+ "</div>" 
+			});
 			
-		  });
-            const bounds = new google.maps.LatLngBounds(
-            new google.maps.LatLng(34.0522, -118.2437), // los angeles
-            new google.maps.LatLng(40.7128, -74.0060) // new york
-            );
-            map.fitBounds(bounds);
-            const center = map.getCenter();
-
-		  allCoordinates.forEach(function (location, index, category) {
-		          var marker = new google.maps.Marker({
-		            position: location,
-		            map: map,
-					category: category,
-		            icon: '../../assets/pin.svg',
-		          });
-					
-				  	var infoWindow = new google.maps.InfoWindow({
-					content: "<div class='map-popup-window'>" + allContent[index]+ "</div>" 
+			  marker.addListener('click', function() {
+					infoWindow.open(map, marker);
+					map.setZoom(15);
+					map.setCenter(marker.getPosition());
 				});
 				
-				  marker.addListener('click', function() {
-						infoWindow.open(map, marker);
-						map.setZoom(15);
-						map.setCenter(marker.getPosition());
-					});
-					
-		        });
-
-				filterMarkers = function(category){
-				console.log("called filterMarkers" + category)
-				for (i = 0; i < allCoordinates.length; i++) {
-					marker = allCoordinates[i];
-					var markerCats = marker.category
-
-					if(markerCats.includes(category))
-					{
-						console.log("found")
-						marker.setOpacity(1)
-					}
-					// Categories dont match 
-					else
-					{          
-						marker.setOpacity(0)
-					}
-					}  
-				}
-		      return map;
-		  
-		}
-		
-
+	        });
 	
-console.log(allCoordinates)		
-
+			
+	      return map;
+	  
+	}
 </script>
-<script
-src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBKuNK8g9qwz4O5y1Sll9cff4z28H3sBt0&callback=initMap"
-async
-defer
-></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBKuNK8g9qwz4O5y1Sll9cff4z28H3sBt0&callback=initMap" async defer></script>
