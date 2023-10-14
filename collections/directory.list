@@ -41,19 +41,7 @@
 					</div>
 				</div>
 				{#  Allergens  }
-				<div class="filter-type" id="filter-by-allergens-labels">
-					<div class="flex-center-start flex-wrap">
-						<div class="allergen-filter filter-p hover" id="label-dairy" onclick="filter('#label-dairy', 'tag-dairy', 'Dairy Free Kitchen', '')"><p>Dairy</p></div>
-						<div class="allergen-filter filter-p hover" id="label-gluten" onclick="filter('#label-gluten', 'tag-gluten', 'Gluten Free Kitchen', '')"><p>Gluten</p></div>
-						<div class="allergen-filter filter-p hover" id="label-grain" onclick="filter('#label-grain', 'tag-grain', 'Grain Free Kitchen', '')"><p>Grain</p></div>
-						<div class="allergen-filter filter-p hover" id="label-fish" onclick="filter('#label-fish', 'tag-fish', 'Fish Free Kitchen', '')"><p>Fish</p></div>
-						<div class="allergen-filter filter-p hover" id="label-peanuts" onclick="filter('#label-peanuts', 'tag-peanuts', 'Peanut Free Kitchen', '')"><p>Peanuts</p></div>
-						<div class="allergen-filter filter-p hover" id="label-refined-sugar" onclick="filter('#label-refined-sugar', 'tag-refined-sugar', 'Refined Sugar Free Kitchen', '')"><p>Refined Sugar</p></div>
-						<div class="allergen-filter filter-p hover" id="label-shellfish" onclick="filter('#label-shellfish', 'tag-shellfish', 'Shellfish Free Kitchen', '')"><p>Shellfish</p></div>
-						<div class="allergen-filter filter-p hover" id="label-sesame" onclick="filter('#label-sesame', 'tag-sesame', 'Sesame Free Kitchen', '')"><p>Sesame</p></div>
-						<div class="allergen-filter filter-p hover" id="label-tree-nuts" onclick="filter('#label-tree-nuts', 'tag-tree-nuts', 'Tree Nuts Free Kitchen', '')"><p>Tree Nuts</p></div>
-					</div>
-				</div>
+				{@|apply allergenFilters.block}
 			</div>
 		</div>
 
@@ -121,14 +109,14 @@
 			<div class="directory-info-container" onclick="window.open('{fullUrl}', '_self')">
 				<p class="blog-title" data-content-field="title">{title}</p>
 				<div class="flex-center-start flex-wrap price-rank-wrapper">
-					{.if customContent.priceRank}<p class="price-rank">{customContent.priceRank} &nbsp;•&nbsp;</p>{.end}
+					{.if customContent.priceRank}<p class="price-rank">{customContent.priceRank} •&nbsp;</p>{.end}
 					{.if categories} 
 						{.repeated section categories}
-						<a class="category-label drop-shadow" href="{collection.fullUrl}?category={@|url-encode}">{@}</a>&nbsp;
+						<a class="category-label drop-shadow" href="{collection.fullUrl}?category={@|url-encode}">{@}&nbsp;</a>
 						{.end}
 					{.end}
 					{.if tags }
-					<a class="tag-label drop-shadow" id="tagger"></a>&nbsp;	
+					<a class="tag-label drop-shadow" id="tagger"></a>	
 					<script>
 						function checkTags(title, tags){
 							if (tags.includes(',')){

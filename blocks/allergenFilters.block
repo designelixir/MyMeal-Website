@@ -1,0 +1,36 @@
+<div class="filter-type" id="filter-by-allergens-labels">
+	<div class="flex-center-start flex-wrap">
+		<div class="allergen-filter filter-p hover flex-center-start" id="label-dairy" onclick="filter('#label-dairy', 'tag-dairy', 'Dairy Free Kitchen', '')">
+			<img src="../assets/allergen-icons/dairy.png" class="allergen-label-image" alt="dairy icon"/>
+            <p>Dairy</p>
+		</div>
+		<div class="allergen-filter filter-p hover flex-center-start" id="label-gluten" onclick="filter('#label-gluten', 'tag-gluten', 'Gluten Free Kitchen', '')">
+			<img src="../assets/allergen-icons/gluten.png" class="allergen-label-image" alt="gluten icon"/>
+            <p>Gluten</p>
+		</div>
+		<div class="allergen-filter filter-p hover flex-center-start" id="label-fish" onclick="filter('#label-fish', 'tag-fish', 'Fish Free Kitchen', '')">
+			<img src="../assets/allergen-icons/fish.png" class="allergen-label-image" alt="fish icon"/>
+            <p>Fish</p>
+		</div>
+		<div class="allergen-filter filter-p hover flex-center-start" id="label-peanuts" onclick="filter('#label-peanuts', 'tag-peanuts', 'Peanut Free Kitchen', '')">
+			<img src="../assets/allergen-icons/peanuts.png" class="allergen-label-image" alt="peanuts icon"/>
+            <p>Peanuts</p>
+		</div>
+		<div class="allergen-filter filter-p hover flex-center-start" id="label-refined-sugar" onclick="filter('#label-refined-sugar', 'tag-refined-sugar', 'Refined Sugar Free Kitchen', '')">
+			<img src="../assets/allergen-icons/refined sugar.png" class="allergen-label-image" alt="refined sugar icon"/>
+            <p>Refined Sugar</p>
+		</div>
+		<div class="allergen-filter filter-p hover flex-center-start" id="label-shellfish" onclick="filter('#label-shellfish', 'tag-shellfish', 'Shellfish Free Kitchen', '')">
+			<img src="../assets/allergen-icons/shellfish.png" class="allergen-label-image" alt="shellfish icon"/>
+            <p>Shellfish</p>
+		</div>
+		<div class="allergen-filter filter-p hover flex-center-start" id="label-sesame" onclick="filter('#label-sesame', 'tag-sesame', 'Sesame Free Kitchen', '')">
+			<img src="../assets/allergen-icons/sesame.png" class="allergen-label-image" alt="sesame icon"/>
+            <p>Sesame</p>
+		</div>
+		<div class="allergen-filter filter-p hover flex-center-start" id="label-tree-nuts" onclick="filter('#label-tree-nuts', 'tag-tree-nuts', 'Tree Nuts Free Kitchen', '')">
+			<img src="../assets/allergen-icons/tree nuts.png" class="allergen-label-image" alt="tree nuts icon"/>
+            <p>Tree Nuts</p>
+		</div>
+	</div>
+</div>
