@@ -82,21 +82,21 @@ body:not(.button-style-default) .sqs-editable-button {background-color: var(--bl
 
 main {padding: 5vw; }
 // Main Navigation
-.site-header {height: 98px; width: 100%;}
-.site-navigation {padding: 15px;  background: var(--offwhite); z-index: 20; flex-basis: auto;  }
+.site-header {min-height: 98px; width: 100%; }
+.site-navigation {padding: 20px 15px;  background: var(--offwhite); z-index: 20; flex-basis: auto;  }
 .site-logo {max-width: 200px;}
-.site-navigation-list {list-style-type: none; flex-basis: auto;}
+
 .site-navigation-item {margin: 0px 10px; white-space: nowrap;}
 .site-navigation-item-link {color: var(--blue);  text-decoration: none;}
-.active-link {font-weight: 700;}
+.active-link {border-bottom: 2px solid var(--blue); font-weight: 500}
 .site-navigation-item:hover { font-weight: 600; }
 @media screen and (max-width: 700px) {
   .site-navigation {flex-wrap: wrap; flex-direction: column; }
-  .site-navigation-list { width: 100%; flex-wrap: wrap; }
-  .site-navigation-item {margin: 5px 10px;}
-  .site-header {height: 160px}
-  .site-logo {margin-top: 25px;}
-  
+  .site-navigation-list { width: 100%; flex-wrap: wrap; padding: 10px 50px;}
+  .site-navigation-item {margin: 0 10px 10px; font-size: 18px;}
+  .site-header {margin-bottom: 25px;}
+  .site-logo {margin-top: 15px;}
+
 }
 
 // Main CMS Injection
@@ -246,6 +246,8 @@ main {padding: 5vw; }
   .directory-logo-wrapper {margin-top: -65px; justify-content: center;}
   .price-rank-wrapper {justify-content: center; }
   .mobile-address {display: block; height: auto;}
+  .directory-title {font-size: 20px;}
+  .order-online {display: none;}
 }
 
 

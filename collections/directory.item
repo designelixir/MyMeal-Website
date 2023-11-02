@@ -1,3 +1,6 @@
+<style>
+.category-label {font-size: 15px }
+</style>
 <script>
 	function addToSpecialtyItems() {
 	  var span = document.getElementById('preprocess-specialty-items'); // Get the span element
@@ -35,22 +38,11 @@
 				<div class="flex-start-spacebetween flex-wrap">
 					<div class="flex-center-start">
 						{.if customContent.verified}<img src="../assets/verified-mymeal.png" style="height: 35px; margin-right: 5px;" class="hover" onclick="verifiedPopUp(true)" alt="mymeal verified badge"/>{.end}
-						<h2 style="color: black;">{title}</h2>
+						<h2 style="color: black;" class="directory-title">{title}</h2>
 					</div>
-					<div class="flex-center-center">
-						{.if customContent.restaurantPhone}
-						<div class="icon-with-label" onclick="window.open('tel:`{customContent.restaurantPhone}`', '_blank')">
-							<span>Call {customContent.restaurantPhone}</span>
-							<img src="../assets/call.png" style="height: 40px; margin-right: 10px;">
-						</div>
-						{.end}
-						{.equal? customContent.customType "verifiedRestaurantMultiple"}{.or}{.if location}
-						<div class="icon-with-label" onclick="window.open('https://www.google.com/maps/search/{location.addressTitle} {location.addressLine1} {location.addressLine2}', '_blank')">
-							<span>Click for directions</span>
-							<img src="../assets/directions.png" style="height: 40px; margin-right:10px;">
-						</div>
-						{.end}
-						{.end}
+					<div class="flex-center-center order-online">
+						
+						
 						{.equal? customContent.customType "verifiedRestaurantMultiple"}{.or}{.if customContent.orderOnline}
 						<div class="order-icon-with-label flex-center-center" onclick="window.open('{customContent.orderOnline}', '_blank')">
 							<img src="../assets/toGo.png" style="height: 40px;">
@@ -79,9 +71,12 @@
 					{.equal? customContent.customType "verifiedRestaurantMultiple"}
 						{.or}
 						{.if location}
-						<p class=" hover" onclick="window.open('https://www.google.com/maps/search/{location.addressTitle} {location.addressLine1} {location.addressLine2}', '_blank')">📍 {location.addressLine1}, {location.addressLine2}</p>
+						<p class="hover" onclick="window.open('https://www.google.com/maps/search/{location.addressTitle} {location.addressLine1} {location.addressLine2}', '_blank')">📍 {location.addressLine1}, {location.addressLine2}</p>
 						{.end}
 					{.end}
+					{.if customContent.restaurantPhone}
+						<a class="hover" href="tel:{customContent.restaurantPhone}">📞 {customContent.restaurantPhone} </a><br>
+						{.end}
 				</div>
 			</div>
 		</div>
@@ -271,7 +266,7 @@
 						var long = location.markerLng;
 						var coordinate = {lat:{location.markerLat}, lng: {location.markerLng}}
 						allCoordinates.push(coordinate);
-						allContent.push(["<h4 class='multiple-location-title'>{title}</h4> <p>📞 {customContent.restaurantPhone}</p><p> 📍 {location.addressLine1}, {location.addressLine2} </p><br> <div class='flex-center-center'><button class='medium-button styled-button hover' onclick='goToDetails(`{id}`)'>Restaurant Details</button><button class='medium-button outline-styled-button hover' onclick='window.open('{sourceUrl}')'>Directions</button></div>"])
+						allContent.push(["<h4 class='multiple-location-title'>{title}</h4> <p>📞 {customContent.restaurantPhone}</br> 📍 {location.addressLine1}, {location.addressLine2} </p><br> <div class='flex-center-center'><button class='medium-button styled-button hover' onclick='goToDetails(`{id}`)'>Restaurant Details</button></div>"])
 					{.end}
 					function doStuff(id){
 							document.getElementById(id).style.border = "2px solid var(--blue)"

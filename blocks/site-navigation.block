@@ -1,8 +1,8 @@
 <nav class="site-navigation flex-center-spacebetween box-shadow">
   <img class="site-logo hover" onclick="window.open('/', '_self')" src={website.logoImageUrl}>
-  <ul class="site-navigation-list flex-center-center">
+  <div class="site-navigation-list flex-center-center">
     {.repeated section items}
-      <li class="site-navigation-item {.section active} active-link{.end}">
+      <div class="site-navigation-item {.section active} active-link{.end}">
         {.section collection}
           <a class="site-navigation-item-link" href="{fullUrl}">{navigationTitle}</a>
         {.end}
@@ -12,9 +12,9 @@
           </a>
         {.end}
 
-      </li>
+      </div>
     {.end}
   &nbsp;{@|apply download.block}  
-  </ul>
+  </div>
   
 </nav>

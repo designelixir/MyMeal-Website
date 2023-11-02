@@ -60,8 +60,33 @@
 				
 				var coordinate = {lat:{location.markerLat}, lng: {location.markerLng}, category: 'pin {@|item-classes}'}
 				allCoordinates.push(coordinate);
-				var goTo = `"https://findmymeal.io/directory/" + "{tags}"`
-				allContent.push(["<h4>{title}</h4> <p> 📍 {location.addressLine1}, {location.addressLine2} </p><br> <div class='flex-center-center'><button class='large-button styled-button hover' onclick='window.open("+ goTo +")'>Restaurant Details</button><button class='large-button outline-styled-button hover' onclick='window.open('{sourceUrl}')'>Directions</button></div>"])
+				var pinBox = `
+					<div class="pin-box-container">
+						<p style="font-weight: 600; font-size: 16px;">{title}</p>
+						<div class="flex-center-start ">
+							{.if customContent.priceRank}
+							<p class="price-rank">{customContent.priceRank} •&nbsp;</p>
+							{.end}
+							{.if categories} 
+							{.repeated section categories}
+							<a class="category-label drop-shadow" href="{collection.fullUrl}?category={@|url-encode}">{@}&nbsp;</a>
+							{.end}
+							{.end}
+						</div>
+						{.if customContent.restaurantPhone}
+						<a class="hover" href="tel:{customContent.restaurantPhone}">📞 {customContent.restaurantPhone} </a><br>
+						{.end}
+						<a class="hover" href="https://www.google.com/maps/search/{location.addressTitle} {location.addressLine1} {location.addressLine2}" target="_blank" id="address-span">📍 {location.addressLine1}, {location.addressLine2}</a>
+						<div class="flex-center-center directory-buttons">
+							{.equal? customContent.customType "duplicateLocation" }
+							<a href="https://findmymeal.io/directory/{tags}" style="padding: 5px" class="medium-button styled-button">Restaurant Details</a>
+							{.or}
+							<a href="https://findmymeal.io{fullUrl}" style="padding: 5px" class="medium-button styled-button">Restaurant Details</a>
+							{.end}
+						</div>
+						</div>
+				`
+				allContent.push(pinBox)
 			{.end}
 		</script>
 		{.equal? customContent.customType "duplicateLocation" }

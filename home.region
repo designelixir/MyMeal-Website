@@ -10,7 +10,7 @@
   </head>
   <body id="{squarespace.page-id}" class="{squarespace.page-classes}">
     <div class="site-container">
-      <header class="site-header box-shadow">
+      <header class="site-header">
         <squarespace:navigation navigationId="siteNav" template="site-navigation" />        
       </header>
 
