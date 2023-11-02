@@ -1,29 +1,56 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <title>Get User Location</title>
-</head>
-<body>
-
-<button onclick="getLocation()">Get Location</button>
-
-<p id="demo"></p>
 
 <script>
-function getLocation() {
-    if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(showPosition);
-    } else {
-        document.getElementById("demo").innerHTML = "Geolocation is not supported by this browser.";
-    }
-}
+    function geocodeAddress() {
+        var geocoder = new google.maps.Geocoder();
+        var address = document.getElementById('lookupLocation').value;
 
-function showPosition(position) {
-    var latitude = position.coords.latitude;
-    var longitude = position.coords.longitude;
-    document.getElementById("demo").innerHTML = "Latitude: " + latitude + "<br>Longitude: " + longitude;
-}
+        geocoder.geocode({ address: address }, function (results, status) {
+            if (status === 'OK') {
+                initMap(results[0].geometry.location.lat(), results[0].geometry.location.lng(), 12)
+            } else {
+                console.log('Geocode was not successful for the following reason: ' + status);
+                initMap(39.8283, -98.5795, 4)
+            }
+        });
+    }
 </script>
 
-</body>
-</html>
+<div class="flex-center-start box-shadow" id="geolocationStatus">
+<div class="flex-center-center" id="geolocationEnabled" style="display: none;">
+    <img src="../assets/geolocation.svg" style="height: 20px;" alt="geolocation icon"/>
+    <p>&nbsp;Using location</p>
+</div>
+<img id="geolocationBlocked" src="../assets/geolocation-disabled.svg" style="height: 20px; display: none; margin-right: 10px;" alt="geolocation icon"/>
+<div class="flex-center-center">
+        <input type="text" id="lookupLocation" placeholder="Enter a location (e.g., state, zip code, city)">
+        <button onclick="geocodeAddress()" class="styled-button" style="font-size: 10px; margin-left: 10px; margin-right: 0px; border-radius: 2px!important;">Find Restaurants</button>
+    </div>
+
+</div>
+
+
+<script>
+
+
+const findMyState = () => {
+    
+    const success = (position) => {
+        $('#geolocationEnabled').css('display', 'flex')
+        initMap(position.coords.latitude, position.coords.longitude, 12)
+    }
+    const error = () => {
+        $('#geolocationBlocked').css('display', 'flex')
+        initMap(39.8283, -98.5795, 4)
+    }
+    navigator.geolocation.getCurrentPosition(success, error);
+}
+
+function mapLoader(){
+    initMap(39.8283, -98.5795, 4);
+    findMyState()
+}
+mapLoader
+
+document.querySelector('.find-state').addEventListener('click', findMyState);
+
+</script>

@@ -161,7 +161,7 @@
 				<li class="yes-procedure"> Cooks on seperate equipment </li>
 				{.or}
 				{.if customContent.uponRequestCookSeperate}
-				<li class="request-procedure"> Cooks on seperate equipment (upon request)</li>
+				<li class="request-procedure"> Cooks on seperate equipment (only upon request)</li>
 				{.or}
 				<li class="no-procedure"> Cooks on seperate equipment </li>
 				{.end}
@@ -353,7 +353,7 @@
 				<li class="yes-procedure"> Cooks on seperate equipment </li>
 				{.or}
 				{.if customContent.uponRequestCookSeperate}
-				<li class="request-procedure"> Cooks on seperate equipment (upon request)</li>
+				<li class="request-procedure"> Cooks on seperate equipment (only upon request)</li>
 				{.or}
 				<li class="no-procedure"> Cooks on seperate equipment </li>
 				{.end}
@@ -521,7 +521,6 @@
 				
 				
 				<div class="flex-center-center directory-buttons">
-					<button onclick="window.open('{sourceUrl}')" class="medium-button styled-button">Allergen Menu</button>
 					<button onclick="window.open('{fullUrl}', '_self')" class="medium-button styled-button-inverted">Details</button>
 				</div>
 

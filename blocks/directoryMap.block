@@ -106,24 +106,22 @@
 	
 	
 </script>
+{@|apply getLocation.block}
 <div id="map"></div>
 <script>
-	function initMap() {
+	function initMap(userLatitude, userLongitude, zoomLevel) {
 	  var map = new google.maps.Map(document.getElementById("map"), {
-	    zoom: {.equal? customContent.customType "verifiedRestaurantMultiple"} 5 {.or} 9 {.end},
+	    zoom: {.equal? customContent.customType "verifiedRestaurantMultiple"} 5 {.or} zoomLevel {.end},
 		gestureHandling: 'cooperative',
 	          scrollwheel: false,
-	          disableDoubleClickZoom: true,
-	    center: { lat: 39.7392, lng: -104.9903 },
+	          disableDoubleClickZoom: false,
+			  draggable: true,
+	    center: { lat: userLatitude, lng: userLongitude },
 	    styles: mapStyles,
-		
+		mapTypeControl: false	
 	  });
-	          const bounds = new google.maps.LatLngBounds(
-	          new google.maps.LatLng(34.0522, -118.2437), // los angeles
-	          new google.maps.LatLng(40.7128, -74.0060) // new york
-	          );
-	          map.fitBounds(bounds);
-	          const center = map.getCenter();
+	  
+	         
 	
 	  allCoordinates.forEach(function (location, index, category) {
 	          var marker = new google.maps.Marker({
@@ -144,10 +142,26 @@
 				});
 				
 	        });
-	
+			
 			
 	      return map;
 	  
 	}
+
+function calculateVisiblePins(map) {
+            // Get the bounds of the visible map area
+            const bounds = map.getBounds();
+            let visibleCount = 0;
+
+            // Iterate through the pins and check if they are within the visible bounds
+            markers.forEach(marker => {
+                if (bounds.contains(marker)) {
+                    visibleCount++;
+                }
+            });
+
+            console.log("visible count " + visibleCount)
+        }
 </script>
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBKuNK8g9qwz4O5y1Sll9cff4z28H3sBt0&callback=initMap" async defer></script>
+
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBKuNK8g9qwz4O5y1Sll9cff4z28H3sBt0&callback=mapLoader" async defer></script>
