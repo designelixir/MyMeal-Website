@@ -69,7 +69,7 @@
 							{.end}
 							{.if categories} 
 							{.repeated section categories}
-							<a class="category-label drop-shadow" href="{collection.fullUrl}?category={@|url-encode}">{@}&nbsp;</a><br>
+							<a class="category-label drop-shadow" style="margin-bottom: 10px;" href="{collection.fullUrl}?category={@|url-encode}">{@}&nbsp;</a>
 							{.end}
 							{.end}
 						</div>
