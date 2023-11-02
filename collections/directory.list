@@ -17,9 +17,9 @@
 					<div class="filter-label hover" id="category-label" onclick="filter('#category-label', 'directory-list-item', '', '#filter-by-categories-labels'), closeList('#category-label', '.category-filter')">
 						<p>Categories</p>
 					</div>
-					<div class="filter-label hover" id="allergen-label" onclick="filter('#allergen-label', 'allergen-free-kitchen', 'Allergen Free Kitchens', '#filter-by-allergens-labels'), closeList('#allergen-label', '.allergen-filter')" style="margin-right: 0px;">
+					{#  <div class="filter-label hover" id="allergen-label" onclick="filter('#allergen-label', 'allergen-free-kitchen', 'Allergen Free Kitchens', '#filter-by-allergens-labels'), closeList('#allergen-label', '.allergen-filter')" style="margin-right: 0px;">
 						<p>Allergen</p>
-					</div>
+					</div>  }
 				</div>
 				<p id="filter-text"><span id="category-count"></span></p>
 			</div>
