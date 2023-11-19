@@ -1,0 +1,273 @@
+<script>
+    var allCoordinates = []
+    var allContent = []
+    var map;
+    var selectedClasses = []
+    var filterNames = []
+    var showVerified;
+    var globalZoomValue = 12;
+   
+
+
+function reset(lat, long, zoom){
+   	
+   	$('.filter-label').removeClass('selected')
+   	var selectedClasses = []
+   	var filterNames = []
+    initMap(lat, long, zoom)
+   	updateFilterCounter()
+   }
+
+function closeList(label, targetLabels){
+   var selectedChildren = $(targetLabels);
+   if (!$(label).hasClass('selected')){
+   	for(i=0; i< selectedChildren.length; i++){
+   		if (selectedChildren[i].classList.contains('selected')){
+   			if (typeof selectedChildren[i].onclick === 'function') {
+   				selectedChildren[i].onclick(); 
+   			}
+   		} 
+   	}
+   }
+   }
+   
+   function filterResults(selectedClasses) {
+    console.log(selectedClasses)
+   $('article').each(function() {
+          var hasAllClasses = true;
+          for (var i = 0; i < selectedClasses.length; i++) {
+              if (!$(this).hasClass(selectedClasses[i])) {
+                  hasAllClasses = false;
+                  break;
+              }
+          }
+          if (hasAllClasses) {
+              $(this).addClass('visible-on-map');
+          } else {
+   		$(this).removeClass('visible-on-map')
+   	}
+      });
+   updateFilterCounter()
+   }
+
+function filter(label, targetFilter, filterName, showDiv){
+   	var labelActive = $(label).hasClass("selected");
+   	var showDivActive = $(showDiv).hasClass('visible')
+   	{#  Activate Labels  }
+   	if(labelActive){
+   		$(label).removeClass("selected")
+   		selectedClasses = selectedClasses.filter(item => item !== targetFilter);
+   		if(showDivActive){$(showDiv).removeClass('visible')}
+   		if (filterName != ""){filterNames = filterNames.filter(item => item !== filterName)}
+   	}
+
+    {#  work on undoing the filter  }
+   	else {
+   		$(label).addClass("selected")
+   		selectedClasses.push(targetFilter)
+   		if(!showDivActive){$(showDiv).addClass('visible')}
+   		if(filterName != ""){filterNames.push(filterName)}
+   	}
+   	{#  Filter Items  }
+   	if (targetFilter != ""){
+        selectedClasses.push('visible-on-map')
+   		filterResults(selectedClasses)
+   	}
+   	updateFilterCounter()
+   }
+
+   function updateFilterCounter(){
+    console.log(globalZoomValue)
+   	var counter = document.getElementById('category-count')
+    var total = $('article').length;
+   	count = $('.visible-on-map').length;
+    console.log("count is " + count)
+
+    if (count === total){
+        $('#reset-label').addClass('selected')
+    }
+
+   	if (count === $('article').length){
+   		counter.textContent = "Showing " + count + " restaurants"; 
+   		$('#no-results-reset').css("display", "none")
+   		$('#reset-label').addClass('selected')
+   	} 
+   	else if (count === 1){
+   		$('#reset-label').removeClass('selected')
+   		$('#no-results-reset').css("display", "none")
+   		counter.textContent = "Showing " + count + " restaurant"
+   	}
+   	else if (count === 0){
+   		counter.textContent = "No results."
+   		$('#reset-label').removeClass('selected')
+   		$('#no-results-reset').css("display", "flex")
+   		document.getElementById("no-results-filters").innerHTML = filterNames.toString()
+   	}
+   	else {
+   		$('#reset-label').removeClass('selected')
+   		$('#no-results-reset').css("display", "none")
+   		counter.textContent = "Showing " + count + " restaurants"
+   	}		
+   }	
+
+</script>
+
+
+<div class="flex-center-start flex-column box-shadow" id="geolocationStatus">
+   <div class="flex-center-start">
+        <img id="geolocationEnabled" src="../assets/geolocation.svg" style="height: 20px; display: none; margin-right: 10px;" alt="geolocation icon"/>
+        <img id="geolocationBlocked" class="hover" onclick="alert('Geolocation services are disabled. Refresh the page to share your location, or search by city / ZIP code in the search bar.')" src="../assets/geolocation-disabled.svg" style="height: 20px; display: none; margin-right: 10px;" alt="geolocation icon"/>
+        <div class="flex-center-start">
+            <input type="text" id="lookupLocation" placeholder="Enter a location (e.g., state, zip code, city)">
+            <button onclick="geocodeAddress()" class="map-button" >Find Restaurants</button>
+        </div>
+    </div>
+    <div class="flex-center-start">
+        <p style="font-size: 10px;">Distance (miles):</p>
+        <div id="slider-container">
+            <input type="range" id="slider" min="0" max="4" step="1" value="0">
+            <div class="flex-center-center">
+                <div class="stop-label">1</div>
+                <div class="stop-label">2</div>
+                <div class="stop-label">5</div>
+                <div class="stop-label">10</div>
+                <div class="stop-label">25+</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<div id="map"></div>
+
+<script>
+
+function handleSliderChange() {
+      var sliderValue = document.getElementById('slider').value;
+      map.setZoom(16 - sliderValue)
+    }
+    document.getElementById('slider').addEventListener('input', handleSliderChange);
+
+function findMyState(inputValue) {
+       const success = (position) => {
+           $('#geolocationEnabled').css('display', 'flex')
+           globalZoomValue = inputValue;
+           initMap(position.coords.latitude, position.coords.longitude, globalZoomValue)
+       }
+       const error = () => {
+           $('#geolocationBlocked').css('display', 'flex')
+           globalZoomValue = 4
+           initMap(39.8283, -98.5795, globalZoomValue)
+           $('#reset-label').addClass('selected')
+       }
+       navigator.geolocation.getCurrentPosition(success, error);
+	   
+   }
+findMyState(globalZoomValue)
+
+function geocodeAddress() {
+    var geocoder = new google.maps.Geocoder();
+    var address = document.getElementById('lookupLocation').value;
+
+    geocoder.geocode({ address: address }, function (results, status) {
+        if (status === 'OK') {
+            initMap(results[0].geometry.location.lat(), results[0].geometry.location.lng(), globalZoomValue)
+        } else {
+            console.log('Geocode was not successful for the following reason: ' + status);
+            globalZoomValue = 4
+            initMap(39.8283, -98.5795, globalZoomValue)
+        }
+    });
+    getVisiblePins(map)
+}
+    
+
+   	function initMap(userLatitude, userLongitude, zoomLevel) {
+   	  map = new google.maps.Map(document.getElementById("map"), {
+   	    zoom: {.equal? customContent.customType "verifiedRestaurantMultiple"} 5 {.or} zoomLevel {.end},
+   		gestureHandling: 'cooperative',
+   	          scrollwheel: false,
+   	          disableDoubleClickZoom: false,
+   			  draggable: true,
+   	    center: { lat: userLatitude, lng: userLongitude },
+   	    styles: mapStyles,
+   		mapTypeControl: false	
+   	  });
+
+	  
+   	  allCoordinates.forEach(function (location, index, category, id) {
+   	          var marker = new google.maps.Marker({
+   	            position: location,
+   	            map: map,
+   				category: category,
+				id: id,
+   	            icon: '../../assets/pin.svg',
+   	          });
+   			  	var infoWindow = new google.maps.InfoWindow({
+   				content: "<div class='map-popup-window'>" + allContent[index]+ "</div>" 
+   			});
+   			  marker.addListener('click', function() {
+   					infoWindow.open(map, marker);
+   					map.setZoom(15);
+   					map.setCenter(marker.getPosition());
+   				});
+				
+   	        });
+
+            google.maps.event.addListenerOnce(map, 'tilesloaded', function() {
+                getVisiblePins(map)
+            });
+            google.maps.event.addListener(map, 'bounds_changed', function() {
+                getVisiblePins(map)
+            });
+   	      
+   	  
+   	}
+
+window.addEventListener('click', updateFilterCounter )
+
+function getVisiblePins(map){
+    var bounds = map.getBounds()
+	if (bounds) {
+    var visiblePins = allCoordinates.filter(function(marker) {
+      return bounds.contains(new google.maps.LatLng(marker.lat, marker.lng));
+    });
+
+    console.log(visiblePins)
+	var visiblePinsIds = []
+	for (i = 0; i < visiblePins.length; i++){
+		visiblePinsIds.push(visiblePins[i].id);
+	}
+    console.log("visible pins id is " + visiblePinsIds.length)
+	
+  } else {
+    console.error('Map bounds not available. Make sure the map is fully loaded.');
+    return [];
+  }
+
+  var articles = document.querySelectorAll('article');
+      articles.forEach(function(article) {
+        if (visiblePinsIds.includes(article.id)) {
+          article.classList.add('visible-on-map');
+        } else {
+          article.classList.remove('visible-on-map');
+        }
+      });
+	  updateFilterCounter()
+	
+}
+
+function handleKeyPress(event) {
+      
+      if (event.key === 'Enter' && event.target.id === 'lookupLocation') {
+        geocodeAddress()
+      }
+    }
+
+    // Add event listener to the document for the "keypress" event
+    document.addEventListener('keypress', handleKeyPress);
+
+
+</script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBKuNK8g9qwz4O5y1Sll9cff4z28H3sBt0" async defer></script>

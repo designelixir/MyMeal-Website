@@ -3,14 +3,15 @@
 
 <div class="directory box-shadow">
 	<div id="directory-map-container">
-		{@|apply directoryMap.block}
+		{@|apply newDirectoryMap.block}
 		<div class="directory-filter box-shadow">
 			<div id="filter-slider" class="flex-center-spacebetween">
 				<div id="filter-slider-labels" class="flex-center-start">
-					<div id="reset-label" class="filter-label hover" onclick="reset()">
+					<div id="reset-label" class="filter-label hover" onclick="globalZoomValue = 4; reset(39.8283, -98.5795, globalZoomValue);">
 						<p>Show All</p>
 					</div>
-					<div id="verified-item-label" class="filter-label hover flex-center-center" onclick="filter('#verified-item-label', 'verified-item', 'MyMeal Verified', '')"  >
+
+					<div id="verified-item-label" class="filter-label hover flex-center-center" onclick=" filter('#verified-item-label', 'verified-item', 'MyMeal Verified', '');"  >
 						<img src="../assets/verified-mymeal.png" style="height: 25px; margin-bottom: -2px;" alt="verified my meal logo"/>
 						<p>Verified</p>
 					</div>
@@ -50,7 +51,7 @@
 	<div class="flex-start-center flex-wrap directory-wrapper" >
 		<div id="no-results-reset" class="flex-center-center flex-column">
 			<p>No results using filters: <span id="no-results-filters"></span><br> Try removing a filter or click Show All Restaurants. </p>
-			<button onclick="reset()" class='styled-button'>Show All Restaurants </button>
+			<button onclick="reset(39.8283, -98.5795, 4)" class='styled-button'>Show All Restaurants </button>
 		</div>
 		{.repeated section items}
 		<script>
@@ -58,7 +59,7 @@
 				var lat = location.markerLat;
 				var long = location.markerLng;
 				
-				var coordinate = {lat:{location.markerLat}, lng: {location.markerLng}, category: 'pin {@|item-classes}'}
+				var coordinate = {lat:{location.markerLat}, lng: {location.markerLng}, category: 'pin {@|item-classes}', id: '{id}'}
 				allCoordinates.push(coordinate);
 				var pinBox = `
 					<div class="pin-box-container">
@@ -91,7 +92,7 @@
 		</script>
 		{.equal? customContent.customType "duplicateLocation" }
 		{.or}
-		<article id="{title}" class='directory-list-item hover {.if customContent.verified} verified-item {.or} unverified-item {.end} box-shadow {.if tags} allergen-free-kitchen {.end} {@|item-classes}' data-item-id="{id}" style="display: none" >
+		<article id="{id}" class='directory-list-item hover {.if customContent.verified} verified-item {.or} unverified-item {.end} box-shadow {.if tags} allergen-free-kitchen {.end} {@|item-classes}' data-item-id="{title}" style="display: none" >
 			<div class="directory-image" {.if customContent.bannerImgUrl}style="background-image:url({customContent.bannerImgUrl})"{.or}style="background-image:url(../assets/basic-bg.png)"{.end} >
 				<div class="flex-start-end verified-badge-wrapper">
 					{.if customContent.verified}
@@ -198,7 +199,7 @@
 				</div>
 			</div>
 		</article>
-	{.end}
+		{.end}
 	
 	{.end}
 </div>
