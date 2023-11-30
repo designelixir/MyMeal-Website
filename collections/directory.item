@@ -135,10 +135,10 @@
 			{.end}
 			{.if customContent.allergens }
 			<span id="preprocessed-allergens">{customContent.allergens}</span>
-			<div class="flex-center-start flex-wrap" id="allergen-list">
+			<div class="flex-center-start flex-wrap" id="allergenList">
 				<p style="font-weight: 700;">Dedicated Free From: &nbsp; </p>
 			</div>
-			<script>addToSpecialtyItems('preprocess-allergens', 'allergen-list')</script>
+			<script>addToSpecialtyItems('preprocessed-allergens', 'allergenList')</script>
 			
 			<div class="hr-line"></div>
 			{.end}

@@ -1,15 +1,26 @@
 <script>
    var allCoordinates = []
    var allContent = []
-   
+   var userSharedLocation;
    var selectedClasses = []
    var filterNames = []
+
+   var showAllLat = 39.8283
+   var showAllLong = -98.5795
+   var showAllZoom = 4
+   var selectedClasses 
+   	var filterNames
    
    function reset(){
+	
    	$('article').addClass('visible')
    	$('.filter-label').removeClass('selected')
-   	var selectedClasses = []
-   	var filterNames = []
+	
+	
+	$('#reset-label').addClass('selected')
+   	selectedClasses = []
+   	filterNames = []
+	filterResults(selectedClasses)
    	updateFilterCounter()
    }
    $(document).ready(reset)
@@ -31,22 +42,23 @@
    		if(filterName != ""){filterNames.push(filterName)}
    	}
    	{#  Filter Items  }
-   	if (targetFilter != ""){
-   		filterResults(selectedClasses)
-   	}
+   	
+	filterResults(selectedClasses)
+   	
    	updateFilterCounter()
    }
 
    function mapFilter(visiblePinsIds){
-	reset()
+	
 	var articles = document.querySelectorAll('article');
       articles.forEach(function(article) {
         if (visiblePinsIds.includes(article.id)) {
-          article.classList.add('visible');
+          article.classList.add('visible', 'visible-on-map');
         } else {
-          article.classList.remove('visible');
+          article.classList.remove('visible', 'visible-on-map');
         }
       });
+	  filterResults(selectedClasses)
 	  updateFilterCounter()
    }
 
@@ -66,11 +78,13 @@
    }
    
    function filterResults(selectedClasses) {
-   $('article').each(function() {
+	console.log("selected classes" + selectedClasses)
+   $('.visible-on-map').each(function() {
           var hasAllClasses = true;
           for (var i = 0; i < selectedClasses.length; i++) {
               if (!$(this).hasClass(selectedClasses[i])) {
                   hasAllClasses = false;
+				  console.log(hasAllClasses)
                   break;
               }
           }
@@ -127,19 +141,24 @@
                initMap(results[0].geometry.location.lat(), results[0].geometry.location.lng(), 12)
            } else {
                console.log('Geocode was not successful for the following reason: ' + status);
-               initMap(39.8283, -98.5795, 4)
+			   initMap(showAllLat, showAllLong, showAllZoom)
            }
        });
 	   getVisiblePins(map)
    }
 </script>
-<div class="flex-center-start box-shadow" id="geolocationStatus">
-   <img id="geolocationEnabled" src="../assets/geolocation.svg" style="height: 20px; display: none; margin-right: 10px;" alt="geolocation icon"/>
-   <img id="geolocationBlocked" src="../assets/geolocation-disabled.svg" style="height: 20px; display: none; margin-right: 10px;" alt="geolocation icon"/>
+<div class="flex-start-start box-shadow flex-column" id="geolocationStatus">
+   
    <div class="flex-center-center">
-      <input type="text" id="lookupLocation" placeholder="Enter a location (e.g., state, zip code, city)">
-      <button onclick="geocodeAddress()" class="styled-button" style="font-size: 10px; margin-left: 10px; margin-right: 0px; border-radius: 2px!important;">Find Restaurants</button>
+   		<img id="geolocationEnabled" src="../assets/geolocation.svg" style="height: 20px; display: none; margin-right: 10px;" alt="geolocation icon"/>
+   		<img id="geolocationBlocked" onclick="initMap(userLatitude, userLongitude, userZoom)" src="../assets/geolocation-disabled.svg" style="height: 20px; display: none; margin-right: 10px;" alt="geolocation icon"/>
+      	<input type="text" id="lookupLocation" placeholder="Enter a location (e.g., state, zip code, city)">
+      	<button onclick="geocodeAddress()" class="styled-button" style="font-size: 10px; margin-left: 10px; margin-right: 0px; border-radius: 2px!important;">Find Restaurants</button>
    </div>
+   <div onclick="findMyState()" id="filter-by-location" class="styled-button flex-center-center hover heartbeat">
+   	<img src="../assets/white-geolocation.svg" style="height: 20px; margin-right: 10px;" alt="geolocation icon"/>
+	Filter by My Location
+	</div>
 </div>
 <div id="map"></div>
 <script>
@@ -148,19 +167,29 @@
    const findMyState = () => {
        const success = (position) => {
            $('#geolocationEnabled').css('display', 'flex')
-           initMap(position.coords.latitude, position.coords.longitude, 12)
+		   userLatitude = position.coords.latitude
+		   userLongitude = position.coords.longitude
+		   userZoom = 12
+           initMap(userLatitude, userLongitude, userZoom)
+		   $('#filter-by-location').css("display", "none")
+		   userSharedLocation = true
+		   
+		   console.log(userSharedLocation)	
        }
        const error = () => {
            $('#geolocationBlocked').css('display', 'flex')
-           initMap(39.8283, -98.5795, 4)
+           initMap(showAllLat, showAllLong, showAllZoom)
+		   userSharedLocation = false
+		   console.log(userSharedLocation)	
        }
        navigator.geolocation.getCurrentPosition(success, error);
 	   
    }
    
+	
+
    function mapLoader(){
-       initMap(39.8283, -98.5795, 4);
-       findMyState()
+       initMap(showAllLat, showAllLong, showAllZoom)
    }
    mapLoader
 
@@ -214,7 +243,7 @@
 
 
 function getVisiblePins(map){
-	console.log("panned")
+	
 	var bounds = map.getBounds()
 
 	if (bounds) {
@@ -222,7 +251,7 @@ function getVisiblePins(map){
       return bounds.contains(new google.maps.LatLng(marker.lat, marker.lng));
     });
 
-    console.log(visiblePins)
+    
 	var visiblePinsIds = []
 	for (i = 0; i < visiblePins.length; i++){
 		visiblePinsIds.push(visiblePins[i].id);
@@ -233,6 +262,15 @@ function getVisiblePins(map){
     return [];
   }
 }
-	
+
+function handleKeyPress(event) {
+      if (event.key === 'Enter' && event.target.id === 'lookupLocation') {
+        geocodeAddress()
+      }
+    }
+
+// Add event listener to the document for the "keypress" event
+document.addEventListener('keypress', handleKeyPress);
+
 </script>
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBKuNK8g9qwz4O5y1Sll9cff4z28H3sBt0&callback=mapLoader" async defer></script>

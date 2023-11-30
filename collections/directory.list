@@ -3,11 +3,11 @@
 
 <div class="directory box-shadow">
 	<div id="directory-map-container">
-		{@|apply newnewDirectoryMap.block}
+		{@|apply directoryMap.block}
 		<div class="directory-filter box-shadow">
 			<div id="filter-slider" class="flex-center-spacebetween">
 				<div id="filter-slider-labels" class="flex-center-start">
-					<div id="reset-label" class="filter-label hover" onclick="reset(showAllLat, showAllLong, showAllZoom);">
+					<div id="reset-label" class="filter-label hover" onclick="filter('#category-label', 'visible-on-map', '', '#filter-by-categories-labels'); closeList('#category-label', '.category-filter'); reset(); initMap(showAllLat, showAllLong, showAllZoom); ">
 						<p>Show All</p>
 					</div>
 					
@@ -16,7 +16,7 @@
 						<img src="../assets/verified-mymeal.png" style="height: 25px; margin-bottom: -2px;" alt="verified my meal logo"/>
 						<p>Verified</p>
 					</div>
-					<div class="filter-label hover" id="category-label" onclick="filter('#category-label', 'directory-list-item', '', '#filter-by-categories-labels'), closeList('#category-label', '.category-filter')">
+					<div class="filter-label hover" id="category-label" onclick="filter('#category-label', 'visible-on-map', '', '#filter-by-categories-labels'), closeList('#category-label', '.category-filter')">
 						<p>Categories</p>
 					</div>
 					{#  <div class="filter-label hover" id="allergen-label" onclick="filter('#allergen-label', 'allergen-free-kitchen', 'Allergen Free Kitchens', '#filter-by-allergens-labels'), closeList('#allergen-label', '.allergen-filter')" style="margin-right: 0px;">
@@ -52,7 +52,7 @@
 	<div class="flex-start-center flex-wrap directory-wrapper" >
 		<div id="no-results-reset" class="flex-center-center flex-column">
 			<p>No results using filters: <span id="no-results-filters"></span><br> Try removing a filter or click Show All Restaurants. </p>
-			<button onclick="reset(39.8283, -98.5795, 4)" class='styled-button'>Show All Restaurants </button>
+			<button onclick="filter('#category-label', 'visible-on-map', '', '#filter-by-categories-labels'); closeList('#category-label', '.category-filter'); reset(); initMap(showAllLat, showAllLong, showAllZoom); " class='styled-button'>Show All Restaurants </button>
 		</div>
 		{.repeated section items}
 		<script>
@@ -91,9 +91,9 @@
 				allContent.push(pinBox)
 			{.end}
 		</script>
-		{.equal? customContent.customType "duplicateLocation" }
+		{.equal? customContent.customType "verifiedRestaurantMultiple" }
 		{.or}
-		<article id="{id}" class='directory-list-item hover {.if customContent.verified} verified-item {.or} unverified-item {.end} box-shadow {.if tags} allergen-free-kitchen {.end} {@|item-classes}' data-item-id="{title}" style="display: none" >
+		<article id="{id}" class='directory-list-item scale-in-center hover {.if customContent.verified} verified-item {.or} unverified-item {.end} box-shadow {.if tags} allergen-free-kitchen {.end} {@|item-classes}' data-item-id="{title}" style="display: none" >
 			<div class="directory-image" {.if customContent.bannerImgUrl}style="background-image:url({customContent.bannerImgUrl})"{.or}style="background-image:url(../assets/basic-bg.png)"{.end} >
 				<div class="flex-start-end verified-badge-wrapper">
 					{.if customContent.verified}
@@ -142,33 +142,16 @@
 						<a class="category-label drop-shadow" href="{collection.fullUrl}?category={@|url-encode}">{@}&nbsp;</a>
 						{.end}
 					{.end}
-					{.if tags }
-					<a class="tag-label drop-shadow" id="tagger"></a>	
-					<script>
-						function checkTags(title, tags){
-							if (tags.includes(',')){
-							var modifiedTags = tags.replace(/,/g, ", ");
-							document.getElementById(title + "-tags").innerHTML = "&#x2713;<span>&nbsp;" + modifiedTags + "</span> Free Kitchen"
-							} else {
-								document.getElementById(title + "-tags").innerHTML = "&#x2713;<span>&nbsp;" + tags + "</span> Free Kitchen"
-							}
-						}
-							if (`{title}`.includes('&')){
-							var title = `{title}`.replace(/&amp;/g, "and")
-							document.getElementById('tagger').id = title + '-tags'
-							checkTags(title, `{tags}`)
-							} else {
-								document.getElementById('tagger').id = `{title}` + '-tags'
-								checkTags(`{title}`, `{tags}`)
-							}
-					</script>
+					{.if customContent.allergens}
+						<a class="tag-label drop-shadow" id="tagger">&#x2713; {customContent.allergens} Free Kitchen</a>
 					{.end}
+					
 				</div>
 				
 				
 				<div class="flex-center-center directory-buttons">
-					<button onclick="window.open('{sourceUrl}')" class="medium-button styled-button">Allergen Menu</button>
-					<button onclick="window.open('{fullUrl}', '_self')" class="medium-button styled-button-inverted">Details</button>
+					{.if sourceUrl}<button onclick="window.open('{sourceUrl}')" class="medium-button styled-button">Allergen Menu</button>{.end}
+					<button onclick="window.open('{fullUrl}', '_self')" class="medium-button styled-button-inverted-grey">Details</button>
 				</div>
 
 				<div class="mobile-address">
