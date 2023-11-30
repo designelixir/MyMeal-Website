@@ -3,7 +3,7 @@
 
 <div class="directory box-shadow">
 	<div id="directory-map-container">
-		{@|apply newDirectoryMap.block}
+		{@|apply newnewDirectoryMap.block}
 		<div class="directory-filter box-shadow">
 			<div id="filter-slider" class="flex-center-spacebetween">
 				<div id="filter-slider-labels" class="flex-center-start">
@@ -90,8 +90,7 @@
 				allContent.push(pinBox)
 			{.end}
 		</script>
-		{.equal? customContent.customType "duplicateLocation" }
-		{.or}
+		
 		<article id="{id}" class='directory-list-item hover {.if customContent.verified} verified-item {.or} unverified-item {.end} box-shadow {.if tags} allergen-free-kitchen {.end} {@|item-classes}' data-item-id="{title}" style="display: none" >
 			<div class="directory-image" {.if customContent.bannerImgUrl}style="background-image:url({customContent.bannerImgUrl})"{.or}style="background-image:url(../assets/basic-bg.png)"{.end} >
 				<div class="flex-start-end verified-badge-wrapper">
@@ -199,7 +198,7 @@
 				</div>
 			</div>
 		</article>
-		{.end}
+		
 	
 	{.end}
 </div>
