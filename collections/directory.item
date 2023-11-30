@@ -260,7 +260,7 @@
 						var long = location.markerLng;
 						var coordinate = {lat:{location.markerLat}, lng: {location.markerLng}}
 						allCoordinates.push(coordinate);
-						allContent.push(["<h4 class='multiple-location-title'>{title}</h4> <p>📞 {customContent.restaurantPhone}</br> 📍 {location.addressLine1}, {location.addressLine2} </p><br> <div class='flex-center-center'><button class='medium-button styled-button hover' onclick='goToDetails(`{id}`)'>Restaurant Details</button></div>"])
+						allContent.push(["<h4 class='multiple-location-title'>{title}</h4> <p class="hover">📞 {customContent.restaurantPhone}</br> 📍 {location.addressLine1}, {location.addressLine2} </p><br> <div class='flex-center-center'><button class='medium-button styled-button hover' onclick='goToDetails(`{id}`)'>Restaurant Details</button></div>"])
 					{.end}
 					function doStuff(id){
 							document.getElementById(id).style.border = "2px solid var(--blue)"

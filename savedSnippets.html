@@ -1,0 +1,23 @@
+<!-- for adding tag labels to the directory item on list view- goes beneath categories -->
+
+{.if tags }
+					<a class="tag-label drop-shadow" id="tagger"></a>	
+					<script>
+						function checkTags(title, tags){
+							if (tags.includes(',')){
+							var modifiedTags = tags.replace(/,/g, ", ");
+							document.getElementById(title + "-tags").innerHTML = "&#x2713;<span>&nbsp;" + modifiedTags + "</span> Free Kitchen"
+							} else {
+								document.getElementById(title + "-tags").innerHTML = "&#x2713;<span>&nbsp;" + tags + "</span> Free Kitchen"
+							}
+						}
+							if (`{title}`.includes('&')){
+							var title = `{title}`.replace(/&amp;/g, "and")
+							document.getElementById('tagger').id = title + '-tags'
+							checkTags(title, `{tags}`)
+							} else {
+								document.getElementById('tagger').id = `{title}` + '-tags'
+								checkTags(`{title}`, `{tags}`)
+							}
+					</script>
+					{.end}

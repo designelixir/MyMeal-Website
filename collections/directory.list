@@ -139,14 +139,15 @@
 					{.if customContent.priceRank}<p class="price-rank">{customContent.priceRank} •&nbsp;</p>{.end}
 					{.if categories} 
 						{.repeated section categories}
-						<a class="category-label drop-shadow" href="{collection.fullUrl}?category={@|url-encode}">{@}&nbsp;</a>
+						<a class="category-label drop-shadow" href="{collection.fullUrl}?category={@|url-encode}">{@}</a>
 						{.end}
 					{.end}
-					{.if customContent.allergens}
-						<a class="tag-label drop-shadow" id="tagger">&#x2713; {customContent.allergens} Free Kitchen</a>
-					{.end}
+					
 					
 				</div>
+				{.if excerpt}
+				<p style="font-style: italic">{excerpt|safe}</p>
+				{.end}
 				
 				
 				<div class="flex-center-center directory-buttons">
