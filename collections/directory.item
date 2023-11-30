@@ -1,9 +1,6 @@
-<style>
-.category-label {font-size: 15px }
-</style>
+
 <script>
 	function addToSpecialtyItems(spanId, divId) {
-		console.log("called")
 	  var span = document.getElementById(spanId); // Get the span element
 	  var div = document.getElementById(divId); // Get the div element
 	
@@ -46,13 +43,13 @@
 					<div class="flex-center-center order-online">
 						
 						
-						{.equal? customContent.customType "verifiedRestaurantMultiple"}{.or}{.if customContent.orderOnline}
+						{.if customContent.orderOnline}
 						<div class="order-icon-with-label flex-center-center" onclick="window.open('{customContent.orderOnline}', '_blank')">
 							<img src="../assets/toGo.png" style="height: 40px;">
 							<p class="white-text">Order Online</p>
 						</div>
 						{.end}
-						{.end}
+						
 					</div>
 				</div>
 				
@@ -62,21 +59,17 @@
 					{.if categories }
 					<div class="flex-center-start flex-wrap">
 					{.repeated section categories}
-					<a class="category-label drop-shadow" href="/directory?category={@|url-encode}">{@|url-encode}</a>&nbsp;
+					<a class="category-label-full drop-shadow" href="/directory?category={@|url-encode}">{@}</a>&nbsp;
 					{.end}
 					</div>
 					{.end}
-					{.equal? customContent.customType "verifiedRestaurantMultiple"}
-						<p class="hover" onclick="switchTab(1)">&nbsp;•&nbsp; Multiple Locations </p>
-					{.or}
-					{.end}
+					
 				</div>
-					{.equal? customContent.customType "verifiedRestaurantMultiple"}
-						{.or}
-						{.if location}
-						<p class="hover" onclick="window.open('https://www.google.com/maps/search/{location.addressTitle} {location.addressLine1} {location.addressLine2}', '_blank')">📍 {location.addressLine1}, {location.addressLine2}</p>
-						{.end}
+					
+					{.if location}
+					<p class="hover" onclick="window.open('https://www.google.com/maps/search/{location.addressTitle} {location.addressLine1} {location.addressLine2}', '_blank')">📍 {location.addressLine1}, {location.addressLine2}</p>
 					{.end}
+					
 					{.if customContent.restaurantPhone}
 						<a class="hover" href="tel:{customContent.restaurantPhone}">📞 {customContent.restaurantPhone} </a><br>
 						{.end}
@@ -86,44 +79,16 @@
 	</div>
 	</div>
 	<div class="directory-page-info">
-	{.equal? customContent.customType "verifiedRestaurantMultiple"}
-	<script>
-	function switchTab(tabIndex) {
-			
-		var tabs = document.getElementsByClassName("directory-tab");
-		var buttons = document.getElementsByClassName("tab-button")
-		
 	
-		
-		var selectedTab = document.getElementById("tab" + (tabIndex + 1));
-		var selectedTabButton = document.getElementById("tab-button-" + (tabIndex + 1))
-		if (selectedTab) {
-			for (var i = 0; i < tabs.length; i++) {
-			tabs[i].classList.remove("visible-tab")
-		}
-
-		for (var i = 0; i < buttons.length; i++) {
-		buttons[i].classList.remove("active-tab-button")
-		}
-
-		
-			selectedTab.classList.add("visible-tab")
-			selectedTabButton.classList.add("active-tab-button")
-		}
-		}
-	</script>
-
-	<div class="restaurant-tab-container">
-		<button onclick="switchTab(0)" class="tab-button active-tab-button" id="tab-button-1">Details</button>
-		<button onclick="switchTab(1)" class="tab-button" id="tab-button-2">Locations</button>
-		{#  <button onclick="switchTab(2)" class="tab-button" id="tab-button-3">Reviews</button>  }
-	</div>
-	{.end}
     
     
 	<div id="tab1" class="directory-tab visible-tab">
 		<div class="directory-details light-padding">
-			
+			{.if body}
+			<h4 style="color: var(--blue)">Details:</h4>
+			{body}
+			<div class="hr-line"></div>
+			{.end}
 			{.if customContent.specialtyItems}
 			<span id="preprocess-specialty-items">{customContent.specialtyItems}</span>
 			<div id="specialtyItems" class="flex-center-start flex-wrap">
@@ -208,11 +173,7 @@
 			</ul>
 			<div class="hr-line"></div>
 			{.end}
-			{.if body}
-			<h4 style="color: var(--blue)">Details:</h4>
-			{body}
-			<div class="hr-line"></div>
-			{.end}
+			
 		</div>
 		{.if customContent.verified}
 		{.if sourceUrl}
@@ -241,175 +202,12 @@
 			frameborder="0"
 			style="border:none;"
 			scrolling="no"
-			
-
 			>
 		</iframe>
 		{.end}
 	</div>
 	
-	{.equal? customContent.customType "verifiedRestaurantMultiple"}
-		<div id="tab2" class="directory-tab">
-			{@|apply directoryMap.block}
-			<squarespace:query collection="directory" limit="100" tag={title|slugify}>
-				<div class="flex-start-start flex-wrap">
-				{.repeated section items}
-				<script>
-					{.if location}
-						var lat = location.markerLat;
-						var long = location.markerLng;
-						var coordinate = {lat:{location.markerLat}, lng: {location.markerLng}}
-						allCoordinates.push(coordinate);
-						allContent.push(["<h4 class='multiple-location-title'>{title}</h4> <p class="hover">📞 {customContent.restaurantPhone}</br> 📍 {location.addressLine1}, {location.addressLine2} </p><br> <div class='flex-center-center'><button class='medium-button styled-button hover' onclick='goToDetails(`{id}`)'>Restaurant Details</button></div>"])
-					{.end}
-					function doStuff(id){
-							document.getElementById(id).style.border = "2px solid var(--blue)"
-							document.getElementById(id).style.borderRadius = "6px 6px 0px 0px"
-							showDetails(id);
-						}
-					function goToDetails(id){
-						document.getElementById(id).scrollIntoView({ behavior: 'smooth', block: "center" });
-						
-						setTimeout(() => {
-						doStuff(id)
-						
-						}, 500);
-						
-					}
-				</script>
-				{.equal? customContent.customType "duplicateLocation"}
-					<div class="multiple-location-wrapper box-shadow">
-						<div id="{id}" class="{tags}">
-						<div style="padding: 0px 15px;"class="flex-center-spacebetween"><h4 class="multiple-location-title">{title}</h4> <button class="large-button styled-button" style="min-width: 140px;" onclick="window.open('{customContent.orderOnline}')">Order Online</button></div>
-						
-						<div style="padding: 0px 15px;">
-						{.if location}
-							<div class="flex-center-start hover" onclick="window.open('https://www.google.com/maps/search/{location.addressTitle} {location.addressLine1} {location.addressLine2}', '_blank')">
-							<img src="../assets/directions.png" style="height: 30px; margin-right: 10px;">
-							<p>&nbsp;{location.addressLine1}, {location.addressLine2}</p>
-							</div>
-							{.end}
-							{.if customContent.restaurantPhone}
-							<div class="flex-center-start hover" onclick="window.open('tel:`{customContent.restaurantPhone}`', '_blank')">
-							<img src="../assets/call.png" style="height: 30px; margin-right: 10px;">
-							<p>&nbsp;{customContent.restaurantPhone}</p>
-							</div>
-							{.end}
-						</div>
-						<br>
-						<script>
-							function showDetails(id){
-								console.log(id)
-								var targetDetails = document.getElementById(id + '-additionalDetails');
-								var targetArrow = document.getElementById(id + '-detailsArrow');
-								if (targetDetails.style.display === "none"){
-									targetDetails.style.display = "block"
-									targetArrow.innerHTML = "Click for location details &#9660;"
-									$(".multi-location-iframe").show(function(){
-										$(this).find("iframe").prop("src", function(){
-											return $(this).data("src");
-										});
-									});
-									
-								} else {
-									targetDetails.style.display = "none"
-									targetArrow.innerHTML = "Click for location details &#9654;"
-								}
-							}
-						</script>
-						<div onclick="showDetails('{id}')" class="hover"><p style="padding: 0px 15px; margin: 0 0 25px" id="{id}-detailsArrow">Click for location details &#9654;</p></div>
-						</div>
-						<div class="additional-details fade-in" id="{id}-additionalDetails" style="padding: 15px; display: none;">
-						{.if customContent.specialtyItems}
-						<p><strong>Speciality Items:</strong> {customContent.specialtyItems}</p>
-						{.end}
-						{.if body}
-							<div class="hr-line"></div>
-							<h4 style="color: var(--blue)">Details:</h4>
-							{body}
-							{.end}
-							{.if sourceUrl}
-							<div class="multi-location-iframe">
-								<h4 style="color: var(--blue); padding-left: 25px;">Allergen Menu:</h4>
-								<iframe data-src="{sourceUrl}" frameborder="0" style="width: 100%; min-height: 800px;" allowfullscreen></iframe>
-							</div>
-							{.end}
-							{.if customContent.hideCrossContact}
-			{.or}
-			<p style="font-weight: 700;">Cross Contact Procedures:</p>
-			<ul class="green-procedures">
-				{.if customContent.cookSeperate}
-				<li class="yes-procedure"> Cooks on seperate equipment </li>
-				{.or}
-				{.if customContent.uponRequestCookSeperate}
-				<li class="request-procedure"> Cooks on seperate equipment (only upon request)</li>
-				{.or}
-				<li class="no-procedure"> Cooks on seperate equipment </li>
-				{.end}
-				{.end}
-				{.if customContent.untouchedIngredients}
-				<li class="yes-procedure"> Uses untouched ingredients </li>
-				{.or}
-				{.if customContent.uponRequestUntouchedIngredients}
-				<li class="request-procedure"> Uses untouched ingredients (only upon request)</li>
-				{.or}
-				<li class="no-procedure"> Uses untouched ingredients </li>
-				{.end}
-				{.end}
-				{.if customContent.cleanUtensils}
-				<li class="yes-procedure"> Uses clean utensils </li>
-				{.or}
-				{.if customContent.uponRequestCleanUtensils}
-				<li class="request-procedure"> Uses clean utensils (only upon request)</li>
-				{.or}
-				<li class="no-procedure"> Uses clean utensils </li>
-				{.end}
-				{.end}
-				{.if customContent.changeGloves}
-				<li class="yes-procedure"> Changes gloves </li>
-				{.or}
-				{.if customContent.uponRequestChangeGloves}
-				<li class="request-procedure"> Changes gloves (only upon request)</li>
-				{.or}
-				<li class="no-procedure"> Changes gloves </li>
-				{.end}
-				{.end}
-				{.if customContent.hasAllergyMenu}
-				<li class="yes-procedure"> Has an allergy menu </li>
-				{.or}
-				{.if customContent.uponRequestHasAllergyMenu}
-				<li class="request-procedure"> Has an allergy menu - (only on MyMeal App)</li>
-				{.or}
-				<li class="no-procedure"> Has an allergy menu </li>
-				{.end}
-				{.end}
-				{.if customContent.marksAllergen}
-				<li class="yes-procedure"> Marks your order "allergy alert" </li>
-				{.or}
-				{.if customContent.uponRequestHasAllergyMenu}
-				<li class="request-procedure"> Marks your order "allergy alert" - (only upon request)</li>
-				{.or}
-				<li class="no-procedure"> Marks your order "allergy alert" </li>
-				{.end}
-				{.end}
-				{.if customContent.allergenResource}
-				<li class="yes-procedure"> Has a staff allergen resource booklet </li>
-				{.or}
-				<li class="no-procedure"> Has a staff allergen resource booklet </li>
-				{.end}
-			</ul>
-			<div class="hr-line"></div>
-			{.end}
-						</div>
-					</div>
-					{.end}
-
-				
-				{.end}
-				</div>
-			</squarespace:query>
-		</div>
-	{.end}
+	
 
 	<div id="tab3" class="directory-tab" style="padding: 25px;">
 		<h4 style="color: var(--blue)">What Our Community is Saying About {title}</h4>
@@ -433,10 +231,10 @@
 <section>
 <h2 style="text-align: center;"> You may also like: </h2> 
 <br>
-<squarespace:query collection="directory" category="{category}" limit="4">
+<squarespace:query collection="directory" category="{categories}" limit="3">
 	<div class="flex-start-center flex-wrap">
    {.repeated section items}
-<article class='directory-list-item hover {.if customContent.verified} verified-item {.or} unverified-item {.end} box-shadow {@|item-classes}'  >
+	<article class='directory-list-item hover {.if customContent.verified} verified-item {.or} unverified-item {.end} box-shadow {@|item-classes}'  >
 			<div class="directory-image" {.if customContent.bannerImgUrl}style="background-image:url({customContent.bannerImgUrl})"{.or}style="background-image:url(../assets/basic-bg.png)"{.end} >
 				<div class="flex-start-end verified-badge-wrapper">
 					{.if customContent.verified}
@@ -448,9 +246,7 @@
 						{.if assetUrl}
 							<div class="directory-logo box-shadow" style="background-image: url({assetUrl})"></div>
 						{.end}
-						{.equal? customContent.customType "verifiedRestaurantMultiple"}
-						<p class="directory-city box-shadow"> &nbsp; Multiple Locations</p>
-						{.or}
+						
 						<p class="directory-city hover box-shadow" onclick="window.open('https://www.google.com/maps/search/{location.addressTitle} {location.addressLine1} {location.addressLine2}', '_blank')" id="address-span"></p>
 						<script>
 						function removeAfterSecondComma(str, title) {
@@ -472,7 +268,6 @@
 								removeAfterSecondComma(`{location.addressLine2}`, `{title}`)
 							}
 						</script>
-						{.end}
 					</div>
 				</div>
 			</div>
@@ -485,27 +280,6 @@
 						<a class="category-label drop-shadow" href="{collection.fullUrl}?category={@|url-encode}">{@}&nbsp;</a>
 						{.end}
 					{.end}
-					{.if tags }
-					<a class="tag-label drop-shadow" id="tagger"></a>	
-					<script>
-						function checkTags(title, tags){
-							if (tags.includes(',')){
-							var modifiedTags = tags.replace(/,/g, ", ");
-							document.getElementById(title + "-tags").innerHTML = "&#x2713;<span>&nbsp;" + modifiedTags + "</span> Free Kitchen"
-							} else {
-								document.getElementById(title + "-tags").innerHTML = "&#x2713;<span>&nbsp;" + tags + "</span> Free Kitchen"
-							}
-						}
-							if (`{title}`.includes('&')){
-							var title = `{title}`.replace(/&amp;/g, "and")
-							document.getElementById('tagger').id = title + '-tags'
-							checkTags(title, `{tags}`)
-							} else {
-								document.getElementById('tagger').id = `{title}` + '-tags'
-								checkTags(`{title}`, `{tags}`)
-							}
-					</script>
-					{.end}
 				</div>
 				
 				
@@ -514,9 +288,6 @@
 				</div>
 
 				<div class="mobile-address">
-					{.equal? customContent.customType "verifiedRestaurantMultiple"}
-					<p>Multiple Locations</p>
-					{.or}
 					<p onclick="window.open('https://www.google.com/maps/search/{location.addressTitle} {location.addressLine1} {location.addressLine2}', '_blank')" id="address-span-mobile"></p>
 					<script>
 						function removeAfterSecondComma(str, title) {
@@ -538,7 +309,6 @@
 								removeAfterSecondComma(`{location.addressLine2}`, `{title}`)
 							}
 					</script>
-					{.end}
 				</div>
 			</div>
 		</article>
@@ -549,15 +319,3 @@
 
 </squarespace:query>
 {.end}
-
-
-
-
-<script>
-
-$(document).ready(function() {
-	var starRating = Number({customContent.appRating});
-	var star_rating_width = $('.fill-ratings span').width();
-	$('.star-ratings').width(starRating / 10);
-});
-</script>

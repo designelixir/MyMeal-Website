@@ -21,3 +21,36 @@
 							}
 					</script>
 					{.end}
+
+
+					<!-- for tabs on directory -->
+					{.equal? customContent.customType "verifiedRestaurantMultiple"}
+	<script>
+	function switchTab(tabIndex) {
+			
+		var tabs = document.getElementsByClassName("directory-tab");
+		var buttons = document.getElementsByClassName("tab-button")
+		var selectedTab = document.getElementById("tab" + (tabIndex + 1));
+		var selectedTabButton = document.getElementById("tab-button-" + (tabIndex + 1))
+		if (selectedTab) {
+			for (var i = 0; i < tabs.length; i++) {
+			tabs[i].classList.remove("visible-tab")
+		}
+
+		for (var i = 0; i < buttons.length; i++) {
+		buttons[i].classList.remove("active-tab-button")
+		}
+
+		
+			selectedTab.classList.add("visible-tab")
+			selectedTabButton.classList.add("active-tab-button")
+		}
+		}
+	</script>
+
+	<div class="restaurant-tab-container">
+		<button onclick="switchTab(0)" class="tab-button active-tab-button" id="tab-button-1">Details</button>
+		<button onclick="switchTab(1)" class="tab-button" id="tab-button-2">Locations</button>
+		{#  <button onclick="switchTab(2)" class="tab-button" id="tab-button-3">Reviews</button>  }
+	</div>
+	{.end}
