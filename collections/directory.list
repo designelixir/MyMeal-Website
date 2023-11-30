@@ -83,7 +83,7 @@
 							{.equal? customContent.customType "duplicateLocation" }
 							<a href="https://findmymeal.io/directory/{tags}" style="padding: 5px" class="medium-button styled-button">Restaurant Details</a>
 							{.or}
-							<a href="https://findmymeal.io{fullUrl}" style="padding: 5px" class="medium-button styled-button">Restaurant Details</a>
+							<a href="https://findmymeal.io{fullUrl}" style="padding: 5px" class="medium-button grey-button styled-button">Restaurant Details</a>
 							{.end}
 						</div>
 						</div>
