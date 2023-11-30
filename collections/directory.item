@@ -2,9 +2,10 @@
 .category-label {font-size: 15px }
 </style>
 <script>
-	function addToSpecialtyItems() {
-	  var span = document.getElementById('preprocess-specialty-items'); // Get the span element
-	  var div = document.getElementById('specialtyItems'); // Get the div element
+	function addToSpecialtyItems(spanId, divId) {
+		console.log("called")
+	  var span = document.getElementById(spanId); // Get the span element
+	  var div = document.getElementById(divId); // Get the div element
 	
 	  // Retrieve the text content from the span and split it by commas
 	  var items = span.textContent.split(',');
@@ -16,6 +17,8 @@
 	    div.appendChild(listItem); // Add the list item to the div
 	  }
 	}
+
+	
 	  
 </script>
 {.section item}
@@ -126,26 +129,17 @@
 			<div id="specialtyItems" class="flex-center-start flex-wrap">
 				<p style="font-weight: 700;">Specialty Items: &nbsp;</p>
 			</div>
-			<script>addToSpecialtyItems(`{customContent.specialtyItems}`)</script>
+			<script>addToSpecialtyItems('preprocess-specialty-items', 'specialtyItems')</script>
 			<div class="hr-line"></div>
+			{.or}
 			{.end}
-			{.if tags }
-			<div class="flex-center-start flex-wrap" id="tag-list">
-				<p style="font-weight: 700;">Dedicated Free From: &nbsp;</p>
+			{.if customContent.allergens }
+			<span id="preprocessed-allergens">{customContent.allergens}</span>
+			<div class="flex-center-start flex-wrap" id="allergen-list">
+				<p style="font-weight: 700;">Dedicated Free From: &nbsp; </p>
 			</div>
-			<script>
-				checkTags(`{tags}`)
-				function checkTags(tags){
-				
-				var tagsArray = tags.split(',');
-				var modifiedTags = tagsArray.map(function(tag) {
-				var tagLabel = document.createElement('div');
-				tagLabel.className = 'tag-label-individual';
-				tagLabel.innerHTML = "&#x2713;<span>&nbsp;" + tag.trim() + "</span>";
-				document.getElementById('tag-list').appendChild(tagLabel);
-				});
-				}
-			</script>
+			<script>addToSpecialtyItems('preprocess-allergens', 'allergen-list')</script>
+			
 			<div class="hr-line"></div>
 			{.end}
 			{.if customContent.hideCrossContact}
@@ -560,7 +554,7 @@
 
 
 <script>
-console.log(allCoordinates)
+
 $(document).ready(function() {
 	var starRating = Number({customContent.appRating});
 	var star_rating_width = $('.fill-ratings span').width();

@@ -3,13 +3,14 @@
 
 <div class="directory box-shadow">
 	<div id="directory-map-container">
-		{@|apply newDirectoryMap.block}
+		{@|apply newnewDirectoryMap.block}
 		<div class="directory-filter box-shadow">
 			<div id="filter-slider" class="flex-center-spacebetween">
 				<div id="filter-slider-labels" class="flex-center-start">
-					<div id="reset-label" class="filter-label hover" onclick="globalZoomValue = 4; reset(39.8283, -98.5795, globalZoomValue);">
+					<div id="reset-label" class="filter-label hover" onclick="reset(showAllLat, showAllLong, showAllZoom);">
 						<p>Show All</p>
 					</div>
+					
 
 					<div id="verified-item-label" class="filter-label hover flex-center-center" onclick=" filter('#verified-item-label', 'verified-item', 'MyMeal Verified', '');"  >
 						<img src="../assets/verified-mymeal.png" style="height: 25px; margin-bottom: -2px;" alt="verified my meal logo"/>

@@ -164,7 +164,8 @@ function findMyState(inputValue) {
        navigator.geolocation.getCurrentPosition(success, error);
 	   
    }
-findMyState(globalZoomValue)
+{#  findMyState(globalZoomValue)  }
+
 
 function geocodeAddress() {
     var geocoder = new google.maps.Geocoder();
@@ -224,6 +225,8 @@ function geocodeAddress() {
    	      
    	  
    	}
+{#  initialize map on page load  }
+initMap(39.8283, -98.5795, globalZoomValue)
 
 window.addEventListener('click', updateFilterCounter )
 
