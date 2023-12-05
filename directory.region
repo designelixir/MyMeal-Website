@@ -25,11 +25,12 @@
 				{.section item}
 				<h2 class="directory-breadcrumb-child directory-page-title">&nbsp;{title}</h2>
 				{.end}
-				
 			</div>
+			<div class="report-error"></div>
 			<br>
 				
 			{@|apply verifiedPopup.block}
+			{@|apply reportError.block}
 			{squarespace.main-content}
 			</main>
 		

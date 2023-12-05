@@ -1,0 +1,21 @@
+<style>
+#reportErrorBlock {width: 95vw; height: 80vh; border: 2px solid black; position: fixed; top: 5vh; left: 5vw; padding: 20px;}
+</style>
+
+<button class="report-error-button inverted-styled-button" onclick="toggleErrorBlock()">Report an Issue</button>
+
+<div id="reportErrorBlock">
+<script type="text/javascript" src="https://form.jotform.com/jsform/233386301955156?sourceUrl={sourceUrl}"></script>
+
+
+</div>
+
+<script>
+function toggleErrorBlock(){
+    if($('#reportErrorBlock').css("display") === "block"){
+        console.log("open")
+    } else {
+        console.log("closed")
+    }
+}
+</script>
