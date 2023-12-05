@@ -14,13 +14,14 @@
 	    div.appendChild(listItem); // Add the list item to the div
 	  }
 	}
-
-	
-	  
 </script>
+<style>
+.directory-page-title {font-size: 12px!important;}
+</style>
+
 {.section item}
 <div class="directory-breadcrumbs flex-center-start flex-wrap">
-	<h2 class="directory-breadcrumb-child">{title}</h2>
+	<h2 class="directory-breadcrumb-child directory-page-title">{title}</h2>
 </div>
 <br>
 <a href="/directory" class="styled-button-inverted large-button">&larr; Back to Directory</a>
