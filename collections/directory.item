@@ -17,7 +17,7 @@
 </script>
 <style>
 .directory-page-title {font-size: 16px!important; line-height: 20px;}
-.directory-breadcrumbs {justify-content: center!important;}
+.directory-breadcrumbs {justify-content: center!important; padding: 15px 0px;}
 
 </style>
 
