@@ -25,7 +25,7 @@
 				{.section item}
 				<h2 class="directory-breadcrumb-child directory-page-title">&nbsp;{title}</h2>
 				{.end}
-				<div class="report-error"></div>
+				<button class="report-error-button inverted-styled-button" onclick="toggleErrorBlock(false)">Report an Issue</button>
 			</div>
 			
 			<br>

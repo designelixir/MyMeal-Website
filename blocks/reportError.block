@@ -2,7 +2,7 @@
 #reportErrorBlock {display: none; z-index: 1000000000000; overflow-y: scroll; width: 95vw; height: 80vh; border: 2px solid black; position: fixed; top: 2.5vh; left: 2.5vw; padding: 20px; background: white;}
 </style>
 
-<button class="report-error-button inverted-styled-button" onclick="toggleErrorBlock(false)">Report an Issue</button>
+
 
 <div id="reportErrorBlock">
 <div class="flex-center-end" onclick="toggleErrorBlock(true)">X</div>
