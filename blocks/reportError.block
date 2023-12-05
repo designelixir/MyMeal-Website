@@ -1,5 +1,5 @@
 <style>
-#reportErrorBlock {display: none; z-index: 1000000000000; width: 100vw; height: 100vh; position: fixed; top: 0; left: 0; backdrop-filter: blur(10px);}
+#reportErrorBlock {display: none; z-index: 1000000000000; width: 100vw; height: 100vh; padding: 5vw; position: fixed; top: 0; left: 0; backdrop-filter: blur(10px);}
 .error-block-wrapper {border: 1px solid black; border-radius: 4px; background: white; overflow-y: scroll; height: 100%;}
 </style>
 
