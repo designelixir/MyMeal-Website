@@ -53,8 +53,9 @@
 				
 				<div>
 				<div class="flex-center-start">
-					<p>{customContent.priceRank} &nbsp;•&nbsp;</p>
+					{customContent.priceRank} 
 					{.if categories }
+					&nbsp;•&nbsp;
 					<div class="flex-center-start flex-wrap">
 					{.repeated section categories}
 					<a class="category-label-full drop-shadow" href="/directory?category={@|url-encode}">{@}</a>&nbsp;
