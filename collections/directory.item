@@ -145,12 +145,12 @@
 				{.end}
 				{.end}
 				{.if customContent.hasAllergyMenu}
-				<li class="yes-procedure"> Has an allergy menu </li>
+				<li class="yes-procedure"> Has a gluten-free allergy menu </li>
 				{.or}
 				{.if customContent.uponRequestHasAllergyMenu}
-				<li class="request-procedure"> Has an allergy menu - (only on MyMeal App)</li>
+				<li class="request-procedure"> Has a gluten-free allergy menu - (only on MyMeal App)</li>
 				{.or}
-				<li class="no-procedure"> Has an allergy menu </li>
+				<li class="no-procedure"> Has an allergy gluten-free allergy menu </li>
 				{.end}
 				{.end}
 				{.if customContent.marksAllergen}
