@@ -20,10 +20,7 @@
 </style>
 
 {.section item}
-<div class="directory-breadcrumbs flex-center-start flex-wrap">
-	<h2 class="directory-breadcrumb-child directory-page-title">{title}</h2>
-</div>
-<br>
+
 <a href="/directory" class="styled-button-inverted large-button">&larr; Back to Directory</a>
 <div style="height: 50px"></div>
 <section class="box-shadow" style="border-radius: 8px">
