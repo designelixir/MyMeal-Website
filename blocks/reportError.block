@@ -1,5 +1,5 @@
 <style>
-#reportErrorBlock {display: none; z-index: 1000000000000;  width: 90vw; height: 90vh; position: fixed; top: 2.5vh; left: 2.5vw;}
+#reportErrorBlock {display: none; z-index: 1000000000000;  width: 90vw; height: 90vh; position: fixed; top: 2.5vh; left: 5vw;}
 .error-block-wrapper {border: 1px solid black; border-radius: 4px; background: white; overflow-y: scroll;}
 </style>
 
@@ -16,7 +16,7 @@
         allowfullscreen="true"
         src="https://form.jotform.com/233386301955156?sourceUrl={sourceUrl}"
         frameborder="0"
-        style="min-width:100%;max-width:100%;border:none;"
+        style="min-width:100%;max-width:100%; min-height: 100%; border:none;"
         scrolling="no"></iframe>
     </div>
 </div>
