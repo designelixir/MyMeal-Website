@@ -25,6 +25,7 @@
 <section class="box-shadow {.if customContent.verified} verified-item {.end}" style="border-radius: 8px">
 	<div class="directory-image-lg flex-start-spacebetween flex-wrap" {.if customContent.bannerImgUrl}style="background-image:url({customContent.bannerImgUrl})"{.or}style="background-image:url(../assets/basic-bg.png)"{.end}>
 	<div style="width: 100%;" class="flex-end-end"><button class="report-error-button inverted-styled-button" onclick="toggleErrorBlock(false)">Report an Issue</button></div>
+	<script>$('#JotFormIFrame-233386301955156').attr ("src", "https://form.jotform.com/233386301955156?pageUrl={fullUrl}") </script>
 	<div class="directory-header-wrapper">
 		<div class="flex-center-start directory-header-logo-info">
 			{.if assetUrl}
