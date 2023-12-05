@@ -6,7 +6,7 @@
 
 
 <div id="reportErrorBlock">
-    <div class="error-block-wrapper flex-start-start">
+    <div class="error-block-wrapper">
         <div class="hover" style="padding: 15px; font-size: 24px;" onclick="toggleErrorBlock(true)">X</div>
 
     <iframe
@@ -16,7 +16,7 @@
       allowtransparency="true"
       allowfullscreen="true"
       allow="geolocation; microphone; camera"
-      src="https://form.jotform.com/233386301955156?sourceUrl={sourceUrl}"
+      src="https://form.jotform.com/233386301955156?pageUrl={sourceUrl}"
       frameborder="0"
       style="min-width:100%;max-width:100%;height:539px;border:none;"
       scrolling="no"
