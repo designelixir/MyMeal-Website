@@ -114,7 +114,7 @@
 				{.if customContent.uponRequestCookSeperate}
 				<li class="request-procedure"> Cooks on seperate equipment (only upon request)</li>
 				{.or}
-				<li class="no-procedure"> Cooks on seperate equipment </li>
+				<li class="{.if customContent.uncheckedItemsUnsure}unsure-procedure{.or}no-procedure{.end}e"> Cooks on seperate equipment </li>
 				{.end}
 				{.end}
 				{.if customContent.untouchedIngredients}
@@ -123,7 +123,7 @@
 				{.if customContent.uponRequestUntouchedIngredients}
 				<li class="request-procedure"> Uses untouched ingredients (only upon request)</li>
 				{.or}
-				<li class="no-procedure"> Uses untouched ingredients </li>
+				<li class="{.if customContent.uncheckedItemsUnsure}unsure-procedure{.or}no-procedure{.end}"> Uses untouched ingredients </li>
 				{.end}
 				{.end}
 				{.if customContent.cleanUtensils}
@@ -132,7 +132,7 @@
 				{.if customContent.uponRequestCleanUtensils}
 				<li class="request-procedure"> Uses clean utensils (only upon request)</li>
 				{.or}
-				<li class="no-procedure"> Uses clean utensils </li>
+				<li class="{.if customContent.uncheckedItemsUnsure}unsure-procedure{.or}no-procedure{.end}"> Uses clean utensils </li>
 				{.end}
 				{.end}
 				{.if customContent.changeGloves}
@@ -141,7 +141,7 @@
 				{.if customContent.uponRequestChangeGloves}
 				<li class="request-procedure"> Changes gloves (only upon request)</li>
 				{.or}
-				<li class="no-procedure"> Changes gloves </li>
+				<li class="{.if customContent.uncheckedItemsUnsure}unsure-procedure{.or}no-procedure{.end}"> Changes gloves </li>
 				{.end}
 				{.end}
 				{.if customContent.hasAllergyMenu}
@@ -150,7 +150,7 @@
 				{.if customContent.uponRequestHasAllergyMenu}
 				<li class="request-procedure"> Has a gluten-free allergy menu - (only on MyMeal App)</li>
 				{.or}
-				<li class="no-procedure"> Has an allergy gluten-free allergy menu </li>
+				<li class="{.if customContent.uncheckedItemsUnsure}unsure-procedure{.or}no-procedure{.end}"> Has an allergy gluten-free allergy menu </li>
 				{.end}
 				{.end}
 				{.if customContent.marksAllergen}
@@ -159,13 +159,14 @@
 				{.if customContent.uponRequestHasAllergyMenu}
 				<li class="request-procedure"> Marks your order "allergy alert" - (only upon request)</li>
 				{.or}
-				<li class="no-procedure"> Marks your order "allergy alert" </li>
+				
+				<li class="{.if customContent.uncheckedItemsUnsure}unsure-procedure{.or}no-procedure{.end}"> Marks your order "allergy alert" </li>
 				{.end}
 				{.end}
 				{.if customContent.allergenResource}
 				<li class="yes-procedure"> Has a staff allergen resource booklet </li>
 				{.or}
-				<li class="no-procedure"> Has a staff allergen resource booklet </li>
+				<li class="{.if customContent.uncheckedItemsUnsure}unsure-procedure{.or}no-procedure{.end}"> Has a staff allergen resource booklet </li>
 				{.end}
 			</ul>
 			<div class="hr-line"></div>
