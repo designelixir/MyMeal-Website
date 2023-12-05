@@ -17,11 +17,11 @@
 </script>
 <style>
 .directory-page-title {font-size: 16px!important;}
+.directory-breadcrumbs {justify-content: center!important;}
+
 </style>
 
 {.section item}
-
-<a href="/directory" class="styled-button-inverted large-button">&larr; Back to Directory</a>
 <div style="height: 50px"></div>
 <section class="box-shadow" style="border-radius: 8px">
 	<div class="directory-image-lg flex-start-spacebetween" {.if customContent.bannerImgUrl}style="background-image:url({customContent.bannerImgUrl})"{.or}style="background-image:url(../assets/basic-bg.png)"{.end}>
