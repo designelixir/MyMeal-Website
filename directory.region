@@ -25,8 +25,9 @@
 				{.section item}
 				<h2 class="directory-breadcrumb-child directory-page-title">&nbsp;{title}</h2>
 				{.end}
+				<div class="report-error"></div>
 			</div>
-			<div class="report-error"></div>
+			
 			<br>
 				
 			{@|apply verifiedPopup.block}
