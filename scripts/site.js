@@ -25,7 +25,15 @@
 
 }());
 
+import mixpanel from 'mixpanel-browser';
 
+if (process.env.NODE_ENV=='development') {
+  mixpanel.init('52a462874f2da46e3662a534c36151d5', {debug: true});
+} else {
+  mixpanel.init('52a462874f2da46e3662a534c36151d5');
+}
+
+export default mixpanel;
 
 var ifr = document.getElementById("JotFormIFrame-230596919059065");
     if (ifr) {
