@@ -1,6 +1,6 @@
 <style>
-#reportErrorBlock {display: none; z-index: 1000000000000; overflow-y: scroll; width: 90vw; min-height: 90vh; position: fixed; top: 2.5vh; left: 5vw;}
-.error-block-wrapper {border: 1px solid black; border-radius: 4px; background: white; overflow-y: scroll;}
+#reportErrorBlock {display: none; z-index: 1000000000000; overflow-y: scroll; width: 90vw; height: 90vh; position: fixed; top: 2.5vh; left: 5vw;}
+.error-block-wrapper {border: 1px solid black; border-radius: 4px; background: white; overflow-y: scroll; height: 100%;}
 </style>
 
 
