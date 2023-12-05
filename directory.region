@@ -19,12 +19,12 @@
 				
 			<main class="content-container" role="main" data-content-field="main-content">
 			<div class="directory-breadcrumbs flex-center-start flex-wrap">
-				{.section item}
-					<a href="/directory" class="styled-button-inverted small-button">&larr; Back to Directory</a>
-				{.end}
 				<h1 onclick="window.open('/directory', '_self')" class="hover directory-page-title">{collection.title} </h1>
 				{.section item}
 				<h2 class="directory-breadcrumb-child directory-page-title">&nbsp;| {title}</h2>
+				{.end}
+				{.section item}
+					<a href="/directory" class="styled-button-inverted small-button">&larr; Back to Directory</a>
 				{.end}
 			</div>
 			<br>

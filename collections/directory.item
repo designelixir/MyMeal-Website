@@ -16,13 +16,12 @@
 	}
 </script>
 <style>
-.directory-page-title {font-size: 16px!important;}
+.directory-page-title {font-size: 16px!important; line-height: 20px;}
 .directory-breadcrumbs {justify-content: center!important;}
 
 </style>
 
 {.section item}
-<div style="height: 50px"></div>
 <section class="box-shadow" style="border-radius: 8px">
 	<div class="directory-image-lg flex-start-spacebetween" {.if customContent.bannerImgUrl}style="background-image:url({customContent.bannerImgUrl})"{.or}style="background-image:url(../assets/basic-bg.png)"{.end}>
 	<div class="directory-header-wrapper">
