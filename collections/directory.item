@@ -24,6 +24,7 @@
 {.section item}
 <section class="box-shadow {.if customContent.verified} verified-item {.end}" style="border-radius: 8px">
 	<div class="directory-image-lg flex-start-spacebetween" {.if customContent.bannerImgUrl}style="background-image:url({customContent.bannerImgUrl})"{.or}style="background-image:url(../assets/basic-bg.png)"{.end}>
+	<button class="report-error-button inverted-styled-button" onclick="toggleErrorBlock(false)">Report an Issue</button>
 	<div class="directory-header-wrapper">
 		<div class="flex-center-start directory-header-logo-info">
 			{.if assetUrl}
