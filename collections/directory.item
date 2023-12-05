@@ -16,7 +16,7 @@
 	}
 </script>
 <style>
-.directory-page-title {font-size: 12px!important;}
+.directory-page-title {font-size: 16px!important;}
 </style>
 
 {.section item}
@@ -174,15 +174,12 @@
 			
 		</div>
 		{.if customContent.verified}
-		{.if sourceUrl}
-		<h4 style="color: var(--blue); padding-left: 25px;">Allergen Menu:</h4>
-		<div class="iframe-container" id="mymeal-menu-iframe">
-			<iframe src="{sourceUrl}" frameborder="0" allowfullscreen></iframe>
-		</div>
-		{.or}
-		<h4 style="color: var(--blue); padding-left: 25px;">Allergen Menu:</h4>
-		<p style="padding: 0px 25px;">This restaurant has different MyMeal menus for its locations. Click the "Locations" tab to view each menu.</p>
-		{.end}
+			{.if sourceUrl}
+			<h4 style="color: var(--blue); padding-left: 25px;" id="allergenMenu">Allergen Menu:</h4>
+			<div class="iframe-container" id="mymeal-menu-iframe">
+				<iframe src="{sourceUrl}" frameborder="0" allowfullscreen></iframe>
+			</div>
+			{.end}
 		{.or}
 		<div style="padding: 0px 25px">
 			<h4 style="color: var(--blue);">Request This Restaurant:</h4>
@@ -192,7 +189,6 @@
 		<iframe
 			id="JotFormIFrame-230596919059065"
 			title="MyMeal Restaurant Request Form"
-			onload="window.parent.scrollTo(0,90)"
 			allowtransparency="true"
 			allowfullscreen="true"
 			allow="geolocation; microphone; camera"

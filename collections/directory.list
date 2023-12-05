@@ -81,7 +81,7 @@
 						{.end}
 						<a class="hover" href="https://www.google.com/maps/search/{location.addressTitle} {location.addressLine1} {location.addressLine2}" target="_blank" id="address-span">📍 {location.addressLine1}, {location.addressLine2}</a>
 						<div class="flex-center-center directory-buttons">
-							{.equal? customContent.customType "duplicateLocation" }
+							{.equal? customContent.customType "duplicateLocation"}
 							<a href="https://findmymeal.io/directory/{tags}" style="padding: 5px" class="medium-button styled-button">Restaurant Details</a>
 							{.or}
 							<a href="https://findmymeal.io{fullUrl}" style="padding: 5px" class="medium-button grey-button styled-button">Restaurant Details</a>
@@ -152,7 +152,7 @@
 				
 				
 				<div class="flex-center-center directory-buttons">
-					{.if customContent.verified}<button onclick="window.open('{sourceUrl}')" class="medium-button styled-button">Allergen Menu</button>{.end}
+					{.if sourceUrl}<button onclick="window.open('{fullUrl}/#allergenMenu', '_self')" class="medium-button styled-button">Allergen Menu</button>{.end}
 					<button onclick="window.open('{fullUrl}', '_self')" class="medium-button styled-button-inverted-grey">Details</button>
 				</div>
 

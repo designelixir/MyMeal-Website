@@ -21,7 +21,7 @@
 			<div class="directory-breadcrumbs flex-center-start flex-wrap">
 				<h1 onclick="window.open('/directory', '_self')" class="hover directory-page-title">{collection.title} </h1>
 				{.section item}
-				<h2 class="directory-breadcrumb-child directory-page-title">{title}</h2>
+				<h2 class="directory-breadcrumb-child directory-page-title">&nbsp;| {title}</h2>
 				{.end}
 			</div>
 			<br>
