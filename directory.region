@@ -20,7 +20,7 @@
 			<main class="content-container" role="main" data-content-field="main-content">
 			<div class="directory-breadcrumbs flex-center-start flex-wrap">
 				<h1 onclick="window.open('/directory', '_self')" class="hover directory-page-title">
-				{.section item}&larr; Back to {.end}	{collection.title} {.section item} / {.end}
+				{.section item}&larr; {.end}{collection.title}{.section item} / {.end}
 				</h1>
 				{.section item}
 				<h2 class="directory-breadcrumb-child directory-page-title">{title}</h2>
