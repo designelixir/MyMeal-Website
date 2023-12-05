@@ -23,7 +23,7 @@
 				{.section item}&larr; {.end}{collection.title}{.section item} / {.end}
 				</h1>
 				{.section item}
-				<h2 class="directory-breadcrumb-child directory-page-title">{title}</h2>
+				<h2 class="directory-breadcrumb-child directory-page-title">&nbsp;{title}</h2>
 				{.end}
 				
 			</div>

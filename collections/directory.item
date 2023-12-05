@@ -41,7 +41,7 @@
 						
 						
 						{.if customContent.orderOnline}
-						<div class="order-icon-with-label flex-center-center" onclick="window.open('{customContent.orderOnline}', '_blank')">
+						<div class="order-icon-with-label flex-center-center hover" onclick="window.open('{customContent.orderOnline}', '_blank')">
 							<img src="../assets/toGo.png" style="height: 40px;">
 							<p class="white-text">Order Online</p>
 						</div>
