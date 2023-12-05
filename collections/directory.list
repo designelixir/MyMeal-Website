@@ -152,7 +152,7 @@
 				
 				
 				<div class="flex-center-center directory-buttons">
-					{.if sourceUrl}<button onclick="window.open('{fullUrl}#allergenMenu', '_self')" class="medium-button styled-button">Allergen Menu</button>{.end}
+					{.if sourceUrl}<button onclick="window.open('{fullUrl}', '_self'); goToMenu();" class="medium-button styled-button">Allergen Menu</button>{.end}
 					<button onclick="window.open('{fullUrl}', '_self')" class="medium-button styled-button-inverted-grey">Details</button>
 				</div>
 

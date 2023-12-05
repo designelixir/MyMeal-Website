@@ -1,5 +1,11 @@
 
 <script>
+	function goToMenu(){
+		$("html, body").animate({
+			scrollTop: $("#allergenMenu").offset().top
+		}, 1000);
+	}
+
 	function addToSpecialtyItems(spanId, divId) {
 	  var span = document.getElementById(spanId); // Get the span element
 	  var div = document.getElementById(divId); // Get the div element
