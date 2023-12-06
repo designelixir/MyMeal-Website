@@ -1,5 +1,14 @@
 
 <script>
+
+	function trackEvent() {
+		console.log("called track event")
+		mixpanel.track(
+			"Order Online Clicked",
+			{"Restaurant": "{title}"}
+		);
+	}
+
 	function goToMenu(){
 		$("html, body").animate({
 			scrollTop: $("#allergenMenu").offset().top
@@ -49,7 +58,7 @@
 						
 						
 						{.if customContent.orderOnline}
-						<div class="order-icon-with-label flex-center-center hover" onclick="window.open('{customContent.orderOnline}', '_blank')">
+						<div class="order-icon-with-label flex-center-center hover" onclick="window.open('{customContent.orderOnline}', '_blank'); trackEvent()">
 							{#  <img src="../assets/toGo.png" style="height: 20px;">  }
 							<p class="white-text">Order Online</p>
 						</div>
