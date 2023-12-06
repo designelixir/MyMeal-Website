@@ -1,11 +1,7 @@
-
-/**
- * This script wrapped in a Immediately-Invoked Function Expression (IIFE) to
- * prevent variables from leaking onto the global scope. For more information
- * on IIFE visit the link below.
- * @see http://en.wikipedia.org/wiki/Immediately-invoked_function_expression
- */
-
+import mixpanel from 'mixpanel-browser';
+ 
+mixpanel.init('36028a94dafa1288a20a7d58a2de8f4a', {debug: true, track_pageview: false, persistence: 'localStorage'});
+ 
 (function() {
   'use strict';
 
