@@ -1,7 +1,4 @@
-import mixpanel from 'mixpanel-browser';
- 
-mixpanel.init('36028a94dafa1288a20a7d58a2de8f4a', {debug: true, track_pageview: false, persistence: 'localStorage'});
- 
+
 (function() {
   'use strict';
 

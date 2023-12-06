@@ -8,7 +8,7 @@
 <div id="reportErrorBlock">
     <div class="error-block-wrapper">
         <div class="flex-center-spacebetween" style="padding: 15px;">
-            <div class="hover" style=" font-size: 24px;" onclick="toggleErrorBlock(true)">X</div>
+            <div class="hover" style=" font-size: 24px; padding-right: 15px;" onclick="toggleErrorBlock(true)">X</div>
             <div style="text-align: center;">
                     <h3>Report an Issue</h3>
                     <p>Found an issue with this page? If you believe information about this restaurant may be incorrect, let us know and we'll take a look.  </p>
