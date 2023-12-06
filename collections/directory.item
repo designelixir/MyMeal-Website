@@ -1,4 +1,5 @@
-
+<script src="https://cdn.jsdelivr.net/npm/mixpanel-browser@2.43.0/dist/mixpanel.min.js"></script>
+<script>mixpanel.init("36028a94dafa1288a20a7d58a2de8f4a");</script>
 <script>
 
 	function trackEvent() {
