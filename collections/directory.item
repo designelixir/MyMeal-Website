@@ -12,12 +12,6 @@
 		);
 	}
 
-	function goToMenu(){
-		$("html, body").animate({
-			scrollTop: $("#allergenMenu").offset().top
-		}, 1000);
-	}
-
 	function addToSpecialtyItems(spanId, divId) {
 	  var span = document.getElementById(spanId); // Get the span element
 	  var div = document.getElementById(divId); // Get the div element
@@ -61,7 +55,7 @@
 						
 						
 						{.if customContent.orderOnline}
-						<div class="order-icon-with-label flex-center-center hover" onclick="window.open('{customContent.orderOnline}', '_blank'); trackEvent()">
+						<div class="order-icon-with-label flex-center-center hover" onclick="window.open('{customContent.orderOnline}', '_blank');">
 							{#  <img src="../assets/toGo.png" style="height: 20px;">  }
 							<p class="white-text">Order Online</p>
 						</div>
