@@ -4,10 +4,13 @@
 
 <script>
 
-	mixpanel.track(
-		"Order Online Clicked",
-		{"Restaurant": "{title}"}
-	);
+	function trackEvent() {
+		console.log("called track event")
+		mixpanel.track(
+			"Order Online Clicked",
+			{"Restaurant": "{title}"}
+		);
+	}
 
 	function goToMenu(){
 		$("html, body").animate({
